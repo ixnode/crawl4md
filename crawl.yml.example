@@ -11,6 +11,7 @@ projects:
 
                 remove_jump_to_content: false
                 remove_wikipedia_subtitle: false
+                remove_wiki_loves_earth_banner: false
 
     planes:
         type: pages
@@ -28,6 +29,7 @@ projects:
 
                 remove_jump_to_content: false
                 remove_wikipedia_subtitle: false
+                remove_wiki_loves_earth_banner: false
                 remove_reference_sections: false
                 remove_html_comments: false
                 normalize_whitespace: false
