@@ -1,15 +1,27 @@
 import typer
 import asyncio
-from pathlib import Path
+import warnings
 
-from crawler.config import load_config
-from crawler.sitemap import parse_sitemap
-from crawler.crawler import fetch_markdown
-from crawler.paths import url_to_path
-from crawler.writer import write_markdown
+from pathlib import Path
+from urllib.parse import urlparse
+
+from .config import load_config
+from .sitemap import parse_sitemap
+from .crawler import fetch_markdown
+from .paths import url_to_path
+from .writer import write_markdown
+
+
+warnings.filterwarnings(
+    "ignore",
+    category=SyntaxWarning,
+    module="crawl4ai"
+)
 
 app = typer.Typer()
 
+def pretty_name(url: str) -> str:
+    return Path(urlparse(url).path).name or "index"
 
 @app.command()
 def crawl(project: str):
@@ -39,28 +51,30 @@ def crawl(project: str):
     failed = 0
 
     for i, url in enumerate(urls, start=1):
-        typer.echo(f"{i}/{total} Crawl {url}")
+        name = pretty_name(url)
+        typer.echo(f"[{i}/{total}] {name}")
 
         try:
-            typer.echo("- Fetching ...", nl=False)
+            typer.echo("  → Fetching...", nl=False)
             md = asyncio.run(fetch_markdown(url))
             typer.echo(" done")
 
-            typer.echo("- Processing ... done")
+            typer.echo("  → Processing... done")
 
             path = url_to_path(Path("docs"), project, url)
 
-            typer.echo(f"- Writing {path} ...", nl=False)
+            typer.echo(f"  → Writing... {path}")
             write_markdown(path, md)
-            typer.echo(" done")
 
             success += 1
 
         except Exception as e:
-            typer.echo(f"- Error: {e}")
+            typer.echo(f"  → Error: {e}")
             failed += 1
 
-    typer.echo("\nDone.")
-    typer.echo(f"- Success: {success}")
-    typer.echo(f"- Failed: {failed}")
-    typer.echo(f"- Output: docs/{project}")
+        typer.echo("")
+
+    typer.echo("Done.")
+    typer.echo(f"✔ Success: {success}")
+    typer.echo(f"✖ Failed: {failed}")
+    typer.echo(f"Output: docs/{project}")
