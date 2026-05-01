@@ -1,0 +1,15 @@
+projects:
+  pydantic:
+    type: sitemap
+    sources:
+      - https://pydantic.dev/sitemap.xml
+
+  planes:
+    type: pages
+    sources:
+      - https://de.wikipedia.org/wiki/Boeing_707
+      - https://de.wikipedia.org/wiki/Boeing_717
+      - https://de.wikipedia.org/wiki/Boeing_720
+      - https://de.wikipedia.org/wiki/Boeing_727
+      - https://de.wikipedia.org/wiki/Boeing_737
+

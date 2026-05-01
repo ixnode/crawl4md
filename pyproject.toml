@@ -1,0 +1,26 @@
+[project]
+name = "crawl4md"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+dependencies = [
+    "typer",
+    "pydantic",
+    "pyyaml",
+    "requests",
+    "lxml",
+    "crawl4ai"
+]
+
+[project.scripts]
+crawl = "crawl4md.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/crawl4md"]
+
+[tool.uv]
+package = true

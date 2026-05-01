@@ -1,0 +1,57 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# -------------------------
+# Build / Packaging
+# -------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# -------------------------
+# uv
+# -------------------------
+.uv/
+uv.lock
+
+# -------------------------
+# IDE / Editor
+# -------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -------------------------
+# OS
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Project specific
+# -------------------------
+
+# User-specific config (must NOT be committed)
+crawl.yml
+
+# Generated Markdown output
+docs/*
+!docs/.gitkeep
+
+# Optional: logs or temp files (future-proof)
+*.log
+tmp/
+
