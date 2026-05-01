@@ -1,15 +1,37 @@
 projects:
-  pydantic:
-    type: sitemap
-    sources:
-      - https://pydantic.dev/sitemap.xml
+    pydantic:
+        type: sitemap
+        sources:
+            - https://pydantic.dev/sitemap.xml
+        crawl:
+            parse_type: markdown # markdown | markdown-fit
+        preprocessing:
+            markdown:
+                enabled: false
 
-  planes:
-    type: pages
-    sources:
-      - https://de.wikipedia.org/wiki/Boeing_707
-      - https://de.wikipedia.org/wiki/Boeing_717
-      - https://de.wikipedia.org/wiki/Boeing_720
-      - https://de.wikipedia.org/wiki/Boeing_727
-      - https://de.wikipedia.org/wiki/Boeing_737
+    planes:
+        type: pages
+        sources:
+            - https://de.wikipedia.org/wiki/Boeing_707
+            - https://de.wikipedia.org/wiki/Boeing_717
+            - https://de.wikipedia.org/wiki/Boeing_720
+            - https://de.wikipedia.org/wiki/Boeing_727
+            - https://de.wikipedia.org/wiki/Boeing_737
+        crawl:
+            parse_type: markdown # markdown | markdown-fit
+        preprocessing:
+            markdown:
+                enabled: false
 
+                remove_reference_sections: false
+                remove_html_comments: false
+                normalize_whitespace: false
+
+                reference_headings:
+                    - Einzelnachweise
+                    - Weblinks
+                    - Literatur
+                    - Quellen
+                    - References
+                    - External links
+                    - Bibliography
