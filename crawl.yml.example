@@ -9,6 +9,9 @@ projects:
             markdown:
                 enabled: false
 
+                remove_jump_to_content: false
+                remove_wikipedia_subtitle: false
+
     planes:
         type: pages
         sources:
@@ -23,6 +26,8 @@ projects:
             markdown:
                 enabled: false
 
+                remove_jump_to_content: false
+                remove_wikipedia_subtitle: false
                 remove_reference_sections: false
                 remove_html_comments: false
                 normalize_whitespace: false

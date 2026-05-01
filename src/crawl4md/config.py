@@ -12,6 +12,8 @@ class CrawlConfig(BaseModel):
 class MarkdownPreprocessingConfig(BaseModel):
     enabled: bool = False
 
+    remove_jump_to_content: bool = False
+    remove_wikipedia_subtitle: bool = False
     remove_reference_sections: bool = False
     remove_html_comments: bool = False
     normalize_whitespace: bool = False

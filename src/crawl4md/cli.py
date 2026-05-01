@@ -56,7 +56,13 @@ def crawl(project: str):
 
         try:
             typer.echo("  → Fetching...", nl=False)
-            md = asyncio.run(fetch_markdown(url, proj.crawl.parse_type))
+            md = asyncio.run(
+                fetch_markdown(
+                    url,
+                    proj.crawl.parse_type,
+                    proj.preprocessing.markdown,
+                )
+            )
             typer.echo(" done")
 
             typer.echo("  → Processing... done")
