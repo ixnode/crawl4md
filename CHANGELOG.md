@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Add uv check command for tests and Ruff linting
+- Export public Python API and expand README with usage and crawl4ai context
 
 ### Refactored
 

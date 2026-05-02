@@ -71,6 +71,104 @@ uv run crawl pydantic
 
 ---
 
+## Python API
+
+`crawl4md` can also be used as a Python package.
+
+The public classes are:
+
+- `MarkdownFetcher`
+- `MarkdownConverter`
+- `ParseType`
+- `MarkdownPreprocessingConfig`
+
+### Configure Parse Type
+
+Use `ParseType` to control how Markdown is generated:
+
+- `"markdown"`: raw markdown output
+- `"markdown-fit"`: cleaned and reduced markdown output via `crawl4ai`
+
+### Configure Preprocessing
+
+Use `MarkdownPreprocessingConfig` to enable optional cleanup steps.
+
+Simple example:
+
+```python
+from crawl4md import MarkdownPreprocessingConfig
+
+config = MarkdownPreprocessingConfig(
+    enabled=True,
+    remove_html_comments=True,
+    normalize_whitespace=True,
+)
+```
+
+### Fetch Markdown From a URL
+
+Use `MarkdownFetcher` if you want to fetch a page and directly receive Markdown.
+
+```python
+from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+
+config = MarkdownPreprocessingConfig(enabled=True)
+fetcher = MarkdownFetcher(config=config, parse_type="markdown-fit")
+
+markdown = fetcher.fetch_sync("https://example.com")
+print(markdown)
+```
+
+Async version:
+
+```python
+import asyncio
+
+from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+
+config = MarkdownPreprocessingConfig(enabled=True)
+fetcher = MarkdownFetcher(config=config, parse_type="markdown-fit")
+
+markdown = asyncio.run(fetcher.fetch("https://example.com"))
+print(markdown)
+```
+
+### Convert HTML to Markdown
+
+Use `MarkdownConverter` if you already have HTML and only want the conversion step.
+
+```python
+from crawl4md import MarkdownConverter, MarkdownPreprocessingConfig
+
+html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
+
+config = MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
+converter = MarkdownConverter(config=config, parse_type="markdown")
+
+markdown = converter.convert_sync(html=html, url="https://example.com")
+print(markdown)
+```
+
+Async version:
+
+```python
+import asyncio
+
+from crawl4md import MarkdownConverter, MarkdownPreprocessingConfig
+
+html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
+
+config = MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
+converter = MarkdownConverter(config=config, parse_type="markdown")
+
+markdown = asyncio.run(
+    converter.convert(html=html, url="https://example.com")
+)
+print(markdown)
+```
+
+---
+
 ## Output Structure
 
 Markdown files are stored deterministically based on the URL path:
@@ -142,3 +240,20 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 ### Authors
 
 * Björn Hempel <bjoern@hempel.li> - _Initial work_ - [https://github.com/bjoern-hempel](https://github.com/bjoern-hempel)
+
+---
+
+## Built on top of crawl4ai
+
+This project builds on the excellent [`crawl4ai`](https://github.com/unclecode/crawl4ai) library and extends it with a simpler batch-oriented workflow for repeatable Markdown exports.
+
+Why use `crawl4md` as a complement to `crawl4ai`:
+
+- project-based batch crawling via `crawl.yml`
+- support for both page lists and sitemap-driven crawls
+- deterministic output paths for generated Markdown files
+- optional Markdown cleanup rules for better downstream text quality
+- a small CLI and Python API focused on URL or HTML to Markdown workflows
+- clearer separation between fetching, conversion, preprocessing, and writing
+
+In short: `crawl4ai` provides the powerful crawling and Markdown generation foundation, while `crawl4md` adds a lightweight structure around it for batch jobs, cleaner output, and easier integration into documentation or RAG pipelines.
