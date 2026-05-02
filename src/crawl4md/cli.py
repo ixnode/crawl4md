@@ -9,6 +9,7 @@ from .config import load_config
 from .sitemap import parse_sitemap
 from .crawler import fetch_markdown
 from .paths import url_to_path
+from .preprocessing import MarkdownPreprocessing
 from .writer import write_markdown
 
 
@@ -32,6 +33,7 @@ def crawl(project: str):
         raise typer.Exit(1)
 
     proj = config.projects[project]
+    preprocessing = MarkdownPreprocessing(proj.preprocessing.markdown)
 
     # URLs sammeln
     urls: list[str] = []
@@ -60,12 +62,13 @@ def crawl(project: str):
                 fetch_markdown(
                     url,
                     proj.crawl.parse_type,
-                    proj.preprocessing.markdown,
                 )
             )
             typer.echo(" done")
 
-            typer.echo("  → Processing... done")
+            typer.echo("  → Processing...", nl=False)
+            md = preprocessing.process(md, url=url)
+            typer.echo(" done")
 
             path = url_to_path(Path("docs"), project, url)
 

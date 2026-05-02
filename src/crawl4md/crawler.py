@@ -4,8 +4,7 @@ from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
-from .config import MarkdownPreprocessingConfig, ParseType
-from .preprocessing import MarkdownPreprocessor
+from .config import ParseType
 
 
 logging.getLogger("crawl4ai").setLevel(logging.ERROR)
@@ -14,7 +13,6 @@ logging.getLogger("crawl4ai").setLevel(logging.ERROR)
 async def fetch_markdown(
     url: str,
     parse_type: ParseType = "markdown",
-    preprocessing: MarkdownPreprocessingConfig | None = None,
 ) -> str:
     if parse_type == "markdown-fit":
         markdown_generator = DefaultMarkdownGenerator(
@@ -25,10 +23,6 @@ async def fetch_markdown(
     else:
         config = CrawlerRunConfig()
 
-    preprocessor = None
-    if preprocessing and preprocessing.enabled:
-        preprocessor = MarkdownPreprocessor(preprocessing)
-
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(url=url, config=config)
 
@@ -37,11 +31,4 @@ async def fetch_markdown(
         else:
             markdown = result.markdown.raw_markdown or ""
 
-        if not preprocessor:
-            return markdown
-
-        html = result.html
-        if preprocessor.needs_html(markdown, html):
-            html = (await crawler.arun(url=url, config=CrawlerRunConfig())).html
-
-        return preprocessor.apply(markdown, url, html)
+        return markdown
