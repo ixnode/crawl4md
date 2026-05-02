@@ -240,6 +240,32 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             "| Boeing 707 |\n| --- |\n| Row |\n\nDie **Boeing 707** ist ein Flugzeug.\n",
         )
 
+    def test_inserts_space_before_link_when_text_touches_link(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = '_Eine Boeing 707 der[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")_\n'
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            '_Eine Boeing 707 der [Air India](https://de.wikipedia.org/wiki/Air_India "Air India")_\n',
+        )
+
+    def test_inserts_space_before_link_after_number_text(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = 'Vereinigte Staaten 48[Vereinigte Staaten](https://de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten")\n'
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            'Vereinigte Staaten 48 [Vereinigte Staaten](https://de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten")\n',
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

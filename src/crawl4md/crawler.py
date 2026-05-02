@@ -5,7 +5,9 @@ from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
 from .config import ParseType
-
+from .fetch.html import HtmlFetcher
+from .fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
+from .fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
 
 logging.getLogger("crawl4ai").setLevel(logging.ERROR)
 
@@ -14,6 +16,15 @@ async def fetch_markdown(
     url: str,
     parse_type: ParseType = "markdown",
 ) -> str:
+    fetcher = HtmlFetcher(
+        normalizers=[
+            MediawikiEntityNormalizer(),
+            MediawikiHiddenSpanNormalizer(),
+        ]
+    )
+    raw_html = await fetcher.fetch(url=url)
+    raw_html_url = f"raw:{raw_html}"
+
     if parse_type == "markdown-fit":
         markdown_generator = DefaultMarkdownGenerator(
             content_filter=PruningContentFilter(threshold=0.5),
@@ -24,7 +35,7 @@ async def fetch_markdown(
         config = CrawlerRunConfig()
 
     async with AsyncWebCrawler() as crawler:
-        result = await crawler.arun(url=url, config=config)
+        result = await crawler.arun(url=raw_html_url, config=config)
 
         if parse_type == "markdown-fit":
             markdown = result.markdown.fit_markdown or result.markdown.raw_markdown or ""

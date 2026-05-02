@@ -40,12 +40,12 @@ class RuleNormalizeWhitespace(RuleBase):
                 continue
 
             if self.HEADING_PATTERN.match(line):
-                blocks.append(line.rstrip())
+                blocks.append(self._normalize_line(line))
                 index += 1
                 continue
 
             if self._is_table_start(lines, index):
-                block_lines = [lines[index].rstrip()]
+                block_lines = [self._normalize_line(lines[index])]
                 index += 1
 
                 while index < len(lines):
@@ -57,13 +57,13 @@ class RuleNormalizeWhitespace(RuleBase):
                     if "|" not in current:
                         break
 
-                    block_lines.append(current.rstrip())
+                    block_lines.append(self._normalize_line(current))
                     index += 1
 
                 blocks.append("\n".join(block_lines))
                 continue
 
-            block_lines = [line.rstrip()]
+            block_lines = [self._normalize_line(line)]
             index += 1
 
             while index < len(lines):
@@ -78,7 +78,7 @@ class RuleNormalizeWhitespace(RuleBase):
                 if self._is_table_start(lines, index):
                     break
 
-                block_lines.append(current.rstrip())
+                block_lines.append(self._normalize_line(current))
                 index += 1
 
             blocks.append("\n".join(block_lines))
@@ -108,3 +108,20 @@ class RuleNormalizeWhitespace(RuleBase):
             return False
 
         return all(TABLE_CELL_PATTERN.match(cell) for cell in separator_cells)
+
+    def _normalize_line(self, line: str) -> str:
+        line = line.rstrip()
+        parts: list[str] = []
+        last_end = 0
+
+        for match in self.MARKDOWN_LINK_PATTERN.finditer(line):
+            parts.append(line[last_end:match.start()])
+
+            if match.start() > 0 and not line[match.start() - 1].isspace() and line[match.start() - 1] != "!":
+                parts.append(" ")
+
+            parts.append(match.group(0))
+            last_end = match.end()
+
+        parts.append(line[last_end:])
+        return "".join(parts)

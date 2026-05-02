@@ -1,0 +1,46 @@
+import httpx
+
+from typing import List
+
+from crawl4md.fetch.normalize.base.normalizer_base import NormalizerBase
+
+
+class HtmlFetcher:
+    def __init__(
+        self,
+        timeout: float = 30.0,
+        user_agent: str = "Mozilla/5.0 HtmlFetcher/1.0",
+        normalizers: List[NormalizerBase] | None = None,
+    ) -> None:
+        self.timeout = timeout
+        self.headers = {"User-Agent": user_agent}
+        self.normalizers = normalizers or []
+
+    async def fetch(self, url: str) -> str:
+        async with httpx.AsyncClient(
+            follow_redirects=True,
+            timeout=self.timeout,
+            headers=self.headers,
+        ) as client:
+            response = await client.get(url)
+            response.raise_for_status()
+            html = response.text
+
+        return self._apply_normalizers(html)
+
+    def fetch_sync(self, url: str) -> str:
+        with httpx.Client(
+            follow_redirects=True,
+            timeout=self.timeout,
+            headers=self.headers,
+        ) as client:
+            response = client.get(url)
+            response.raise_for_status()
+            html = response.text
+
+        return self._apply_normalizers(html)
+
+    def _apply_normalizers(self, html: str) -> str:
+        for normalizer in self.normalizers:
+            html = normalizer.normalize(html)
+        return html
