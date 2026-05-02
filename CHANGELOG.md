@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 
 - Split `fetch_markdown` into fetch and convert layers
 - Move markdown preprocessing from CLI into convert pipeline
+- Refactor markdown fetch/convert into classes and add sync APIs
 
 ### Removed
 

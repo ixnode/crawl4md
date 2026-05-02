@@ -17,7 +17,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .config import load_config
-from .fetch.markdown import fetch_markdown
+from .fetch.markdown import MarkdownFetcher
 from .paths import url_to_path
 from .sitemap import parse_sitemap
 from .writer import write_markdown
@@ -43,6 +43,10 @@ def crawl(project: str):
         raise typer.Exit(1)
 
     proj = config.projects[project]
+    fetcher = MarkdownFetcher(
+        config=proj.preprocessing.markdown,
+        parse_type=proj.crawl.parse_type,
+    )
 
     # URLs sammeln
     urls: list[str] = []
@@ -67,13 +71,7 @@ def crawl(project: str):
 
         try:
             typer.echo("  → Fetching...", nl=False)
-            md = asyncio.run(
-                fetch_markdown(
-                    url,
-                    proj.preprocessing.markdown,
-                    proj.crawl.parse_type,
-                )
-            )
+            md = asyncio.run(fetcher.fetch(url))
             typer.echo(" done")
 
             path = url_to_path(Path("docs"), project, url)

@@ -14,26 +14,45 @@ from ..fetch.html import HtmlFetcher
 from ..fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
 from ..fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
 from ..fetch.normalize.url import UrlNormalizer
-from ..convert.markdown import convert_markdown
+from ..convert.markdown import MarkdownConverter
 
 
-async def fetch_markdown(
-    url: str,
-    config: MarkdownPreprocessingConfig,
-    parse_type: ParseType = "markdown",
-) -> str:
-    fetcher = HtmlFetcher(
-        normalizers=[
-            MediawikiEntityNormalizer(),
-            MediawikiHiddenSpanNormalizer(),
-            UrlNormalizer(url=url)
-        ]
-    )
-    html = await fetcher.fetch(url=url)
+class MarkdownFetcher:
+    def __init__(
+        self,
+        config: MarkdownPreprocessingConfig,
+        parse_type: ParseType = "markdown",
+    ) -> None:
+        self.config = config
+        self.parse_type = parse_type
 
-    return await convert_markdown(
-        html=html,
-        config=config,
-        parse_type=parse_type,
-        url=url,
-    )
+    def _build_html_fetcher(self, url: str) -> HtmlFetcher:
+        return HtmlFetcher(
+            normalizers=[
+                MediawikiEntityNormalizer(),
+                MediawikiHiddenSpanNormalizer(),
+                UrlNormalizer(url=url)
+            ]
+        )
+
+    def _build_markdown_converter(self) -> MarkdownConverter:
+        return MarkdownConverter(
+            config=self.config,
+            parse_type=self.parse_type,
+        )
+
+    async def fetch(self, url: str) -> str:
+        fetcher = self._build_html_fetcher(url)
+        html = await fetcher.fetch(url=url)
+
+        converter = self._build_markdown_converter()
+
+        return await converter.convert(html=html, url=url)
+
+    def fetch_sync(self, url: str) -> str:
+        fetcher = self._build_html_fetcher(url)
+        html = fetcher.fetch_sync(url=url)
+
+        converter = self._build_markdown_converter()
+
+        return converter.convert_sync(html=html, url=url)
