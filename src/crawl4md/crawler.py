@@ -8,6 +8,7 @@ from .config import ParseType
 from .fetch.html import HtmlFetcher
 from .fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
 from .fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
+from .fetch.normalize.url import UrlNormalizer
 
 logging.getLogger("crawl4ai").setLevel(logging.ERROR)
 
@@ -20,6 +21,7 @@ async def fetch_markdown(
         normalizers=[
             MediawikiEntityNormalizer(),
             MediawikiHiddenSpanNormalizer(),
+            UrlNormalizer(url=url)
         ]
     )
     raw_html = await fetcher.fetch(url=url)
