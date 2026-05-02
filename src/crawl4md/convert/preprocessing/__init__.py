@@ -1,2 +1,1 @@
-from .markdown import MarkdownPreprocessing
-
+from .markdown import MarkdownPreprocessing as MarkdownPreprocessing

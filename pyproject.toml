@@ -14,6 +14,7 @@ dependencies = [
 
 [project.scripts]
 crawl = "crawl4md.cli:app"
+check = "crawl4md.check:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -24,3 +25,8 @@ packages = ["src/crawl4md"]
 
 [tool.uv]
 package = true
+
+[dependency-groups]
+dev = [
+    "ruff",
+]

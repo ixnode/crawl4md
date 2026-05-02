@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Add uv check command for tests and Ruff linting
+
 ### Refactored
 
 - Split `fetch_markdown` into fetch and convert layers
