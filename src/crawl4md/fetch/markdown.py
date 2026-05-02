@@ -26,7 +26,8 @@ class MarkdownFetcher:
         self.config = config
         self.parse_type = parse_type
 
-    def _build_html_fetcher(self, url: str) -> HtmlFetcher:
+    @staticmethod
+    def _build_html_fetcher(url: str) -> HtmlFetcher:
         return HtmlFetcher(
             normalizers=[
                 MediawikiEntityNormalizer(),
