@@ -1,6 +1,9 @@
 import unittest
 
 from crawl4md.crawler import (
+    ensure_h1,
+    extract_title_from_html,
+    fallback_title_from_url,
     remove_jump_to_content_links,
     remove_wiki_loves_earth_banner,
     remove_wikipedia_subtitle,
@@ -120,6 +123,40 @@ class RemoveWikiLovesEarthBannerTests(unittest.TestCase):
         )
 
         self.assertEqual(cleaned, markdown)
+
+
+class EnsureH1Tests(unittest.TestCase):
+    def test_keeps_existing_h1(self) -> None:
+        markdown = "# Existing Title\n\nContent\n"
+        html = "<html><body><h1>Ignored</h1></body></html>"
+
+        cleaned = ensure_h1(markdown, html, "https://example.com/page")
+
+        self.assertEqual(cleaned, markdown)
+
+    def test_injects_h1_when_only_lower_headings_exist(self) -> None:
+        markdown = "## Section\n\nContent\n"
+        html = "<html><head><title>Fallback Title</title></head><body><h1>Main Title</h1></body></html>"
+
+        cleaned = ensure_h1(markdown, html, "https://example.com/page")
+
+        self.assertEqual(cleaned, "# Main Title\n\n## Section\n\nContent\n")
+
+    def test_extract_title_prefers_h1_and_normalizes_entities(self) -> None:
+        html = (
+            "<html><head><title>Some Title</title></head>"
+            "<body><h1> Boeing &amp; 707 \n Overview </h1></body></html>"
+        )
+
+        self.assertEqual(extract_title_from_html(html), "Boeing & 707 Overview")
+
+    def test_falls_back_to_title_then_url_segment(self) -> None:
+        title_html = "<html><head><title>Page Title</title></head><body></body></html>"
+        self.assertEqual(extract_title_from_html(title_html), "Page Title")
+        self.assertEqual(
+            fallback_title_from_url("https://example.com/boeing-707_family"),
+            "boeing 707 family",
+        )
 
 
 if __name__ == "__main__":

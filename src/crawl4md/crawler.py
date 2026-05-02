@@ -1,10 +1,12 @@
 import logging
 import re
 
+from html import unescape
+from html.parser import HTMLParser
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
-from urllib.parse import urljoin, urlparse
+from urllib.parse import unquote, urljoin, urlparse
 
 from .config import MarkdownPreprocessingConfig, ParseType
 
@@ -12,6 +14,7 @@ from .config import MarkdownPreprocessingConfig, ParseType
 logging.getLogger("crawl4ai").setLevel(logging.ERROR)
 
 
+H1_PATTERN = re.compile(r"^# ", re.MULTILINE)
 SKIP_CONTENT_FRAGMENTS = {
     "bodycontent",
     "content",
@@ -25,6 +28,85 @@ MARKDOWN_LINK_PATTERN = re.compile(
     re.DOTALL,
 )
 WIKIPEDIA_SUBTITLE = "aus Wikipedia, der freien Enzyklopädie"
+
+
+class _TitleHTMLParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self._active_tag: str | None = None
+        self._capturing_h1 = False
+        self._seen_h1 = False
+        self._h1_parts: list[str] = []
+        self._title_parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self._active_tag = tag
+
+        if tag == "h1" and not self._seen_h1:
+            self._capturing_h1 = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "h1" and self._capturing_h1:
+            self._capturing_h1 = False
+            self._seen_h1 = True
+
+        if tag == self._active_tag:
+            self._active_tag = None
+
+    def handle_data(self, data: str) -> None:
+        if self._capturing_h1:
+            self._h1_parts.append(data)
+
+        if self._active_tag == "title":
+            self._title_parts.append(data)
+
+    @property
+    def h1_text(self) -> str:
+        return "".join(self._h1_parts)
+
+    @property
+    def title_text(self) -> str:
+        return "".join(self._title_parts)
+
+
+def has_h1(markdown: str) -> bool:
+    return bool(H1_PATTERN.search(markdown))
+
+
+def _normalize_title(value: str) -> str | None:
+    normalized = " ".join(unescape(value).split()).strip()
+    return normalized or None
+
+
+def extract_title_from_html(html: str) -> str | None:
+    parser = _TitleHTMLParser()
+    parser.feed(html)
+    parser.close()
+
+    return _normalize_title(parser.h1_text) or _normalize_title(parser.title_text)
+
+
+def fallback_title_from_url(url: str) -> str:
+    parsed = urlparse(url)
+    segment = parsed.path.rstrip("/").rsplit("/", maxsplit=1)[-1]
+    candidate = unquote(segment).replace("-", " ").replace("_", " ")
+    normalized = _normalize_title(candidate)
+
+    if normalized:
+        return normalized
+
+    return parsed.netloc or "index"
+
+
+def ensure_h1(markdown: str, html: str | None, url: str) -> str:
+    if has_h1(markdown):
+        return markdown
+
+    title = extract_title_from_html(html) if html else None
+    if not title:
+        title = fallback_title_from_url(url)
+
+    return f"# {title}\n\n{markdown}"
 
 
 def _is_jump_to_content_target(link_target: str, page_url: str) -> bool:
@@ -157,5 +239,21 @@ async def fetch_markdown(
             and preprocessing.remove_wiki_loves_earth_banner
         ):
             markdown = remove_wiki_loves_earth_banner(markdown, url)
+
+        if (
+            preprocessing
+            and preprocessing.enabled
+            and preprocessing.ensure_h1
+        ):
+            html = result.html
+            if not html and not has_h1(markdown):
+                html = (
+                    await crawler.arun(
+                        url=url,
+                        config=CrawlerRunConfig(),
+                    )
+                ).html
+
+            markdown = ensure_h1(markdown, html, url)
 
         return markdown

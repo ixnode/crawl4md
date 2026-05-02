@@ -9,9 +9,13 @@ projects:
             markdown:
                 enabled: false
 
-                remove_jump_to_content: false
-                remove_wikipedia_subtitle: false
+                ensure_h1: false                        # Adds missing # Tag
+                remove_jump_to_content: false           # Removes "[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)"
+                remove_wikipedia_subtitle: false        # Removes "aus Wikipedia, der freien Enzyklopädie"
                 remove_wiki_loves_earth_banner: false
+                remove_reference_sections: false
+                remove_html_comments: false
+                normalize_whitespace: false
 
     planes:
         type: pages
@@ -27,6 +31,7 @@ projects:
             markdown:
                 enabled: false
 
+                ensure_h1: false
                 remove_jump_to_content: false
                 remove_wikipedia_subtitle: false
                 remove_wiki_loves_earth_banner: false

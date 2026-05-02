@@ -12,6 +12,7 @@ class CrawlConfig(BaseModel):
 class MarkdownPreprocessingConfig(BaseModel):
     enabled: bool = False
 
+    ensure_h1: bool = False
     remove_jump_to_content: bool = False
     remove_wikipedia_subtitle: bool = False
     remove_wiki_loves_earth_banner: bool = False
