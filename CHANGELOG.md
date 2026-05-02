@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Refactored
 
-- Refactor: split fetch_markdown into fetch and convert layers
+- Split `fetch_markdown` into fetch and convert layers
 
 ### Removed
 
