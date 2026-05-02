@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Refactored
+
+- Refactor: split fetch_markdown into fetch and convert layers
+
 ### Removed
 
 - Crawl4AI Logging

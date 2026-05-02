@@ -18,7 +18,7 @@ from urllib.parse import urlparse
 
 from .config import load_config
 from .sitemap import parse_sitemap
-from .crawler import fetch_markdown
+from .fetch.markdown import fetch_markdown
 from .paths import url_to_path
 from .preprocessing import MarkdownPreprocessing
 from .writer import write_markdown
