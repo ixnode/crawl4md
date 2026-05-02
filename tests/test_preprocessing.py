@@ -3,6 +3,7 @@ import unittest
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.preprocessing import MarkdownPreprocessing
 from crawl4md.preprocessing.rules.ensure_h1 import RuleEnsureH1
+from crawl4md.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
 from crawl4md.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
 from crawl4md.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
@@ -132,6 +133,28 @@ class RuleRemoveJumpToContentTests(unittest.TestCase):
         cleaned = rule.apply(markdown, url="https://de.wikipedia.org/wiki/Boeing_707")
 
         self.assertEqual(cleaned, "# Boeing 707\n")
+
+
+class RuleRemoveHtmlCommentsTests(unittest.TestCase):
+    def test_removes_inline_html_comment(self) -> None:
+        rule = RuleRemoveHtmlComments(
+            MarkdownPreprocessingConfig(enabled=True, remove_html_comments=True)
+        )
+        markdown = "Text <!-- hidden --> mehr Text\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text  mehr Text\n")
+
+    def test_removes_multiline_html_comment(self) -> None:
+        rule = RuleRemoveHtmlComments(
+            MarkdownPreprocessingConfig(enabled=True, remove_html_comments=True)
+        )
+        markdown = "Text\n<!-- first line\nsecond line -->\nMehr Text\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text\n\nMehr Text\n")
 
 
 class RuleRemoveWikipediaSubtitleTests(unittest.TestCase):

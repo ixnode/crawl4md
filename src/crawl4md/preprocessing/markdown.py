@@ -1,5 +1,6 @@
 from .rules.rule_base import RuleBase
 from .rules.ensure_h1 import RuleEnsureH1
+from .rules.remove_html_comments import RuleRemoveHtmlComments
 from .rules.remove_jump_to_content import RuleRemoveJumpToContent
 from .rules.remove_reference_sections import RuleRemoveReferenceSections
 from .rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
@@ -14,6 +15,9 @@ class MarkdownPreprocessing:
 
         if config.remove_jump_to_content:
             self.rules.append(RuleRemoveJumpToContent(config))
+
+        if config.remove_html_comments:
+            self.rules.append(RuleRemoveHtmlComments(config))
 
         if config.remove_wikipedia_subtitle:
             self.rules.append(RuleRemoveWikipediaSubtitle(config))
