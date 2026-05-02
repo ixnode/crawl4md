@@ -10,9 +10,9 @@ projects:
                 enabled: false
 
                 ensure_h1: false                        # Adds missing # Tag
-                remove_jump_to_content: false           # Removes "[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)"
+                remove_jump_to_content: false           # Removes "[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)" links
                 remove_wikipedia_subtitle: false        # Removes "aus Wikipedia, der freien Enzyklopädie"
-                remove_wiki_loves_earth_banner: false
+                remove_wiki_loves_earth_banner: false   # Removes "Wikipedia:Wiki_Loves_Earth_" and "Wikidata:Events/Coordinate_Me_" Links
                 remove_reference_sections: false
                 remove_html_comments: false
                 normalize_whitespace: false

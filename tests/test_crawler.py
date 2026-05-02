@@ -1,13 +1,15 @@
 import unittest
 
-from crawl4md.crawler import (
+from crawl4md.preprocessing import (
     ensure_h1,
     extract_title_from_html,
     fallback_title_from_url,
+    MarkdownPreprocessor,
     remove_jump_to_content_links,
     remove_wiki_loves_earth_banner,
     remove_wikipedia_subtitle,
 )
+from crawl4md.config import MarkdownPreprocessingConfig
 
 
 class RemoveJumpToContentLinksTests(unittest.TestCase):
@@ -157,6 +159,44 @@ class EnsureH1Tests(unittest.TestCase):
             fallback_title_from_url("https://example.com/boeing-707_family"),
             "boeing 707 family",
         )
+
+
+class MarkdownPreprocessorTests(unittest.TestCase):
+    def test_needs_html_only_when_ensure_h1_requires_it(self) -> None:
+        disabled = MarkdownPreprocessor(
+            MarkdownPreprocessingConfig(enabled=True, ensure_h1=False)
+        )
+        enabled = MarkdownPreprocessor(
+            MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
+        )
+
+        self.assertFalse(disabled.needs_html("Content\n", None))
+        self.assertTrue(enabled.needs_html("Content\n", None))
+        self.assertFalse(enabled.needs_html("# Title\n\nContent\n", None))
+
+    def test_apply_runs_enabled_cleanup_steps(self) -> None:
+        preprocessor = MarkdownPreprocessor(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                ensure_h1=True,
+                remove_jump_to_content=True,
+                remove_wikipedia_subtitle=True,
+            )
+        )
+
+        markdown = (
+            "[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)\n"
+            "aus Wikipedia, der freien Enzyklopädie\n"
+            "Content\n"
+        )
+
+        cleaned = preprocessor.apply(
+            markdown,
+            "https://de.wikipedia.org/wiki/Boeing_707",
+            "<html><body><h1>Boeing 707</h1></body></html>",
+        )
+
+        self.assertEqual(cleaned, "# Boeing 707\n\nContent\n")
 
 
 if __name__ == "__main__":
