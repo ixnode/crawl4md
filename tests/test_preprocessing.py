@@ -3,6 +3,7 @@ import unittest
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.preprocessing import MarkdownPreprocessing
 from crawl4md.preprocessing.rules.ensure_h1 import RuleEnsureH1
+from crawl4md.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
 from crawl4md.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
 from crawl4md.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
@@ -185,6 +186,41 @@ class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):
         cleaned = rule.apply(markdown, url="https://de.wikipedia.org/wiki/Boeing_707")
 
         self.assertEqual(cleaned, "# Boeing 707\n")
+
+
+class RuleNormalizeWhitespaceTests(unittest.TestCase):
+    def test_normalizes_blank_lines_and_trailing_spaces(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = "\n\n# Title   \n\n\nText   \n   \n\n## Section\n\n\nMore text\n\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "# Title\n\nText\n\n## Section\n\nMore text\n")
+
+    def test_adds_spacing_around_table_and_code_block(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = (
+            "# Title\n"
+            "| A | B |\n"
+            "| --- | --- |\n"
+            "| 1 | 2 |\n"
+            "```py\n"
+            "x = 1  \n"
+            "print(x)\n"
+            "```\n"
+            "Text\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "# Title\n\n| A | B |\n| --- | --- |\n| 1 | 2 |\n\n```py\nx = 1  \nprint(x)\n```\n\nText\n",
+        )
 
 
 if __name__ == "__main__":
