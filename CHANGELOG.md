@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+* Suppress crawl4ai SyntaxWarning under Python 3.14
+
 ## [0.1.3] - 2026-05-02
 
 ### Added

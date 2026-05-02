@@ -318,3 +318,40 @@ Why use `crawl4md` as a complement to `crawl4ai`:
 - clearer separation between fetching, conversion, preprocessing, and writing
 
 In short: `crawl4ai` provides the powerful crawling and Markdown generation foundation, while `crawl4md` adds a lightweight structure around it for batch jobs, cleaner output, and easier integration into documentation or RAG pipelines.
+
+## Troubleshooting
+
+### Wikipedia returns `403 Forbidden`
+
+Some websites, especially Wikimedia/Wikipedia, may block direct HTTP requests depending on the Python runtime, TLS fingerprint, request frequency, IP reputation, or server-side bot detection.
+
+Example error:
+
+```text
+httpx.HTTPStatusError: Client error '403 Forbidden'
+Please respect our robot policy ...
+```
+
+This is not necessarily a `crawl4md` bug. The same request may work in one Python environment and fail in another.
+
+Known workaround:
+
+```bash
+uv python install 3.14.0
+uv venv --python 3.14.0
+uv sync
+```
+
+Then run again:
+
+```
+uv run crawl <profile>
+```
+
+If the problem persists:
+
+* reduce request frequency
+* avoid repeated crawling of the same Wikimedia pages
+* use a proper User-Agent
+* respect Wikimedia's robot policy
+* retry later

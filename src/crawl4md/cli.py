@@ -26,7 +26,7 @@ from .writer import write_markdown
 warnings.filterwarnings(
     "ignore",
     category=SyntaxWarning,
-    module="crawl4ai"
+    module=r"crawl4ai\..*",
 )
 
 app = typer.Typer()
