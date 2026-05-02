@@ -3,7 +3,7 @@ import re
 from .rule_base import RuleBase
 
 
-TABLE_SEPARATOR_PATTERN = re.compile(r"^\s*\|?(?:\s*:?-{3,}:?\s*\|)+\s*:?-{3,}:?\s*\|?\s*$")
+TABLE_CELL_PATTERN = re.compile(r"^:?-{3,}:?$")
 
 
 class RuleNormalizeWhitespace(RuleBase):
@@ -96,4 +96,15 @@ class RuleNormalizeWhitespace(RuleBase):
         if index + 1 >= len(lines):
             return False
 
-        return "|" in lines[index] and bool(TABLE_SEPARATOR_PATTERN.match(lines[index + 1]))
+        if "|" not in lines[index]:
+            return False
+
+        separator_cells = [
+            cell.strip()
+            for cell in lines[index + 1].strip().strip("|").split("|")
+        ]
+
+        if not separator_cells or any(not cell for cell in separator_cells):
+            return False
+
+        return all(TABLE_CELL_PATTERN.match(cell) for cell in separator_cells)

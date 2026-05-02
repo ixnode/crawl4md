@@ -222,6 +222,24 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             "# Title\n\n| A | B |\n| --- | --- |\n| 1 | 2 |\n\n```py\nx = 1  \nprint(x)\n```\n\nText\n",
         )
 
+    def test_adds_blank_line_after_single_column_table(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = (
+            "| Boeing 707 |\n"
+            "| --- |\n"
+            "| Row |\n"
+            "Die **Boeing 707** ist ein Flugzeug.\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "| Boeing 707 |\n| --- |\n| Row |\n\nDie **Boeing 707** ist ein Flugzeug.\n",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
