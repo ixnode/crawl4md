@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Removed
+
+- Crawl4AI Logging
+
 ## [0.1.0] - 2026-05-02
 
 ### Added
@@ -18,4 +24,3 @@ All notable changes to this project will be documented in this file.
 - Automatic insertion of missing top-level headings
 - Clear separation of crawling, preprocessing, and file writing
 - Basic test coverage for core Markdown processing
-

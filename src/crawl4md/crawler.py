@@ -9,8 +9,6 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-import logging
-
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
@@ -20,8 +18,6 @@ from .fetch.html import HtmlFetcher
 from .fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
 from .fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
 from .fetch.normalize.url import UrlNormalizer
-
-logging.getLogger("crawl4ai").setLevel(logging.ERROR)
 
 
 async def fetch_markdown(
