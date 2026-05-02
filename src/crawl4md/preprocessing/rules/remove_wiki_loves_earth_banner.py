@@ -1,4 +1,4 @@
-from .RuleBase import RuleBase
+from .rule_base import RuleBase
 
 
 class RuleRemoveWikiLovesEarthBanner(RuleBase):
@@ -36,4 +36,3 @@ class RuleRemoveWikiLovesEarthBanner(RuleBase):
                 and resolved.path.startswith("/wiki/Wikidata:Events/Coordinate_Me_")
             )
         )
-

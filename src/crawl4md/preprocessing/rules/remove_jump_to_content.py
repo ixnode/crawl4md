@@ -1,4 +1,4 @@
-from .RuleBase import RuleBase
+from .rule_base import RuleBase
 
 
 SKIP_CONTENT_FRAGMENTS = {
@@ -55,4 +55,3 @@ class RuleRemoveJumpToContent(RuleBase):
         fragment_only = not resolved.scheme and not resolved.netloc and not resolved.path
 
         return same_page or fragment_only
-

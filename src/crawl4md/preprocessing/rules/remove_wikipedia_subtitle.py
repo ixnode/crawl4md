@@ -1,6 +1,6 @@
 import re
 
-from .RuleBase import RuleBase
+from .rule_base import RuleBase
 
 
 WIKIPEDIA_SUBTITLE = "aus Wikipedia, der freien Enzyklopädie"
@@ -27,4 +27,3 @@ class RuleRemoveWikipediaSubtitle(RuleBase):
                 cleaned_lines.append(cleaned_line)
 
         return self.join_lines(cleaned_lines, markdown)
-

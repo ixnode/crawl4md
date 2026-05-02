@@ -1,4 +1,4 @@
-from .RuleBase import RuleBase
+from .rule_base import RuleBase
 
 
 class RuleEnsureH1(RuleBase):
@@ -32,4 +32,3 @@ class RuleEnsureH1(RuleBase):
             title = "index"
 
         return f"# {title}\n\n{markdown}"
-

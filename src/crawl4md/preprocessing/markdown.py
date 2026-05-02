@@ -1,4 +1,4 @@
-from .rules.RuleBase import RuleBase
+from .rules.rule_base import RuleBase
 from .rules.ensure_h1 import RuleEnsureH1
 from .rules.remove_jump_to_content import RuleRemoveJumpToContent
 from .rules.remove_reference_sections import RuleRemoveReferenceSections
@@ -41,4 +41,3 @@ class MarkdownPreprocessing:
             markdown = rule.apply(markdown, url=url, html=html)
 
         return markdown
-

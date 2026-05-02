@@ -1,4 +1,4 @@
-from .RuleBase import RuleBase
+from .rule_base import RuleBase
 
 
 class RuleRemoveReferenceSections(RuleBase):
