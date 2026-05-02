@@ -15,8 +15,8 @@ from html import unescape
 from urllib.parse import unquote, urljoin, urlparse
 from urllib.request import urlopen
 
-from ...config import MarkdownPreprocessingConfig
-from ..helpers.title_html_parser import _TitleHTMLParser
+from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.convert.preprocessing.helpers.title_html_parser import _TitleHTMLParser
 
 
 class RuleBase:

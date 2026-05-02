@@ -11,7 +11,7 @@
 
 import re
 
-from .rule_base import RuleBase
+from .base.rule_base import RuleBase
 
 
 WIKIPEDIA_SUBTITLE = "aus Wikipedia, der freien Enzyklopädie"

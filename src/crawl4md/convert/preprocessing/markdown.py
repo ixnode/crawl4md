@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-from .rules.rule_base import RuleBase
+from .rules.base.rule_base import RuleBase
 from .rules.ensure_h1 import RuleEnsureH1
 from .rules.normalize_whitespace import RuleNormalizeWhitespace
 from .rules.remove_html_comments import RuleRemoveHtmlComments
@@ -17,7 +17,7 @@ from .rules.remove_jump_to_content import RuleRemoveJumpToContent
 from .rules.remove_reference_sections import RuleRemoveReferenceSections
 from .rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
 from .rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
-from ..config import MarkdownPreprocessingConfig
+from crawl4md.config import MarkdownPreprocessingConfig
 
 
 class MarkdownPreprocessing:

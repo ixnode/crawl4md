@@ -1,14 +1,14 @@
 import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
-from crawl4md.preprocessing import MarkdownPreprocessing
-from crawl4md.preprocessing.rules.ensure_h1 import RuleEnsureH1
-from crawl4md.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
-from crawl4md.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
-from crawl4md.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
-from crawl4md.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
-from crawl4md.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
-from crawl4md.preprocessing.rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
+from crawl4md.convert.preprocessing import MarkdownPreprocessing
+from crawl4md.convert.preprocessing.rules.ensure_h1 import RuleEnsureH1
+from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
+from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
+from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
+from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
+from crawl4md.convert.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
+from crawl4md.convert.preprocessing.rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
 
 
 class MarkdownPreprocessingTests(unittest.TestCase):

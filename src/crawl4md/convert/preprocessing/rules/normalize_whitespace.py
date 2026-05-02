@@ -11,7 +11,7 @@
 
 import re
 
-from .rule_base import RuleBase
+from .base.rule_base import RuleBase
 
 
 TABLE_CELL_PATTERN = re.compile(r"^:?-{3,}:?$")

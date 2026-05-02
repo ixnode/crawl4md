@@ -17,10 +17,10 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .config import load_config
-from .sitemap import parse_sitemap
+from .convert.preprocessing import MarkdownPreprocessing
 from .fetch.markdown import fetch_markdown
 from .paths import url_to_path
-from .preprocessing import MarkdownPreprocessing
+from .sitemap import parse_sitemap
 from .writer import write_markdown
 
 

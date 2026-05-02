@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-from .rule_base import RuleBase
+from .base.rule_base import RuleBase
 
 
 class RuleRemoveReferenceSections(RuleBase):
