@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 ### Refactored
 
 - Split `fetch_markdown` into fetch and convert layers
+- Move markdown preprocessing from CLI into convert pipeline
 
 ### Removed
 

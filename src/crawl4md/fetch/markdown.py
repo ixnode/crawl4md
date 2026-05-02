@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-from ..config import ParseType
+from ..config import MarkdownPreprocessingConfig, ParseType
 from ..fetch.html import HtmlFetcher
 from ..fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
 from ..fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
@@ -19,6 +19,7 @@ from ..convert.markdown import convert_markdown
 
 async def fetch_markdown(
     url: str,
+    config: MarkdownPreprocessingConfig,
     parse_type: ParseType = "markdown",
 ) -> str:
     fetcher = HtmlFetcher(
@@ -30,4 +31,9 @@ async def fetch_markdown(
     )
     html = await fetcher.fetch(url=url)
 
-    return await convert_markdown(html=html, parse_type=parse_type)
+    return await convert_markdown(
+        html=html,
+        config=config,
+        parse_type=parse_type,
+        url=url,
+    )
