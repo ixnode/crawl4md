@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+* Update README for PyPI package usage and clarify batch crawler setup
+
 ## [0.1.1] - 2026-05-02
 
 ### Added

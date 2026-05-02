@@ -30,6 +30,34 @@ The project is intentionally designed to stay simple, deterministic, and easy to
 
 ## Installation
 
+There are two ways to use `crawl4md`.
+
+### Use the Batch Crawler
+
+If you want to use the project directly for batch crawling via `crawl.yml`, clone the repository:
+
+```bash
+git clone git@github.com:ixnode/crawl4md.git && cd crawl4md
+```
+
+Then continue with the configuration section below.
+
+### Use the Python Package
+
+If you want to build your own tooling on top of `crawl4md`, install it as a package:
+
+```bash
+pip install crawl4md
+```
+
+Or with `uv`:
+
+```bash
+uv add crawl4md
+```
+
+For local development inside the repository:
+
 ```bash
 uv sync
 ```
@@ -38,31 +66,64 @@ uv sync
 
 ## Configuration
 
-Create your config file from the example:
+The CLI reads a `crawl.yml` file from the current working directory.
+
+Create it from the example:
 
 ```bash
 cp crawl.yml.example crawl.yml
 ```
 
-Example:
+Minimal example:
 
 ```yaml
 projects:
     planes:
         type: pages
+        crawl:
+            parse_type: markdown-fit
         sources:
             - https://de.wikipedia.org/wiki/Boeing_707
             - https://de.wikipedia.org/wiki/Boeing_717
+        preprocessing:
+            markdown:
+                enabled: true
+                remove_html_comments: true
+                normalize_whitespace: true
 
     pydantic:
         type: sitemap
+        crawl:
+            parse_type: markdown-fit
         sources:
             - https://pydantic.dev/sitemap.xml
+        preprocessing:
+            markdown:
+                enabled: false
 ```
+
+Available project settings:
+
+- `type`: `pages` or `sitemap`
+- `sources`: list of page URLs or sitemap URLs
+- `crawl.parse_type`: `markdown` or `markdown-fit`
+- `preprocessing.markdown.enabled`: enables Markdown cleanup
+- `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_reference_sections`, and `normalize_whitespace`
+
+For the full configuration, see [`crawl.yml.example`](crawl.yml.example).
 
 ---
 
 ## Usage
+
+After cloning the repository and creating `crawl.yml`, use:
+
+```bash
+crawl planes
+crawl pydantic
+```
+
+Or with `uv` inside the project:
 
 ```bash
 uv run crawl planes
