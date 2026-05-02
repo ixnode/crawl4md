@@ -266,6 +266,40 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             'Vereinigte Staaten 48 [Vereinigte Staaten](https://de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten")\n',
         )
 
+    def test_inserts_space_before_parentheses(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = "| Produktionszeit | 1957 bis 1982/1991(zivil / militärisch) |\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "| Produktionszeit | 1957 bis 1982/1991 (zivil / militärisch) |\n",
+        )
+
+    def test_splits_adjacent_paragraph_lines_with_blank_lines(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = (
+            "### Vorgeschichte\n\n"
+            "[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 \"Boeing C-97\") (C-97)\n"
+            "Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs.\n"
+            "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "### Vorgeschichte\n\n"
+            "[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 \"Boeing C-97\") (C-97)\n\n"
+            "Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs.\n\n"
+            "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

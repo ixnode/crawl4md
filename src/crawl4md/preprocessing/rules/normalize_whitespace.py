@@ -4,6 +4,7 @@ from .rule_base import RuleBase
 
 
 TABLE_CELL_PATTERN = re.compile(r"^:?-{3,}:?$")
+MISSING_SPACE_BEFORE_PAREN_PATTERN = re.compile(r"(?<=[\w\)])\(")
 
 
 class RuleNormalizeWhitespace(RuleBase):
@@ -81,7 +82,7 @@ class RuleNormalizeWhitespace(RuleBase):
                 block_lines.append(self._normalize_line(current))
                 index += 1
 
-            blocks.append("\n".join(block_lines))
+            blocks.append("\n\n".join(block_lines))
 
         if not blocks:
             return ""
@@ -124,4 +125,5 @@ class RuleNormalizeWhitespace(RuleBase):
             last_end = match.end()
 
         parts.append(line[last_end:])
-        return "".join(parts)
+        normalized = "".join(parts)
+        return MISSING_SPACE_BEFORE_PAREN_PATTERN.sub(" (", normalized)
