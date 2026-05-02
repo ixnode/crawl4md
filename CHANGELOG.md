@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+* Add realistic HTTP headers to HtmlFetcher to prevent 403 responses
+
 ## [0.1.2] - 2026-05-02
 
 ### Added
