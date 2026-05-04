@@ -2,6 +2,12 @@ import subprocess
 import sys
 
 
+def markdown_converter() -> int:
+    return subprocess.run(
+        [sys.executable, "-m", "unittest", "tests.test_markdown_converter"]
+    ).returncode
+
+
 def main() -> int:
     commands = [
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],

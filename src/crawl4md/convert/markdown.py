@@ -9,13 +9,23 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
+import asyncio
+import warnings
+
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
-import asyncio
 
 from ..config import MarkdownPreprocessingConfig, ParseType
 from .preprocessing import MarkdownPreprocessing
+
+
+warnings.filterwarnings(
+    "ignore",
+    category=ResourceWarning,
+    message=r"unclosed database in <sqlite3\.Connection object at .*",
+    module=r"playwright\._impl\._local_utils",
+)
 
 
 class MarkdownConverter:

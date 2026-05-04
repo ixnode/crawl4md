@@ -19,6 +19,7 @@ dependencies = [
 [project.scripts]
 crawl = "crawl4md.cli:app"
 check = "crawl4md.check:main"
+check-markdown-converter = "crawl4md.check:markdown_converter"
 
 [build-system]
 requires = ["hatchling"]
