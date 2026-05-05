@@ -1,0 +1,18 @@
+id: "preprocessing_remove_reference_sections"
+title: "Preprocessing Remove Reference Sections"
+description: "Removes a configured reference section and everything after it."
+config:
+    parse_type: markdown
+    url: https://example.test/references
+    preprocessing:
+        markdown:
+            enabled: true
+            ensure_h1: false
+            remove_jump_to_content: false
+            remove_wikipedia_subtitle: false
+            remove_wiki_loves_earth_banner: false
+            remove_reference_sections: true
+            remove_html_comments: false
+            normalize_whitespace: false
+            reference_headings:
+                - References
