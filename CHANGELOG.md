@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 * Add crawl step duration output
 * Add group filtering to Markdown converter checks
 * Handle missing Markdown converter test groups
+* Add list fixture for Markdown preprocessing
 
 ## [0.1.4] - 2026-05-03
 
