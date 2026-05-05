@@ -11,6 +11,7 @@
 
 import typer
 import asyncio
+import time
 import warnings
 
 from pathlib import Path
@@ -30,6 +31,11 @@ warnings.filterwarnings(
 )
 
 app = typer.Typer()
+
+
+def format_duration(seconds: float) -> str:
+    return f"{seconds * 1000:.0f} ms"
+
 
 def pretty_name(url: str) -> str:
     return Path(urlparse(url).path).name or "index"
@@ -71,13 +77,16 @@ def crawl(project: str):
 
         try:
             typer.echo("  → Fetching...", nl=False)
+            fetch_started_at = time.perf_counter()
             md = asyncio.run(fetcher.fetch(url))
-            typer.echo(" done")
+            typer.echo(f" done ({format_duration(time.perf_counter() - fetch_started_at)})")
 
             path = url_to_path(Path("docs"), project, url)
 
-            typer.echo(f"  → Writing... {path}")
+            typer.echo(f"  → Writing... {path}", nl=False)
+            write_started_at = time.perf_counter()
             write_markdown(path, md)
+            typer.echo(f" ({format_duration(time.perf_counter() - write_started_at)})")
 
             success += 1
 

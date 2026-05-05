@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 * Add Boeing 707 Wikipedia converter fixture
 * Add Boeing 707 markdown-fit converter fixture
 * Document Markdown converter fixture conventions
+* Add crawl step duration output
 
 ## [0.1.4] - 2026-05-03
 
