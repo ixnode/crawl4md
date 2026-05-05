@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 * Document Markdown converter fixture conventions
 * Add crawl step duration output
 * Add group filtering to Markdown converter checks
+* Handle missing Markdown converter test groups
 
 ## [0.1.4] - 2026-05-03
 

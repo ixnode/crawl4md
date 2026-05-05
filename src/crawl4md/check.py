@@ -1,6 +1,10 @@
 import os
+from pathlib import Path
 import subprocess
 import sys
+
+
+MARKDOWN_CONVERTER_SESSION_ROOT = Path("tests/data/markdown_converter")
 
 
 def markdown_converter() -> int:
@@ -12,7 +16,34 @@ def markdown_converter() -> int:
         return 2
 
     if args:
-        env["CRAWL4MD_MARKDOWN_CONVERTER_GROUP"] = args[0]
+        group = args[0]
+        group_path = Path(group)
+
+        if group_path.is_absolute() or ".." in group_path.parts:
+            print(f"Invalid markdown converter test group: {group}", file=sys.stderr)
+            return 2
+
+        group_root = MARKDOWN_CONVERTER_SESSION_ROOT / group_path
+        if not group_root.is_dir():
+            print(f"Markdown converter test group not found: {group}", file=sys.stderr)
+            print(
+                f"Expected directory: {group_root.as_posix()}",
+                file=sys.stderr,
+            )
+            return 2
+
+        if not any(group_root.rglob("config.yml")):
+            print(
+                f"Markdown converter test group contains no sessions: {group}",
+                file=sys.stderr,
+            )
+            print(
+                f"Expected at least one config.yml below: {group_root.as_posix()}",
+                file=sys.stderr,
+            )
+            return 2
+
+        env["CRAWL4MD_MARKDOWN_CONVERTER_GROUP"] = group
 
     return subprocess.run(
         [sys.executable, "-m", "unittest", "tests.test_markdown_converter"],
