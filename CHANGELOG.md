@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 * Add data-driven Markdown converter tests
 * Suppress Crawl4AI output during Markdown conversion
 * Add Boeing 707 Wikipedia converter fixture
+* Add Boeing 707 markdown-fit converter fixture
 
 ## [0.1.4] - 2026-05-03
 
