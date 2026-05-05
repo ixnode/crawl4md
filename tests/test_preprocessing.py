@@ -300,6 +300,37 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n",
         )
 
+    def test_removes_blank_lines_between_list_items(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = (
+            "# Checklist\n\n"
+            "Before release:\n"
+            " * Run the converter tests\n\n"
+            " * Review the generated Markdown\n\n"
+            " * Update the changelog\n\n"
+            "Deployment order:\n\n"
+            " 1. Build the package\n\n"
+            " 2. Publish the artifact\n\n"
+            " 3. Verify the installation\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "# Checklist\n\n"
+            "Before release:\n\n"
+            " * Run the converter tests\n"
+            " * Review the generated Markdown\n"
+            " * Update the changelog\n\n"
+            "Deployment order:\n\n"
+            " 1. Build the package\n"
+            " 2. Publish the artifact\n"
+            " 3. Verify the installation\n",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

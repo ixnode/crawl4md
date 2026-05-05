@@ -7,25 +7,17 @@ In die Seitenleiste verschieben Verbergen
 Navigation
 
  * [Hauptseite](/wiki/Wikipedia:Hauptseite "Hauptseite besuchen \[z\]")
-
  * [Themenportale](/wiki/Portal:Wikipedia_nach_Themen)
-
  * [Zufälliger Artikel](/wiki/Spezial:Zuf%C3%A4llige_Seite "Zufällige Seite aufrufen \[x\]")
-
  * [Spezialseiten](/wiki/Spezial:Spezialseiten "Liste aller Spezialseiten \[q\]")
 
 Mitmachen
 
  * [Artikel verbessern](/wiki/Wikipedia:Beteiligen)
-
  * [Neuen Artikel anlegen](/wiki/Hilfe:Neuen_Artikel_anlegen)
-
  * [Autorenportal](/wiki/Wikipedia:Autorenportal "Info-Zentrum über Beteiligungsmöglichkeiten")
-
  * [Hilfe](/wiki/Hilfe:%C3%9Cbersicht "Übersicht über Hilfeseiten")
-
  * [Letzte Änderungen](/wiki/Spezial:Letzte_%C3%84nderungen "Liste der letzten Änderungen in Wikipedia \[r\]")
-
  * [Kontakt](/wiki/Wikipedia:Kontakt "Kontaktmöglichkeiten")
 
 [ ![](/static/images/icons/wikipedia.png) ![Wikipedia](/static/images/mobile/copyright/wikipedia-wordmark-en.svg) ![Die freie Enzyklopädie](/static/images/mobile/copyright/wikipedia-tagline-de.svg) ](/wiki/Wikipedia:Hauptseite)
@@ -37,17 +29,13 @@ Suchen
 Erscheinungsbild
 
  * [Jetzt spenden](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=de.wikipedia.org&uselang=de)
-
  * [Benutzerkonto erstellen](/w/index.php?title=Spezial:Benutzerkonto_anlegen&returnto=Boeing+707 "Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.")
-
  * [Anmelden](/w/index.php?title=Spezial:Anmelden&returnto=Boeing+707 "Anmelden ist zwar keine Pflicht, wird aber gerne gesehen. \[o\]")
 
 Meine Werkzeuge
 
  * [Jetzt spenden](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=de.wikipedia.org&uselang=de)
-
  * [Benutzerkonto erstellen](/w/index.php?title=Spezial:Benutzerkonto_anlegen&returnto=Boeing+707 "Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.")
-
  * [Anmelden](/w/index.php?title=Spezial:Anmelden&returnto=Boeing+707 "Anmelden ist zwar keine Pflicht, wird aber gerne gesehen. \[o\]")
 
 ## Inhaltsverzeichnis
@@ -55,67 +43,36 @@ Meine Werkzeuge
 In die Seitenleiste verschieben Verbergen
 
  * [ (Anfang) ](#)
-
  * [ 1 Geschichte ](#Geschichte) Unterabschnitt Geschichte umschalten
-
  * [ 1.1 Vorgeschichte ](#Vorgeschichte)
-
  * [ 1.2 Entwicklung der Boeing 367-80 ](#Entwicklung_der_Boeing_367-80)
-
  * [ 1.3 Entwicklung der Boeing 707 ](#Entwicklung_der_Boeing_707)
-
  * [ 1.4 Auslieferungen und Einsatz ](#Auslieferungen_und_Einsatz)
-
  * [ 2 Konstruktion ](#Konstruktion) Unterabschnitt Konstruktion umschalten
-
  * [ 2.1 Rumpf ](#Rumpf)
-
  * [ 2.2 Cockpit und Avionik ](#Cockpit_und_Avionik)
-
  * [ 2.3 Tragflächen ](#Tragfl%C3%A4chen)
-
  * [ 2.4 Leitwerke ](#Leitwerke)
-
  * [ 2.5 Triebwerke ](#Triebwerke)
-
  * [ 2.6 Fahrwerk ](#Fahrwerk)
-
  * [ 3 Varianten ](#Varianten) Unterabschnitt Varianten umschalten
-
  * [ 3.1 Zivile Versionen ](#Zivile_Versionen)
-
  * [ 3.1.1 707-020 (720) ](#707-020_\(720\))
-
  * [ 3.1.2 707-100 ](#707-100)
-
  * [ 3.1.3 707-200 ](#707-200)
-
  * [ 3.1.4 707-300 ](#707-300)
-
  * [ 3.1.5 707-400 ](#707-400)
-
  * [ 3.1.6 707-700 (Projekt) ](#707-700_\(Projekt\))
-
  * [ 3.1.7 707RE ](#707RE)
-
  * [ 3.2 Militärische Versionen ](#Milit%C3%A4rische_Versionen)
-
  * [ 4 Nutzung ](#Nutzung)
-
  * [ 5 Verkaufszahlen ](#Verkaufszahlen)
-
  * [ 6 Zwischenfälle ](#Zwischenf%C3%A4lle)
-
  * [ 7 Technische Daten ](#Technische_Daten)
-
  * [ 8 Trivia ](#Trivia)
-
  * [ 9 Siehe auch ](#Siehe_auch)
-
  * [ 10 Literatur ](#Literatur)
-
  * [ 11 Weblinks ](#Weblinks)
-
  * [ 12 Einzelnachweise ](#Einzelnachweise)
 
 Inhaltsverzeichnis umschalten
@@ -125,155 +82,84 @@ Inhaltsverzeichnis umschalten
 68 Sprachen
 
  * [Afrikaans](https://af.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Afrikaans")
-
  * [Aragonés](https://an.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Aragonesisch")
-
  * [العربية](https://ar.wikipedia.org/wiki/%D8%A8%D9%88%D9%8A%D9%86%D8%BA_707 "بوينغ 707 – Arabisch")
-
  * [Asturianu](https://ast.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Asturisch")
-
  * [Български](https://bg.wikipedia.org/wiki/%D0%91%D0%BE%D0%B8%D0%BD%D0%B3_707 "Боинг 707 – Bulgarisch")
-
  * [বাংলা](https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A6%BF%E0%A6%82_%E0%A7%AD%E0%A7%A6%E0%A7%AD "বোয়িং ৭০৭ – Bengalisch")
-
  * [Bosanski](https://bs.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Bosnisch")
-
  * [Català](https://ca.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Katalanisch")
-
  * [Čeština](https://cs.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Tschechisch")
-
  * [Dansk](https://da.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Dänisch")
-
  * [Ελληνικά](https://el.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Griechisch")
-
  * [English](https://en.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Englisch")
-
  * [Esperanto](https://eo.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Esperanto")
-
  * [Español](https://es.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Spanisch")
-
  * [Eesti](https://et.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Estnisch")
-
  * [Euskara](https://eu.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Baskisch")
-
  * [فارسی](https://fa.wikipedia.org/wiki/%D8%A8%D9%88%D8%A6%DB%8C%D9%86%DA%AF_%DB%B7%DB%B0%DB%B7 "بوئینگ ۷۰۷ – Persisch")
-
  * [Suomi](https://fi.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Finnisch")
-
  * [Français](https://fr.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Französisch")
-
  * [Gaeilge](https://ga.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Irisch")
-
  * [Galego](https://gl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Galicisch")
-
  * [עברית](https://he.wikipedia.org/wiki/%D7%91%D7%95%D7%90%D7%99%D7%A0%D7%92_707 "בואינג 707 – Hebräisch")
-
  * [Hrvatski](https://hr.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Kroatisch")
-
  * [Magyar](https://hu.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Ungarisch")
-
  * [Հայերեն](https://hy.wikipedia.org/wiki/%D4%B2%D5%B8%D5%AB%D5%B6%D5%A3_707 "Բոինգ 707 – Armenisch")
-
  * [Bahasa Indonesia](https://id.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Indonesisch")
-
  * [Ido](https://io.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Ido")
-
  * [Íslenska](https://is.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Isländisch")
-
  * [Italiano](https://it.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Italienisch")
-
  * [日本語](https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B0707 "ボーイング707 – Japanisch")
-
  * [Jawa](https://jv.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Javanisch")
-
  * [Қазақша](https://kk.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Kasachisch")
-
  * [한국어](https://ko.wikipedia.org/wiki/%EB%B3%B4%EC%9E%89_707 "보잉 707 – Koreanisch")
-
  * [Limburgs](https://li.wikipedia.org/wiki/Boeing_B707 "Boeing B707 – Limburgisch")
-
  * [Lietuvių](https://lt.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Litauisch")
-
  * [Latviešu](https://lv.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Lettisch")
-
  * [मराठी](https://mr.wikipedia.org/wiki/%E0%A4%AC%E0%A5%8B%E0%A4%88%E0%A4%82%E0%A4%97_%E0%A5%AD%E0%A5%A6%E0%A5%AD "बोईंग ७०७ – Marathi")
-
  * [Bahasa Melayu](https://ms.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Malaiisch")
-
  * [Nederlands](https://nl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Niederländisch")
-
  * [Norsk nynorsk](https://nn.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Norwegisch \(Nynorsk\)")
-
  * [Norsk bokmål](https://no.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Norwegisch \(Bokmål\)")
-
  * [Sesotho sa Leboa](https://nso.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Nord-Sotho")
-
  * [Occitan](https://oc.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Okzitanisch")
-
  * [Polski](https://pl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Polnisch")
-
  * [Piemontèis](https://pms.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Piemontesisch")
-
  * [پنجابی](https://pnb.wikipedia.org/wiki/%D8%A8%D9%88%D8%A6%D9%86%DA%AF_707 "بوئنگ 707 – Westliches Panjabi")
-
  * [Português](https://pt.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Portugiesisch")
-
  * [Română](https://ro.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Rumänisch")
-
  * [Русский](https://ru.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Russisch")
-
  * [Scots](https://sco.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Schottisch")
-
  * [Srpskohrvatski / српскохрватски](https://sh.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Serbokroatisch")
-
  * [Simple English](https://simple.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Einfaches Englisch")
-
  * [Slovenčina](https://sk.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Slowakisch")
-
  * [Slovenščina](https://sl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Slowenisch")
-
  * [Српски / srpski](https://sr.wikipedia.org/wiki/%D0%91%D0%BE%D0%B8%D0%BD%D0%B3_707 "Боинг 707 – Serbisch")
-
  * [Sesotho](https://st.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Süd-Sotho")
-
  * [Svenska](https://sv.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Schwedisch")
-
  * [Kiswahili](https://sw.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Suaheli")
-
  * [தமிழ்](https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AF%8B%E0%AE%AF%E0%AE%BF%E0%AE%99%E0%AF%8D_707 "போயிங் 707 – Tamil")
-
  * [ไทย](https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%9A%E0%B8%AD%E0%B8%B4%E0%B8%87_707 "โบอิง 707 – Thailändisch")
-
  * [Türkçe](https://tr.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Türkisch")
-
  * [Татарча / tatarça](https://tt.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Tatarisch")
-
  * [Українська](https://uk.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Ukrainisch")
-
  * [Oʻzbekcha / ўзбекча](https://uz.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Usbekisch")
-
  * [Tiếng Việt](https://vi.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Vietnamesisch")
-
  * [吴语](https://wuu.wikipedia.org/wiki/%E6%B3%A2%E9%9F%B3707 "波音707 – Wu")
-
  * [粵語](https://zh-yue.wikipedia.org/wiki/%E6%B3%A2%E9%9F%B3707 "波音707 – Kantonesisch")
-
  * [中文](https://zh.wikipedia.org/wiki/%E6%B3%A2%E9%9F%B3707 "波音707 – Chinesisch")
 
 [Links bearbeiten](https://www.wikidata.org/wiki/Special:EntityPage/Q6394#sitelinks-wikipedia "Links auf Artikel in anderen Sprachen bearbeiten")
 
  * [Artikel](/wiki/Boeing_707 "Seiteninhalt anzeigen \[c\]")
-
  * [Diskussion](/wiki/Diskussion:Boeing_707 "Diskussion zum Seiteninhalt \[t\]")
 
 Deutsch
 
  * [Lesen](/wiki/Boeing_707)
-
  * [Bearbeiten](/w/index.php?title=Boeing_707&veaction=edit "Diese Seite mit dem VisualEditor bearbeiten \[v\]")
-
  * [Quelltext bearbeiten](/w/index.php?title=Boeing_707&action=edit "Den Quelltext dieser Seite bearbeiten \[e\]")
-
  * [Versionsgeschichte](/w/index.php?title=Boeing_707&action=history "Frühere Versionen dieser Seite listen \[h\]")
 
 Werkzeuge
@@ -285,39 +171,28 @@ In die Seitenleiste verschieben Verbergen
 Aktionen
 
  * [Lesen](/wiki/Boeing_707)
-
  * [Bearbeiten](/w/index.php?title=Boeing_707&veaction=edit "Diese Seite mit dem VisualEditor bearbeiten \[v\]")
-
  * [Quelltext bearbeiten](/w/index.php?title=Boeing_707&action=edit "Den Quelltext dieser Seite bearbeiten \[e\]")
-
  * [Versionsgeschichte](/w/index.php?title=Boeing_707&action=history)
 
 Allgemein
 
  * [Links auf diese Seite](/wiki/Spezial:Linkliste/Boeing_707 "Liste aller Seiten, die hierher verlinken \[j\]")
-
  * [Änderungen an verlinkten Seiten](/wiki/Spezial:%C3%84nderungen_an_verlinkten_Seiten/Boeing_707 "Letzte Änderungen an Seiten, die von hier verlinkt sind \[k\]")
-
  * [Permanenter Link](/w/index.php?title=Boeing_707&oldid=265753406 "Dauerhafter Link zu dieser Seitenversion")
-
  * [Seiten­­informationen](/w/index.php?title=Boeing_707&action=info "Weitere Informationen über diese Seite")
-
  * [Artikel zitieren](/w/index.php?title=Spezial:Zitierhilfe&page=Boeing_707&id=265753406&wpFormIdentifier=titleform "Hinweise, wie diese Seite zitiert werden kann")
-
  * [Kurzlink](/w/index.php?title=Spezial:URL-K%C3%BCrzung&url=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FBoeing_707)
-
  * [Zum Legacy-Parser wechseln](/w/index.php?title=Boeing_707&useparsoid=0)
 
 Drucken/​exportieren
 
  * [Als PDF herunterladen](/w/index.php?title=Spezial:DownloadAsPdf&page=Boeing_707&action=show-download-screen)
-
  * [Druckversion](/w/index.php?title=Boeing_707&printable=yes "Druckansicht dieser Seite \[p\]")
 
 In anderen Projekten
 
  * [Commons](https://commons.wikimedia.org/wiki/Boeing_707)
-
  * [Wikidata-Datenobjekt](https://www.wikidata.org/wiki/Special:EntityPage/Q6394 "Link zum verbundenen Objekt im Datenrepositorium \[g\]")
 
 Erscheinungsbild
@@ -682,13 +557,9 @@ ca. 9.700 | ca. 6.500 km | 5.800 km
 | Erstflug | 20. Dezember 1957
 
 22. Juni 1960 (B) | 20. März 1959
-
 13. April 1961 (B) | 11. Mai 1959 | 23. November 1959
-
 6. Oktober 1960 (B) | 11. Januar 1959
-
 31. Januar 1962 (B)
-
 19. Februar 1963 (C) | 20. Mai 1959 |
 
 ## Trivia
@@ -708,11 +579,7 @@ In dem Film _ [Airport](//de.wikipedia.org/wiki/Airport_\(Film\) "Airport \(Film
 Weitere Typen mit vergleichbarer Rolle, Konfiguration und Ära
 
  * [Shanghai Y-10](//de.wikipedia.org/wiki/Shanghai_Y-10 "Shanghai Y-10")
-
  * [Convair CV-880](//de.wikipedia.org/wiki/Convair_CV-880 "Convair CV-880")
-
  * [Convair CV-990](//de.wikipedia.org/wiki/Convair_CV-990 "Convair CV-990")
-
  * [Vickers VC10](//de.wikipedia.org/wiki/Vickers_VC10 "Vickers VC10")
-
  * [Iljuschin Il-62](//de.wikipedia.org/wiki/Iljuschin_Il-62 "Iljuschin Il-62")

@@ -16,6 +16,7 @@ from .base.rule_base import RuleBase
 
 TABLE_CELL_PATTERN = re.compile(r"^:?-{3,}:?$")
 MISSING_SPACE_BEFORE_PAREN_PATTERN = re.compile(r"(?<=[\w\)])\(")
+LIST_ITEM_PATTERN = re.compile(r"^\s*(?:[*+-]|\d+[.)])\s+")
 
 
 class RuleNormalizeWhitespace(RuleBase):
@@ -75,6 +76,31 @@ class RuleNormalizeWhitespace(RuleBase):
                 blocks.append("\n".join(block_lines))
                 continue
 
+            if self._is_list_item(line):
+                block_lines = [self._normalize_line(line)]
+                index += 1
+
+                while index < len(lines):
+                    current = lines[index]
+
+                    if not current.strip():
+                        next_index = self._next_nonblank_index(lines, index + 1)
+                        if next_index is None or not self._is_list_item(lines[next_index]):
+                            index += 1
+                            break
+
+                        index = next_index
+                        current = lines[index]
+
+                    if not self._is_list_item(current):
+                        break
+
+                    block_lines.append(self._normalize_line(current))
+                    index += 1
+
+                blocks.append("\n".join(block_lines))
+                continue
+
             block_lines = [self._normalize_line(line)]
             index += 1
 
@@ -88,6 +114,8 @@ class RuleNormalizeWhitespace(RuleBase):
                 if self._is_fence(current):
                     break
                 if self._is_table_start(lines, index):
+                    break
+                if self._is_list_item(current):
                     break
 
                 block_lines.append(self._normalize_line(current))
@@ -103,6 +131,17 @@ class RuleNormalizeWhitespace(RuleBase):
     def _is_fence(self, line: str) -> bool:
         stripped = line.lstrip()
         return stripped.startswith("```") or stripped.startswith("~~~")
+
+    def _is_list_item(self, line: str) -> bool:
+        return bool(LIST_ITEM_PATTERN.match(line))
+
+    def _next_nonblank_index(self, lines: list[str], index: int) -> int | None:
+        while index < len(lines):
+            if lines[index].strip():
+                return index
+            index += 1
+
+        return None
 
     def _is_table_start(self, lines: list[str], index: int) -> bool:
         if index + 1 >= len(lines):
