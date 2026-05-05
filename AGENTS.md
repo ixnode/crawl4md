@@ -129,6 +129,95 @@ crawl.yml.example
 
 ---
 
+## Markdown Converter Fixture Tests
+
+Use the data-driven fixture setup for end-to-end tests of `crawl4md.convert.markdown.MarkdownConverter`.
+
+Test sessions live below:
+
+tests/data/markdown_converter/
+
+Each session directory must contain exactly these fixture files:
+
+- config.yml
+- data.html
+- data.md
+
+The test runner discovers sessions recursively by `config.yml`, so nested grouping is expected and preferred.
+
+### Fixture Layout
+
+Use semantic grouping directories:
+
+- tests/data/markdown_converter/preprocessing/<case>/
+- tests/data/markdown_converter/wikipedia/<case>/
+
+For Wikipedia converter fixtures, prefer `markdown-fit` as the default style:
+
+- tests/data/markdown_converter/wikipedia/boeing_707/ → `parse_type: markdown-fit`
+- tests/data/markdown_converter/wikipedia/boeing_707_full/ → `parse_type: markdown`
+
+Use the `_full` suffix only for non-fit/full `markdown` output fixtures.
+
+### Fixture Config Shape
+
+Every `config.yml` must use this outer metadata shape:
+
+```yaml
+id: "wikipedia_boeing_707"
+title: "Wikipedia Boeing 707"
+description: "Converts the German Wikipedia Boeing 707 page with markdown-fit and all preprocessing enabled."
+config:
+    parse_type: markdown-fit
+    url: https://de.wikipedia.org/wiki/Boeing_707
+    preprocessing:
+        markdown:
+            enabled: true
+            ensure_h1: true
+            remove_jump_to_content: true
+            remove_wikipedia_subtitle: true
+            remove_wiki_loves_earth_banner: true
+            remove_reference_sections: true
+            remove_html_comments: true
+            normalize_whitespace: true
+            reference_headings:
+                - Einzelnachweise
+                - Weblinks
+                - Literatur
+                - Quellen
+                - References
+                - External links
+                - Bibliography
+```
+
+The outer `id`, `title`, and `description` are used for test output. The nested `config` object is the actual `MarkdownConverter` configuration.
+
+### Fixture Expectations
+
+- `data.html` is the exact HTML input for the converter.
+- `data.md` is the exact expected output of `converter.convert(html=html, url=config.url)`.
+- For new baseline fixtures, generate `data.md` from the current converter once, then commit it as the expected deterministic output.
+- For isolated preprocessing tests, set `preprocessing.markdown.enabled: true`, set only the tested flag to `true`, and keep all other preprocessing flags `false`.
+- Keep `reference_headings` populated only when the test needs reference-section removal.
+
+### Running Converter Tests
+
+Run only converter fixtures:
+
+```bash
+uv run check-markdown-converter
+```
+
+Run the full project check:
+
+```bash
+uv run check
+```
+
+`uv run check` includes `python -m unittest discover -s tests -v` and `ruff check`, so converter fixtures are included automatically.
+
+---
+
 ## Extending the Project
 
 When adding features:
