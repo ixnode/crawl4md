@@ -10,6 +10,8 @@
 # @since 1.0.0 (2026-05-02) First version
 
 import asyncio
+from contextlib import redirect_stderr, redirect_stdout
+import io
 import warnings
 
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
@@ -53,17 +55,19 @@ class MarkdownConverter:
         else:
             crawler_config = CrawlerRunConfig()
 
-        async with AsyncWebCrawler() as crawler:
-            result = await crawler.arun(url=raw_html_url, config=crawler_config)
+        output = io.StringIO()
+        with redirect_stdout(output), redirect_stderr(output):
+            async with AsyncWebCrawler() as crawler:
+                result = await crawler.arun(url=raw_html_url, config=crawler_config)
 
-            if self.parse_type == "markdown-fit":
-                markdown = result.markdown.fit_markdown or result.markdown.raw_markdown or ""
-            else:
-                markdown = result.markdown.raw_markdown or ""
+        if self.parse_type == "markdown-fit":
+            markdown = result.markdown.fit_markdown or result.markdown.raw_markdown or ""
+        else:
+            markdown = result.markdown.raw_markdown or ""
 
-            preprocessing = MarkdownPreprocessing(self.config)
+        preprocessing = MarkdownPreprocessing(self.config)
 
-            return preprocessing.process(markdown, url=url, html=html)
+        return preprocessing.process(markdown, url=url, html=html)
 
     def convert_sync(
         self,

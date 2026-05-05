@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 * Add data-driven Markdown converter tests
+* Suppress Crawl4AI output during Markdown conversion
 
 ## [0.1.4] - 2026-05-03
 
