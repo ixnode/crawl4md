@@ -11,6 +11,7 @@
 
 from contextlib import redirect_stderr, redirect_stdout
 import io
+import os
 from pathlib import Path
 import time
 import unittest
@@ -42,9 +43,17 @@ class MarkdownConverterSession(BaseModel):
 class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_converts_all_configured_sessions(self) -> None:
-        sessions = sorted(path.parent for path in SESSION_ROOT.rglob("config.yml"))
+        group = os.environ.get("CRAWL4MD_MARKDOWN_CONVERTER_GROUP")
+        sessions = self._find_sessions(group=group)
 
-        self.assertGreater(len(sessions), 0, "No markdown converter test sessions found.")
+        if group:
+            self.assertGreater(
+                len(sessions),
+                0,
+                f"No markdown converter test sessions found for group '{group}'.",
+            )
+        else:
+            self.assertGreater(len(sessions), 0, "No markdown converter test sessions found.")
 
         for index, session in enumerate(sessions, start=1):
             session_name = session.relative_to(SESSION_ROOT).as_posix()
@@ -83,6 +92,17 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
     def _load_config(self, path: Path) -> MarkdownConverterSession:
         return MarkdownConverterSession(**yaml.safe_load(path.read_text()))
+
+    def _find_sessions(self, group: str | None = None) -> list[Path]:
+        if not group:
+            root = SESSION_ROOT
+        else:
+            group_path = Path(group)
+            if group_path.is_absolute() or ".." in group_path.parts:
+                return []
+            root = SESSION_ROOT / group_path
+
+        return sorted(path.parent for path in root.rglob("config.yml"))
 
 
 if __name__ == "__main__":

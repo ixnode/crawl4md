@@ -1,10 +1,22 @@
+import os
 import subprocess
 import sys
 
 
 def markdown_converter() -> int:
+    env = os.environ.copy()
+    args = sys.argv[1:]
+
+    if len(args) > 1:
+        print("Usage: check-markdown-converter [group]", file=sys.stderr)
+        return 2
+
+    if args:
+        env["CRAWL4MD_MARKDOWN_CONVERTER_GROUP"] = args[0]
+
     return subprocess.run(
-        [sys.executable, "-m", "unittest", "tests.test_markdown_converter"]
+        [sys.executable, "-m", "unittest", "tests.test_markdown_converter"],
+        env=env,
     ).returncode
 
 

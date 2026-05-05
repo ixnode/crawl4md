@@ -208,6 +208,15 @@ Run only converter fixtures:
 uv run check-markdown-converter
 ```
 
+Run only one converter fixture group:
+
+```bash
+uv run check-markdown-converter preprocessing
+uv run check-markdown-converter wikipedia
+```
+
+The group argument is resolved relative to `tests/data/markdown_converter/`.
+
 Run the full project check:
 
 ```bash
