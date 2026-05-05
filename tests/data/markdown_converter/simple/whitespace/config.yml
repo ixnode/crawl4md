@@ -1,0 +1,17 @@
+id: "simple_whitespace"
+title: "Simple Whitespace"
+description: "Converts a simple HTML document with whitespace formatting."
+config:
+    parse_type: markdown
+    url: https://example.test/simple-whitespace
+    preprocessing:
+        markdown:
+            enabled: true
+            ensure_h1: false
+            remove_jump_to_content: false
+            remove_wikipedia_subtitle: false
+            remove_wiki_loves_earth_banner: false
+            remove_reference_sections: false
+            remove_html_comments: false
+            normalize_whitespace: true
+            reference_headings: []

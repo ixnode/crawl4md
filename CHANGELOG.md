@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-* Add data-driven Markdown converter fixture tests
+* Add data-driven Markdown converter tests
 
 ## [0.1.4] - 2026-05-03
 

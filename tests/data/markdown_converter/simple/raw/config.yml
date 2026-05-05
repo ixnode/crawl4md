@@ -1,0 +1,17 @@
+id: "simple_raw"
+title: "Simple Raw"
+description: "Converts a simple HTML document without preprocessing."
+config:
+    parse_type: markdown
+    url: https://example.test/simple-raw
+    preprocessing:
+        markdown:
+            enabled: false
+            ensure_h1: false
+            remove_jump_to_content: false
+            remove_wikipedia_subtitle: false
+            remove_wiki_loves_earth_banner: false
+            remove_reference_sections: false
+            remove_html_comments: false
+            normalize_whitespace: false
+            reference_headings: []
