@@ -1,5 +1,5 @@
-id: "simple_raw"
-title: "Simple Raw"
+id: "preprocessing_raw"
+title: "Preprocessing Raw"
 description: "Converts a simple HTML document without preprocessing."
 config:
     parse_type: markdown

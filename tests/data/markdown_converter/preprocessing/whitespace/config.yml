@@ -1,5 +1,5 @@
-id: "simple_whitespace"
-title: "Simple Whitespace"
+id: "preprocessing_whitespace"
+title: "Preprocessing Whitespace"
 description: "Converts a simple HTML document with whitespace formatting."
 config:
     parse_type: markdown

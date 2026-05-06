@@ -1,5 +1,5 @@
-id: "simple_lists"
-title: "Simple Lists"
+id: "preprocessing_lists"
+title: "Preprocessing Lists"
 description: "Converts a simple HTML document with ordered and unordered lists and all preprocessing enabled."
 config:
     parse_type: markdown

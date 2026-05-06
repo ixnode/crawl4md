@@ -1,5 +1,5 @@
-id: "simple_all"
-title: "Simple All"
+id: "preprocessing_all"
+title: "Preprocessing All"
 description: "Converts a simple HTML document with all preprocessing enabled."
 config:
     parse_type: markdown
