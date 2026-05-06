@@ -11,7 +11,7 @@
 
 import asyncio
 
-from html_to_markdown import convert as convert_html_to_markdown
+import html_to_markdown._html_to_markdown as html_to_markdown
 
 from ..config import MarkdownPreprocessingConfig
 from .preprocessing import MarkdownPreprocessing
@@ -36,7 +36,11 @@ class KreuzbergDevMarkdownConverter:
                 "kreuzberg-dev parser supports only parse_type 'markdown'"
             )
 
-        result = convert_html_to_markdown(html)
+        options = html_to_markdown.ConversionOptions(
+            heading_style=html_to_markdown.HeadingStyle.Atx,
+            extract_metadata=False,
+        )
+        result = html_to_markdown.convert(html, options, None)
         markdown = result.content or ""
         preprocessing = MarkdownPreprocessing(self.config)
 
