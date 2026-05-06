@@ -22,9 +22,11 @@ class KreuzbergDevMarkdownFetcher:
         self,
         config: MarkdownPreprocessingConfig,
         parse_type: str = "markdown",
+        content_selector: str | None = None,
     ) -> None:
         self.config = config
         self.parse_type = parse_type
+        self.content_selector = content_selector
 
     @staticmethod
     def _build_html_fetcher(url: str) -> HtmlFetcher:
@@ -40,6 +42,7 @@ class KreuzbergDevMarkdownFetcher:
         return KreuzbergDevMarkdownConverter(
             config=self.config,
             parse_type=self.parse_type,
+            content_selector=self.content_selector,
         )
 
     async def fetch(self, url: str) -> str:

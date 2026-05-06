@@ -53,6 +53,7 @@ def build_fetcher(proj):
         return KreuzbergDevMarkdownFetcher(
             config=proj.preprocessing.markdown,
             parse_type=proj.crawl.parse_type,
+            content_selector=proj.crawl.content_selector,
         )
 
     raise ValueError(f"Unknown crawl parser: {proj.crawl.parser}")

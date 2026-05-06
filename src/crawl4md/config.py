@@ -20,12 +20,18 @@ ParseType = Literal["markdown", "markdown-fit"]
 class CrawlConfig(BaseModel):
     parser: str = "crawl4ai"
     parse_type: str = "markdown"
+    content_selector: str | None = None
 
     @model_validator(mode="after")
     def validate_parse_type_for_parser(self) -> "CrawlConfig":
         if self.parser == "crawl4ai" and self.parse_type not in ("markdown", "markdown-fit"):
             raise ValueError(
                 "crawl4ai parser supports only parse_type 'markdown' or 'markdown-fit'"
+            )
+
+        if self.parser == "crawl4ai" and self.content_selector:
+            raise ValueError(
+                "crawl4ai parser does not support content_selector"
             )
 
         if self.parser == "kreuzberg-dev" and self.parse_type != "markdown":

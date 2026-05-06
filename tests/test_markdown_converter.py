@@ -102,6 +102,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
             return KreuzbergDevMarkdownConverter(
                 config=config.preprocessing.markdown,
                 parse_type=config.crawl.parse_type,
+                content_selector=config.crawl.content_selector,
             )
 
         raise ValueError(f"Unknown markdown converter parser: {config.crawl.parser}")

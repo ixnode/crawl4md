@@ -6,6 +6,8 @@ projects:
         crawl:
             parser: crawl4ai # crawl4ai | kreuzberg-dev
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
+            # content_selector is only supported for parser: kreuzberg-dev
+            # content_selector: ".mw-parser-output"
         preprocessing:
             markdown:
                 enabled: false
@@ -29,6 +31,8 @@ projects:
         crawl:
             parser: crawl4ai # crawl4ai | kreuzberg-dev
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
+            # content_selector is only supported for parser: kreuzberg-dev
+            # content_selector: ".mw-parser-output"
         preprocessing:
             markdown:
                 enabled: false
