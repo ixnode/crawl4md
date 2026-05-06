@@ -22,6 +22,7 @@ from pydantic import BaseModel, Field
 
 from crawl4md.config import CrawlConfig, PreprocessingConfig
 from crawl4md.convert.crawl4ai_markdown import Crawl4AIMarkdownConverter
+from crawl4md.convert.kreuzberg_dev_markdown import KreuzbergDevMarkdownConverter
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
@@ -93,6 +94,12 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
     def _build_converter(self, config: MarkdownConverterSessionConfig) -> Crawl4AIMarkdownConverter:
         if config.crawl.parser == "crawl4ai":
             return Crawl4AIMarkdownConverter(
+                config=config.preprocessing.markdown,
+                parse_type=config.crawl.parse_type,
+            )
+
+        if config.crawl.parser == "kreuzberg-dev":
+            return KreuzbergDevMarkdownConverter(
                 config=config.preprocessing.markdown,
                 parse_type=config.crawl.parse_type,
             )

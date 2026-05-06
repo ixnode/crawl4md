@@ -74,6 +74,7 @@ crawl.yml.example
 - sources: list[str]
 
 - crawl:
+    parser: crawl4ai | kreuzberg-dev
     parse_type: markdown | markdown-fit
 
 - preprocessing:

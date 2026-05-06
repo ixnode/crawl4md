@@ -4,8 +4,8 @@ projects:
         sources:
             - https://pydantic.dev/sitemap.xml
         crawl:
-            parser: crawl4ai
-            parse_type: markdown # markdown | markdown-fit
+            parser: crawl4ai # crawl4ai | kreuzberg-dev
+            parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
         preprocessing:
             markdown:
                 enabled: false
@@ -27,8 +27,8 @@ projects:
             - https://de.wikipedia.org/wiki/Boeing_727
             - https://de.wikipedia.org/wiki/Boeing_737
         crawl:
-            parser: crawl4ai
-            parse_type: markdown # markdown | markdown-fit
+            parser: crawl4ai # crawl4ai | kreuzberg-dev
+            parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
         preprocessing:
             markdown:
                 enabled: false

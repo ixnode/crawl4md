@@ -28,6 +28,11 @@ class CrawlConfig(BaseModel):
                 "crawl4ai parser supports only parse_type 'markdown' or 'markdown-fit'"
             )
 
+        if self.parser == "kreuzberg-dev" and self.parse_type != "markdown":
+            raise ValueError(
+                "kreuzberg-dev parser supports only parse_type 'markdown'"
+            )
+
         return self
 
 class MarkdownPreprocessingConfig(BaseModel):

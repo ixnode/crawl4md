@@ -140,6 +140,8 @@ The public classes are:
 
 - `Crawl4AIMarkdownFetcher`
 - `Crawl4AIMarkdownConverter`
+- `KreuzbergDevMarkdownFetcher`
+- `KreuzbergDevMarkdownConverter`
 - `ParseType`
 - `MarkdownPreprocessingConfig`
 
@@ -149,6 +151,11 @@ Use `ParseType` to control how Markdown is generated:
 
 - `"markdown"`: raw markdown output
 - `"markdown-fit"`: cleaned and reduced markdown output via `crawl4ai`
+
+Use `projects.<name>.crawl.parser` to choose the parser:
+
+- `"crawl4ai"`: supports `parse_type: markdown` and `parse_type: markdown-fit`
+- `"kreuzberg-dev"`: supports `parse_type: markdown`
 
 ### Configure Preprocessing
 

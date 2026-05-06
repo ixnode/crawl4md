@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 * Handle missing Markdown converter test groups
 * Add list fixture for Markdown preprocessing
 * Normalize spacing between Markdown list items
+* Add kreuzberg-dev Markdown parser
 
 ### Refactored
 
