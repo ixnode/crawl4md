@@ -21,7 +21,7 @@ import yaml
 from pydantic import BaseModel, Field
 
 from crawl4md.config import ParseType, PreprocessingConfig
-from crawl4md.convert.markdown import MarkdownConverter
+from crawl4md.convert.crawl4ai_markdown import Crawl4AIMarkdownConverter
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
@@ -64,7 +64,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 html = (session / "data.html").read_text()
                 expected_markdown = (session / "data.md").read_text()
 
-                converter = MarkdownConverter(
+                converter = Crawl4AIMarkdownConverter(
                     config=config.preprocessing.markdown,
                     parse_type=config.parse_type,
                 )

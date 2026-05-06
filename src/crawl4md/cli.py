@@ -18,7 +18,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .config import load_config
-from .fetch.markdown import MarkdownFetcher
+from .fetch.crawl4ai_markdown import Crawl4AIMarkdownFetcher
 from .paths import url_to_path
 from .sitemap import parse_sitemap
 from .writer import write_markdown
@@ -49,7 +49,7 @@ def crawl(project: str):
         raise typer.Exit(1)
 
     proj = config.projects[project]
-    fetcher = MarkdownFetcher(
+    fetcher = Crawl4AIMarkdownFetcher(
         config=proj.preprocessing.markdown,
         parse_type=proj.crawl.parse_type,
     )

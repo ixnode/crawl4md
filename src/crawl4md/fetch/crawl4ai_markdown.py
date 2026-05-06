@@ -14,10 +14,10 @@ from ..fetch.html import HtmlFetcher
 from ..fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
 from ..fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
 from ..fetch.normalize.url import UrlNormalizer
-from ..convert.markdown import MarkdownConverter
+from ..convert.crawl4ai_markdown import Crawl4AIMarkdownConverter
 
 
-class MarkdownFetcher:
+class Crawl4AIMarkdownFetcher:
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
@@ -36,8 +36,8 @@ class MarkdownFetcher:
             ]
         )
 
-    def _build_markdown_converter(self) -> MarkdownConverter:
-        return MarkdownConverter(
+    def _build_markdown_converter(self) -> Crawl4AIMarkdownConverter:
+        return Crawl4AIMarkdownConverter(
             config=self.config,
             parse_type=self.parse_type,
         )

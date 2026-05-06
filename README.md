@@ -138,8 +138,8 @@ uv run crawl pydantic
 
 The public classes are:
 
-- `MarkdownFetcher`
-- `MarkdownConverter`
+- `Crawl4AIMarkdownFetcher`
+- `Crawl4AIMarkdownConverter`
 - `ParseType`
 - `MarkdownPreprocessingConfig`
 
@@ -168,13 +168,13 @@ config = MarkdownPreprocessingConfig(
 
 ### Fetch Markdown From a URL
 
-Use `MarkdownFetcher` if you want to fetch a page and directly receive Markdown.
+Use `Crawl4AIMarkdownFetcher` if you want to fetch a page and directly receive Markdown.
 
 ```python
-from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+from crawl4md import Crawl4AIMarkdownFetcher, MarkdownPreprocessingConfig
 
 config = MarkdownPreprocessingConfig(enabled=True)
-fetcher = MarkdownFetcher(config=config, parse_type="markdown-fit")
+fetcher = Crawl4AIMarkdownFetcher(config=config, parse_type="markdown-fit")
 
 markdown = fetcher.fetch_sync("https://example.com")
 print(markdown)
@@ -185,10 +185,10 @@ Async version:
 ```python
 import asyncio
 
-from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+from crawl4md import Crawl4AIMarkdownFetcher, MarkdownPreprocessingConfig
 
 config = MarkdownPreprocessingConfig(enabled=True)
-fetcher = MarkdownFetcher(config=config, parse_type="markdown-fit")
+fetcher = Crawl4AIMarkdownFetcher(config=config, parse_type="markdown-fit")
 
 markdown = asyncio.run(fetcher.fetch("https://example.com"))
 print(markdown)
@@ -196,15 +196,15 @@ print(markdown)
 
 ### Convert HTML to Markdown
 
-Use `MarkdownConverter` if you already have HTML and only want the conversion step.
+Use `Crawl4AIMarkdownConverter` if you already have HTML and only want the conversion step.
 
 ```python
-from crawl4md import MarkdownConverter, MarkdownPreprocessingConfig
+from crawl4md import Crawl4AIMarkdownConverter, MarkdownPreprocessingConfig
 
 html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
 
 config = MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
-converter = MarkdownConverter(config=config, parse_type="markdown")
+converter = Crawl4AIMarkdownConverter(config=config, parse_type="markdown")
 
 markdown = converter.convert_sync(html=html, url="https://example.com")
 print(markdown)
@@ -215,12 +215,12 @@ Async version:
 ```python
 import asyncio
 
-from crawl4md import MarkdownConverter, MarkdownPreprocessingConfig
+from crawl4md import Crawl4AIMarkdownConverter, MarkdownPreprocessingConfig
 
 html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
 
 config = MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
-converter = MarkdownConverter(config=config, parse_type="markdown")
+converter = Crawl4AIMarkdownConverter(config=config, parse_type="markdown")
 
 markdown = asyncio.run(
     converter.convert(html=html, url="https://example.com")

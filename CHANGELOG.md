@@ -17,6 +17,10 @@ All notable changes to this project will be documented in this file.
 * Add list fixture for Markdown preprocessing
 * Normalize spacing between Markdown list items
 
+### Refactored
+
+* Rename Markdown fetcher and converter for Crawl4AI
+
 ## [0.1.4] - 2026-05-03
 
 ### Fixed
