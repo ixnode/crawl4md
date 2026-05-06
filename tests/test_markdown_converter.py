@@ -20,7 +20,7 @@ import warnings
 import yaml
 from pydantic import BaseModel, Field
 
-from crawl4md.config import ParseType, PreprocessingConfig
+from crawl4md.config import CrawlConfig, PreprocessingConfig
 from crawl4md.convert.crawl4ai_markdown import Crawl4AIMarkdownConverter
 
 
@@ -28,7 +28,7 @@ SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
 
 
 class MarkdownConverterSessionConfig(BaseModel):
-    parse_type: ParseType = "markdown"
+    crawl: CrawlConfig = Field(default_factory=CrawlConfig)
     url: str | None = None
     preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
 
@@ -64,10 +64,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 html = (session / "data.html").read_text()
                 expected_markdown = (session / "data.md").read_text()
 
-                converter = Crawl4AIMarkdownConverter(
-                    config=config.preprocessing.markdown,
-                    parse_type=config.parse_type,
-                )
+                converter = self._build_converter(config)
 
                 warnings.filterwarnings(
                     "ignore",
@@ -92,6 +89,15 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
     def _load_config(self, path: Path) -> MarkdownConverterSession:
         return MarkdownConverterSession(**yaml.safe_load(path.read_text()))
+
+    def _build_converter(self, config: MarkdownConverterSessionConfig) -> Crawl4AIMarkdownConverter:
+        if config.crawl.parser == "crawl4ai":
+            return Crawl4AIMarkdownConverter(
+                config=config.preprocessing.markdown,
+                parse_type=config.crawl.parse_type,
+            )
+
+        raise ValueError(f"Unknown markdown converter parser: {config.crawl.parser}")
 
     def _find_sessions(self, group: str | None = None) -> list[Path]:
         if not group:

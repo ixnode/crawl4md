@@ -2,7 +2,9 @@ id: "preprocessing_remove_jump_to_content"
 title: "Preprocessing Remove Jump To Content"
 description: "Removes a same-page jump-to-content link from the converted Markdown."
 config:
-    parse_type: markdown
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
     url: https://example.test/remove-jump
     preprocessing:
         markdown:

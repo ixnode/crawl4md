@@ -40,6 +40,16 @@ def format_duration(seconds: float) -> str:
 def pretty_name(url: str) -> str:
     return Path(urlparse(url).path).name or "index"
 
+
+def build_fetcher(proj):
+    if proj.crawl.parser == "crawl4ai":
+        return Crawl4AIMarkdownFetcher(
+            config=proj.preprocessing.markdown,
+            parse_type=proj.crawl.parse_type,
+        )
+
+    raise ValueError(f"Unknown crawl parser: {proj.crawl.parser}")
+
 @app.command()
 def crawl(project: str):
     config = load_config()
@@ -49,10 +59,7 @@ def crawl(project: str):
         raise typer.Exit(1)
 
     proj = config.projects[project]
-    fetcher = Crawl4AIMarkdownFetcher(
-        config=proj.preprocessing.markdown,
-        parse_type=proj.crawl.parse_type,
-    )
+    fetcher = build_fetcher(proj)
 
     # URLs sammeln
     urls: list[str] = []

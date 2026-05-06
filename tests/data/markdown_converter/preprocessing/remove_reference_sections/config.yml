@@ -2,7 +2,9 @@ id: "preprocessing_remove_reference_sections"
 title: "Preprocessing Remove Reference Sections"
 description: "Removes a configured reference section and everything after it."
 config:
-    parse_type: markdown
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
     url: https://example.test/references
     preprocessing:
         markdown:

@@ -2,7 +2,9 @@ id: "preprocessing_all"
 title: "Preprocessing All"
 description: "Converts a simple HTML document with all preprocessing enabled."
 config:
-    parse_type: markdown
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
     url: https://example.test/simple-all
     preprocessing:
         markdown:

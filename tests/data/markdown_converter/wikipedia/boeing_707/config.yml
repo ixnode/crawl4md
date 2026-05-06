@@ -2,7 +2,9 @@ id: "wikipedia_boeing_707"
 title: "Wikipedia Boeing 707"
 description: "Converts the German Wikipedia Boeing 707 page with markdown-fit and all preprocessing enabled."
 config:
-    parse_type: markdown-fit
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown-fit
     url: https://de.wikipedia.org/wiki/Boeing_707
     preprocessing:
         markdown:

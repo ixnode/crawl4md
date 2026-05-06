@@ -2,7 +2,9 @@ id: "preprocessing_remove_wikipedia_subtitle"
 title: "Preprocessing Remove Wikipedia Subtitle"
 description: "Removes the German Wikipedia subtitle from the converted Markdown."
 config:
-    parse_type: markdown
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
     url: https://de.wikipedia.org/wiki/Boeing_707
     preprocessing:
         markdown:

@@ -11,14 +11,24 @@
 
 import yaml
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from typing import Literal
 
 
 ParseType = Literal["markdown", "markdown-fit"]
 
 class CrawlConfig(BaseModel):
-    parse_type: ParseType = "markdown"
+    parser: str = "crawl4ai"
+    parse_type: str = "markdown"
+
+    @model_validator(mode="after")
+    def validate_parse_type_for_parser(self) -> "CrawlConfig":
+        if self.parser == "crawl4ai" and self.parse_type not in ("markdown", "markdown-fit"):
+            raise ValueError(
+                "crawl4ai parser supports only parse_type 'markdown' or 'markdown-fit'"
+            )
+
+        return self
 
 class MarkdownPreprocessingConfig(BaseModel):
     enabled: bool = False

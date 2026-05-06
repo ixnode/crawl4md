@@ -2,7 +2,9 @@ id: "preprocessing_whitespace"
 title: "Preprocessing Whitespace"
 description: "Converts a simple HTML document with whitespace formatting."
 config:
-    parse_type: markdown
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
     url: https://example.test/simple-whitespace
     preprocessing:
         markdown:
