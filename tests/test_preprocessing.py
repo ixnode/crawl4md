@@ -8,6 +8,7 @@ from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemove
 from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
 from crawl4md.convert.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
+from crawl4md.convert.preprocessing.rules.remove_wikipedia_edit_links import RuleRemoveWikipediaEditLinks
 from crawl4md.convert.preprocessing.rules.remove_wikipedia_featured_badge import RuleRemoveWikipediaFeaturedBadge
 from crawl4md.convert.preprocessing.rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
 
@@ -191,6 +192,30 @@ class RuleRemoveWikipediaFeaturedBadgeTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "# Boeing 707\n")
+
+
+class RuleRemoveWikipediaEditLinksTests(unittest.TestCase):
+    def test_removes_wikipedia_section_edit_links(self) -> None:
+        rule = RuleRemoveWikipediaEditLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_wikipedia_edit_links=True,
+            )
+        )
+        markdown = (
+            "## Geschichte\n"
+            "\n"
+            "[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            "veaction=edit&section=1 \"Abschnitt bearbeiten: Geschichte\") | "
+            "[Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            "action=edit&section=1 \"Quellcode des Abschnitts bearbeiten: Geschichte\")]\n"
+            "\n"
+            "Text\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "## Geschichte\n\nText\n")
 
 
 class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):

@@ -81,6 +81,7 @@ crawl.yml.example
     markdown:
         enabled: bool
         remove_wikipedia_featured_badge: bool
+        remove_wikipedia_edit_links: bool
         remove_reference_sections: bool
         remove_html_comments: bool
         normalize_whitespace: bool
@@ -178,6 +179,7 @@ config:
             ensure_h1: true
             remove_jump_to_content: true
             remove_wikipedia_featured_badge: false
+            remove_wikipedia_edit_links: false
             remove_wikipedia_subtitle: true
             remove_wiki_loves_earth_banner: true
             remove_reference_sections: true

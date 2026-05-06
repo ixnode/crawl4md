@@ -16,6 +16,7 @@ from .rules.remove_html_comments import RuleRemoveHtmlComments
 from .rules.remove_jump_to_content import RuleRemoveJumpToContent
 from .rules.remove_reference_sections import RuleRemoveReferenceSections
 from .rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
+from .rules.remove_wikipedia_edit_links import RuleRemoveWikipediaEditLinks
 from .rules.remove_wikipedia_featured_badge import RuleRemoveWikipediaFeaturedBadge
 from .rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
 from crawl4md.config import MarkdownPreprocessingConfig
@@ -34,6 +35,9 @@ class MarkdownPreprocessing:
 
         if config.remove_wikipedia_featured_badge:
             self.rules.append(RuleRemoveWikipediaFeaturedBadge(config))
+
+        if config.remove_wikipedia_edit_links:
+            self.rules.append(RuleRemoveWikipediaEditLinks(config))
 
         if config.remove_wikipedia_subtitle:
             self.rules.append(RuleRemoveWikipediaSubtitle(config))
