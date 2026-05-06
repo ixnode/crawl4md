@@ -11,6 +11,7 @@ config:
             enabled: true
             ensure_h1: true
             remove_jump_to_content: false
+            remove_wikipedia_featured_badge: false
             remove_wikipedia_subtitle: false
             remove_wiki_loves_earth_banner: false
             remove_reference_sections: false

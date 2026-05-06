@@ -8,6 +8,7 @@ from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemove
 from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
 from crawl4md.convert.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
+from crawl4md.convert.preprocessing.rules.remove_wikipedia_featured_badge import RuleRemoveWikipediaFeaturedBadge
 from crawl4md.convert.preprocessing.rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
 
 
@@ -168,6 +169,28 @@ class RuleRemoveWikipediaSubtitleTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "Boeing 707\n")
+
+
+class RuleRemoveWikipediaFeaturedBadgeTests(unittest.TestCase):
+    def test_removes_wikipedia_featured_badge(self) -> None:
+        rule = RuleRemoveWikipediaFeaturedBadge(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_wikipedia_featured_badge=True,
+            )
+        )
+        markdown = (
+            "[![Dies ist ein als lesenswert ausgezeichneter Artikel.]"
+            "(https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/"
+            "Qsicon_lesenswert.svg/20px-Qsicon_lesenswert.svg.png)]"
+            "(#Vorlage_Lesenswert \"Dies ist ein als lesenswert ausgezeichneter Artikel.\")\n"
+            "\n"
+            "# Boeing 707\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "# Boeing 707\n")
 
 
 class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):
