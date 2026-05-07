@@ -111,6 +111,7 @@ Available project settings:
 - `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_reference_sections`, and `normalize_whitespace`
 
 For the full configuration, see [`crawl.yml.example`](crawl.yml.example).
+For details about all Markdown preprocessing options, see [`MARKDOWN_PREPROCESSING.md`](MARKDOWN_PREPROCESSING.md).
 
 ---
 
