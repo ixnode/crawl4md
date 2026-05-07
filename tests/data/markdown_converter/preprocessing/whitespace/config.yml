@@ -3,7 +3,7 @@ title: "Preprocessing Whitespace"
 description: "Converts a simple HTML document with whitespace formatting."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://example.test/simple-whitespace
     preprocessing:

@@ -28,7 +28,7 @@ src/crawl4md/
 - cli.py            → entrypoint (orchestration only)
 - config.py         → config models (Pydantic)
 - sitemap.py        → sitemap parsing
-- crawler.py        → crawl4ai integration
+- fetch/convert modules → parser backend integrations
 - paths.py          → URL → file path mapping
 - writer.py         → file output
 - (future) preprocessing.py → markdown cleanup
@@ -77,7 +77,7 @@ crawl.yml.example
 - sources: list[str]
 
 - crawl:
-    parser: crawl4ai | kreuzberg-dev
+    parser: kreuzberg-dev | crawl4ai
     parse_type: markdown | markdown-fit
 
 - preprocessing:
@@ -140,7 +140,7 @@ crawl.yml.example
 
 ## Markdown Converter Fixture Tests
 
-Use the data-driven fixture setup for end-to-end tests of `crawl4md.convert.markdown_converter_crawl4ai.MarkdownConverterCrawl4AI`.
+Use the data-driven fixture setup for end-to-end tests of Markdown converters.
 
 Test sessions live below:
 
@@ -161,12 +161,12 @@ Use semantic grouping directories:
 - tests/data/markdown_converter/preprocessing/<case>/
 - tests/data/markdown_converter/wikipedia/<case>/
 
-For Wikipedia converter fixtures, prefer `markdown-fit` as the default style:
+For Wikipedia converter fixtures, prefer the recommended `kreuzberg-dev` parser as the default style:
 
-- tests/data/markdown_converter/wikipedia/boeing_707/ → `parse_type: markdown-fit`
-- tests/data/markdown_converter/wikipedia/boeing_707_full/ → `parse_type: markdown`
+- tests/data/markdown_converter/wikipedia/boeing_707/ → `parser: kreuzberg-dev`, `parse_type: markdown`
+- tests/data/markdown_converter/wikipedia/boeing_707_full/ → reserved for explicit non-default parser comparisons
 
-Use the `_full` suffix only for non-fit/full `markdown` output fixtures.
+Use suffixes only for explicit non-default parser or parse-type comparison fixtures.
 
 ### Fixture Config Shape
 
@@ -175,9 +175,11 @@ Every `config.yml` must use this outer metadata shape:
 ```yaml
 id: "wikipedia_boeing_707"
 title: "Wikipedia Boeing 707"
-description: "Converts the German Wikipedia Boeing 707 page with markdown-fit and all preprocessing enabled."
+description: "Converts the German Wikipedia Boeing 707 page with kreuzberg-dev and all preprocessing enabled."
 config:
-    parse_type: markdown-fit
+    crawl:
+        parser: kreuzberg-dev
+        parse_type: markdown
     url: https://de.wikipedia.org/wiki/Boeing_707
     preprocessing:
         markdown:
@@ -204,7 +206,7 @@ config:
                 - Bibliography
 ```
 
-The outer `id`, `title`, and `description` are used for test output. The nested `config` object is the actual `MarkdownConverterCrawl4AI` configuration.
+The outer `id`, `title`, and `description` are used for test output. The nested `config` object is the actual converter configuration.
 
 ### Fixture Expectations
 

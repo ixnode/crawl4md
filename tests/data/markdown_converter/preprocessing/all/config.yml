@@ -3,7 +3,7 @@ title: "Preprocessing All"
 description: "Converts a simple HTML document with all preprocessing enabled."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://example.test/simple-all
     preprocessing:

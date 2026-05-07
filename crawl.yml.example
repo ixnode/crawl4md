@@ -4,7 +4,7 @@ projects:
         sources:
             - https://pydantic.dev/sitemap.xml
         crawl:
-            parser: crawl4ai # crawl4ai | kreuzberg-dev
+            parser: kreuzberg-dev # kreuzberg-dev | crawl4ai
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
             # Optional CSS selector applied before markdown conversion
             # content_selector: ".mw-parser-output"
@@ -34,7 +34,7 @@ projects:
             - https://de.wikipedia.org/wiki/Boeing_727
             - https://de.wikipedia.org/wiki/Boeing_737
         crawl:
-            parser: crawl4ai # crawl4ai | kreuzberg-dev
+            parser: kreuzberg-dev # kreuzberg-dev | crawl4ai
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
             # Optional CSS selector applied before markdown conversion
             # content_selector: ".mw-parser-output"

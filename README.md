@@ -20,7 +20,7 @@ The project is intentionally designed to stay simple, deterministic, and easy to
 - Crawl from:
   - `sitemap.xml`
   - explicit page lists
-- Clean Markdown output (via `crawl4ai`, markdown-fit mode)
+- Clean Markdown output via exchangeable parser backends
 - Deterministic file structure based on URL paths
 - YAML-based project configuration
 - CLI-first workflow (uv-compatible)
@@ -81,7 +81,8 @@ projects:
     planes:
         type: pages
         crawl:
-            parse_type: markdown-fit
+            parser: kreuzberg-dev
+            parse_type: markdown
         sources:
             - https://de.wikipedia.org/wiki/Boeing_707
             - https://de.wikipedia.org/wiki/Boeing_717
@@ -94,7 +95,8 @@ projects:
     pydantic:
         type: sitemap
         crawl:
-            parse_type: markdown-fit
+            parser: kreuzberg-dev
+            parse_type: markdown
         sources:
             - https://pydantic.dev/sitemap.xml
         preprocessing:
@@ -106,7 +108,8 @@ Available project settings:
 
 - `type`: `pages` or `sitemap`
 - `sources`: list of page URLs or sitemap URLs
-- `crawl.parse_type`: `markdown` or `markdown-fit`
+- `crawl.parser`: `kreuzberg-dev` or `crawl4ai`
+- `crawl.parse_type`: `markdown`; `markdown-fit` is available with `crawl4ai`
 - `preprocessing.markdown.enabled`: enables Markdown cleanup
 - `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_reference_sections`, and `normalize_whitespace`
 
@@ -139,24 +142,24 @@ uv run crawl pydantic
 
 The public classes are:
 
-- `MarkdownFetcherCrawl4AI`
-- `MarkdownConverterCrawl4AI`
 - `MarkdownFetcherKreuzbergDev`
 - `MarkdownConverterKreuzbergDev`
+- `MarkdownFetcherCrawl4AI`
+- `MarkdownConverterCrawl4AI`
 - `ParseType`
 - `MarkdownPreprocessingConfig`
 
 ### Configure Parse Type
 
+Use `projects.<name>.crawl.parser` to choose the parser:
+
+- `"kreuzberg-dev"`: recommended default, supports `parse_type: markdown`
+- `"crawl4ai"`: supports `parse_type: markdown` and `parse_type: markdown-fit`
+
 Use `ParseType` to control how Markdown is generated:
 
 - `"markdown"`: raw markdown output
 - `"markdown-fit"`: cleaned and reduced markdown output via `crawl4ai`
-
-Use `projects.<name>.crawl.parser` to choose the parser:
-
-- `"crawl4ai"`: supports `parse_type: markdown` and `parse_type: markdown-fit`
-- `"kreuzberg-dev"`: supports `parse_type: markdown`
 
 ### Configure Preprocessing
 
@@ -176,13 +179,13 @@ config = MarkdownPreprocessingConfig(
 
 ### Fetch Markdown From a URL
 
-Use `MarkdownFetcherCrawl4AI` if you want to fetch a page and directly receive Markdown.
+Use `MarkdownFetcherKreuzbergDev` if you want to fetch a page and directly receive Markdown.
 
 ```python
-from crawl4md import MarkdownFetcherCrawl4AI, MarkdownPreprocessingConfig
+from crawl4md import MarkdownFetcherKreuzbergDev, MarkdownPreprocessingConfig
 
 config = MarkdownPreprocessingConfig(enabled=True)
-fetcher = MarkdownFetcherCrawl4AI(config=config, parse_type="markdown-fit")
+fetcher = MarkdownFetcherKreuzbergDev(config=config, parse_type="markdown")
 
 markdown = fetcher.fetch_sync("https://example.com")
 print(markdown)
@@ -193,10 +196,10 @@ Async version:
 ```python
 import asyncio
 
-from crawl4md import MarkdownFetcherCrawl4AI, MarkdownPreprocessingConfig
+from crawl4md import MarkdownFetcherKreuzbergDev, MarkdownPreprocessingConfig
 
 config = MarkdownPreprocessingConfig(enabled=True)
-fetcher = MarkdownFetcherCrawl4AI(config=config, parse_type="markdown-fit")
+fetcher = MarkdownFetcherKreuzbergDev(config=config, parse_type="markdown")
 
 markdown = asyncio.run(fetcher.fetch("https://example.com"))
 print(markdown)
@@ -204,15 +207,15 @@ print(markdown)
 
 ### Convert HTML to Markdown
 
-Use `MarkdownConverterCrawl4AI` if you already have HTML and only want the conversion step.
+Use `MarkdownConverterKreuzbergDev` if you already have HTML and only want the conversion step.
 
 ```python
-from crawl4md import MarkdownConverterCrawl4AI, MarkdownPreprocessingConfig
+from crawl4md import MarkdownConverterKreuzbergDev, MarkdownPreprocessingConfig
 
 html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
 
 config = MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
-converter = MarkdownConverterCrawl4AI(config=config, parse_type="markdown")
+converter = MarkdownConverterKreuzbergDev(config=config, parse_type="markdown")
 
 markdown = converter.convert_sync(html=html, url="https://example.com")
 print(markdown)
@@ -223,12 +226,12 @@ Async version:
 ```python
 import asyncio
 
-from crawl4md import MarkdownConverterCrawl4AI, MarkdownPreprocessingConfig
+from crawl4md import MarkdownConverterKreuzbergDev, MarkdownPreprocessingConfig
 
 html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
 
 config = MarkdownPreprocessingConfig(enabled=True, ensure_h1=True)
-converter = MarkdownConverterCrawl4AI(config=config, parse_type="markdown")
+converter = MarkdownConverterKreuzbergDev(config=config, parse_type="markdown")
 
 markdown = asyncio.run(
     converter.convert(html=html, url="https://example.com")

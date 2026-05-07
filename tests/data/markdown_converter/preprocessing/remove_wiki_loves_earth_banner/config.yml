@@ -3,7 +3,7 @@ title: "Preprocessing Remove Wiki Loves Earth Banner"
 description: "Removes a Wiki Loves Earth or Wikidata banner link from the converted Markdown."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://de.wikipedia.org/wiki/Boeing_707
     preprocessing:

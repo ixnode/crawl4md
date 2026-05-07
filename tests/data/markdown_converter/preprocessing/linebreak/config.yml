@@ -3,7 +3,7 @@ title: "Preprocessing Linebreak"
 description: "Converts a simple HTML document with linebreak normalization only."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://example.test/simple-linebreak
     preprocessing:

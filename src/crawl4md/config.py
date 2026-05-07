@@ -18,7 +18,7 @@ from typing import Literal
 ParseType = Literal["markdown", "markdown-fit"]
 
 class CrawlConfig(BaseModel):
-    parser: str = "crawl4ai"
+    parser: str = "kreuzberg-dev"
     parse_type: str = "markdown"
     content_selector: str | None = None
 

@@ -3,7 +3,7 @@ title: "Preprocessing Ensure H1"
 description: "Adds a missing top-level heading from the HTML title."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://example.test/ensure-h1
     preprocessing:

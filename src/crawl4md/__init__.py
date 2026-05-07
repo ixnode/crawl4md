@@ -5,8 +5,8 @@ from .fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
 from .fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
 
 
-MarkdownConverter = MarkdownConverterCrawl4AI
-MarkdownFetcher = MarkdownFetcherCrawl4AI
+MarkdownConverter = MarkdownConverterKreuzbergDev
+MarkdownFetcher = MarkdownFetcherKreuzbergDev
 
 
 __all__ = [

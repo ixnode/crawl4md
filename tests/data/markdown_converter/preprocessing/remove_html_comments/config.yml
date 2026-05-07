@@ -3,7 +3,7 @@ title: "Preprocessing Remove HTML Comments"
 description: "Removes HTML comments from the converted Markdown."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://example.test/comments
     preprocessing:

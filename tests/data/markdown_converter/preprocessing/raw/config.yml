@@ -3,7 +3,7 @@ title: "Preprocessing Raw"
 description: "Converts a simple HTML document without preprocessing."
 config:
     crawl:
-        parser: crawl4ai
+        parser: kreuzberg-dev
         parse_type: markdown
     url: https://example.test/simple-raw
     preprocessing:
