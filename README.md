@@ -312,11 +312,13 @@ This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md)
 
 ---
 
-## Built on top of crawl4ai
+## Parser Backends
 
-This project builds on the excellent [`crawl4ai`](https://github.com/unclecode/crawl4ai) library and extends it with a simpler batch-oriented workflow for repeatable Markdown exports.
+`crawl4md` is designed as a small orchestration layer around exchangeable HTML-to-Markdown backends.
 
-Why use `crawl4md` as a complement to `crawl4ai`:
+It currently integrates the excellent [`crawl4ai`](https://github.com/unclecode/crawl4ai) project and [`html-to-markdown`](https://github.com/kreuzberg-dev/html-to-markdown) by kreuzberg-dev. Both libraries solve the conversion problem from different angles; `crawl4md` keeps the project workflow, preprocessing, path handling, and writing logic independent from the selected parser.
+
+Why use `crawl4md` around these parser backends:
 
 - project-based batch crawling via `crawl.yml`
 - support for both page lists and sitemap-driven crawls
@@ -325,7 +327,7 @@ Why use `crawl4md` as a complement to `crawl4ai`:
 - a small CLI and Python API focused on URL or HTML to Markdown workflows
 - clearer separation between fetching, conversion, preprocessing, and writing
 
-In short: `crawl4ai` provides the powerful crawling and Markdown generation foundation, while `crawl4md` adds a lightweight structure around it for batch jobs, cleaner output, and easier integration into documentation or RAG pipelines.
+In short: the parser backend can change, while `crawl4md` keeps the surrounding crawl configuration, deterministic output, and Markdown cleanup workflow stable.
 
 ## Troubleshooting
 
