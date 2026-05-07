@@ -18,7 +18,7 @@ from ..config import MarkdownPreprocessingConfig
 from .preprocessing import MarkdownPreprocessing
 
 
-class KreuzbergDevMarkdownConverter:
+class MarkdownConverterKreuzbergDev:
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,

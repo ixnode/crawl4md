@@ -135,7 +135,7 @@ crawl.yml.example
 
 ## Markdown Converter Fixture Tests
 
-Use the data-driven fixture setup for end-to-end tests of `crawl4md.convert.crawl4ai_markdown.Crawl4AIMarkdownConverter`.
+Use the data-driven fixture setup for end-to-end tests of `crawl4md.convert.markdown_converter_crawl4ai.MarkdownConverterCrawl4AI`.
 
 Test sessions live below:
 
@@ -197,7 +197,7 @@ config:
                 - Bibliography
 ```
 
-The outer `id`, `title`, and `description` are used for test output. The nested `config` object is the actual `Crawl4AIMarkdownConverter` configuration.
+The outer `id`, `title`, and `description` are used for test output. The nested `config` object is the actual `MarkdownConverterCrawl4AI` configuration.
 
 ### Fixture Expectations
 

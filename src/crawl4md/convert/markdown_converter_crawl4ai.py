@@ -30,7 +30,7 @@ warnings.filterwarnings(
 )
 
 
-class Crawl4AIMarkdownConverter:
+class MarkdownConverterCrawl4AI:
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,

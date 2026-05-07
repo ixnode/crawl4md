@@ -21,8 +21,8 @@ import yaml
 from pydantic import BaseModel, Field
 
 from crawl4md.config import CrawlConfig, PreprocessingConfig
-from crawl4md.convert.crawl4ai_markdown import Crawl4AIMarkdownConverter
-from crawl4md.convert.kreuzberg_dev_markdown import KreuzbergDevMarkdownConverter
+from crawl4md.convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
+from crawl4md.convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
@@ -91,15 +91,15 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
     def _load_config(self, path: Path) -> MarkdownConverterSession:
         return MarkdownConverterSession(**yaml.safe_load(path.read_text()))
 
-    def _build_converter(self, config: MarkdownConverterSessionConfig) -> Crawl4AIMarkdownConverter:
+    def _build_converter(self, config: MarkdownConverterSessionConfig) -> MarkdownConverterCrawl4AI:
         if config.crawl.parser == "crawl4ai":
-            return Crawl4AIMarkdownConverter(
+            return MarkdownConverterCrawl4AI(
                 config=config.preprocessing.markdown,
                 parse_type=config.crawl.parse_type,
             )
 
         if config.crawl.parser == "kreuzberg-dev":
-            return KreuzbergDevMarkdownConverter(
+            return MarkdownConverterKreuzbergDev(
                 config=config.preprocessing.markdown,
                 parse_type=config.crawl.parse_type,
                 content_selector=config.crawl.content_selector,

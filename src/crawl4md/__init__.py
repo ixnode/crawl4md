@@ -1,19 +1,19 @@
 from .config import MarkdownPreprocessingConfig, ParseType
-from .convert.crawl4ai_markdown import Crawl4AIMarkdownConverter
-from .convert.kreuzberg_dev_markdown import KreuzbergDevMarkdownConverter
-from .fetch.crawl4ai_markdown import Crawl4AIMarkdownFetcher
-from .fetch.kreuzberg_dev_markdown import KreuzbergDevMarkdownFetcher
+from .convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
+from .convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
+from .fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
+from .fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
 
 
-MarkdownConverter = Crawl4AIMarkdownConverter
-MarkdownFetcher = Crawl4AIMarkdownFetcher
+MarkdownConverter = MarkdownConverterCrawl4AI
+MarkdownFetcher = MarkdownFetcherCrawl4AI
 
 
 __all__ = [
-    "Crawl4AIMarkdownConverter",
-    "Crawl4AIMarkdownFetcher",
-    "KreuzbergDevMarkdownConverter",
-    "KreuzbergDevMarkdownFetcher",
+    "MarkdownConverterCrawl4AI",
+    "MarkdownFetcherCrawl4AI",
+    "MarkdownConverterKreuzbergDev",
+    "MarkdownFetcherKreuzbergDev",
     "MarkdownConverter",
     "MarkdownFetcher",
     "MarkdownPreprocessingConfig",

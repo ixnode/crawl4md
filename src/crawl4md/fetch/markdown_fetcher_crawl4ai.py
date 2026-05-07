@@ -6,27 +6,25 @@
 # file that was distributed with this source code.
 #
 # @author: Björn Hempel <bjoern@hempel.li>
-# @version: 1.0.0 (2026-05-07)
-# @since 1.0.0 (2026-05-07) First version
+# @version: 1.0.0 (2026-05-02)
+# @since 1.0.0 (2026-05-02) First version
 
-from ..config import MarkdownPreprocessingConfig
-from ..convert.kreuzberg_dev_markdown import KreuzbergDevMarkdownConverter
+from ..config import MarkdownPreprocessingConfig, ParseType
 from ..fetch.html import HtmlFetcher
 from ..fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
 from ..fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
 from ..fetch.normalize.url import UrlNormalizer
+from ..convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
 
 
-class KreuzbergDevMarkdownFetcher:
+class MarkdownFetcherCrawl4AI:
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
-        parse_type: str = "markdown",
-        content_selector: str | None = None,
+        parse_type: ParseType = "markdown",
     ) -> None:
         self.config = config
         self.parse_type = parse_type
-        self.content_selector = content_selector
 
     @staticmethod
     def _build_html_fetcher(url: str) -> HtmlFetcher:
@@ -34,15 +32,14 @@ class KreuzbergDevMarkdownFetcher:
             normalizers=[
                 MediawikiEntityNormalizer(),
                 MediawikiHiddenSpanNormalizer(),
-                UrlNormalizer(url=url),
+                UrlNormalizer(url=url)
             ]
         )
 
-    def _build_markdown_converter(self) -> KreuzbergDevMarkdownConverter:
-        return KreuzbergDevMarkdownConverter(
+    def _build_markdown_converter(self) -> MarkdownConverterCrawl4AI:
+        return MarkdownConverterCrawl4AI(
             config=self.config,
             parse_type=self.parse_type,
-            content_selector=self.content_selector,
         )
 
     async def fetch(self, url: str) -> str:
