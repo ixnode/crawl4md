@@ -85,6 +85,7 @@ crawl.yml.example
         remove_reference_sections: bool
         remove_html_comments: bool
         normalize_tables: bool
+        normalize_linebreak: bool
         normalize_whitespace: bool
         reference_headings: list[str]
 
@@ -186,6 +187,7 @@ config:
             remove_reference_sections: true
             remove_html_comments: true
             normalize_tables: false
+            normalize_linebreak: true
             normalize_whitespace: true
             reference_headings:
                 - Einzelnachweise

@@ -18,5 +18,6 @@ config:
             remove_reference_sections: false
             remove_html_comments: true
             normalize_tables: false
+            normalize_linebreak: false
             normalize_whitespace: false
             reference_headings: []

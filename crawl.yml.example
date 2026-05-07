@@ -21,6 +21,7 @@ projects:
                 remove_reference_sections: false
                 remove_html_comments: false
                 normalize_tables: false
+                normalize_linebreak: false
                 normalize_whitespace: false
 
     planes:
@@ -49,6 +50,7 @@ projects:
                 remove_reference_sections: false
                 remove_html_comments: false
                 normalize_tables: false
+                normalize_linebreak: false
                 normalize_whitespace: false
 
                 reference_headings:

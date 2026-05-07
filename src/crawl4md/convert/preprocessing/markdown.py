@@ -11,6 +11,7 @@
 
 from .rules.base.rule_base import RuleBase
 from .rules.ensure_h1 import RuleEnsureH1
+from .rules.normalize_linebreak import RuleNormalizeLinebreak
 from .rules.normalize_tables import RuleNormalizeTables
 from .rules.normalize_whitespace import RuleNormalizeWhitespace
 from .rules.remove_html_comments import RuleRemoveHtmlComments
@@ -54,6 +55,9 @@ class MarkdownPreprocessing:
 
         if config.normalize_tables:
             self.rules.append(RuleNormalizeTables(config))
+
+        if config.normalize_linebreak:
+            self.rules.append(RuleNormalizeLinebreak(config))
 
         if config.normalize_whitespace:
             self.rules.append(RuleNormalizeWhitespace(config))

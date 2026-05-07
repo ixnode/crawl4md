@@ -1,14 +1,14 @@
-id: "preprocessing_raw"
-title: "Preprocessing Raw"
-description: "Converts a simple HTML document without preprocessing."
+id: "preprocessing_linebreak"
+title: "Preprocessing Linebreak"
+description: "Converts a simple HTML document with linebreak normalization only."
 config:
     crawl:
         parser: crawl4ai
         parse_type: markdown
-    url: https://example.test/simple-raw
+    url: https://example.test/simple-linebreak
     preprocessing:
         markdown:
-            enabled: false
+            enabled: true
             ensure_h1: false
             remove_jump_to_content: false
             remove_wikipedia_featured_badge: false
@@ -18,6 +18,6 @@ config:
             remove_reference_sections: false
             remove_html_comments: false
             normalize_tables: false
-            normalize_linebreak: false
+            normalize_linebreak: true
             normalize_whitespace: false
             reference_headings: []

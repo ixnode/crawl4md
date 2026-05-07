@@ -3,6 +3,7 @@ import unittest
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
 from crawl4md.convert.preprocessing.rules.ensure_h1 import RuleEnsureH1
+from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormalizeLinebreak
 from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeTables
 from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
@@ -237,20 +238,20 @@ class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):
         self.assertEqual(cleaned, "# Boeing 707\n")
 
 
-class RuleNormalizeWhitespaceTests(unittest.TestCase):
-    def test_normalizes_blank_lines_and_trailing_spaces(self) -> None:
-        rule = RuleNormalizeWhitespace(
-            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+class RuleNormalizeLinebreakTests(unittest.TestCase):
+    def test_normalizes_blank_lines(self) -> None:
+        rule = RuleNormalizeLinebreak(
+            MarkdownPreprocessingConfig(enabled=True, normalize_linebreak=True)
         )
-        markdown = "\n\n# Title   \n\n\nText   \n   \n\n## Section\n\n\nMore text\n\n"
+        markdown = "\n\n# Title\n\n\nText\n   \n\n## Section\n\n\nMore text\n\n"
 
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "# Title\n\nText\n\n## Section\n\nMore text\n")
 
     def test_adds_spacing_around_table_and_code_block(self) -> None:
-        rule = RuleNormalizeWhitespace(
-            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        rule = RuleNormalizeLinebreak(
+            MarkdownPreprocessingConfig(enabled=True, normalize_linebreak=True)
         )
         markdown = (
             "# Title\n"
@@ -272,8 +273,8 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
         )
 
     def test_adds_blank_line_after_single_column_table(self) -> None:
-        rule = RuleNormalizeWhitespace(
-            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        rule = RuleNormalizeLinebreak(
+            MarkdownPreprocessingConfig(enabled=True, normalize_linebreak=True)
         )
         markdown = (
             "| Boeing 707 |\n"
@@ -288,6 +289,70 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             cleaned,
             "| Boeing 707 |\n| --- |\n| Row |\n\nDie **Boeing 707** ist ein Flugzeug.\n",
         )
+
+    def test_splits_adjacent_paragraph_lines_with_blank_lines(self) -> None:
+        rule = RuleNormalizeLinebreak(
+            MarkdownPreprocessingConfig(enabled=True, normalize_linebreak=True)
+        )
+        markdown = (
+            "### Vorgeschichte\n\n"
+            "[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 \"Boeing C-97\") (C-97)\n"
+            "Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs.\n"
+            "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "### Vorgeschichte\n\n"
+            "[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 \"Boeing C-97\") (C-97)\n\n"
+            "Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs.\n\n"
+            "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n",
+        )
+
+    def test_removes_blank_lines_between_list_items(self) -> None:
+        rule = RuleNormalizeLinebreak(
+            MarkdownPreprocessingConfig(enabled=True, normalize_linebreak=True)
+        )
+        markdown = (
+            "# Checklist\n\n"
+            "Before release:\n"
+            " * Run the converter tests\n\n"
+            " * Review the generated Markdown\n\n"
+            " * Update the changelog\n\n"
+            "Deployment order:\n\n"
+            " 1. Build the package\n\n"
+            " 2. Publish the artifact\n\n"
+            " 3. Verify the installation\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "# Checklist\n\n"
+            "Before release:\n\n"
+            " * Run the converter tests\n"
+            " * Review the generated Markdown\n"
+            " * Update the changelog\n\n"
+            "Deployment order:\n\n"
+            " 1. Build the package\n"
+            " 2. Publish the artifact\n"
+            " 3. Verify the installation\n",
+        )
+
+
+class RuleNormalizeWhitespaceTests(unittest.TestCase):
+    def test_normalizes_trailing_spaces(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = "# Title   \nText   \n\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "# Title\nText\n\n")
 
     def test_inserts_space_before_link_when_text_touches_link(self) -> None:
         rule = RuleNormalizeWhitespace(
@@ -356,58 +421,6 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, markdown)
-
-    def test_splits_adjacent_paragraph_lines_with_blank_lines(self) -> None:
-        rule = RuleNormalizeWhitespace(
-            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
-        )
-        markdown = (
-            "### Vorgeschichte\n\n"
-            "[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 \"Boeing C-97\") (C-97)\n"
-            "Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs.\n"
-            "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n"
-        )
-
-        cleaned = rule.apply(markdown)
-
-        self.assertEqual(
-            cleaned,
-            "### Vorgeschichte\n\n"
-            "[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 \"Boeing C-97\") (C-97)\n\n"
-            "Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs.\n\n"
-            "Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen.\n",
-        )
-
-    def test_removes_blank_lines_between_list_items(self) -> None:
-        rule = RuleNormalizeWhitespace(
-            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
-        )
-        markdown = (
-            "# Checklist\n\n"
-            "Before release:\n"
-            " * Run the converter tests\n\n"
-            " * Review the generated Markdown\n\n"
-            " * Update the changelog\n\n"
-            "Deployment order:\n\n"
-            " 1. Build the package\n\n"
-            " 2. Publish the artifact\n\n"
-            " 3. Verify the installation\n"
-        )
-
-        cleaned = rule.apply(markdown)
-
-        self.assertEqual(
-            cleaned,
-            "# Checklist\n\n"
-            "Before release:\n\n"
-            " * Run the converter tests\n"
-            " * Review the generated Markdown\n"
-            " * Update the changelog\n\n"
-            "Deployment order:\n\n"
-            " 1. Build the package\n"
-            " 2. Publish the artifact\n"
-            " 3. Verify the installation\n",
-        )
 
 
 class RuleNormalizeTablesTests(unittest.TestCase):
