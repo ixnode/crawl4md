@@ -6,6 +6,7 @@ from crawl4md.convert.preprocessing.rules.ensure_h1 import RuleEnsureH1
 from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormalizeLinebreak
 from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeTables
 from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
+from crawl4md.convert.preprocessing.rules.remove_cite_links import RuleRemoveCiteLinks
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
 from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
@@ -236,6 +237,21 @@ class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):
         cleaned = rule.apply(markdown, url="https://de.wikipedia.org/wiki/Boeing_707")
 
         self.assertEqual(cleaned, "# Boeing 707\n")
+
+
+class RuleRemoveCiteLinksTests(unittest.TestCase):
+    def test_removes_cite_links_with_leading_spaces(self) -> None:
+        rule = RuleRemoveCiteLinks(
+            MarkdownPreprocessingConfig(enabled=True, remove_cite_links=True)
+        )
+        markdown = (
+            "Stückzahl 1010 [[17]](#cite_note-17) [[10]](#cite_note-10)\n"
+            "Text[[1]](#cite_note-1)\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Stückzahl 1010\nText\n")
 
 
 class RuleNormalizeLinebreakTests(unittest.TestCase):

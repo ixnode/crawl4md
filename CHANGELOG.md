@@ -18,6 +18,8 @@ All notable changes to this project will be documented in this file.
 * Normalize spacing between Markdown list items
 * Add kreuzberg-dev Markdown parser
 * Add preprocessing option to normalize Markdown tables
+* Split whitespace and linebreak normalization rules
+* Add preprocessing option to remove cite links
 
 ### Refactored
 

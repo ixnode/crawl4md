@@ -83,6 +83,7 @@ crawl.yml.example
         remove_wikipedia_featured_badge: bool
         remove_wikipedia_edit_links: bool
         remove_reference_sections: bool
+        remove_cite_links: bool
         remove_html_comments: bool
         normalize_tables: bool
         normalize_linebreak: bool
@@ -185,6 +186,7 @@ config:
             remove_wikipedia_subtitle: true
             remove_wiki_loves_earth_banner: true
             remove_reference_sections: true
+            remove_cite_links: false
             remove_html_comments: true
             normalize_tables: false
             normalize_linebreak: true

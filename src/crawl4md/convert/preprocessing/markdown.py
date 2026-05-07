@@ -14,6 +14,7 @@ from .rules.ensure_h1 import RuleEnsureH1
 from .rules.normalize_linebreak import RuleNormalizeLinebreak
 from .rules.normalize_tables import RuleNormalizeTables
 from .rules.normalize_whitespace import RuleNormalizeWhitespace
+from .rules.remove_cite_links import RuleRemoveCiteLinks
 from .rules.remove_html_comments import RuleRemoveHtmlComments
 from .rules.remove_jump_to_content import RuleRemoveJumpToContent
 from .rules.remove_reference_sections import RuleRemoveReferenceSections
@@ -49,6 +50,9 @@ class MarkdownPreprocessing:
 
         if config.remove_reference_sections:
             self.rules.append(RuleRemoveReferenceSections(config))
+
+        if config.remove_cite_links:
+            self.rules.append(RuleRemoveCiteLinks(config))
 
         if config.ensure_h1:
             self.rules.append(RuleEnsureH1(config))
