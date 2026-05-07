@@ -315,6 +315,19 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             'Vereinigte Staaten 48 [Vereinigte Staaten](https://de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten")\n',
         )
 
+    def test_keeps_emphasis_before_link_unchanged(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = (
+            'In dem Film *[Airport](https://de.wikipedia.org/wiki/Airport_(Film) '
+            '"Airport (Film)")* spielt eine Boeing 707 eine wichtige Nebenrolle.\n'
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, markdown)
+
     def test_inserts_space_before_parentheses(self) -> None:
         rule = RuleNormalizeWhitespace(
             MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)

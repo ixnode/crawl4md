@@ -168,7 +168,11 @@ class RuleNormalizeWhitespace(RuleBase):
         for match in self.MARKDOWN_LINK_PATTERN.finditer(line):
             parts.append(line[last_end:match.start()])
 
-            if match.start() > 0 and not line[match.start() - 1].isspace() and line[match.start() - 1] != "!":
+            if (
+                match.start() > 0
+                and not line[match.start() - 1].isspace()
+                and line[match.start() - 1] not in "!*"
+            ):
                 parts.append(" ")
 
             parts.append(match.group(0))
