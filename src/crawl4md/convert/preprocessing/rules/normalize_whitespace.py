@@ -176,4 +176,68 @@ class RuleNormalizeWhitespace(RuleBase):
 
         parts.append(line[last_end:])
         normalized = "".join(parts)
-        return MISSING_SPACE_BEFORE_PAREN_PATTERN.sub(" (", normalized)
+        return self._normalize_parentheses_outside_links(normalized)
+
+    def _normalize_parentheses_outside_links(self, line: str) -> str:
+        parts: list[str] = []
+        index = 0
+
+        while index < len(line):
+            link_start = self._find_next_markdown_link_start(line, index)
+
+            if link_start is None:
+                parts.append(MISSING_SPACE_BEFORE_PAREN_PATTERN.sub(" (", line[index:]))
+                break
+
+            link_end = self._find_markdown_link_end(line, link_start)
+
+            if link_end is None:
+                parts.append(MISSING_SPACE_BEFORE_PAREN_PATTERN.sub(" (", line[index:]))
+                break
+
+            parts.append(MISSING_SPACE_BEFORE_PAREN_PATTERN.sub(" (", line[index:link_start]))
+            parts.append(line[link_start:link_end])
+            index = link_end
+
+        return "".join(parts)
+
+    def _find_next_markdown_link_start(self, line: str, index: int) -> int | None:
+        close_bracket = line.find("](", index)
+
+        while close_bracket != -1:
+            open_bracket = line.rfind("[", 0, close_bracket)
+
+            if open_bracket != -1:
+                return max(open_bracket, index)
+
+            close_bracket = line.find("](", close_bracket + 2)
+
+        return None
+
+    def _find_markdown_link_end(self, line: str, link_start: int) -> int | None:
+        close_bracket = line.find("](", link_start)
+
+        if close_bracket == -1:
+            return None
+
+        index = close_bracket + 2
+        depth = 1
+
+        while index < len(line):
+            character = line[index]
+
+            if character == "\\":
+                index += 2
+                continue
+
+            if character == "(":
+                depth += 1
+            elif character == ")":
+                depth -= 1
+
+                if depth == 0:
+                    return index + 1
+
+            index += 1
+
+        return None

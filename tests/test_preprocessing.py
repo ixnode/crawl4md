@@ -328,6 +328,22 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             "| Produktionszeit | 1957 bis 1982/1991 (zivil / militärisch) |\n",
         )
 
+    def test_keeps_parentheses_inside_link_targets_unchanged(self) -> None:
+        rule = RuleNormalizeWhitespace(
+            MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
+        )
+        markdown = (
+            "[![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/"
+            "Boeing_707-124_%28Continental_Airlines%29_LAX.jpg/"
+            "250px-Boeing_707-124_%28Continental_Airlines%29_LAX.jpg)]"
+            "(https://de.wikipedia.org/wiki/Datei:Boeing_707-124_"
+            "(Continental_Airlines)_LAX.jpg)\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, markdown)
+
     def test_splits_adjacent_paragraph_lines_with_blank_lines(self) -> None:
         rule = RuleNormalizeWhitespace(
             MarkdownPreprocessingConfig(enabled=True, normalize_whitespace=True)
