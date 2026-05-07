@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 * Add preprocessing option to normalize Markdown tables
 * Split whitespace and linebreak normalization rules
 * Add preprocessing option to remove cite links
+* Move crawled output to crawled and store docs separately
 
 ### Refactored
 

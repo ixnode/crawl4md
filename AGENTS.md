@@ -34,6 +34,9 @@ src/crawl4md/
 - (future) preprocessing.py → markdown cleanup
 
 docs/
+- versioned project documentation
+
+crawled/
 - output directory (generated, not versioned except .gitkeep)
 
 crawl.yml.example
@@ -124,7 +127,7 @@ crawl.yml.example
 ## File Output Rules
 
 - Output path must be deterministic:
-  docs/<project>/<url-path>.md
+  crawled/<project>/<url-path>.md
 
 - URL path rules:
   - "/" → index.md

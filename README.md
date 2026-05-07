@@ -111,7 +111,7 @@ Available project settings:
 - `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_reference_sections`, and `normalize_whitespace`
 
 For the full configuration, see [`crawl.yml.example`](crawl.yml.example).
-For details about all Markdown preprocessing options, see [`MARKDOWN_PREPROCESSING.md`](MARKDOWN_PREPROCESSING.md).
+For details about all Markdown preprocessing options, see [`docs/markdown_preprocessing.md`](docs/markdown_preprocessing.md).
 
 ---
 
@@ -243,13 +243,13 @@ print(markdown)
 Markdown files are stored deterministically based on the URL path:
 
 ```bash
-docs/<project>/<url-path>.md
+crawled/<project>/<url-path>.md
 ```
 
 Example:
 
 ```bash
-docs/planes/wiki/Boeing_707.md
+crawled/planes/wiki/Boeing_707.md
 ```
 
 Rules:
@@ -267,7 +267,7 @@ Rules:
 1/2 Crawl https://de.wikipedia.org/wiki/Boeing_707
 - Fetching ... done
 - Processing ... done
-- Writing docs/planes/wiki/Boeing_707.md ... done
+- Writing crawled/planes/wiki/Boeing_707.md ... done
 ```
 
 ---

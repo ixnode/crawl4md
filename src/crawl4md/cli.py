@@ -96,7 +96,7 @@ def crawl(project: str):
             md = asyncio.run(fetcher.fetch(url))
             typer.echo(f" done ({format_duration(time.perf_counter() - fetch_started_at)})")
 
-            path = url_to_path(Path("docs"), project, url)
+            path = url_to_path(Path("crawled"), project, url)
 
             typer.echo(f"  → Writing... {path}", nl=False)
             write_started_at = time.perf_counter()
@@ -114,4 +114,4 @@ def crawl(project: str):
     typer.echo("Done.")
     typer.echo(f"✔ Success: {success}")
     typer.echo(f"✖ Failed: {failed}")
-    typer.echo(f"Output: docs/{project}")
+    typer.echo(f"Output: crawled/{project}")

@@ -48,10 +48,9 @@ Thumbs.db
 crawl.yml
 
 # Generated Markdown output
-docs/*
-!docs/.gitkeep
+crawled/*
+!crawled/.gitkeep
 
 # Optional: logs or temp files (future-proof)
 *.log
 tmp/
-
