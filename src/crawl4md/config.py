@@ -52,6 +52,7 @@ class MarkdownPreprocessingConfig(BaseModel):
     remove_wiki_loves_earth_banner: bool = False
     remove_reference_sections: bool = False
     remove_html_comments: bool = False
+    normalize_tables: bool = False
     normalize_whitespace: bool = False
 
     reference_headings: list[str] = Field(default_factory=list)

@@ -11,6 +11,7 @@
 
 from .rules.base.rule_base import RuleBase
 from .rules.ensure_h1 import RuleEnsureH1
+from .rules.normalize_tables import RuleNormalizeTables
 from .rules.normalize_whitespace import RuleNormalizeWhitespace
 from .rules.remove_html_comments import RuleRemoveHtmlComments
 from .rules.remove_jump_to_content import RuleRemoveJumpToContent
@@ -50,6 +51,9 @@ class MarkdownPreprocessing:
 
         if config.ensure_h1:
             self.rules.append(RuleEnsureH1(config))
+
+        if config.normalize_tables:
+            self.rules.append(RuleNormalizeTables(config))
 
         if config.normalize_whitespace:
             self.rules.append(RuleNormalizeWhitespace(config))

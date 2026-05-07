@@ -3,6 +3,7 @@ import unittest
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
 from crawl4md.convert.preprocessing.rules.ensure_h1 import RuleEnsureH1
+from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeTables
 from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
 from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
@@ -378,6 +379,44 @@ class RuleNormalizeWhitespaceTests(unittest.TestCase):
             " 2. Publish the artifact\n"
             " 3. Verify the installation\n",
         )
+
+
+class RuleNormalizeTablesTests(unittest.TestCase):
+    def test_removes_empty_table_rows(self) -> None:
+        rule = RuleNormalizeTables(
+            MarkdownPreprocessingConfig(enabled=True, normalize_tables=True)
+        )
+        markdown = (
+            "| Boeing 707 | |\n"
+            "| --- | --- |\n"
+            "| Typ | Schmalrumpfflugzeug |\n"
+            "| | |\n"
+            "| Hersteller | Boeing Airplane Company |\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "| Boeing 707 | |\n"
+            "| --- | --- |\n"
+            "| Typ | Schmalrumpfflugzeug |\n"
+            "| Hersteller | Boeing Airplane Company |\n",
+        )
+
+    def test_pads_short_table_rows(self) -> None:
+        rule = RuleNormalizeTables(
+            MarkdownPreprocessingConfig(enabled=True, normalize_tables=True)
+        )
+        markdown = (
+            "| A | B |\n"
+            "| --- | --- |\n"
+            "| one |\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "| A | B |\n| --- | --- |\n| one | |\n")
 
 
 if __name__ == "__main__":

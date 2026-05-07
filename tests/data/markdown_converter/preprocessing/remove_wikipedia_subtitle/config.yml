@@ -17,5 +17,6 @@ config:
             remove_wiki_loves_earth_banner: false
             remove_reference_sections: false
             remove_html_comments: false
+            normalize_tables: false
             normalize_whitespace: false
             reference_headings: []

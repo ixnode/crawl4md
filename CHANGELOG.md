@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 * Add list fixture for Markdown preprocessing
 * Normalize spacing between Markdown list items
 * Add kreuzberg-dev Markdown parser
+* Add preprocessing option to normalize Markdown tables
 
 ### Refactored
 
