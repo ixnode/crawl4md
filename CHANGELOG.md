@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 * Split whitespace and linebreak normalization rules
 * Add preprocessing option to remove cite links
 * Move crawled output to crawled and store docs separately
+* Add base classes for markdown converters and fetchers
 
 ### Refactored
 

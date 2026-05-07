@@ -1,0 +1,63 @@
+# This file is part of the https://github.com/ixnode/crawl4md project.
+#
+# (c) 2026 Björn Hempel <bjoern@hempel.li>
+#
+# For the full copyright and license information, please view the LICENSE.md
+# file that was distributed with this source code.
+#
+# @author: Björn Hempel <bjoern@hempel.li>
+# @version: 1.0.0 (2026-05-08)
+# @since 1.0.0 (2026-05-08) First version
+
+from abc import ABC, abstractmethod
+from typing import Any
+
+from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.fetch.html import HtmlFetcher
+from crawl4md.fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
+from crawl4md.fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
+from crawl4md.fetch.normalize.url import UrlNormalizer
+
+
+class BaseMarkdownFetcher(ABC):
+    def __init__(
+        self,
+        config: MarkdownPreprocessingConfig,
+        parse_type: str = "markdown",
+        content_selector: str | None = None,
+    ) -> None:
+        self.config = config
+        self.parse_type = parse_type
+        self.content_selector = content_selector
+
+    @staticmethod
+    def build_html_fetcher(url: str) -> HtmlFetcher:
+        return HtmlFetcher(
+            normalizers=[
+                MediawikiEntityNormalizer(),
+                MediawikiHiddenSpanNormalizer(),
+                UrlNormalizer(url=url),
+            ]
+        )
+
+    @abstractmethod
+    def build_markdown_converter(self) -> Any:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def fetch(self, url: str) -> str:
+        fetcher = self.build_html_fetcher(url)
+        html = await fetcher.fetch(url=url)
+
+        converter = self.build_markdown_converter()
+
+        return await converter.convert(html=html, url=url)
+
+    @abstractmethod
+    def fetch_sync(self, url: str) -> str:
+        fetcher = self.build_html_fetcher(url)
+        html = fetcher.fetch_sync(url=url)
+
+        converter = self.build_markdown_converter()
+
+        return converter.convert_sync(html=html, url=url)

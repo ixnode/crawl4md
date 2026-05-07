@@ -91,11 +91,46 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
     def _load_config(self, path: Path) -> MarkdownConverterSession:
         return MarkdownConverterSession(**yaml.safe_load(path.read_text()))
 
+    async def test_crawl4ai_converter_supports_content_selector(self) -> None:
+        config = MarkdownConverterSessionConfig(
+            crawl=CrawlConfig(
+                parser="crawl4ai",
+                parse_type="markdown",
+                content_selector="main",
+            )
+        )
+        converter = self._build_converter(config)
+        html = (
+            "<html><body>"
+            "<nav><h1>Navigation</h1><p>Ignore me</p></nav>"
+            "<main><h1>Content</h1><p>Keep me</p></main>"
+            "</body></html>"
+        )
+
+        output = io.StringIO()
+        with redirect_stdout(output), redirect_stderr(output):
+            markdown = await converter.convert(html=html, url="https://example.test")
+
+        self.assertIn("# Content", markdown)
+        self.assertIn("Keep me", markdown)
+        self.assertNotIn("Navigation", markdown)
+        self.assertNotIn("Ignore me", markdown)
+
+    def test_crawl4ai_config_allows_content_selector(self) -> None:
+        config = CrawlConfig(
+            parser="crawl4ai",
+            parse_type="markdown",
+            content_selector="main",
+        )
+
+        self.assertEqual(config.content_selector, "main")
+
     def _build_converter(self, config: MarkdownConverterSessionConfig) -> MarkdownConverterCrawl4AI:
         if config.crawl.parser == "crawl4ai":
             return MarkdownConverterCrawl4AI(
                 config=config.preprocessing.markdown,
                 parse_type=config.crawl.parse_type,
+                content_selector=config.crawl.content_selector,
             )
 
         if config.crawl.parser == "kreuzberg-dev":

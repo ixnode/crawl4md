@@ -47,6 +47,7 @@ def build_fetcher(proj):
         return MarkdownFetcherCrawl4AI(
             config=proj.preprocessing.markdown,
             parse_type=proj.crawl.parse_type,
+            content_selector=proj.crawl.content_selector,
         )
 
     if proj.crawl.parser == "kreuzberg-dev":

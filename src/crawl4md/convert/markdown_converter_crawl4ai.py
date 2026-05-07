@@ -19,7 +19,7 @@ from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
 from ..config import MarkdownPreprocessingConfig, ParseType
-from .preprocessing import MarkdownPreprocessing
+from .base import BaseMarkdownConverter
 
 
 warnings.filterwarnings(
@@ -30,20 +30,25 @@ warnings.filterwarnings(
 )
 
 
-class MarkdownConverterCrawl4AI:
+class MarkdownConverterCrawl4AI(BaseMarkdownConverter):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
         parse_type: ParseType = "markdown",
+        content_selector: str | None = None,
     ) -> None:
-        self.config = config
-        self.parse_type = parse_type
+        super().__init__(
+            config=config,
+            parse_type=parse_type,
+            content_selector=content_selector,
+        )
 
     async def convert(
         self,
         html: str,
         url: str | None = None,
     ) -> str:
+        html = self.select_content(html)
         raw_html_url = f"raw:{html}"
 
         if self.parse_type == "markdown-fit":
@@ -65,9 +70,7 @@ class MarkdownConverterCrawl4AI:
         else:
             markdown = result.markdown.raw_markdown or ""
 
-        preprocessing = MarkdownPreprocessing(self.config)
-
-        return preprocessing.process(markdown, url=url, html=html)
+        return self.preprocess(markdown, url=url, html=html)
 
     def convert_sync(
         self,

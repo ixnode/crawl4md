@@ -9,51 +9,33 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-from ..config import MarkdownPreprocessingConfig, ParseType
-from ..fetch.html import HtmlFetcher
-from ..fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
-from ..fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
-from ..fetch.normalize.url import UrlNormalizer
 from ..convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
+from ..config import MarkdownPreprocessingConfig, ParseType
+from .base import BaseMarkdownFetcher
 
 
-class MarkdownFetcherCrawl4AI:
+class MarkdownFetcherCrawl4AI(BaseMarkdownFetcher):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
         parse_type: ParseType = "markdown",
+        content_selector: str | None = None,
     ) -> None:
-        self.config = config
-        self.parse_type = parse_type
-
-    @staticmethod
-    def _build_html_fetcher(url: str) -> HtmlFetcher:
-        return HtmlFetcher(
-            normalizers=[
-                MediawikiEntityNormalizer(),
-                MediawikiHiddenSpanNormalizer(),
-                UrlNormalizer(url=url)
-            ]
+        super().__init__(
+            config=config,
+            parse_type=parse_type,
+            content_selector=content_selector,
         )
 
-    def _build_markdown_converter(self) -> MarkdownConverterCrawl4AI:
+    def build_markdown_converter(self) -> MarkdownConverterCrawl4AI:
         return MarkdownConverterCrawl4AI(
             config=self.config,
             parse_type=self.parse_type,
+            content_selector=self.content_selector,
         )
 
     async def fetch(self, url: str) -> str:
-        fetcher = self._build_html_fetcher(url)
-        html = await fetcher.fetch(url=url)
-
-        converter = self._build_markdown_converter()
-
-        return await converter.convert(html=html, url=url)
+        return await super().fetch(url)
 
     def fetch_sync(self, url: str) -> str:
-        fetcher = self._build_html_fetcher(url)
-        html = fetcher.fetch_sync(url=url)
-
-        converter = self._build_markdown_converter()
-
-        return converter.convert_sync(html=html, url=url)
+        return super().fetch_sync(url)
