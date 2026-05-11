@@ -10,14 +10,21 @@
 # @since 1.0.0 (2026-05-07) First version
 
 import re
+from functools import cached_property
 
 from .base.rule_base import RuleBase
 
 
-CITE_LINK_PATTERN = re.compile(r"\s*\[\[\d+\]\]\(#cite_note-[^)]+\)")
+class RuleRemoveLinks(RuleBase):
+    @cached_property
+    def link_pattern(self) -> re.Pattern[str] | None:
+        if not self.config.remove_links:
+            return None
 
+        return re.compile(
+            rf"\s*!?\[[^\n]*?\]\([^)\n]*{self.config.remove_links}[^)\n]*\)"
+        )
 
-class RuleRemoveCiteLinks(RuleBase):
     def apply(
         self,
         markdown: str,
@@ -25,4 +32,7 @@ class RuleRemoveCiteLinks(RuleBase):
         url: str | None = None,
         html: str | None = None,
     ) -> str:
-        return CITE_LINK_PATTERN.sub("", markdown)
+        if self.link_pattern is None:
+            return markdown
+
+        return self.link_pattern.sub("", markdown)

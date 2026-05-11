@@ -16,7 +16,7 @@ config:
             remove_wikipedia_subtitle: true
             remove_wiki_loves_earth_banner: true
             remove_reference_sections: true
-            remove_cite_links: false
+            remove_links: false
             remove_html_comments: true
             normalize_tables: false
             normalize_linebreak: true

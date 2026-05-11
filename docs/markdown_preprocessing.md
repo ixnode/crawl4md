@@ -26,7 +26,7 @@ preprocessing:
         remove_wikipedia_subtitle: false
         remove_wiki_loves_earth_banner: false
         remove_reference_sections: false
-        remove_cite_links: false
+        remove_links: false
         remove_html_comments: false
         normalize_tables: false
         normalize_linebreak: false
@@ -94,16 +94,85 @@ reference_headings:
 
 Heading matching is case-insensitive and supports numbered headings and anchor suffixes.
 
-### `remove_cite_links`
+### `remove_links`
 
-Removes inline citation links such as:
+Removes Markdown links whose target matches the configured regular expression.
 
-```markdown
-[[17]](#cite_note-17)
-[[10]](#cite_note-10)
+The option accepts either `false` or a string:
+
+```yaml
+remove_links: false
 ```
 
-If there is a leading space before the citation link, that space is removed too.
+Keeps all Markdown links unchanged.
+
+```yaml
+remove_links: "cite_note"
+```
+
+Removes links whose target contains `cite_note`. This is useful for inline Wikipedia citation links:
+
+```markdown
+Text [[17]](#cite_note-17) [[10]](#cite_note-10)
+```
+
+Becomes:
+
+```markdown
+Text
+```
+
+The leading space before a removed link is removed too.
+
+The configured string is used as a regular expression against the Markdown link target. This makes it possible to remove other link groups without adding a new preprocessing option.
+
+Remove links to a specific anchor prefix:
+
+```yaml
+remove_links: "custom-link"
+```
+
+```markdown
+Text [custom](#custom-link) [keep](#other-link)
+```
+
+Becomes:
+
+```markdown
+Text [keep](#other-link)
+```
+
+Remove links to generated Wikipedia anchors:
+
+```yaml
+remove_links: "wiki_[a-z]+"
+```
+
+```markdown
+Text [one](#wiki_intro) [two](#wiki_history) [keep](#plain)
+```
+
+Becomes:
+
+```markdown
+Text [keep](#plain)
+```
+
+Remove image links by target:
+
+```yaml
+remove_links: "upload\\.wikimedia\\.org"
+```
+
+```markdown
+Text [![Image](https://upload.wikimedia.org/image.jpg)](https://upload.wikimedia.org/file.jpg)
+```
+
+Becomes:
+
+```markdown
+Text
+```
 
 ### `remove_html_comments`
 
@@ -163,7 +232,7 @@ preprocessing:
         remove_wikipedia_subtitle: true
         remove_wiki_loves_earth_banner: true
         remove_reference_sections: true
-        remove_cite_links: true
+        remove_links: "cite_note"
         remove_html_comments: true
         normalize_tables: true
         normalize_linebreak: true
