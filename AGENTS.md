@@ -86,7 +86,7 @@ crawl.yml.example
         remove_wikipedia_featured_badge: bool
         remove_wikipedia_edit_links: bool
         remove_reference_sections: bool
-        remove_links: false | string
+        remove_links: false | string | list[string]
         remove_html_comments: bool
         normalize_tables: bool
         normalize_linebreak: bool

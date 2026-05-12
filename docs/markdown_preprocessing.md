@@ -98,7 +98,17 @@ Heading matching is case-insensitive and supports numbered headings and anchor s
 
 Removes Markdown links whose target matches the configured regular expression.
 
-The option accepts either `false` or a string:
+The link target is the value inside the parentheses of a Markdown link:
+
+```markdown
+[link text](link-target)
+```
+
+For this link, `remove_links` checks only `link-target`, not `link text`.
+
+The configured value does not have to match at the beginning of the target. It matches anywhere inside the target because the rule wraps the pattern with `.*`-like matching around it.
+
+The option accepts `false`, a string, or a list of strings:
 
 ```yaml
 remove_links: false
@@ -172,6 +182,25 @@ Becomes:
 
 ```markdown
 Text
+```
+
+Remove multiple link variants in one run:
+
+```yaml
+remove_links:
+    - "cite_note"
+    - "custom-link"
+    - "upload\\.wikimedia\\.org"
+```
+
+```markdown
+Text [[17]](#cite_note-17) [custom](#custom-link) [image](https://upload.wikimedia.org/file.jpg) [keep](#plain)
+```
+
+Becomes:
+
+```markdown
+Text [keep](#plain)
 ```
 
 ### `remove_html_comments`

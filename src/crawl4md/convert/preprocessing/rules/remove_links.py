@@ -21,8 +21,18 @@ class RuleRemoveLinks(RuleBase):
         if not self.config.remove_links:
             return None
 
+        link_target_patterns = (
+            [self.config.remove_links]
+            if isinstance(self.config.remove_links, str)
+            else self.config.remove_links
+        )
+        if not link_target_patterns:
+            return None
+
+        target_pattern = "|".join(f"(?:{pattern})" for pattern in link_target_patterns)
+
         return re.compile(
-            rf"\s*!?\[[^\n]*?\]\([^)\n]*{self.config.remove_links}[^)\n]*\)"
+            rf"\s*!?\[[^\n]*?\]\([^)\n]*(?:{target_pattern})[^)\n]*\)"
         )
 
     def apply(

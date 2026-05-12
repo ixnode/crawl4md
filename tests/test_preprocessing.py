@@ -276,6 +276,22 @@ class RuleRemoveLinksTests(unittest.TestCase):
 
         self.assertEqual(cleaned, "Text [keep](#other-link)\n")
 
+    def test_removes_links_matching_multiple_target_patterns(self) -> None:
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_links=["cite_note", r"custom-link"],
+            )
+        )
+        markdown = (
+            "Text [[17]](#cite_note-17) [custom](#custom-link) "
+            "[keep](#other-link)\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text [keep](#other-link)\n")
+
 
 class RuleNormalizeLinebreakTests(unittest.TestCase):
     def test_normalizes_blank_lines(self) -> None:
