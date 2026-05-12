@@ -21,8 +21,6 @@ preprocessing:
 
         ensure_h1: false
         remove_jump_to_content: false
-        remove_wikipedia_featured_badge: false
-        remove_wikipedia_edit_links: false
         remove_wikipedia_subtitle: false
         remove_wiki_loves_earth_banner: false
         remove_reference_sections: false
@@ -45,22 +43,6 @@ Removes same-page skip links such as:
 
 ```markdown
 [Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)
-```
-
-### `remove_wikipedia_featured_badge`
-
-Removes Wikipedia top badges for featured or readable articles, for example:
-
-```markdown
-[![Dies ist ein als lesenswert ausgezeichneter Artikel.](...)](#Vorlage_Lesenswert "Dies ist ein als lesenswert ausgezeichneter Artikel.")
-```
-
-### `remove_wikipedia_edit_links`
-
-Removes Wikipedia section edit links such as:
-
-```markdown
-[[Bearbeiten](...) | [Quelltext bearbeiten](...)]
 ```
 
 ### `remove_wikipedia_subtitle`
@@ -168,6 +150,50 @@ Becomes:
 Text [keep](#plain)
 ```
 
+Remove Wikipedia featured/readable article badges:
+
+```yaml
+remove_links:
+    - "#[Vv]orlage_[Ll]esenswert"
+    - "#[Vv]orlage_[Ee]xzellent"
+```
+
+```markdown
+[![Dies ist ein als lesenswert ausgezeichneter Artikel.](...)](#Vorlage_Lesenswert "Dies ist ein als lesenswert ausgezeichneter Artikel.")
+
+# Boeing 707
+```
+
+Becomes:
+
+```markdown
+# Boeing 707
+```
+
+Remove Wikipedia section edit links:
+
+```yaml
+remove_links:
+    - "veaction=edit[^)]*section="
+    - "action=edit[^)]*section="
+```
+
+```markdown
+## Geschichte
+
+[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=1) | [Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=1)]
+
+Text
+```
+
+Becomes:
+
+```markdown
+## Geschichte
+
+Text
+```
+
 Remove image links by target:
 
 ```yaml
@@ -191,6 +217,8 @@ remove_links:
     - "cite_note"
     - "custom-link"
     - "upload\\.wikimedia\\.org"
+    - "veaction=edit[^)]*section="
+    - "action=edit[^)]*section="
 ```
 
 ```markdown
@@ -256,8 +284,6 @@ preprocessing:
         enabled: true
         ensure_h1: true
         remove_jump_to_content: true
-        remove_wikipedia_featured_badge: true
-        remove_wikipedia_edit_links: true
         remove_wikipedia_subtitle: true
         remove_wiki_loves_earth_banner: true
         remove_reference_sections: true

@@ -11,8 +11,6 @@ from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemove
 from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
 from crawl4md.convert.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
-from crawl4md.convert.preprocessing.rules.remove_wikipedia_edit_links import RuleRemoveWikipediaEditLinks
-from crawl4md.convert.preprocessing.rules.remove_wikipedia_featured_badge import RuleRemoveWikipediaFeaturedBadge
 from crawl4md.convert.preprocessing.rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
 
 
@@ -175,12 +173,12 @@ class RuleRemoveWikipediaSubtitleTests(unittest.TestCase):
         self.assertEqual(cleaned, "Boeing 707\n")
 
 
-class RuleRemoveWikipediaFeaturedBadgeTests(unittest.TestCase):
+class RuleRemoveLinksWikipediaFeaturedBadgeTests(unittest.TestCase):
     def test_removes_wikipedia_featured_badge(self) -> None:
-        rule = RuleRemoveWikipediaFeaturedBadge(
+        rule = RuleRemoveLinks(
             MarkdownPreprocessingConfig(
                 enabled=True,
-                remove_wikipedia_featured_badge=True,
+                remove_links=["#[Vv]orlage_[Ll]esenswert", "#[Vv]orlage_[Ee]xzellent"],
             )
         )
         markdown = (
@@ -197,12 +195,12 @@ class RuleRemoveWikipediaFeaturedBadgeTests(unittest.TestCase):
         self.assertEqual(cleaned, "# Boeing 707\n")
 
 
-class RuleRemoveWikipediaEditLinksTests(unittest.TestCase):
+class RuleRemoveLinksWikipediaEditLinksTests(unittest.TestCase):
     def test_removes_wikipedia_section_edit_links(self) -> None:
-        rule = RuleRemoveWikipediaEditLinks(
+        rule = RuleRemoveLinks(
             MarkdownPreprocessingConfig(
                 enabled=True,
-                remove_wikipedia_edit_links=True,
+                remove_links=["veaction=edit[^)]*section=", "action=edit[^)]*section="],
             )
         )
         markdown = (

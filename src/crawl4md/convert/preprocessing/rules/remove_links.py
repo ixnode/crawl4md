@@ -45,4 +45,25 @@ class RuleRemoveLinks(RuleBase):
         if self.link_pattern is None:
             return markdown
 
-        return self.link_pattern.sub("", markdown)
+        cleaned_lines: list[str] = []
+        skip_next_blank = False
+
+        for line in markdown.splitlines():
+            if skip_next_blank and not line.strip():
+                skip_next_blank = False
+                continue
+
+            skip_next_blank = False
+            cleaned_line = self.link_pattern.sub("", line).rstrip()
+            line_changed = cleaned_line != line
+
+            if line_changed and self._is_empty_link_line(cleaned_line):
+                skip_next_blank = True
+                continue
+
+            cleaned_lines.append(cleaned_line)
+
+        return self.join_lines(cleaned_lines, markdown)
+
+    def _is_empty_link_line(self, line: str) -> bool:
+        return not line.strip() or all(character in "[]| " for character in line)
