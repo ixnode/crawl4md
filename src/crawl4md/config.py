@@ -40,10 +40,10 @@ class MarkdownPreprocessingConfig(BaseModel):
     enabled: bool = False
 
     ensure_h1: bool = False
-    remove_wikipedia_subtitle: bool = False
     remove_wiki_loves_earth_banner: bool = False
     remove_reference_sections: bool = False
     remove_links: Literal[False] | str | list[str] = False
+    remove_lines: Literal[False] | str | list[str] = False
     remove_html_comments: bool = False
     normalize_tables: bool = False
     normalize_linebreak: bool = False

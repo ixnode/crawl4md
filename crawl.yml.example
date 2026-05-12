@@ -13,7 +13,7 @@ projects:
                 enabled: false
 
                 ensure_h1: false                        # Adds missing # Tag
-                remove_wikipedia_subtitle: false        # Removes "aus Wikipedia, der freien Enzyklopädie"
+                remove_lines: false
                 remove_wiki_loves_earth_banner: false   # Removes "Wikipedia:Wiki_Loves_Earth_" and "Wikidata:Events/Coordinate_Me_" Links
                 remove_reference_sections: false
                 remove_links: false
@@ -40,7 +40,7 @@ projects:
                 enabled: false
 
                 ensure_h1: false
-                remove_wikipedia_subtitle: false
+                remove_lines: false
                 remove_wiki_loves_earth_banner: false
                 remove_reference_sections: false
                 remove_links: false

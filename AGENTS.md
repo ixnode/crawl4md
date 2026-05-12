@@ -83,6 +83,7 @@ crawl.yml.example
 - preprocessing:
     markdown:
         enabled: bool
+        remove_lines: false | string | list[string]
         remove_reference_sections: bool
         remove_links: false | string | list[string]
         remove_html_comments: bool
@@ -183,7 +184,7 @@ config:
         markdown:
             enabled: true
             ensure_h1: true
-            remove_wikipedia_subtitle: true
+            remove_lines: "aus Wikipedia, der freien Enzyklopädie"
             remove_wiki_loves_earth_banner: true
             remove_reference_sections: true
             remove_links: false

@@ -20,7 +20,7 @@ preprocessing:
         enabled: false
 
         ensure_h1: false
-        remove_wikipedia_subtitle: false
+        remove_lines: false
         remove_wiki_loves_earth_banner: false
         remove_reference_sections: false
         remove_links: false
@@ -36,12 +36,42 @@ Adds a missing top-level `#` heading when the generated Markdown has no H1.
 
 The rule prefers the first HTML `<h1>`, then falls back to the HTML `<title>`, then to the URL path.
 
-### `remove_wikipedia_subtitle`
+### `remove_lines`
+
+Removes configured text or regular-expression matches from Markdown lines.
+
+The option accepts `false`, a string, or a list of strings:
+
+```yaml
+remove_lines: false
+```
+
+Keeps all lines unchanged.
+
+```yaml
+remove_lines: "aus Wikipedia, der freien Enzyklopädie"
+```
 
 Removes the German Wikipedia subtitle text:
 
 ```markdown
-aus Wikipedia, der freien Enzyklopädie
+Boeing 707 aus Wikipedia, der freien Enzyklopädie
+```
+
+Becomes:
+
+```markdown
+Boeing 707
+```
+
+If a line is empty after the configured text was removed, the whole line is removed.
+
+Multiple patterns can be configured:
+
+```yaml
+remove_lines:
+    - "aus Wikipedia, der freien Enzyklopädie"
+    - "From Wikipedia, the free encyclopedia"
 ```
 
 ### `remove_wiki_loves_earth_banner`
@@ -318,7 +348,7 @@ preprocessing:
     markdown:
         enabled: true
         ensure_h1: true
-        remove_wikipedia_subtitle: true
+        remove_lines: "aus Wikipedia, der freien Enzyklopädie"
         remove_wiki_loves_earth_banner: true
         remove_reference_sections: true
         remove_links:

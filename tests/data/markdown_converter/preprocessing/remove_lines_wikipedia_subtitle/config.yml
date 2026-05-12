@@ -1,6 +1,6 @@
-id: "preprocessing_remove_wikipedia_subtitle"
-title: "Preprocessing Remove Wikipedia Subtitle"
-description: "Removes the German Wikipedia subtitle from the converted Markdown."
+id: "preprocessing_remove_lines_wikipedia_subtitle"
+title: "Preprocessing Remove Lines Wikipedia Subtitle"
+description: "Removes the German Wikipedia subtitle through remove_lines."
 config:
     crawl:
         parser: kreuzberg-dev
@@ -10,7 +10,7 @@ config:
         markdown:
             enabled: true
             ensure_h1: false
-            remove_wikipedia_subtitle: true
+            remove_lines: "aus Wikipedia, der freien Enzyklopädie"
             remove_wiki_loves_earth_banner: false
             remove_reference_sections: false
             remove_links: false
