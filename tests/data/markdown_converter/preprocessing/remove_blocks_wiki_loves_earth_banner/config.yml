@@ -1,6 +1,6 @@
-id: "preprocessing_remove_wiki_loves_earth_banner"
-title: "Preprocessing Remove Wiki Loves Earth Banner"
-description: "Removes a Wiki Loves Earth or Wikidata banner link from the converted Markdown."
+id: "preprocessing_remove_blocks_wiki_loves_earth_banner"
+title: "Preprocessing Remove Blocks Wiki Loves Earth Banner"
+description: "Removes a Wiki Loves Earth or Wikidata banner block through remove_blocks."
 config:
     crawl:
         parser: kreuzberg-dev
@@ -11,7 +11,9 @@ config:
             enabled: true
             ensure_h1: false
             remove_lines: false
-            remove_wiki_loves_earth_banner: true
+            remove_blocks:
+                - "Wikipedia:Wiki_Loves_Earth_"
+                - "Wikidata:Events/Coordinate_Me_"
             remove_reference_sections: false
             remove_links: false
             remove_html_comments: false

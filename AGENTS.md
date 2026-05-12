@@ -84,6 +84,7 @@ crawl.yml.example
     markdown:
         enabled: bool
         remove_lines: false | string | list[string]
+        remove_blocks: false | string | list[string]
         remove_reference_sections: bool
         remove_links: false | string | list[string]
         remove_html_comments: bool
@@ -185,7 +186,9 @@ config:
             enabled: true
             ensure_h1: true
             remove_lines: "aus Wikipedia, der freien Enzyklopädie"
-            remove_wiki_loves_earth_banner: true
+            remove_blocks:
+                - "Wikipedia:Wiki_Loves_Earth_"
+                - "Wikidata:Events/Coordinate_Me_"
             remove_reference_sections: true
             remove_links: false
             remove_html_comments: true

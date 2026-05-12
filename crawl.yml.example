@@ -14,7 +14,7 @@ projects:
 
                 ensure_h1: false                        # Adds missing # Tag
                 remove_lines: false
-                remove_wiki_loves_earth_banner: false   # Removes "Wikipedia:Wiki_Loves_Earth_" and "Wikidata:Events/Coordinate_Me_" Links
+                remove_blocks: false
                 remove_reference_sections: false
                 remove_links: false
                 remove_html_comments: false
@@ -41,7 +41,7 @@ projects:
 
                 ensure_h1: false
                 remove_lines: false
-                remove_wiki_loves_earth_banner: false
+                remove_blocks: false
                 remove_reference_sections: false
                 remove_links: false
                 remove_html_comments: false

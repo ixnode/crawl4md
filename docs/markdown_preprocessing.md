@@ -21,7 +21,7 @@ preprocessing:
 
         ensure_h1: false
         remove_lines: false
-        remove_wiki_loves_earth_banner: false
+        remove_blocks: false
         remove_reference_sections: false
         remove_links: false
         remove_html_comments: false
@@ -74,9 +74,41 @@ remove_lines:
     - "From Wikipedia, the free encyclopedia"
 ```
 
-### `remove_wiki_loves_earth_banner`
+### `remove_blocks`
 
-Removes generated Wiki Loves Earth or Wikidata banner links from converted Wikipedia pages.
+Removes whole Markdown blocks whose content matches the configured regular expression.
+
+Blocks are separated by blank lines. If a block matches, the whole block is removed.
+
+The option accepts `false`, a string, or a list of strings:
+
+```yaml
+remove_blocks: false
+```
+
+Keeps all blocks unchanged.
+
+```yaml
+remove_blocks:
+    - "Wikipedia:Wiki_Loves_Earth_"
+    - "Wikidata:Events/Coordinate_Me_"
+```
+
+Removes generated Wiki Loves Earth or Wikidata banner blocks:
+
+```markdown
+[
+| Nimm teil am Wikidata-Wettbewerb |
+| --- | ](https://www.wikidata.org/wiki/Wikidata:Events/Coordinate_Me_2026)
+
+# Boeing 707
+```
+
+Becomes:
+
+```markdown
+# Boeing 707
+```
 
 ### `remove_reference_sections`
 
@@ -349,7 +381,9 @@ preprocessing:
         enabled: true
         ensure_h1: true
         remove_lines: "aus Wikipedia, der freien Enzyklopädie"
-        remove_wiki_loves_earth_banner: true
+        remove_blocks:
+            - "Wikipedia:Wiki_Loves_Earth_"
+            - "Wikidata:Events/Coordinate_Me_"
         remove_reference_sections: true
         remove_links:
             - "cite_note"

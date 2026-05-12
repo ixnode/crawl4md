@@ -6,11 +6,11 @@ from crawl4md.convert.preprocessing.rules.ensure_h1 import RuleEnsureH1
 from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormalizeLinebreak
 from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeTables
 from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
+from crawl4md.convert.preprocessing.rules.remove_blocks import RuleRemoveBlocks
 from crawl4md.convert.preprocessing.rules.remove_links import RuleRemoveLinks
 from crawl4md.convert.preprocessing.rules.remove_lines import RuleRemoveLines
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
 from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
-from crawl4md.convert.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
 
 
 class MarkdownPreprocessingTests(unittest.TestCase):
@@ -234,10 +234,16 @@ class RuleRemoveLinksWikipediaEditLinksTests(unittest.TestCase):
         self.assertEqual(cleaned, "## Geschichte\n\nText\n")
 
 
-class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):
+class RuleRemoveBlocksWikiLovesEarthBannerTests(unittest.TestCase):
     def test_removes_multiline_wikidata_banner_link(self) -> None:
-        rule = RuleRemoveWikiLovesEarthBanner(
-            MarkdownPreprocessingConfig(enabled=True, remove_wiki_loves_earth_banner=True)
+        rule = RuleRemoveBlocks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_blocks=[
+                    "Wikipedia:Wiki_Loves_Earth_",
+                    "Wikidata:Events/Coordinate_Me_",
+                ],
+            )
         )
         markdown = (
             "[\n"
@@ -250,6 +256,28 @@ class RuleRemoveWikiLovesEarthBannerTests(unittest.TestCase):
         cleaned = rule.apply(markdown, url="https://de.wikipedia.org/wiki/Boeing_707")
 
         self.assertEqual(cleaned, "# Boeing 707\n")
+
+    def test_removes_multiple_matching_blocks(self) -> None:
+        rule = RuleRemoveBlocks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_blocks=["promo-banner", "generated-sidebar"],
+            )
+        )
+        markdown = (
+            "Keep this\n"
+            "\n"
+            "[promo](https://example.test/promo-banner)\n"
+            "\n"
+            "generated-sidebar\n"
+            "details\n"
+            "\n"
+            "Keep that\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Keep this\nKeep that\n")
 
 
 class RuleRemoveLinksTests(unittest.TestCase):
