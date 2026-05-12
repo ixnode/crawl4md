@@ -111,7 +111,7 @@ Available project settings:
 - `crawl.parser`: `kreuzberg-dev` or `crawl4ai`
 - `crawl.parse_type`: `markdown`; `markdown-fit` is available with `crawl4ai`
 - `preprocessing.markdown.enabled`: enables Markdown cleanup
-- `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_reference_sections`, and `normalize_whitespace`
+- `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_sections`, and `normalize_whitespace`
 
 For the full configuration, see [`crawl.yml.example`](crawl.yml.example).
 For details about all Markdown preprocessing options, see [`docs/markdown_preprocessing.md`](docs/markdown_preprocessing.md).

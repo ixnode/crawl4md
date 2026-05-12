@@ -85,13 +85,12 @@ crawl.yml.example
         enabled: bool
         remove_lines: false | string | list[string]
         remove_blocks: false | string | list[string]
-        remove_reference_sections: bool
+        remove_sections: false | string | list[string]
         remove_links: false | string | list[string]
         remove_html_comments: bool
         normalize_tables: bool
         normalize_linebreak: bool
         normalize_whitespace: bool
-        reference_headings: list[str]
 
 ---
 
@@ -189,17 +188,16 @@ config:
             remove_blocks:
                 - "Wikipedia:Wiki_Loves_Earth_"
                 - "Wikidata:Events/Coordinate_Me_"
-            remove_reference_sections: true
+            remove_sections:
+                - Einzelnachweise
+                - Weblinks
+                - Literatur
+                - Quellen
             remove_links: false
             remove_html_comments: true
             normalize_tables: false
             normalize_linebreak: true
             normalize_whitespace: true
-            reference_headings:
-                - Einzelnachweise
-                - Weblinks
-                - Literatur
-                - Quellen
                 - References
                 - External links
                 - Bibliography
@@ -213,7 +211,7 @@ The outer `id`, `title`, and `description` are used for test output. The nested 
 - `data.md` is the exact expected output of `converter.convert(html=html, url=config.url)`.
 - For new baseline fixtures, generate `data.md` from the current converter once, then commit it as the expected deterministic output.
 - For isolated preprocessing tests, set `preprocessing.markdown.enabled: true`, set only the tested flag to `true`, and keep all other preprocessing flags `false`.
-- Keep `reference_headings` populated only when the test needs reference-section removal.
+- Keep `remove_sections` populated only when the test needs reference-section removal.
 
 ### Running Converter Tests
 

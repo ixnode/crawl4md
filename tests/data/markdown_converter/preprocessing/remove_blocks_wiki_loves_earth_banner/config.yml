@@ -14,10 +14,9 @@ config:
             remove_blocks:
                 - "Wikipedia:Wiki_Loves_Earth_"
                 - "Wikidata:Events/Coordinate_Me_"
-            remove_reference_sections: false
+            remove_sections: false
             remove_links: false
             remove_html_comments: false
             normalize_tables: false
             normalize_linebreak: false
             normalize_whitespace: false
-            reference_headings: []

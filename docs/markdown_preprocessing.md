@@ -22,7 +22,7 @@ preprocessing:
         ensure_h1: false
         remove_lines: false
         remove_blocks: false
-        remove_reference_sections: false
+        remove_sections: false
         remove_links: false
         remove_html_comments: false
         normalize_tables: false
@@ -110,14 +110,26 @@ Becomes:
 # Boeing 707
 ```
 
-### `remove_reference_sections`
+### `remove_sections`
 
-Removes reference sections and everything after the matching heading.
+Removes configured sections and everything after the matching heading.
 
-The headings are configured with `reference_headings`:
+The option accepts `false`, a string, or a list of strings:
 
 ```yaml
-reference_headings:
+remove_sections: false
+```
+
+Keeps all sections unchanged.
+
+```yaml
+remove_sections: "Einzelnachweise"
+```
+
+Or:
+
+```yaml
+remove_sections:
     - Einzelnachweise
     - Weblinks
     - Literatur
@@ -384,15 +396,7 @@ preprocessing:
         remove_blocks:
             - "Wikipedia:Wiki_Loves_Earth_"
             - "Wikidata:Events/Coordinate_Me_"
-        remove_reference_sections: true
-        remove_links:
-            - "cite_note"
-            - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
-        remove_html_comments: true
-        normalize_tables: true
-        normalize_linebreak: true
-        normalize_whitespace: true
-        reference_headings:
+        remove_sections:
             - Einzelnachweise
             - Weblinks
             - Literatur
@@ -400,4 +404,11 @@ preprocessing:
             - References
             - External links
             - Bibliography
+        remove_links:
+            - "cite_note"
+            - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
+        remove_html_comments: true
+        normalize_tables: true
+        normalize_linebreak: true
+        normalize_whitespace: true
 ```

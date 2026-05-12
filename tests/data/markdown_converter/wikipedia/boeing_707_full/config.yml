@@ -14,13 +14,12 @@ config:
             remove_blocks:
                 - "Wikipedia:Wiki_Loves_Earth_"
                 - "Wikidata:Events/Coordinate_Me_"
-            remove_reference_sections: true
             remove_links: "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
             remove_html_comments: true
             normalize_tables: false
             normalize_linebreak: true
             normalize_whitespace: true
-            reference_headings:
+            remove_sections:
                 - Einzelnachweise
                 - Weblinks
                 - Literatur

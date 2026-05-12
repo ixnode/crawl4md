@@ -12,12 +12,17 @@
 from .base.rule_base import RuleBase
 
 
-class RuleRemoveReferenceSections(RuleBase):
+class RuleRemoveSections(RuleBase):
     def __init__(self, config):
         super().__init__(config)
-        self.reference_headings = {
+        section_headings = (
+            [config.remove_sections]
+            if isinstance(config.remove_sections, str)
+            else config.remove_sections
+        )
+        self.section_headings = {
             self.normalize_heading(heading)
-            for heading in config.reference_headings
+            for heading in section_headings
             if self.normalize_heading(heading)
         }
 
@@ -28,7 +33,7 @@ class RuleRemoveReferenceSections(RuleBase):
         url: str | None = None,
         html: str | None = None,
     ) -> str:
-        if not self.reference_headings:
+        if not self.section_headings:
             return markdown
 
         lines = markdown.splitlines()
@@ -39,7 +44,7 @@ class RuleRemoveReferenceSections(RuleBase):
                 continue
 
             heading = self.normalize_heading(match.group(2))
-            if heading in self.reference_headings:
+            if heading in self.section_headings:
                 kept_lines = lines[:index]
                 suffix = "\n" if markdown.endswith("\n") and kept_lines else ""
                 return "\n".join(kept_lines).rstrip() + suffix

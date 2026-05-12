@@ -1,6 +1,6 @@
-id: "preprocessing_remove_reference_sections"
+id: "preprocessing_remove_sections"
 title: "Preprocessing Remove Reference Sections"
-description: "Removes a configured reference section and everything after it."
+description: "Removes a configured section and everything after it."
 config:
     crawl:
         parser: kreuzberg-dev
@@ -12,11 +12,10 @@ config:
             ensure_h1: false
             remove_lines: false
             remove_blocks: false
-            remove_reference_sections: true
             remove_links: false
             remove_html_comments: false
             normalize_tables: false
             normalize_linebreak: false
             normalize_whitespace: false
-            reference_headings:
+            remove_sections:
                 - References

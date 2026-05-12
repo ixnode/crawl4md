@@ -12,10 +12,9 @@ config:
             ensure_h1: false
             remove_lines: false
             remove_blocks: false
-            remove_reference_sections: false
+            remove_sections: false
             remove_links: false
             remove_html_comments: false
             normalize_tables: false
             normalize_linebreak: false
             normalize_whitespace: false
-            reference_headings: []

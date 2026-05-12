@@ -18,7 +18,7 @@ from .rules.remove_blocks import RuleRemoveBlocks
 from .rules.remove_links import RuleRemoveLinks
 from .rules.remove_lines import RuleRemoveLines
 from .rules.remove_html_comments import RuleRemoveHtmlComments
-from .rules.remove_reference_sections import RuleRemoveReferenceSections
+from .rules.remove_sections import RuleRemoveSections
 from crawl4md.config import MarkdownPreprocessingConfig
 
 
@@ -30,8 +30,8 @@ class MarkdownPreprocessing:
         if config.remove_html_comments:
             self.rules.append(RuleRemoveHtmlComments(config))
 
-        if config.remove_reference_sections:
-            self.rules.append(RuleRemoveReferenceSections(config))
+        if config.remove_sections:
+            self.rules.append(RuleRemoveSections(config))
 
         if config.remove_blocks:
             self.rules.append(RuleRemoveBlocks(config))

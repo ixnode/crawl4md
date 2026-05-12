@@ -10,15 +10,14 @@ from crawl4md.convert.preprocessing.rules.remove_blocks import RuleRemoveBlocks
 from crawl4md.convert.preprocessing.rules.remove_links import RuleRemoveLinks
 from crawl4md.convert.preprocessing.rules.remove_lines import RuleRemoveLines
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
-from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
+from crawl4md.convert.preprocessing.rules.remove_sections import RuleRemoveSections
 
 
 class MarkdownPreprocessingTests(unittest.TestCase):
     def test_returns_markdown_unchanged_when_disabled(self) -> None:
         config = MarkdownPreprocessingConfig(
             enabled=False,
-            remove_reference_sections=True,
-            reference_headings=["Einzelnachweise"],
+            remove_sections=["Einzelnachweise"],
         )
         preprocessing = MarkdownPreprocessing(config)
         markdown = "## Geschichte\n\nText\n\n## Einzelnachweise\n\n1. Quelle\n"
@@ -32,9 +31,8 @@ class MarkdownPreprocessingTests(unittest.TestCase):
             enabled=True,
             remove_links="anchor:#bodyContent",
             remove_lines="aus Wikipedia, der freien Enzyklopädie",
-            remove_reference_sections=True,
             ensure_h1=True,
-            reference_headings=["Einzelnachweise"],
+            remove_sections=["Einzelnachweise"],
         )
         preprocessing = MarkdownPreprocessing(config)
         markdown = (
@@ -54,14 +52,13 @@ class MarkdownPreprocessingTests(unittest.TestCase):
         self.assertEqual(cleaned, "# Boeing 707\n\nText\n")
 
 
-class RuleRemoveReferenceSectionsTests(unittest.TestCase):
+class RuleRemoveSectionsTests(unittest.TestCase):
     def test_removes_reference_section_from_matching_heading(self) -> None:
         config = MarkdownPreprocessingConfig(
             enabled=True,
-            remove_reference_sections=True,
-            reference_headings=["Einzelnachweise", "Weblinks"],
+            remove_sections=["Einzelnachweise", "Weblinks"],
         )
-        rule = RuleRemoveReferenceSections(config)
+        rule = RuleRemoveSections(config)
         markdown = "## Geschichte\n\nText\n\n## Einzelnachweise\n\n1. Quelle A\n2. Quelle B\n"
 
         cleaned = rule.apply(markdown)
@@ -71,10 +68,9 @@ class RuleRemoveReferenceSectionsTests(unittest.TestCase):
     def test_supports_heading_levels_numbering_and_anchor_suffixes(self) -> None:
         config = MarkdownPreprocessingConfig(
             enabled=True,
-            remove_reference_sections=True,
-            reference_headings=["Weblinks"],
+            remove_sections=["Weblinks"],
         )
-        rule = RuleRemoveReferenceSections(config)
+        rule = RuleRemoveSections(config)
         markdown = (
             "## Geschichte\n\n"
             "Text mit **Formatierung** und [Link](https://example.com).\n\n"
@@ -89,13 +85,12 @@ class RuleRemoveReferenceSectionsTests(unittest.TestCase):
             "## Geschichte\n\nText mit **Formatierung** und [Link](https://example.com).\n",
         )
 
-    def test_matches_reference_headings_case_insensitively(self) -> None:
+    def test_matches_remove_sections_case_insensitively(self) -> None:
         config = MarkdownPreprocessingConfig(
             enabled=True,
-            remove_reference_sections=True,
-            reference_headings=["external links"],
+            remove_sections=["external links"],
         )
-        rule = RuleRemoveReferenceSections(config)
+        rule = RuleRemoveSections(config)
         markdown = "# Title\n\nContent\n\n#### External Links\n\n- Link\n"
 
         cleaned = rule.apply(markdown)
