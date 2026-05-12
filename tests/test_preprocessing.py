@@ -8,7 +8,6 @@ from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeT
 from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
 from crawl4md.convert.preprocessing.rules.remove_links import RuleRemoveLinks
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
-from crawl4md.convert.preprocessing.rules.remove_jump_to_content import RuleRemoveJumpToContent
 from crawl4md.convert.preprocessing.rules.remove_reference_sections import RuleRemoveReferenceSections
 from crawl4md.convert.preprocessing.rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
 from crawl4md.convert.preprocessing.rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
@@ -31,7 +30,7 @@ class MarkdownPreprocessingTests(unittest.TestCase):
     def test_runs_multiple_enabled_rules(self) -> None:
         config = MarkdownPreprocessingConfig(
             enabled=True,
-            remove_jump_to_content=True,
+            remove_links="anchor:#bodyContent",
             remove_wikipedia_subtitle=True,
             remove_reference_sections=True,
             ensure_h1=True,
@@ -123,10 +122,10 @@ class RuleEnsureH1Tests(unittest.TestCase):
         self.assertEqual(cleaned, "# Main Title\n\n## Section\n\nContent\n")
 
 
-class RuleRemoveJumpToContentTests(unittest.TestCase):
+class RuleRemoveLinksJumpToContentTests(unittest.TestCase):
     def test_removes_standalone_skip_link_line(self) -> None:
-        rule = RuleRemoveJumpToContent(
-            MarkdownPreprocessingConfig(enabled=True, remove_jump_to_content=True)
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(enabled=True, remove_links="anchor:#bodyContent")
         )
         markdown = (
             "[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)\n"
@@ -273,6 +272,35 @@ class RuleRemoveLinksTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "Text [keep](#other-link)\n")
+
+    def test_removes_links_matching_anchor_prefix_target_pattern(self) -> None:
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_links=r"anchor:#custom-link",
+            )
+        )
+        markdown = "Text [custom](#custom-link) [keep](#other-link)\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text [keep](#other-link)\n")
+
+    def test_removes_links_matching_text_prefix_pattern(self) -> None:
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_links=r"text:Zum Inhalt springen",
+            )
+        )
+        markdown = (
+            "Text [Zum Inhalt springen](#bodyContent) "
+            "[keep](#bodyContent)\n"
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text [keep](#bodyContent)\n")
 
     def test_removes_links_matching_multiple_target_patterns(self) -> None:
         rule = RuleRemoveLinks(

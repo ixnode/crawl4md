@@ -1,6 +1,6 @@
-id: "preprocessing_remove_jump_to_content"
-title: "Preprocessing Remove Jump To Content"
-description: "Removes a same-page jump-to-content link from the converted Markdown."
+id: "preprocessing_remove_links_jump_to_content"
+title: "Preprocessing Remove Links Jump To Content"
+description: "Removes a same-page jump-to-content link through remove_links."
 config:
     crawl:
         parser: kreuzberg-dev
@@ -10,11 +10,10 @@ config:
         markdown:
             enabled: true
             ensure_h1: false
-            remove_jump_to_content: true
             remove_wikipedia_subtitle: false
             remove_wiki_loves_earth_banner: false
             remove_reference_sections: false
-            remove_links: false
+            remove_links: "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
             remove_html_comments: false
             normalize_tables: false
             normalize_linebreak: false

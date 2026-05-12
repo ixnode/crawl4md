@@ -21,19 +21,28 @@ class RuleRemoveLinks(RuleBase):
         if not self.config.remove_links:
             return None
 
-        link_target_patterns = (
+        link_patterns = (
             [self.config.remove_links]
             if isinstance(self.config.remove_links, str)
             else self.config.remove_links
         )
-        if not link_target_patterns:
+        if not link_patterns:
             return None
 
-        target_pattern = "|".join(f"(?:{pattern})" for pattern in link_target_patterns)
+        link_match_patterns: list[str] = []
+        for pattern in link_patterns:
+            match_type, match_pattern = self._split_match_pattern(pattern)
+            if match_type == "text":
+                link_match_patterns.append(
+                    rf"\s*!?\[[^\n]*(?:{match_pattern})[^\n]*?\]\([^)\n]*\)"
+                )
+                continue
 
-        return re.compile(
-            rf"\s*!?\[[^\n]*?\]\([^)\n]*(?:{target_pattern})[^)\n]*\)"
-        )
+            link_match_patterns.append(
+                rf"\s*!?\[[^\n]*?\]\([^)\n]*(?:{match_pattern})[^)\n]*\)"
+            )
+
+        return re.compile("|".join(f"(?:{pattern})" for pattern in link_match_patterns))
 
     def apply(
         self,
@@ -67,3 +76,12 @@ class RuleRemoveLinks(RuleBase):
 
     def _is_empty_link_line(self, line: str) -> bool:
         return not line.strip() or all(character in "[]| " for character in line)
+
+    def _split_match_pattern(self, pattern: str) -> tuple[str, str]:
+        if pattern.startswith("text:"):
+            return "text", pattern.removeprefix("text:")
+
+        if pattern.startswith("anchor:"):
+            return "anchor", pattern.removeprefix("anchor:")
+
+        return "anchor", pattern

@@ -20,7 +20,6 @@ preprocessing:
         enabled: false
 
         ensure_h1: false
-        remove_jump_to_content: false
         remove_wikipedia_subtitle: false
         remove_wiki_loves_earth_banner: false
         remove_reference_sections: false
@@ -36,14 +35,6 @@ preprocessing:
 Adds a missing top-level `#` heading when the generated Markdown has no H1.
 
 The rule prefers the first HTML `<h1>`, then falls back to the HTML `<title>`, then to the URL path.
-
-### `remove_jump_to_content`
-
-Removes same-page skip links such as:
-
-```markdown
-[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)
-```
 
 ### `remove_wikipedia_subtitle`
 
@@ -78,7 +69,7 @@ Heading matching is case-insensitive and supports numbered headings and anchor s
 
 ### `remove_links`
 
-Removes Markdown links whose target matches the configured regular expression.
+Removes Markdown links whose target or text matches the configured regular expression.
 
 The link target is the value inside the parentheses of a Markdown link:
 
@@ -86,9 +77,9 @@ The link target is the value inside the parentheses of a Markdown link:
 [link text](link-target)
 ```
 
-For this link, `remove_links` checks only `link-target`, not `link text`.
+By default, `remove_links` checks only `link-target`, not `link text`.
 
-The configured value does not have to match at the beginning of the target. It matches anywhere inside the target because the rule wraps the pattern with `.*`-like matching around it.
+The configured value does not have to match at the beginning. It matches anywhere inside the checked target or text because the rule wraps the pattern with `.*`-like matching around it.
 
 The option accepts `false`, a string, or a list of strings:
 
@@ -116,7 +107,51 @@ Text
 
 The leading space before a removed link is removed too.
 
-The configured string is used as a regular expression against the Markdown link target. This makes it possible to remove other link groups without adding a new preprocessing option.
+The configured string is used as a regular expression. This makes it possible to remove other link groups without adding a new preprocessing option.
+
+Pattern prefixes:
+
+```yaml
+remove_links: "#content"
+remove_links: "anchor:#content"
+remove_links: "text:Zum Inhalt springen"
+```
+
+`"#content"` and `"anchor:#content"` both check the link target. `"text:Zum Inhalt springen"` checks the visible link text.
+
+Remove skip-to-content links by target:
+
+```yaml
+remove_links: "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
+```
+
+```markdown
+[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)
+
+# Boeing 707
+```
+
+Becomes:
+
+```markdown
+# Boeing 707
+```
+
+Remove skip-to-content links by text:
+
+```yaml
+remove_links: "text:Zum Inhalt springen"
+```
+
+```markdown
+[Zum Inhalt springen](#bodyContent) [keep](#bodyContent)
+```
+
+Becomes:
+
+```markdown
+[keep](#bodyContent)
+```
 
 Remove links to a specific anchor prefix:
 
@@ -283,11 +318,12 @@ preprocessing:
     markdown:
         enabled: true
         ensure_h1: true
-        remove_jump_to_content: true
         remove_wikipedia_subtitle: true
         remove_wiki_loves_earth_banner: true
         remove_reference_sections: true
-        remove_links: "cite_note"
+        remove_links:
+            - "cite_note"
+            - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
         remove_html_comments: true
         normalize_tables: true
         normalize_linebreak: true

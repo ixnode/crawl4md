@@ -16,7 +16,6 @@ from .rules.normalize_tables import RuleNormalizeTables
 from .rules.normalize_whitespace import RuleNormalizeWhitespace
 from .rules.remove_links import RuleRemoveLinks
 from .rules.remove_html_comments import RuleRemoveHtmlComments
-from .rules.remove_jump_to_content import RuleRemoveJumpToContent
 from .rules.remove_reference_sections import RuleRemoveReferenceSections
 from .rules.remove_wiki_loves_earth_banner import RuleRemoveWikiLovesEarthBanner
 from .rules.remove_wikipedia_subtitle import RuleRemoveWikipediaSubtitle
@@ -27,9 +26,6 @@ class MarkdownPreprocessing:
     def __init__(self, config: MarkdownPreprocessingConfig):
         self.config = config
         self.rules: list[RuleBase] = []
-
-        if config.remove_jump_to_content:
-            self.rules.append(RuleRemoveJumpToContent(config))
 
         if config.remove_html_comments:
             self.rules.append(RuleRemoveHtmlComments(config))

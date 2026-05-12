@@ -183,7 +183,6 @@ config:
         markdown:
             enabled: true
             ensure_h1: true
-            remove_jump_to_content: true
             remove_wikipedia_subtitle: true
             remove_wiki_loves_earth_banner: true
             remove_reference_sections: true
