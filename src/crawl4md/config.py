@@ -9,56 +9,16 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-import yaml
 from copy import deepcopy
+from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
-from typing import Literal
+import yaml
+
+from .profiles import PREPROCESSING_PROFILES
 
 
 ParseType = Literal["markdown", "markdown-fit"]
-ProfileName = Literal["wikipedia"]
-
-
-PREPROCESSING_PROFILES = {
-    "wikipedia": {
-        "preprocessing": {
-            "markdown": {
-                "enabled": True,
-                "ensure_h1": True,
-                "remove_lines": [
-                    "[Aa]us Wikipedia, der freien Enzyklopädie",
-                    "[Ff]rom Wikipedia, the free encyclopedia",
-                ],
-                "remove_blocks": [
-                    "Wikipedia:Wiki_Loves_Earth_",
-                    "Wikidata:Events/Coordinate_Me_",
-                ],
-                "remove_sections": [
-                    "Einzelnachweise",
-                    "Weblinks",
-                    "Literatur",
-                    "Quellen",
-                    "References",
-                    "External links",
-                    "Bibliography",
-                ],
-                "remove_links": [
-                    "cite_note",
-                    "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)",
-                    "#[Vv]orlage_[Ll]esenswert",
-                    "#[Vv]orlage_[Ee]xzellent",
-                    "veaction=edit[^)]*section=",
-                    "action=edit[^)]*section=",
-                ],
-                "remove_html_comments": True,
-                "normalize_tables": True,
-                "normalize_linebreak": True,
-                "normalize_whitespace": True,
-            }
-        }
-    }
-}
 
 class CrawlConfig(BaseModel):
     parser: str = "kreuzberg-dev"
@@ -98,7 +58,7 @@ class PreprocessingConfig(BaseModel):
     )
 
 class ProjectConfig(BaseModel):
-    profile: ProfileName | None = None
+    profile: str | None = None
     type: Literal["sitemap", "pages"]
     sources: list[str]
 
