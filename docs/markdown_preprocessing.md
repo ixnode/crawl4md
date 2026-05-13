@@ -36,6 +36,18 @@ Adds a missing top-level `#` heading when the generated Markdown has no H1.
 
 The rule prefers the first HTML `<h1>`, then falls back to the HTML `<title>`, then to the URL path.
 
+> ### Removal Scope
+> 
+> Use the removal option that matches the Markdown level you want to remove:
+> 
+> | Option | Removes | Best for |
+> | --- | --- | --- |
+> | `remove_lines` | Matching text inside individual lines; empty result lines are removed | Short boilerplate text, labels, subtitles, generated line fragments |
+> | `remove_blocks` | Whole blocks separated by blank lines | Banners, promo boxes, generated multi-line link or table blocks |
+> | `remove_sections` | A heading and everything after it | References, appendices, web links, literature sections |
+> 
+> Prefer the narrowest option that fully covers the unwanted content. Use `remove_lines` for small text fragments, `remove_blocks` when a whole paragraph-like block should disappear, and `remove_sections` only when the rest of the document after a heading should be removed.
+
 ### `remove_lines`
 
 Removes configured text or regular-expression matches from Markdown lines.
