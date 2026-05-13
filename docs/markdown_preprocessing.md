@@ -61,10 +61,12 @@ remove_lines: false
 Keeps all lines unchanged.
 
 ```yaml
-remove_lines: "aus Wikipedia, der freien Enzyklopädie"
+remove_lines:
+    - "[Aa]us Wikipedia, der freien Enzyklopädie"
+    - "[Ff]rom Wikipedia, the free encyclopedia"
 ```
 
-Removes the German Wikipedia subtitle text:
+Removes German and English Wikipedia subtitle text:
 
 ```markdown
 Boeing 707 aus Wikipedia, der freien Enzyklopädie
@@ -82,8 +84,8 @@ Multiple patterns can be configured:
 
 ```yaml
 remove_lines:
-    - "aus Wikipedia, der freien Enzyklopädie"
-    - "From Wikipedia, the free encyclopedia"
+    - "[Aa]us Wikipedia, der freien Enzyklopädie"
+    - "[Ff]rom Wikipedia, the free encyclopedia"
 ```
 
 ### `remove_blocks`
@@ -404,7 +406,9 @@ preprocessing:
     markdown:
         enabled: true
         ensure_h1: true
-        remove_lines: "aus Wikipedia, der freien Enzyklopädie"
+        remove_lines:
+                - "[Aa]us Wikipedia, der freien Enzyklopädie"
+                - "[Ff]rom Wikipedia, the free encyclopedia"
         remove_blocks:
             - "Wikipedia:Wiki_Loves_Earth_"
             - "Wikidata:Events/Coordinate_Me_"

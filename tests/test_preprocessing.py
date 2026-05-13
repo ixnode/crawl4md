@@ -30,7 +30,10 @@ class MarkdownPreprocessingTests(unittest.TestCase):
         config = MarkdownPreprocessingConfig(
             enabled=True,
             remove_links="anchor:#bodyContent",
-            remove_lines="aus Wikipedia, der freien Enzyklopädie",
+            remove_lines=[
+                "[Aa]us Wikipedia, der freien Enzyklopädie",
+                "[Ff]rom Wikipedia, the free encyclopedia",
+            ],
             ensure_h1=True,
             remove_sections=["Einzelnachweise"],
         )
@@ -160,14 +163,20 @@ class RuleRemoveLinesWikipediaSubtitleTests(unittest.TestCase):
         rule = RuleRemoveLines(
             MarkdownPreprocessingConfig(
                 enabled=True,
-                remove_lines="aus Wikipedia, der freien Enzyklopädie",
+                remove_lines=[
+                    "[Aa]us Wikipedia, der freien Enzyklopädie",
+                    "[Ff]rom Wikipedia, the free encyclopedia",
+                ],
             )
         )
-        markdown = "Boeing 707 aus Wikipedia, der freien Enzyklopädie\n"
+        markdown = (
+            "Boeing 707 aus Wikipedia, der freien Enzyklopädie\n"
+            "Boeing 707 From Wikipedia, the free encyclopedia\n"
+        )
 
         cleaned = rule.apply(markdown)
 
-        self.assertEqual(cleaned, "Boeing 707\n")
+        self.assertEqual(cleaned, "Boeing 707\nBoeing 707\n")
 
     def test_removes_multiple_line_patterns(self) -> None:
         rule = RuleRemoveLines(
