@@ -108,6 +108,7 @@ Available project settings:
 
 - `type`: `pages` or `sitemap`
 - `sources`: list of page URLs or sitemap URLs
+- `profile`: optional preprocessing defaults such as `wikipedia`
 - `crawl.parser`: `kreuzberg-dev` or `crawl4ai`
 - `crawl.parse_type`: `markdown`; `markdown-fit` is available with `crawl4ai`
 - `preprocessing.markdown.enabled`: enables Markdown cleanup

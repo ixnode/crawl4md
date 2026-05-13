@@ -20,7 +20,7 @@ import warnings
 import yaml
 from pydantic import BaseModel, Field
 
-from crawl4md.config import CrawlConfig, PreprocessingConfig
+from crawl4md.config import CrawlConfig, PreprocessingConfig, apply_profile_defaults
 from crawl4md.convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
 from crawl4md.convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
 
@@ -29,6 +29,7 @@ SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
 
 
 class MarkdownConverterSessionConfig(BaseModel):
+    profile: str | None = None
     crawl: CrawlConfig = Field(default_factory=CrawlConfig)
     url: str | None = None
     preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
@@ -89,7 +90,9 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(markdown, expected_markdown)
 
     def _load_config(self, path: Path) -> MarkdownConverterSession:
-        return MarkdownConverterSession(**yaml.safe_load(path.read_text()))
+        data = yaml.safe_load(path.read_text())
+        data["config"] = apply_profile_defaults(data["config"])
+        return MarkdownConverterSession(**data)
 
     async def test_crawl4ai_converter_supports_content_selector(self) -> None:
         config = MarkdownConverterSessionConfig(

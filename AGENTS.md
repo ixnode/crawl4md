@@ -75,6 +75,7 @@ crawl.yml.example
 
 - type: pages | sitemap
 - sources: list[str]
+- profile: optional profile name, currently `wikipedia`
 
 - crawl:
     parser: kreuzberg-dev | crawl4ai
@@ -176,33 +177,15 @@ id: "wikipedia_boeing_707"
 title: "Wikipedia Boeing 707"
 description: "Converts the German Wikipedia Boeing 707 page with kreuzberg-dev and all preprocessing enabled."
 config:
+    profile: wikipedia
     crawl:
         parser: kreuzberg-dev
         parse_type: markdown
     url: https://de.wikipedia.org/wiki/Boeing_707
     preprocessing:
         markdown:
-            enabled: true
-            ensure_h1: true
-            remove_lines:
-                - "[Aa]us Wikipedia, der freien Enzyklopädie"
-                - "[Ff]rom Wikipedia, the free encyclopedia"
-            remove_blocks:
-                - "Wikipedia:Wiki_Loves_Earth_"
-                - "Wikidata:Events/Coordinate_Me_"
-            remove_sections:
-                - Einzelnachweise
-                - Weblinks
-                - Literatur
-                - Quellen
-            remove_links: false
-            remove_html_comments: true
+            # Optional overrides for profile defaults.
             normalize_tables: false
-            normalize_linebreak: true
-            normalize_whitespace: true
-                - References
-                - External links
-                - Bibliography
 ```
 
 The outer `id`, `title`, and `description` are used for test output. The nested `config` object is the actual converter configuration.
@@ -213,7 +196,8 @@ The outer `id`, `title`, and `description` are used for test output. The nested 
 - `data.md` is the exact expected output of `converter.convert(html=html, url=config.url)`.
 - For new baseline fixtures, generate `data.md` from the current converter once, then commit it as the expected deterministic output.
 - For isolated preprocessing tests, set `preprocessing.markdown.enabled: true`, set only the tested flag to `true`, and keep all other preprocessing flags `false`.
-- Keep `remove_sections` populated only when the test needs reference-section removal.
+- Use `profile: wikipedia` for Wikipedia fixtures unless the test intentionally covers raw option wiring.
+- Project-level `preprocessing.markdown` values override profile defaults.
 
 ### Running Converter Tests
 

@@ -1,6 +1,6 @@
 import unittest
 
-from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.config import AppConfig, MarkdownPreprocessingConfig, apply_profiles
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
 from crawl4md.convert.preprocessing.rules.ensure_h1 import RuleEnsureH1
 from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormalizeLinebreak
@@ -14,6 +14,70 @@ from crawl4md.convert.preprocessing.rules.remove_sections import RuleRemoveSecti
 
 
 class MarkdownPreprocessingTests(unittest.TestCase):
+    def test_applies_wikipedia_profile_defaults(self) -> None:
+        config = AppConfig(
+            **apply_profiles(
+                {
+                    "projects": {
+                        "planes": {
+                            "profile": "wikipedia",
+                            "type": "pages",
+                            "sources": ["https://de.wikipedia.org/wiki/Boeing_707"],
+                        }
+                    }
+                }
+            )
+        )
+
+        markdown = config.projects["planes"].preprocessing.markdown
+
+        self.assertTrue(markdown.enabled)
+        self.assertTrue(markdown.ensure_h1)
+        self.assertIn("[Ff]rom Wikipedia, the free encyclopedia", markdown.remove_lines)
+        self.assertIn("Einzelnachweise", markdown.remove_sections)
+        self.assertTrue(markdown.normalize_whitespace)
+
+    def test_project_preprocessing_overrides_profile_defaults(self) -> None:
+        config = AppConfig(
+            **apply_profiles(
+                {
+                    "projects": {
+                        "planes": {
+                            "profile": "wikipedia",
+                            "type": "pages",
+                            "sources": ["https://de.wikipedia.org/wiki/Boeing_707"],
+                            "preprocessing": {
+                                "markdown": {
+                                    "normalize_tables": False,
+                                    "remove_sections": ["Einzelnachweise"],
+                                }
+                            },
+                        }
+                    }
+                }
+            )
+        )
+
+        markdown = config.projects["planes"].preprocessing.markdown
+
+        self.assertFalse(markdown.normalize_tables)
+        self.assertEqual(markdown.remove_sections, ["Einzelnachweise"])
+        self.assertIn("cite_note", markdown.remove_links)
+
+    def test_unknown_profile_raises_error(self) -> None:
+        with self.assertRaisesRegex(ValueError, "Unknown project profile: doesnotexist"):
+            apply_profiles(
+                {
+                    "projects": {
+                        "broken": {
+                            "profile": "doesnotexist",
+                            "type": "pages",
+                            "sources": ["https://example.test"],
+                        }
+                    }
+                }
+            )
+
     def test_returns_markdown_unchanged_when_disabled(self) -> None:
         config = MarkdownPreprocessingConfig(
             enabled=False,

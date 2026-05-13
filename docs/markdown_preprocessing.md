@@ -399,7 +399,24 @@ Markdown link targets are protected so URLs such as `Airport_(Film)` are not cha
 
 ## Recommended Wikipedia Setup
 
-For German Wikipedia pages, a typical cleanup setup is:
+For Wikipedia pages, use the built-in project profile:
+
+```yaml
+projects:
+    planes:
+        profile: wikipedia
+        type: pages
+        sources:
+            - https://de.wikipedia.org/wiki/Boeing_707
+        crawl:
+            parser: kreuzberg-dev
+            parse_type: markdown
+            content_selector: ".mw-parser-output"
+```
+
+The profile provides defaults for `preprocessing.markdown`. Project-level `preprocessing` values override profile defaults, so you can adjust individual options without copying the whole profile.
+
+The `wikipedia` profile currently applies these Markdown preprocessing defaults:
 
 ```yaml
 preprocessing:
@@ -407,8 +424,8 @@ preprocessing:
         enabled: true
         ensure_h1: true
         remove_lines:
-                - "[Aa]us Wikipedia, der freien Enzyklopädie"
-                - "[Ff]rom Wikipedia, the free encyclopedia"
+            - "[Aa]us Wikipedia, der freien Enzyklopädie"
+            - "[Ff]rom Wikipedia, the free encyclopedia"
         remove_blocks:
             - "Wikipedia:Wiki_Loves_Earth_"
             - "Wikidata:Events/Coordinate_Me_"
@@ -423,6 +440,10 @@ preprocessing:
         remove_links:
             - "cite_note"
             - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
+            - "#[Vv]orlage_[Ll]esenswert"
+            - "#[Vv]orlage_[Ee]xzellent"
+            - "veaction=edit[^)]*section="
+            - "action=edit[^)]*section="
         remove_html_comments: true
         normalize_tables: true
         normalize_linebreak: true
