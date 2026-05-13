@@ -7,6 +7,7 @@ from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormali
 from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeTables
 from crawl4md.convert.preprocessing.rules.normalize_whitespace import RuleNormalizeWhitespace
 from crawl4md.convert.preprocessing.rules.remove_blocks import RuleRemoveBlocks
+from crawl4md.convert.preprocessing.rules.remove_images import RuleRemoveImages
 from crawl4md.convert.preprocessing.rules.remove_links import RuleRemoveLinks
 from crawl4md.convert.preprocessing.rules.remove_lines import RuleRemoveLines
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
@@ -35,6 +36,7 @@ class MarkdownPreprocessingTests(unittest.TestCase):
         self.assertTrue(markdown.ensure_h1)
         self.assertIn("[Ff]rom Wikipedia, the free encyclopedia", markdown.remove_lines)
         self.assertIn("Einzelnachweise", markdown.remove_sections)
+        self.assertTrue(markdown.remove_images)
         self.assertTrue(markdown.normalize_whitespace)
 
     def test_project_preprocessing_overrides_profile_defaults(self) -> None:
@@ -429,6 +431,58 @@ class RuleRemoveLinksTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "Text [keep](#other-link)\n")
+
+
+class RuleRemoveImagesTests(unittest.TestCase):
+    def test_removes_markdown_image(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = "![](image.jpg)\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "\n")
+
+    def test_removes_linked_markdown_image(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = "[![](image.jpg)](file.jpg)\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "\n")
+
+    def test_keeps_regular_markdown_links(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = "Text [keep](file.jpg) ![](image.jpg) after\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text [keep](file.jpg)  after\n")
+
+    def test_keeps_link_text_when_link_contains_image_and_text(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = "Text [![icon](icon.jpg) keep](file.jpg)\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Text [ keep](file.jpg)\n")
+
+    def test_removes_linked_markdown_images_with_multiple_images(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = "[![](one.jpg) ![Two](two.jpg)](file.jpg)\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "\n")
 
 
 class RuleNormalizeLinebreakTests(unittest.TestCase):

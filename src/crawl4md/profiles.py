@@ -40,6 +40,7 @@ PREPROCESSING_PROFILES = {
                     "veaction=edit[^)]*section=",
                     "action=edit[^)]*section=",
                 ],
+                "remove_images": True,
                 "remove_html_comments": True,
                 "normalize_tables": True,
                 "normalize_linebreak": True,

@@ -45,6 +45,7 @@ class MarkdownPreprocessingConfig(BaseModel):
     ensure_h1: bool = False
     remove_sections: Literal[False] | str | list[str] = False
     remove_links: Literal[False] | str | list[str] = False
+    remove_images: bool = False
     remove_lines: Literal[False] | str | list[str] = False
     remove_blocks: Literal[False] | str | list[str] = False
     remove_html_comments: bool = False

@@ -22,8 +22,6 @@ Mitmachen
 - [Letzte Änderungen](/wiki/Spezial:Letzte_%C3%84nderungen "Liste der letzten Änderungen in Wikipedia [r]")
 - [Kontakt](/wiki/Wikipedia:Kontakt "Kontaktmöglichkeiten")
 
-[![](/static/images/icons/wikipedia.png) ![Wikipedia](/static/images/mobile/copyright/wikipedia-wordmark-en.svg) ![Die freie Enzyklopädie](/static/images/mobile/copyright/wikipedia-tagline-de.svg)](/wiki/Wikipedia:Hauptseite)
-
 [Suche](/wiki/Spezial:Suche "Durchsuche die Wikipedia [f]")
 
 Suchen
@@ -207,14 +205,12 @@ In die Seitenleiste verschieben
 
 Verbergen
 
-[![Dies ist ein als lesenswert ausgezeichneter Artikel.](//upload.wikimedia.org/wikipedia/commons/thumb/4/43/Qsicon_lesenswert.svg/20px-Qsicon_lesenswert.svg.png)](#Vorlage_Lesenswert "Dies ist ein als lesenswert ausgezeichneter Artikel.")
-
 | Boeing 707 | |
 | --- | --- |
-| [![Eine Boeing 707 der Air India](//upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Boeing_707_Air_India_Basle_-_1976.jpg/330px-Boeing_707_Air_India_Basle_-_1976.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707_Air_India_Basle_-_1976.jpg "Eine Boeing 707 der Air India") *Eine Boeing 707 der [Air India](//de.wikipedia.org/wiki/Air_India "Air India")* | |
+|  *Eine Boeing 707 der [Air India](//de.wikipedia.org/wiki/Air_India "Air India")* | |
 | Typ | [Vierstrahliges](//de.wikipedia.org/wiki/Vierstrahliges_Flugzeug "Vierstrahliges Flugzeug") [Schmalrumpfflugzeug](//de.wikipedia.org/wiki/Schmalrumpfflugzeug "Schmalrumpfflugzeug") |
 | | |
-| Entwurfsland | Vereinigte Staaten 48 [![](//upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_the_United_States_%281912-1959%29.svg/20px-Flag_of_the_United_States_%281912-1959%29.svg.png)](//de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten") [Vereinigte Staaten](//de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten") |
+| Entwurfsland | Vereinigte Staaten 48 [Vereinigte Staaten](//de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten") |
 | | |
 | Hersteller | [Boeing Airplane Company](//de.wikipedia.org/wiki/Boeing "Boeing") |
 | | |
@@ -236,8 +232,6 @@ Die **Boeing 707** ist ein [vierstrahliger](//de.wikipedia.org/wiki/Vierstrahlig
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=2 "Abschnitt bearbeiten: Vorgeschichte") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=2 "Quellcode des Abschnitts bearbeiten: Vorgeschichte")]
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/e/eb/C-97_stratofreighter_041116-F-9999R-002.jpg/250px-C-97_stratofreighter_041116-F-9999R-002.jpg)](//de.wikipedia.org/wiki/Datei:C-97_stratofreighter_041116-F-9999R-002.jpg)
-
 *[Boeing 367](//de.wikipedia.org/wiki/Boeing_C-97 "Boeing C-97") (C-97)*
 
 Seit dem Jungfernflug des ersten strahlgetriebenen Flugzeugs aus den Vereinigten Staaten von Amerika, der [Bell XP-59](//de.wikipedia.org/wiki/Bell_P-59 "Bell P-59"), konstruierten zahlreiche andere Flugzeughersteller des Landes Maschinen, die mit der neuen Antriebstechnik ausgestattet waren. Während jedoch in Großbritannien mit der [De Havilland Comet](//de.wikipedia.org/wiki/De_Havilland_DH.106_Comet "De Havilland DH.106 Comet") und in Kanada mit dem Prototyp der [Avro Canada C-102](//de.wikipedia.org/wiki/Avro_Canada_C-102 "Avro Canada C-102") bereits erste Passagierflugzeuge mit Strahltriebwerken ausgerüstet wurden, folgten die Vereinigten Staaten von Amerika diesem Trend zunächst nicht. Gründe hierfür waren mangelnde Erfahrungen, die geringe Lebensdauer der Triebwerke, der hohe Wartungsaufwand und der exzessive Kerosinverbrauch. Ebenfalls problematisch war das Fehlen der für solche Flugzeuge notwendigen langen und gut ausgebauten Start- und Landebahnen. Daher konzentrierte sich Boeing im Bereich der [Passagierluftfahrt](//de.wikipedia.org/wiki/Passagierluftfahrt "Passagierluftfahrt") zunächst auf die Weiterentwicklung bestehender Flugzeuge, so entstand etwa das Langstrecken-Passagierflugzeug [Boeing 377](//de.wikipedia.org/wiki/Boeing_377 "Boeing 377"). Für den militärischen Sektor entwickelte Boeing bereits strahlgetriebene Typen, beispielsweise die [Boeing B-47](//de.wikipedia.org/wiki/Boeing_B-47 "Boeing B-47") oder die [Boeing B-52](//de.wikipedia.org/wiki/Boeing_B-52 "Boeing B-52"), und sammelte hier Erfahrungen. 1949 begann Boeing mit Arbeiten an der [Boeing 367](//de.wikipedia.org/wiki/Boeing_367 "Boeing 367") (C-97). Die Planung mit dem Namen *Boeing 367-40* sah vor, das Flugzeug mit Strahltriebwerken auszustatten und es als [Tankflugzeug](//de.wikipedia.org/wiki/Luftbetankung "Luftbetankung"), [Transportflugzeug](//de.wikipedia.org/wiki/Transportflugzeug "Transportflugzeug") und [Passagierflugzeug](//de.wikipedia.org/wiki/Passagierflugzeug "Passagierflugzeug") anzubieten. Beibehalten werden sollte der Rumpfquerschnitt der Boeing 367, welcher durch das Verschmelzen zweier Rümpfe nicht eine kreisrunde oder ovale, sondern eine charakteristische Form hatte, welche der Ziffer 8 glich.
@@ -248,13 +242,9 @@ Gleichzeitig verfolgte Boeing in dieser Zeit Überlegungen, den Hochgeschwindigk
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=3 "Abschnitt bearbeiten: Entwicklung der Boeing 367-80") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=3 "Quellcode des Abschnitts bearbeiten: Entwicklung der Boeing 367-80")]
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/a/ab/NASA_p416.jpg/250px-NASA_p416.jpg)](//de.wikipedia.org/wiki/Datei:NASA_p416.jpg)
-
 *[Boeing 367-80](//de.wikipedia.org/wiki/Boeing_367-80 "Boeing 367-80")*
 
 Das Konzept der Boeing 367-40 wandelte sich schließlich zur verwirklichten [Boeing 367-80](//de.wikipedia.org/wiki/Boeing_367-80 "Boeing 367-80"), die mit der ursprünglichen 367 kaum etwas gemein hatte. Ihr Rumpfquerschnitt sah weiterhin der Ziffer 8 ähnlich, was jedoch an der Außenhaut durch eine aerodynamisch günstige Verkleidung verdeckt wurde. Die [Pfeilung](//de.wikipedia.org/wiki/Pfeilung "Pfeilung") der Tragflächen betrug 35°, was im zivilen Flugzeugbau neuartig war. Am 2. Mai 1952 beschloss der damalige Vorstandsvorsitzende von Boeing, [William McPherson Allen](//de.wikipedia.org/wiki/William_McPherson_Allen "William McPherson Allen"), die Boeing 367-80 zu entwickeln, obwohl sich bisher kein Kunde für das Flugzeug interessiert hatte. Die Kosten hierfür beliefen sich mit 16 Millionen US-Dollar auf 50 % des damaligen Gesamtumsatzes von Boeing. 1954 wurde von der [United States Air Force](//de.wikipedia.org/wiki/United_States_Air_Force "United States Air Force") (USAF) ein Wettbewerb für einen neuen Tanker ausgeschrieben, an dem Boeing mit der 367-80, welche auch Dash 80 (deutsch: Bindestrich 80) genannt wurde, teilnahm. Das [Rollout](//de.wikipedia.org/wiki/Rollout "Rollout") der Maschine fand am 14. Mai 1954 statt, der Erstflug folgte am 15. Juli 1954 vom [Werk Renton](//de.wikipedia.org/wiki/Werk_Renton?action=edit&redlink=1 "Werk Renton (Seite nicht vorhanden)") aus. [[3]](#cite_note-Boeing.com-3) Trotz der militärischen Ausrichtung war der Prototyp zivil als N70700 registriert.
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/f/f5/KC135_refueling.jpg/250px-KC135_refueling.jpg)](//de.wikipedia.org/wiki/Datei:KC135_refueling.jpg)
 
 *[Boeing KC-135](//de.wikipedia.org/wiki/Boeing_KC-135 "Boeing KC-135")*
 
@@ -265,8 +255,6 @@ Am 5. Oktober 1954 bestellte die USAF unter der Bezeichnung [KC-135](//de.wikipe
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=4 "Abschnitt bearbeiten: Entwicklung der Boeing 707") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=4 "Quellcode des Abschnitts bearbeiten: Entwicklung der Boeing 707")]
 
 Zunächst wurden durch Boeing Umfragen bei den damaligen großen Fluggesellschaften durchgeführt. Sie forderten vor allem eine verbreiterte Kabine, da sie die 3,53 m Durchmesser der Boeing 367-80 als nicht ausreichend betrachteten. Vorerst wurde daher ein Kompromiss zwischen der United States Air Force und Boeing erreicht, den Rumpfquerschnitt um 11 cm anzuheben. Ebenfalls vergrößert wurden die Tragflächen, die bei den Modellen Boeing KC-135 und Boeing 707-100 identisch sind. Aufgrund der großen strukturellen Probleme der [De Havilland DH.106 Comet](//de.wikipedia.org/wiki/De_Havilland_DH.106_Comet "De Havilland DH.106 Comet"), welche zu mehreren Abstürzen geführt hatten, konzentrierte sich Boeing in der Testphase besonders auf strukturelle Belastungen der Flugzeugbestandteile. Zur Hilfe nahm man dafür beispielsweise große Wassertanks, in die man ganze Rümpfe der Vorserien-Boeing-707 versenkte. Große Verbesserungen konnten bei der notwendigen Startstrecke durch stärkere Triebwerke und den Einbau von [Auftriebshilfen](//de.wikipedia.org/wiki/Auftriebshilfe "Auftriebshilfe") an den Tragflächen erreicht werden, auch die Langsamflugfähigkeit wurde stark verbessert.
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/8/85/Air_Spain_Douglas_DC-8-21EC-BXR.jpg/250px-Air_Spain_Douglas_DC-8-21EC-BXR.jpg)](//de.wikipedia.org/wiki/Datei:Air_Spain_Douglas_DC-8-21EC-BXR.jpg)
 
 *[Douglas DC-8](//de.wikipedia.org/wiki/Douglas_DC-8 "Douglas DC-8")-21, 1972*
 
@@ -288,8 +276,6 @@ Die Produktion der Boeing 707 als Passagierflugzeug endete 1978. Insgesamt wurde
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=6 "Abschnitt bearbeiten: Konstruktion") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=6 "Quellcode des Abschnitts bearbeiten: Konstruktion")]
 
-[![](//upload.wikimedia.org/wikipedia/de/thumb/4/47/Rumpf_Boeing_707.svg/250px-Rumpf_Boeing_707.svg.png)](//de.wikipedia.org/wiki/Datei:Rumpf_Boeing_707.svg)
-
 *Rumpfquerschnitt der Boeing 707*
 
 Die nachfolgenden Angaben beziehen sich exemplarisch auf die Variante Boeing 707-300 für den Passagiertransport.
@@ -300,11 +286,7 @@ Die nachfolgenden Angaben beziehen sich exemplarisch auf die Variante Boeing 707
 
 Der Rumpf der Boeing 707 besteht aus Ganzmetall, der in [Halbschalenbauweise](//de.wikipedia.org/wiki/Halbschalenbauweise "Halbschalenbauweise") nach dem [Fail-Safe](//de.wikipedia.org/wiki/Fail-Safe "Fail-Safe")-Prinzip aufgebaut ist. Die für den Rumpf verwendeten Spanten haben unterschiedliche Radien: Die oberen Spanten sind größer als die unteren, was zur Folge hat, dass der Rumpfquerschnitt nicht oval ist, sondern eine leichte Einschnürung aufweist, ähnlich der Ziffer 8. Aufgrund der Erfahrung mit der [De Havilland DH.106 Comet](//de.wikipedia.org/wiki/De_Havilland_DH.106_Comet "De Havilland DH.106 Comet") wurde die 707 mit sogenannten [Rumpfstringern](//de.wikipedia.org/wiki/Stringer_(Verkehrstechnik) "Stringer (Verkehrstechnik)") ausgerüstet, welche in die Flugzeug-Außenhaut unabhängig von der eigentlichen Beplankung eingearbeitet sind. Dadurch können sie einen entstehenden Riss in der Außenhaut stoppen und somit ein totales Versagen der Struktur verhindern.
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/8/81/Royal_Military_Museum_Brussels_2007_308.JPG/250px-Royal_Military_Museum_Brussels_2007_308.JPG)](//de.wikipedia.org/wiki/Datei:Royal_Military_Museum_Brussels_2007_308.JPG)
-
 *Rumpftür einer Boeing 707*
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Boeing_707-138B%2C_Qantas_%28John_Travolta%29_AN0270675.jpg/250px-Boeing_707-138B%2C_Qantas_%28John_Travolta%29_AN0270675.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-138B,_Qantas_(John_Travolta)_AN0270675.jpg)
 
 *Eyebrow-Fenster über den eigentlichen Cockpitfenstern*
 
@@ -315,8 +297,6 @@ Unterhalb der Passagierkabine befinden sich vor und hinter dem Flügelkasten zwe
 ### Cockpit und Avionik
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=8 "Abschnitt bearbeiten: Cockpit und Avionik") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=8 "Quellcode des Abschnitts bearbeiten: Cockpit und Avionik")]
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Boeing_707-123_B_%281959%29_Cockpit.jpg/250px-Boeing_707-123_B_%281959%29_Cockpit.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-123_B_(1959)_Cockpit.jpg)
 
 *Cockpit einer Boeing 707-123B im [Deutschen Museum](//de.wikipedia.org/wiki/Deutsches_Museum "Deutsches Museum"), München*
 
@@ -331,8 +311,6 @@ Die [Tragflächen](//de.wikipedia.org/wiki/Tragfläche "Tragfläche") der Boeing
 ### Leitwerke
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=10 "Abschnitt bearbeiten: Leitwerke") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=10 "Quellcode des Abschnitts bearbeiten: Leitwerke")]
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/TWA_Boeing_707-131B_Silagi-2.jpg/250px-TWA_Boeing_707-131B_Silagi-2.jpg)](//de.wikipedia.org/wiki/Datei:TWA_Boeing_707-131B_Silagi-2.jpg)
 
 *Boeing 707-131B der TWA. Man beachte das Seitenleitwerk ohne Antenne.*
 
@@ -370,8 +348,6 @@ Das Fahrwerk der Boeing 707 besteht aus einem Bugfahrwerk mit Doppelbereifung un
 
 → *Hauptartikel: [Boeing 720](//de.wikipedia.org/wiki/Boeing_720 "Boeing 720")*
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/9/90/Boeing_720-023B_HK-1973_Aerocondor_MIA_03.08.75_edited-2.jpg/250px-Boeing_720-023B_HK-1973_Aerocondor_MIA_03.08.75_edited-2.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_720-023B_HK-1973_Aerocondor_MIA_03.08.75_edited-2.jpg)
-
 *Boeing 720-023B der [Aerocondor Colombia](//de.wikipedia.org/wiki/Aerocondor_Colombia "Aerocondor Colombia") in [Miami](//de.wikipedia.org/wiki/Miami_International_Airport "Miami International Airport"), 1975*
 
 Mit dem kommerziellen Erfolg der Langstreckenvarianten der Boeing 707 entschloss sich Boeing, auch eine spezielle Kurz- bis Mittelstreckenvariante der 707 zu entwickeln, und bot diese den Fluggesellschaften ab 1957 als *Boeing 707-020* an, später *Boeing 720* genannt. Der Erstflug fand am 23. November 1959 statt.
@@ -384,15 +360,11 @@ Wegen grundlegender Änderungen an Tragflächen und Zelle kann man die Boeing 70
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=16 "Abschnitt bearbeiten: 707-100") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=16 "Quellcode des Abschnitts bearbeiten: 707-100")]
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Boeing_707-124_%28Continental_Airlines%29_LAX.jpg/250px-Boeing_707-124_%28Continental_Airlines%29_LAX.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-124_(Continental_Airlines)_LAX.jpg)
-
 *Boeing 707-124 der [Continental Airlines](//de.wikipedia.org/wiki/Continental_Airlines "Continental Airlines")*
 
 Die *Boeing 707-100* war die erste in Serie verkaufte Variante der Boeing 707. Ihr Erstflug fand am 20. Dezember 1957 statt. Die Boeing 707-100 wurde als Mittelstreckenflugzeug zum Einsatz nationaler Flüge innerhalb der Vereinigten Staaten von Amerika konstruiert. Für Transatlantikflüge mussten Zwischenlandungen zum Auftanken durchgeführt werden. Angetrieben von vier Pratt & Whitney JT3C-6 Turbojets, können maximal 179 Passagiere transportiert werden. Insgesamt wurden 141 zivile 707-100 produziert.
 
 **707-138**
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/e/e8/VH-EBI_B707-138B_Qantas_LHR_03MAR64_%286054275148%29.jpg/250px-VH-EBI_B707-138B_Qantas_LHR_03MAR64_%286054275148%29.jpg)](//de.wikipedia.org/wiki/Datei:VH-EBI_B707-138B_Qantas_LHR_03MAR64_(6054275148).jpg)
 
 *Boeing 707-138B der [Qantas](//de.wikipedia.org/wiki/Qantas "Qantas")*
 
@@ -401,8 +373,6 @@ Die *Boeing 707-100* war die erste in Serie verkaufte Variante der Boeing 707. I
 Eine Variante der Boeing 707-100 mit einem um drei Meter verkürzten Rumpf sowie einem optionalen Außenbehälter für ein Ersatztriebwerk [[7]](#cite_note-7) baute Boeing speziell für [Qantas Airways](//de.wikipedia.org/wiki/Qantas_Airways "Qantas Airways"). Später wurde diese durch eine um 15 % vergrößerte Reichweite erneut verbessert und abermals exklusiv an Qantas verkauft. Die erste Auslieferung der 707-138B erfolgte am 29. Juli 1961, die letzte am 10. September 1964. Der [Hollywood](//de.wikipedia.org/wiki/Hollywood "Hollywood")-Star [John Travolta](//de.wikipedia.org/wiki/John_Travolta "John Travolta") besitzt eine der ursprünglichen 707-138B von Qantas als Privatmaschine mit besonders luxuriöser Innenausstattung. Außen trägt die Maschine entsprechend einer Vereinbarung mit der Fluggesellschaft eine exakte Reproduktion der Bemalung der 1960er Jahre. John Travoltas Jet hat das Kennzeichen *N707JT*.
 
 **707-100B**
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Boeing_707-123B%2C_Cyprus_Airways_AN0817293.jpg/250px-Boeing_707-123B%2C_Cyprus_Airways_AN0817293.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-123B,_Cyprus_Airways_AN0817293.jpg)
 
 *Boeing 707-100B der [Cyprus Airways](//de.wikipedia.org/wiki/Cyprus_Airways "Cyprus Airways")*
 
@@ -414,8 +384,6 @@ Die erste Maschine dieses Typs wurde am 25. Mai 1961 an [American Airlines](//de
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=17 "Abschnitt bearbeiten: 707-200") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=17 "Quellcode des Abschnitts bearbeiten: 707-200")]
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/3/36/Boeing_707-227%2C_Braniff_International_Airways_JP6839061.jpg/250px-Boeing_707-227%2C_Braniff_International_Airways_JP6839061.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-227,_Braniff_International_Airways_JP6839061.jpg)
-
 *Boeing 707-200 der [Braniff Airways](//de.wikipedia.org/wiki/Braniff_Airways "Braniff Airways")*
 
 Die *Boeing 707-200* wurde speziell daraufhin entwickelt, leichter zu sein und weniger Nutzlast befördern zu können als die 707-100, dies jedoch unter wesentlich extremeren Einsatzbedingungen, wie von besonders heißen oder besonders hoch gelegenen Flughäfen aus. Ausgestattet wurde die 707-200 mit leistungsstarken, auch bei der 707-300 und dem Konkurrenzmodell [Douglas DC-8](//de.wikipedia.org/wiki/Douglas_DC-8 "Douglas DC-8") verwendeten [Pratt & Whitney JT4](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT4 "Pratt &amp; Whitney JT4")A- [Turbojets](//de.wikipedia.org/wiki/Turbojet "Turbojet") mit jeweils 70,2 kN Schub. Der Erstflug des Prototyps fand am 11. Juni 1959 statt, er ging am 19. Oktober 1959 bei einem Absturz verloren. Nur fünf 707-200 wurden produziert, die zwischen 3. Dezember 1959 und 10. Februar 1960 alle an [Braniff International](//de.wikipedia.org/wiki/Braniff_International "Braniff International") gingen. Mit der Entwicklung des stärkeren und sparsameren [Turbofan](//de.wikipedia.org/wiki/Turbofan "Turbofan")-Triebwerks, wie es bei der 707-100B zum Einsatz kam, wurde die -200 relativ schnell überflüssig, weshalb es keine B-Version dieses Typs gibt.
@@ -423,8 +391,6 @@ Die *Boeing 707-200* wurde speziell daraufhin entwickelt, leichter zu sein und w
 #### 707-300
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=18 "Abschnitt bearbeiten: 707-300") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=18 "Quellcode des Abschnitts bearbeiten: 707-300")]
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Egypt_Air_Boeing_707_in_Malta.jpg/250px-Egypt_Air_Boeing_707_in_Malta.jpg)](//de.wikipedia.org/wiki/Datei:Egypt_Air_Boeing_707_in_Malta.jpg)
 
 *Boeing 707-300 der [Egypt Air](//de.wikipedia.org/wiki/Egypt_Air "Egypt Air")*
 
@@ -438,15 +404,11 @@ Die *Boeing 707-300* ist eine gestreckte Version des Basismodells -100, ausgesta
 
 **707-300B**
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Boeing_707-330B%2C_Condor_AN0973478.jpg/250px-Boeing_707-330B%2C_Condor_AN0973478.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-330B,_Condor_AN0973478.jpg)
-
 *Boeing 707-300B der [Condor](//de.wikipedia.org/wiki/Condor_Flugdienst "Condor Flugdienst")*
 
 Die gestreckte 707-300 wurde parallel zur -100B ebenfalls überarbeitet. Die daraus resultierende -300B erhielt einige der für die -100B entwickelten Struktur-Modifikationen, sowie ähnliche [Pratt-&-Whitney-JT3D](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT3D "Pratt &amp; Whitney JT3D")-3- [Turbofan](//de.wikipedia.org/wiki/Turbofan "Turbofan")-Triebwerke mit einem Schub von je 80 kN. Die maximale Startmasse wurde auf 151.950 kg erhöht und die Flügel noch einmal grundlegend überarbeitet. Das amerikanische Militär nutzte 707-300B-Frachter unter der Bezeichnung *C-18*. Eine 707-300B wurde von der [United States Air Force](//de.wikipedia.org/wiki/United_States_Air_Force "United States Air Force") als erste von Strahltriebwerken angetriebene [Air Force One](//de.wikipedia.org/wiki/Air_Force_One "Air Force One") beschafft und eingesetzt. Die offizielle Bezeichnung für diese Spezialmaschine war *VC-137C*. Die erste 707-300B erhielt Pan Am am 12. April 1962. Insgesamt wurden 174 Maschinen dieses Typs produziert, sowie viele 707-300 auf den -300B-Standard gebracht. Die letzte fabrikneue 707-300B ging am 11. Juni 1975 an die [argentinische Regierung](//de.wikipedia.org/wiki/Argentinien "Argentinien").
 
 **707-300C**
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Abelag_Airways_Boeing_707-351C_Volpati-1.jpg/250px-Abelag_Airways_Boeing_707-351C_Volpati-1.jpg)](//de.wikipedia.org/wiki/Datei:Abelag_Airways_Boeing_707-351C_Volpati-1.jpg)
 
 *Boeing 707-300C der [Abelag Airways](//de.wikipedia.org/wiki/Air_Belgium_(1979) "Air Belgium (1979)")*
 
@@ -459,8 +421,6 @@ Die *Boeing 707-300B Advanced (707-320BA)* ist eine Modifikation der Boeing 707-
 #### 707-400
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=19 "Abschnitt bearbeiten: 707-400") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=19 "Quellcode des Abschnitts bearbeiten: 707-400")]
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Boeing_707-430_%28Lufthansa_D-ABOD%29_01.jpg/250px-Boeing_707-430_%28Lufthansa_D-ABOD%29_01.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707-430_(Lufthansa_D-ABOB)_01.jpg)
 
 *Boeing 707-400 (ex. [Lufthansa](//de.wikipedia.org/wiki/Lufthansa "Lufthansa") *D-ABOD*) in Hamburg-Fuhlsbüttel mit auf *D-ABOB* geändertem Kennzeichen*
 
@@ -478,8 +438,6 @@ Auch Douglas verfolgte ein Programm zur Nachrüstung der [Douglas DC-8](//de.wik
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=21 "Abschnitt bearbeiten: 707RE") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=21 "Quellcode des Abschnitts bearbeiten: 707RE")]
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/9/93/Boeing_707_RE_-_ILA2002.jpg/250px-Boeing_707_RE_-_ILA2002.jpg)](//de.wikipedia.org/wiki/Datei:Boeing_707_RE_-_ILA2002.jpg)
-
 *Mit neuen Triebwerken ausgestattete Boeing 707RE auf der ILA 2002*
 
 Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined – mit neuen Triebwerken versehen) bezeichnete umgebaute 707-300C ab. Der von *Seven Q Seven Inc.* umgerüstete Prototyp ist mit [Pratt-&-Whitney-JT8D](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT8D "Pratt &amp; Whitney JT8D")-219 Triebwerken ausgestattet, die pro Stück einen Schub von 93 kN liefern und eine Leistungssteigerung von circa 15 % bringen sollten. Ziel war, sowohl kommerzielle 707 als auch militärische [KC-135](//de.wikipedia.org/wiki/KC-135 "KC-135") und [E-3](//de.wikipedia.org/wiki/Boeing_E-3 "Boeing E-3")/ [E-8](//de.wikipedia.org/wiki/Boeing_E-8 "Boeing E-8") mit den neuen Triebwerken auszustatten. Das JT8D würde problemlos an jede Boeing 707 ohne größere Modifikationen eingebaut werden können. Obwohl ein um 23 % reduzierter Treibstoffverbrauch und ein um 40 [dB](//de.wikipedia.org/wiki/Bel_(Einheit) "Bel (Einheit)") niedrigerer Lärmpegel beim Start nachgewiesen werden konnten, setzte sich die Idee wegen der nach dem [11. September 2001](//de.wikipedia.org/wiki/Terroranschläge_am_11._September_2001 "Terroranschläge am 11. September 2001") schrumpfenden Luftfahrt nicht durch. Nachdem sich die Branche erholt hatte, wurde im August 2008 mit den Zulassungsflügen für das Triebwerk begonnen. [[10]](#cite_note-10)
@@ -492,11 +450,7 @@ Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined �
 
 *Siehe Hauptartikel: [Boeing C-135](//de.wikipedia.org/wiki/Boeing_C-135 "Boeing C-135"), [Boeing KC-135](//de.wikipedia.org/wiki/Boeing_KC-135 "Boeing KC-135"), [Boeing EC-135](//de.wikipedia.org/wiki/Boeing_EC-135 "Boeing EC-135") und [Boeing RC-135](//de.wikipedia.org/wiki/Boeing_RC-135 "Boeing RC-135").*
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/e/eb/DF-SC-86-12927.jpg/250px-DF-SC-86-12927.jpg)](//de.wikipedia.org/wiki/Datei:DF-SC-86-12927.jpg)
-
 *EC-18B Advanced Range Instrumentation Aircraft (ARIA)*
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/b/b2/X-47B_receives_fuel_from_an_Omega_K-707_tanker_while_operating_in_the_Atlantic_Test_Ranges.jpg/250px-X-47B_receives_fuel_from_an_Omega_K-707_tanker_while_operating_in_the_Atlantic_Test_Ranges.jpg)](//de.wikipedia.org/wiki/Datei:X-47B_receives_fuel_from_an_Omega_K-707_tanker_while_operating_in_the_Atlantic_Test_Ranges.jpg)
 
 *Ein 707-368C-Tanker der [Omega Aerial Refueling Services](//de.wikipedia.org/wiki/Omega_Aerial_Refueling_Services "Omega Aerial Refueling Services") betankt das unbemannte Experimentalflugzeug [X-47](//de.wikipedia.org/wiki/X-47 "X-47"), 2015*
 
@@ -506,8 +460,6 @@ Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined �
 
 **EC-18B/C/D** Die *Boeing EC-18B* wird als sogenanntes Advanced Range Instrumentation Aircraft (ARIA) durch das US-Verteidigungsministerium und die [NASA](//de.wikipedia.org/wiki/National_Aeronautics_and_Space_Administration "National Aeronautics and Space Administration") zur luftgestützten Radarbeobachtung von Raumschiffen und Raketen genutzt. Bei der *Boeing EC-18C* handelt es sich um eine frühe Bezeichnung der [Boeing E-8](//de.wikipedia.org/wiki/Boeing_E-8 "Boeing E-8"), die *Boeing EC-18D* ist ein Spezialflugzeug für Versuche mit [Marschflugkörpern](//de.wikipedia.org/wiki/Marschflugkörper "Marschflugkörper").
 
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Usaf.e3sentry.750pix.jpg/250px-Usaf.e3sentry.750pix.jpg)](//de.wikipedia.org/wiki/Datei:Usaf.e3sentry.750pix.jpg)
-
 *Boeing E3 Sentry*
 
 **TC-18E, TC-18F** Die *Boeing TC-18E* ist ein Trainingsflugzeug für das [Fliegende Personal](//de.wikipedia.org/wiki/Fliegendes_Personal "Fliegendes Personal") der [AWACS](//de.wikipedia.org/wiki/Airborne_Warning_and_Control_System "Airborne Warning and Control System")-Besatzungen, ebenfalls wie die *Boeing TC-18F*, welche jedoch zur Ausbildung für die Boeing E-6 dient.
@@ -515,8 +467,6 @@ Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined �
 **EC-137D** *Boeing EC-137D* wurden die zwei Prototypen des AWACS-Programms für kurze Zeit genannt.
 
 **E-3** Die *[Boeing E-3](//de.wikipedia.org/wiki/Boeing_E-3 "Boeing E-3")* mit dem Beinamen *Sentry* basiert auf der Boeing 707-300 und ist ein Aufklärungsflugzeug des [AWACS](//de.wikipedia.org/wiki/Airborne_Warning_and_Control_System "Airborne Warning and Control System")-Programms, das bei verschiedenen Staaten bis heute in Nutzung ist. Als *Boeing KE-3A* dient das Flugzeug Saudi-Arabien zusätzlich als Tanker. Angetrieben werden die E-3 der französischen und englischen Luftstreitkräfte von CFM-56-Strahltriebwerken, die in Deutschland stationierten E-3A der NATO sowie die amerikanischen E-3B und E-3C verwenden die ursprünglichen Triebwerke vom Typ TF-33-100A. [[11]](#cite_note-11)
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/a/ae/E-8%28web_021126-O-9999G-026%29.jpg/250px-E-8%28web_021126-O-9999G-026%29.jpg)](//de.wikipedia.org/wiki/Datei:E-8(web_021126-O-9999G-026).jpg)
 
 *Boeing E-8 Joint Stars*
 
@@ -527,8 +477,6 @@ Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined �
 ## Nutzung
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=23 "Abschnitt bearbeiten: Nutzung") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=23 "Quellcode des Abschnitts bearbeiten: Nutzung")]
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flughafen_Tegel_Lufthansa.jpg/250px-Flughafen_Tegel_Lufthansa.jpg)](//de.wikipedia.org/wiki/Datei:Flughafen_Tegel_Lufthansa.jpg)
 
 *Eine Boeing 707 in den Farben der [Lufthansa](//de.wikipedia.org/wiki/Lufthansa "Lufthansa"), bis zu ihrer Verschrottung 2021 [[12]](#cite_note-12) abgestellt auf dem Areal des [Flughafens Berlin-Tegel](//de.wikipedia.org/wiki/Flughafen_Berlin-Tegel "Flughafen Berlin-Tegel")*
 
@@ -562,8 +510,6 @@ Vom Erstflug 1957 bis zum 31. Januar 2022 kam es mit Boeing 707 zu 173 Totalsch�
 ## Technische Daten
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=26 "Abschnitt bearbeiten: Technische Daten") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=26 "Quellcode des Abschnitts bearbeiten: Technische Daten")]
-
-[![](//upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Boeing_707-300_v1.0.png/250px-Boeing_707-300_v1.0.png)](//de.wikipedia.org/wiki/Datei:Boeing_707-300_v1.0.png)
 
 *Boeing 707-300*
 

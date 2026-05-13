@@ -15,6 +15,7 @@ from .rules.normalize_linebreak import RuleNormalizeLinebreak
 from .rules.normalize_tables import RuleNormalizeTables
 from .rules.normalize_whitespace import RuleNormalizeWhitespace
 from .rules.remove_blocks import RuleRemoveBlocks
+from .rules.remove_images import RuleRemoveImages
 from .rules.remove_links import RuleRemoveLinks
 from .rules.remove_lines import RuleRemoveLines
 from .rules.remove_html_comments import RuleRemoveHtmlComments
@@ -41,6 +42,9 @@ class MarkdownPreprocessing:
 
         if config.remove_links:
             self.rules.append(RuleRemoveLinks(config))
+
+        if config.remove_images:
+            self.rules.append(RuleRemoveImages(config))
 
         if config.ensure_h1:
             self.rules.append(RuleEnsureH1(config))

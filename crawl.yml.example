@@ -17,6 +17,7 @@ projects:
                 remove_blocks: false
                 remove_sections: false
                 remove_links: false
+                remove_images: false
                 remove_html_comments: false
                 normalize_tables: false
                 normalize_linebreak: false
@@ -82,6 +83,7 @@ projects:
                     - "#[Vv]orlage_[Ee]xzellent"
                     - "veaction=edit[^)]*section="
                     - "action=edit[^)]*section="
+                remove_images: true
                 remove_html_comments: true
                 normalize_tables: true
                 normalize_linebreak: true
