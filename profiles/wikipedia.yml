@@ -22,6 +22,7 @@ preprocessing:
         remove_lines:
             - "[Aa]us Wikipedia, der freien Enzyklopädie"
             - "[Ff]rom Wikipedia, the free encyclopedia"
+            - "\\[\\*\\*\\]"
         remove_blocks:
             - "Wikipedia:Wiki_Loves_Earth_"
             - "Wikidata:Events/Coordinate_Me_"
