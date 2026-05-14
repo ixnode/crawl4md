@@ -1,4 +1,211 @@
+Hauptmenü
+
+Hauptmenü
+
+In die Seitenleiste verschieben
+
+Verbergen
+
+Navigation
+
+- Hauptseite
+- Themenportale
+- Zufälliger Artikel
+- Spezialseiten
+
+Mitmachen
+
+- Artikel verbessern
+- Neuen Artikel anlegen
+- Autorenportal
+- Hilfe
+- Letzte Änderungen
+- Kontakt
+
+Wikipedia Die freie Enzyklopädie
+
+Suche
+
+Suchen
+
+Erscheinungsbild
+
+- Jetzt spenden
+- Benutzerkonto erstellen
+- Anmelden
+
+Meine Werkzeuge
+
+- Jetzt spenden
+- Benutzerkonto erstellen
+- Anmelden
+
+## Inhaltsverzeichnis
+
+In die Seitenleiste verschieben
+
+Verbergen
+
+- (Anfang)
+- 1 Geschichte Unterabschnitt Geschichte umschalten
+ * 1.1 Vorgeschichte
+ * 1.2 Entwicklung der Boeing 367-80
+ * 1.3 Entwicklung der Boeing 707
+ * 1.4 Auslieferungen und Einsatz
+- 2 Konstruktion Unterabschnitt Konstruktion umschalten
+ * 2.1 Rumpf
+ * 2.2 Cockpit und Avionik
+ * 2.3 Tragflächen
+ * 2.4 Leitwerke
+ * 2.5 Triebwerke
+ * 2.6 Fahrwerk
+- 3 Varianten Unterabschnitt Varianten umschalten
+ * 3.1 Zivile Versionen
+ + 3.1.1 707-020 (720)
+ + 3.1.2 707-100
+ + 3.1.3 707-200
+ + 3.1.4 707-300
+ + 3.1.5 707-400
+ + 3.1.6 707-700 (Projekt)
+ + 3.1.7 707RE
+ * 3.2 Militärische Versionen
+- 4 Nutzung
+- 5 Verkaufszahlen
+- 6 Zwischenfälle
+- 7 Technische Daten
+- 8 Trivia
+- 9 Siehe auch
+- 10 Literatur
+- 11 Weblinks
+- 12 Einzelnachweise
+
+Inhaltsverzeichnis umschalten
+
 # Boeing 707
+
+68 Sprachen
+
+- Afrikaans
+- Aragonés
+- العربية
+- Asturianu
+- Български
+- বাংলা
+- Bosanski
+- Català
+- Čeština
+- Dansk
+- Ελληνικά
+- English
+- Esperanto
+- Español
+- Eesti
+- Euskara
+- فارسی
+- Suomi
+- Français
+- Gaeilge
+- Galego
+- עברית
+- Hrvatski
+- Magyar
+- Հայերեն
+- Bahasa Indonesia
+- Ido
+- Íslenska
+- Italiano
+- 日本語
+- Jawa
+- Қазақша
+- 한국어
+- Limburgs
+- Lietuvių
+- Latviešu
+- मराठी
+- Bahasa Melayu
+- Nederlands
+- Norsk nynorsk
+- Norsk bokmål
+- Sesotho sa Leboa
+- Occitan
+- Polski
+- Piemontèis
+- پنجابی
+- Português
+- Română
+- Русский
+- Scots
+- Srpskohrvatski / српскохрватски
+- Simple English
+- Slovenčina
+- Slovenščina
+- Српски / srpski
+- Sesotho
+- Svenska
+- Kiswahili
+- தமிழ்
+- ไทย
+- Türkçe
+- Татарча / tatarça
+- Українська
+- Oʻzbekcha / ўзбекча
+- Tiếng Việt
+- 吴语
+- 粵語
+- 中文
+
+Links bearbeiten
+
+- Artikel
+- Diskussion
+
+Deutsch
+
+- Lesen
+- Bearbeiten
+- Quelltext bearbeiten
+- Versionsgeschichte
+
+Werkzeuge
+
+Werkzeuge
+
+In die Seitenleiste verschieben
+
+Verbergen
+
+Aktionen
+
+- Lesen
+- Bearbeiten
+- Quelltext bearbeiten
+- Versionsgeschichte
+
+Allgemein
+
+- Links auf diese Seite
+- Änderungen an verlinkten Seiten
+- Permanenter Link
+- Seiten­­informationen
+- Artikel zitieren
+- Kurzlink
+- Zum Legacy-Parser wechseln
+
+Drucken/​exportieren
+
+- Als PDF herunterladen
+- Druckversion
+
+In anderen Projekten
+
+- Commons
+- Wikidata-Datenobjekt
+
+Erscheinungsbild
+
+In die Seitenleiste verschieben
+
+Verbergen
 
 Dies ist ein als lesenswert ausgezeichneter Artikel.
 
