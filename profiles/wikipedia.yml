@@ -6,6 +6,12 @@ crawl:
     parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
     content_selector: ".mw-parser-output"
 
+normalization:
+    enabled: true
+    entities: true
+    hidden_spans: true
+    urls: true
+
 preprocessing:
     markdown:
         enabled: true

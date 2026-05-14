@@ -49,11 +49,9 @@ projects:
             entities: true
             hidden_spans: true
             urls: true
-
         preprocessing:
             markdown:
-                # Optional overrides for profile "wikipedia" defaults.
-                normalize_tables: false
+                normalize_tables: true
 
     # Same behavior as profile "wikipedia", but configured manually without profile.
     planes-explicit:
@@ -73,7 +71,6 @@ projects:
             entities: true
             hidden_spans: true
             urls: true
-
         preprocessing:
             markdown:
                 enabled: true
