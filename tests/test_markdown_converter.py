@@ -23,6 +23,7 @@ from pydantic import BaseModel, Field
 from crawl4md.config import CrawlConfig, PreprocessingConfig, apply_profile_defaults
 from crawl4md.convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
 from crawl4md.convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
+from crawl4md.fetch.base.base_markdown_fetcher import BaseMarkdownFetcher
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
@@ -64,7 +65,10 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(session=session_name):
                 test_session = self._load_config(session / "config.yml")
                 config = test_session.config
-                html = (session / "data.html").read_text()
+                html = self._load_and_normalize_html(
+                    html_path=session / "data.html",
+                    url=config.url,
+                )
                 expected_markdown = (session / "data.md").read_text()
 
                 converter = self._build_converter(config)
@@ -93,6 +97,16 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                     expected_markdown = markdown
 
                 self.assertEqual(markdown, expected_markdown)
+
+    @staticmethod
+    def _load_and_normalize_html(html_path: Path, url: str | None) -> str:
+        html = html_path.read_text()
+
+        if not url:
+            return html
+
+        fetcher = BaseMarkdownFetcher.build_html_fetcher(url=url)
+        return fetcher.normalize_html(html)
 
     def _load_config(self, path: Path) -> MarkdownConverterSession:
         data = yaml.safe_load(path.read_text())

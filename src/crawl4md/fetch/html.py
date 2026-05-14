@@ -64,3 +64,6 @@ class HtmlFetcher:
         for normalizer in self.normalizers:
             html = normalizer.normalize(html)
         return html
+
+    def normalize_html(self, html: str) -> str:
+        return self._apply_normalizers(html)
