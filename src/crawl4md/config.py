@@ -44,6 +44,7 @@ class NormalizationConfig(BaseModel):
     entities: bool = True
     hidden_spans: bool = True
     urls: bool = True
+    references: bool = True
 
 class MarkdownPreprocessingConfig(BaseModel):
     enabled: bool = False

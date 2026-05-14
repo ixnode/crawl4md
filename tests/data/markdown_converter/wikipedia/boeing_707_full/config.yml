@@ -8,3 +8,9 @@ config:
         parser: kreuzberg-dev # crawl4ai | kreuzberg-dev
         parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
         content_selector: null
+    normalization:
+        enabled: true
+        entities: true
+        hidden_spans: true
+        urls: true
+        references: true

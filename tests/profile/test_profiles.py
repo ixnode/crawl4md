@@ -33,6 +33,7 @@ class ProfileTests(unittest.TestCase):
         self.assertTrue(normalization.entities)
         self.assertTrue(normalization.hidden_spans)
         self.assertTrue(normalization.urls)
+        self.assertTrue(normalization.references)
 
         self.assertTrue(markdown.enabled)
         self.assertTrue(markdown.ensure_h1)

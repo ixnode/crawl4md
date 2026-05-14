@@ -13,6 +13,7 @@ from crawl4md.config import NormalizationConfig
 from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 from crawl4md.fetch.normalization.rules.entities import RuleEntities
 from crawl4md.fetch.normalization.rules.hiddens import RuleHiddens
+from crawl4md.fetch.normalization.rules.references import RuleReferences
 from crawl4md.fetch.normalization.rules.urls import RuleUrls
 
 
@@ -32,6 +33,9 @@ class HtmlNormalization:
 
         if config.urls:
             self.rules.append(RuleUrls(url=url))
+
+        if config.references:
+            self.rules.append(RuleReferences())
 
     def process(self, html: str) -> str:
         for rule in self.rules:
