@@ -53,7 +53,7 @@ CASES = [
             "\n"
             "Text\n"
         ),
-        expected="## Geschichte\n\n | \n\nText\n",
+        expected="## Geschichte\n\nText\n",
     ),
     RuleCase(
         name="removes_cite_links_with_leading_spaces",
@@ -148,7 +148,7 @@ CASES = [
         ),
     ),
     RuleCase(
-        name="removes_both_wikipedia_edit_links_and_keeps_separator",
+        name="removes_both_wikipedia_edit_links_and_orphan_separator",
         config=MarkdownPreprocessingConfig(
             enabled=True,
             remove_links=[
@@ -162,7 +162,25 @@ CASES = [
             "[Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
             'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
         ),
-        expected=" | \n",
+        expected="\n",
+    ),
+    RuleCase(
+        name="keeps_separator_when_other_link_remains_after_wikipedia_edit_link",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="veaction=edit[^)]*section=",
+        ),
+        markdown=(
+            "[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            'veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | '
+            "[Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
+        ),
+        expected=(
+            " | "
+            "[Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
+        ),
     ),
 ]
 

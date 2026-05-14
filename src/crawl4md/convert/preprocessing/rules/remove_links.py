@@ -89,7 +89,7 @@ class RuleRemoveLinks(RuleBase):
         return self.join_lines(cleaned_lines, markdown)
 
     def _is_empty_link_line(self, line: str) -> bool:
-        return not line.strip() or ("|" not in line and all(character in "[] " for character in line))
+        return not line.strip() or all(character in "[]| " for character in line)
 
     def _replace_link(self, match: re.Match[str]) -> str:
         leading = re.match(r"[^\S\n]*", match.group(0)).group(0)
