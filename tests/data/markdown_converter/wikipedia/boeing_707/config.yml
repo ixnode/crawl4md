@@ -3,10 +3,11 @@ title: "Wikipedia Boeing 707"
 description: "Converts the German Wikipedia Boeing 707 page with kreuzberg-dev and all preprocessing enabled."
 config:
     profile: wikipedia
+    url: https://de.wikipedia.org/wiki/Boeing_707
     crawl:
         parser: kreuzberg-dev
         parse_type: markdown
-    url: https://de.wikipedia.org/wiki/Boeing_707
+        content_selector:
     preprocessing:
         markdown:
             remove_links: "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"

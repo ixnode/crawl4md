@@ -23,6 +23,11 @@ class ProfileTests(unittest.TestCase):
         )
 
         markdown = config.projects["planes"].preprocessing.markdown
+        crawl = config.projects["planes"].crawl
+
+        self.assertEqual(crawl.parser, "kreuzberg-dev")
+        self.assertEqual(crawl.parse_type, "markdown")
+        self.assertEqual(crawl.content_selector, ".mw-parser-output")
 
         self.assertTrue(markdown.enabled)
         self.assertTrue(markdown.ensure_h1)
@@ -58,6 +63,31 @@ class ProfileTests(unittest.TestCase):
         self.assertFalse(markdown.normalize_tables)
         self.assertEqual(markdown.remove_sections, ["Einzelnachweise"])
         self.assertIn("anchor:cite_note", markdown.remove_links)
+
+    def test_project_crawl_overrides_profile_defaults(self) -> None:
+        """Project-level crawl values override profile defaults without removing unrelated defaults."""
+        config = AppConfig(
+            **apply_profiles(
+                {
+                    "projects": {
+                        "planes": {
+                            "profile": "wikipedia",
+                            "type": "pages",
+                            "sources": ["https://de.wikipedia.org/wiki/Boeing_707"],
+                            "crawl": {
+                                "content_selector": "#content",
+                            },
+                        }
+                    }
+                }
+            )
+        )
+
+        crawl = config.projects["planes"].crawl
+
+        self.assertEqual(crawl.parser, "kreuzberg-dev")
+        self.assertEqual(crawl.parse_type, "markdown")
+        self.assertEqual(crawl.content_selector, "#content")
 
     def test_unknown_profile_raises_error(self) -> None:
         """Unknown profile names fail during profile application instead of being ignored silently."""

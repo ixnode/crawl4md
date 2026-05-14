@@ -562,7 +562,7 @@ projects:
             content_selector: ".mw-parser-output"
 ```
 
-The profile provides defaults for `preprocessing.markdown`. Project-level `preprocessing` values override profile defaults, so you can adjust individual options without copying the whole profile. Built-in profiles are loaded from `profiles/*.yml` (for example `profiles/wikipedia.yml`).
+The profile provides defaults for `crawl` and `preprocessing.markdown`. Project-level `crawl` and `preprocessing` values override profile defaults, so you can adjust individual options without copying the whole profile. Built-in profiles are loaded from `profiles/*.yml` (for example `profiles/wikipedia.yml`).
 
 The `wikipedia` profile currently applies these Markdown preprocessing defaults:
 

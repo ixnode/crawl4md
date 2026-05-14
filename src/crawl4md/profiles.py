@@ -27,8 +27,19 @@ def _validate_profile(profile_name: str, data: dict[str, Any]) -> None:
             f"Invalid profile file '{profile_name}.yml': expected profile '{profile_name}', got '{profile}'."
         )
 
-    if "preprocessing" not in data or not isinstance(data["preprocessing"], dict):
-        raise ValueError(f"Invalid profile file '{profile_name}.yml': missing preprocessing section.")
+    has_preprocessing = "preprocessing" in data
+    has_crawl = "crawl" in data
+
+    if not has_preprocessing and not has_crawl:
+        raise ValueError(
+            f"Invalid profile file '{profile_name}.yml': at least one section 'crawl' or 'preprocessing' is required."
+        )
+
+    if has_preprocessing and not isinstance(data["preprocessing"], dict):
+        raise ValueError(f"Invalid profile file '{profile_name}.yml': preprocessing must be a mapping/object.")
+
+    if has_crawl and not isinstance(data["crawl"], dict):
+        raise ValueError(f"Invalid profile file '{profile_name}.yml': crawl must be a mapping/object.")
 
 
 @lru_cache(maxsize=1)
@@ -46,7 +57,13 @@ def load_profiles() -> dict[str, dict[str, Any]]:
             raise ValueError(f"Invalid profile file '{path.name}': expected mapping/object at top level.")
 
         _validate_profile(profile_name, data)
-        profiles[profile_name] = {"preprocessing": data["preprocessing"]}
+        profile_data: dict[str, Any] = {}
+        if "crawl" in data:
+            profile_data["crawl"] = data["crawl"]
+        if "preprocessing" in data:
+            profile_data["preprocessing"] = data["preprocessing"]
+
+        profiles[profile_name] = profile_data
 
     return profiles
 

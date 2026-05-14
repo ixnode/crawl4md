@@ -1,6 +1,11 @@
 profile: "wikipedia"
 description: "Wikipedia Profile"
 
+crawl:
+    parser: kreuzberg-dev # crawl4ai | kreuzberg-dev
+    parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
+    content_selector: ".mw-parser-output"
+
 preprocessing:
     markdown:
         enabled: true
