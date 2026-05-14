@@ -333,17 +333,3 @@ Vom Erstflug 1957 bis zum 31. Januar 2022 kam es mit Boeing 707 zu 173 Totalsch�
 Am 7. August 1955 flog der Testpilot Alvin M. „Tex“ Johnston mit dem ursprünglichen Prototyp, der Boeing 367-80, über Seattle eine [Fassrolle](//de.wikipedia.org/wiki/Fassrolle "Fassrolle"). Weil dort zu diesem Zeitpunkt ein bekanntes Bootsrennen stattfand, wurde dieses Flugmanöver gefilmt. Der Pilot wurde für sein Verhalten gerügt, aber die Maschine wurde dadurch bekannt. [[17]](#cite_note-17)
 
 In dem Film *[Airport](//de.wikipedia.org/wiki/Airport_(Film) "Airport (Film)")* spielt eine Boeing 707 eine wichtige Nebenrolle.
-
-## Siehe auch
-
-[[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=28 "Abschnitt bearbeiten: Siehe auch") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=28 "Quellcode des Abschnitts bearbeiten: Siehe auch")]
-
-- [Liste von Flugzeugtypen](//de.wikipedia.org/wiki/Liste_von_Flugzeugtypen "Liste von Flugzeugtypen")
-
-Weitere Typen mit vergleichbarer Rolle, Konfiguration und Ära
-
-- [Shanghai Y-10](//de.wikipedia.org/wiki/Shanghai_Y-10 "Shanghai Y-10")
-- [Convair CV-880](//de.wikipedia.org/wiki/Convair_CV-880 "Convair CV-880")
-- [Convair CV-990](//de.wikipedia.org/wiki/Convair_CV-990 "Convair CV-990")
-- [Vickers VC10](//de.wikipedia.org/wiki/Vickers_VC10 "Vickers VC10")
-- [Iljuschin Il-62](//de.wikipedia.org/wiki/Iljuschin_Il-62 "Iljuschin Il-62")

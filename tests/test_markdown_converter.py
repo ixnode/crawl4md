@@ -46,6 +46,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_converts_all_configured_sessions(self) -> None:
         group = os.environ.get("CRAWL4MD_MARKDOWN_CONVERTER_GROUP")
+        update = os.environ.get("CRAWL4MD_MARKDOWN_CONVERTER_UPDATE") == "1"
         sessions = self._find_sessions(group=group)
 
         if group:
@@ -86,6 +87,10 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                     f"({duration_ms:.0f} ms)\n"
                     f"{test_session.description}"
                 )
+
+                if update:
+                    (session / "data.md").write_text(markdown)
+                    expected_markdown = markdown
 
                 self.assertEqual(markdown, expected_markdown)
 

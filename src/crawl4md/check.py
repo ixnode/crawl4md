@@ -16,13 +16,22 @@ def markdown_converter() -> int:
 
     env = os.environ.copy()
     args = sys.argv[1:]
+    group: str | None = None
+    update = False
 
-    if len(args) > 1:
-        print("Usage: check-markdown-converter [group]", file=sys.stderr)
+    for arg in args:
+        if arg == "--update":
+            update = True
+            continue
+
+        if group is None:
+            group = arg
+            continue
+
+        print("Usage: check-markdown-converter [group] [--update]", file=sys.stderr)
         return 2
 
-    if args:
-        group = args[0]
+    if group:
         group_path = Path(group)
 
         if group_path.is_absolute() or ".." in group_path.parts:
@@ -50,6 +59,9 @@ def markdown_converter() -> int:
             return 2
 
         env["CRAWL4MD_MARKDOWN_CONVERTER_GROUP"] = group
+
+    if update:
+        env["CRAWL4MD_MARKDOWN_CONVERTER_UPDATE"] = "1"
 
     return subprocess.run(
         [sys.executable, "-m", "unittest", "tests.test_markdown_converter"],
