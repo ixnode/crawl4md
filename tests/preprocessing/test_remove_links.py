@@ -41,7 +41,7 @@ CASES = [
         name="removes_wikipedia_section_edit_links",
         config=MarkdownPreprocessingConfig(
             enabled=True,
-            remove_links=["veaction=edit[^)]*section=", "action=edit[^)]*section="],
+            remove_links=["anchor:veaction=edit[^)]*section=", "anchor:action=edit[^)]*section="],
         ),
         markdown=(
             "## Geschichte\n"

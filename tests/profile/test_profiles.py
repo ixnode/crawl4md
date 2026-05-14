@@ -57,7 +57,7 @@ class ProfileTests(unittest.TestCase):
 
         self.assertFalse(markdown.normalize_tables)
         self.assertEqual(markdown.remove_sections, ["Einzelnachweise"])
-        self.assertIn("cite_note", markdown.remove_links)
+        self.assertIn("anchor:cite_note", markdown.remove_links)
 
     def test_unknown_profile_raises_error(self) -> None:
         """Unknown profile names fail during profile application instead of being ignored silently."""

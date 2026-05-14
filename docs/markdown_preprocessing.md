@@ -298,8 +298,8 @@ Remove Wikipedia section edit links:
 
 ```yaml
 remove_links:
-    - "veaction=edit[^)]*section="
-    - "action=edit[^)]*section="
+    - "anchor:veaction=edit[^)]*section="
+    - "anchor:action=edit[^)]*section="
 ```
 
 ```markdown
@@ -338,11 +338,11 @@ Remove multiple link variants in one run:
 
 ```yaml
 remove_links:
-    - "cite_note"
-    - "custom-link"
-    - "upload\\.wikimedia\\.org"
-    - "veaction=edit[^)]*section="
-    - "action=edit[^)]*section="
+    - "anchor:cite_note"
+    - "anchor:custom-link"
+    - "anchor:upload\\.wikimedia\\.org"
+    - "anchor:veaction=edit[^)]*section="
+    - "anchor:action=edit[^)]*section="
 ```
 
 ```markdown
@@ -507,12 +507,12 @@ preprocessing:
             - External links
             - Bibliography
         remove_links:
-            - "cite_note"
+            - "anchor:cite_note"
             - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
-            - "#[Vv]orlage_[Ll]esenswert"
-            - "#[Vv]orlage_[Ee]xzellent"
-            - "veaction=edit[^)]*section="
-            - "action=edit[^)]*section="
+            - "anchor:#[Vv]orlage_[Ll]esenswert"
+            - "anchor:#[Vv]orlage_[Ee]xzellent"
+            - "anchor:veaction=edit[^)]*section="
+            - "anchor:action=edit[^)]*section="
         remove_images: true
         remove_html_comments: true
         normalize_tables: true
