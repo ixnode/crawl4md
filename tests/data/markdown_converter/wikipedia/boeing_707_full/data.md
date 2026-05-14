@@ -22,6 +22,8 @@ Mitmachen
 - [Letzte Änderungen](/wiki/Spezial:Letzte_%C3%84nderungen "Liste der letzten Änderungen in Wikipedia [r]")
 - [Kontakt](/wiki/Wikipedia:Kontakt "Kontaktmöglichkeiten")
 
+Wikipedia Die freie Enzyklopädie
+
 [Suche](/wiki/Spezial:Suche "Durchsuche die Wikipedia [f]")
 
 Suchen
@@ -205,9 +207,11 @@ In die Seitenleiste verschieben
 
 Verbergen
 
+Dies ist ein als lesenswert ausgezeichneter Artikel.
+
 | Boeing 707 | |
 | --- | --- |
-|  *Eine Boeing 707 der [Air India](//de.wikipedia.org/wiki/Air_India "Air India")* | |
+| Eine Boeing 707 der Air India *Eine Boeing 707 der [Air India](//de.wikipedia.org/wiki/Air_India "Air India")* | |
 | Typ | [Vierstrahliges](//de.wikipedia.org/wiki/Vierstrahliges_Flugzeug "Vierstrahliges Flugzeug") [Schmalrumpfflugzeug](//de.wikipedia.org/wiki/Schmalrumpfflugzeug "Schmalrumpfflugzeug") |
 | | |
 | Entwurfsland | Vereinigte Staaten 48 [Vereinigte Staaten](//de.wikipedia.org/wiki/Vereinigte_Staaten "Vereinigte Staaten") |

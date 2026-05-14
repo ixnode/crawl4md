@@ -24,6 +24,7 @@ preprocessing:
         remove_blocks: false
         remove_sections: false
         remove_links: false
+        remove_images: false
         remove_html_comments: false
         normalize_tables: false
         normalize_linebreak: false
@@ -354,6 +355,74 @@ Becomes:
 Text [keep](#plain)
 ```
 
+### `remove_images`
+
+Removes Markdown image syntax and image-only link wrappers while preserving semantic image text.
+
+The option accepts `false` or `true`:
+
+```yaml
+remove_images: false
+```
+
+Keeps all Markdown images unchanged.
+
+```yaml
+remove_images: true
+```
+
+For each Markdown image, the replacement text is selected with this priority:
+
+```text
+alt > title > remove
+```
+
+Only the image syntax and optional link wrapper are removed. Image URLs and wrapper link targets are not kept. No prefix such as `Image:` is added.
+
+Image with alt text:
+
+```markdown
+![Boeing 707 Cockpit](cockpit.jpg)
+```
+
+Becomes:
+
+```markdown
+Boeing 707 Cockpit
+```
+
+Image with title but no alt text:
+
+```markdown
+![](image.jpg "Cockpit einer Boeing 707")
+```
+
+Becomes:
+
+```markdown
+Cockpit einer Boeing 707
+```
+
+Image without alt text or title:
+
+```markdown
+![](image.jpg)
+```
+
+Becomes an empty string.
+
+Linked image with alt text:
+
+```markdown
+[![Eine Boeing 707 der Air India](https://upload.wikimedia.org/image.jpg)](https://de.wikipedia.org/wiki/Datei:image.jpg "Eine Boeing 707 der Air India")
+```
+
+Becomes:
+
+```markdown
+Eine Boeing 707 der Air India
+```
+
 ### `remove_html_comments`
 
 Removes HTML comments from Markdown output:
@@ -444,6 +513,7 @@ preprocessing:
             - "#[Vv]orlage_[Ee]xzellent"
             - "veaction=edit[^)]*section="
             - "action=edit[^)]*section="
+        remove_images: true
         remove_html_comments: true
         normalize_tables: true
         normalize_linebreak: true

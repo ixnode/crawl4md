@@ -266,3 +266,19 @@ Every addition must preserve:
 - clarity
 - determinism
 - separation of concerns
+
+---
+
+## Short commands
+
+### `ocm`
+
+When I write `ocm`, treat it as:
+
+Create a concise one-line Git commit message for the current changes.
+
+Rules:
+- Use Conventional Commit style if it fits.
+- Output only one line.
+- No explanation.
+

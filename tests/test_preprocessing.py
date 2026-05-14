@@ -444,6 +444,36 @@ class RuleRemoveImagesTests(unittest.TestCase):
 
         self.assertEqual(cleaned, "\n")
 
+    def test_keeps_markdown_image_alt_text(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = "![Boeing 707 Cockpit](cockpit.jpg)\n"
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Boeing 707 Cockpit\n")
+
+    def test_keeps_markdown_image_title_when_alt_text_is_empty(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = '![](image.jpg "Cockpit einer Boeing 707")\n'
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Cockpit einer Boeing 707\n")
+
+    def test_prefers_markdown_image_alt_text_over_title(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = '![Alt text](image.jpg "Title text")\n'
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Alt text\n")
+
     def test_removes_linked_markdown_image(self) -> None:
         rule = RuleRemoveImages(
             MarkdownPreprocessingConfig(enabled=True, remove_images=True)
@@ -453,6 +483,20 @@ class RuleRemoveImagesTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "\n")
+
+    def test_keeps_linked_markdown_image_alt_text(self) -> None:
+        rule = RuleRemoveImages(
+            MarkdownPreprocessingConfig(enabled=True, remove_images=True)
+        )
+        markdown = (
+            "[![Eine Boeing 707 der Air India](https://upload.wikimedia.org/image.jpg)]"
+            "(https://de.wikipedia.org/wiki/Datei:image.jpg "
+            '"Eine Boeing 707 der Air India")\n'
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, "Eine Boeing 707 der Air India\n")
 
     def test_keeps_regular_markdown_links(self) -> None:
         rule = RuleRemoveImages(
@@ -472,7 +516,7 @@ class RuleRemoveImagesTests(unittest.TestCase):
 
         cleaned = rule.apply(markdown)
 
-        self.assertEqual(cleaned, "Text [ keep](file.jpg)\n")
+        self.assertEqual(cleaned, "Text [icon keep](file.jpg)\n")
 
     def test_removes_linked_markdown_images_with_multiple_images(self) -> None:
         rule = RuleRemoveImages(
@@ -482,7 +526,7 @@ class RuleRemoveImagesTests(unittest.TestCase):
 
         cleaned = rule.apply(markdown)
 
-        self.assertEqual(cleaned, "\n")
+        self.assertEqual(cleaned, "Two\n")
 
 
 class RuleNormalizeLinebreakTests(unittest.TestCase):
