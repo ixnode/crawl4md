@@ -61,11 +61,13 @@ def preprocessing() -> int:
     print_heading("Preprocessing")
 
     commands = [
-        [sys.executable, "-m", "unittest", "tests.test_preprocessing", "-v"],
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
+        ("Profile", [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-v"]),
+        ("Pipeline", [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-v"]),
+        ("Preprocessing Rules", [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"]),
     ]
 
-    for command in commands:
+    for title, command in commands:
+        print_heading(title)
         result = subprocess.run(command)
         if result.returncode != 0:
             return result.returncode

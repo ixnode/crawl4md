@@ -1,11 +1,13 @@
 import unittest
 
-from crawl4md.config import AppConfig, MarkdownPreprocessingConfig, apply_profiles
-from crawl4md.convert.preprocessing import MarkdownPreprocessing
+from crawl4md.config import AppConfig, apply_profiles
 
 
-class MarkdownPreprocessingTests(unittest.TestCase):
+class ProfileTests(unittest.TestCase):
+    """Tests profile lookup and merging before runtime preprocessing is built."""
+
     def test_applies_wikipedia_profile_defaults(self) -> None:
+        """Profile defaults from the built-in wikipedia profile are applied to a project."""
         config = AppConfig(
             **apply_profiles(
                 {
@@ -30,6 +32,7 @@ class MarkdownPreprocessingTests(unittest.TestCase):
         self.assertTrue(markdown.normalize_whitespace)
 
     def test_project_preprocessing_overrides_profile_defaults(self) -> None:
+        """Project-level preprocessing values override profile defaults without removing unrelated defaults."""
         config = AppConfig(
             **apply_profiles(
                 {
@@ -57,6 +60,7 @@ class MarkdownPreprocessingTests(unittest.TestCase):
         self.assertIn("cite_note", markdown.remove_links)
 
     def test_unknown_profile_raises_error(self) -> None:
+        """Unknown profile names fail during profile application instead of being ignored silently."""
         with self.assertRaisesRegex(ValueError, "Unknown project profile: doesnotexist"):
             apply_profiles(
                 {
@@ -69,47 +73,3 @@ class MarkdownPreprocessingTests(unittest.TestCase):
                     }
                 }
             )
-
-    def test_returns_markdown_unchanged_when_disabled(self) -> None:
-        config = MarkdownPreprocessingConfig(
-            enabled=False,
-            remove_sections=["Einzelnachweise"],
-        )
-        preprocessing = MarkdownPreprocessing(config)
-        markdown = "## Geschichte\n\nText\n\n## Einzelnachweise\n\n1. Quelle\n"
-
-        cleaned = preprocessing.process(markdown)
-
-        self.assertEqual(cleaned, markdown)
-
-    def test_runs_multiple_enabled_rules(self) -> None:
-        config = MarkdownPreprocessingConfig(
-            enabled=True,
-            remove_links="anchor:#bodyContent",
-            remove_lines=[
-                "[Aa]us Wikipedia, der freien Enzyklopädie",
-                "[Ff]rom Wikipedia, the free encyclopedia",
-            ],
-            ensure_h1=True,
-            remove_sections=["Einzelnachweise"],
-        )
-        preprocessing = MarkdownPreprocessing(config)
-        markdown = (
-            "[Zum Inhalt springen](https://de.wikipedia.org/wiki/Boeing_707#bodyContent)\n"
-            "aus Wikipedia, der freien Enzyklopädie\n"
-            "Text\n\n"
-            "## Einzelnachweise\n\n"
-            "1. Quelle\n"
-        )
-
-        cleaned = preprocessing.process(
-            markdown,
-            url="https://de.wikipedia.org/wiki/Boeing_707",
-            html="<html><body><h1>Boeing 707</h1></body></html>",
-        )
-
-        self.assertEqual(cleaned, "# Boeing 707\n\nText\n")
-
-
-if __name__ == "__main__":
-    unittest.main()
