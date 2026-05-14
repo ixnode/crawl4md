@@ -11,6 +11,6 @@
 
 from typing import Protocol
 
-class NormalizerBase(Protocol):
+class RuleBase(Protocol):
     def normalize(self, html: str) -> str:
         ...

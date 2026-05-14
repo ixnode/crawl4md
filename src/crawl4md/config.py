@@ -39,6 +39,12 @@ class CrawlConfig(BaseModel):
 
         return self
 
+class NormalizationConfig(BaseModel):
+    enabled: bool = True
+    entities: bool = True
+    hidden_spans: bool = True
+    urls: bool = True
+
 class MarkdownPreprocessingConfig(BaseModel):
     enabled: bool = False
 
@@ -64,6 +70,7 @@ class ProjectConfig(BaseModel):
     sources: list[str]
 
     crawl: CrawlConfig = Field(default_factory=CrawlConfig)
+    normalization: NormalizationConfig = Field(default_factory=NormalizationConfig)
     preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
 
 class AppConfig(BaseModel):

@@ -20,10 +20,9 @@ import warnings
 import yaml
 from pydantic import BaseModel, Field
 
-from crawl4md.config import CrawlConfig, PreprocessingConfig, apply_profile_defaults
-from crawl4md.convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
-from crawl4md.convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
-from crawl4md.fetch.base.base_markdown_fetcher import BaseMarkdownFetcher
+from crawl4md.config import CrawlConfig, NormalizationConfig, PreprocessingConfig, apply_profile_defaults
+from crawl4md.fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
+from crawl4md.fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
@@ -32,6 +31,7 @@ SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
 class MarkdownConverterSessionConfig(BaseModel):
     profile: str | None = None
     crawl: CrawlConfig = Field(default_factory=CrawlConfig)
+    normalization: NormalizationConfig = Field(default_factory=NormalizationConfig)
     url: str | None = None
     preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
 
@@ -65,13 +65,15 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(session=session_name):
                 test_session = self._load_config(session / "config.yml")
                 config = test_session.config
+                fetcher = self._build_fetcher(config)
                 html = self._load_and_normalize_html(
                     html_path=session / "data.html",
                     url=config.url,
+                    fetcher=fetcher,
                 )
                 expected_markdown = (session / "data.md").read_text()
 
-                converter = self._build_converter(config)
+                converter = fetcher.build_markdown_converter()
 
                 warnings.filterwarnings(
                     "ignore",
@@ -99,14 +101,14 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(markdown, expected_markdown)
 
     @staticmethod
-    def _load_and_normalize_html(html_path: Path, url: str | None) -> str:
+    def _load_and_normalize_html(html_path: Path, url: str | None, fetcher: MarkdownFetcherCrawl4AI | MarkdownFetcherKreuzbergDev) -> str:
         html = html_path.read_text()
 
         if not url:
             return html
 
-        fetcher = BaseMarkdownFetcher.build_html_fetcher(url=url)
-        return fetcher.normalize_html(html)
+        html_fetcher = fetcher.build_html_fetcher(url=url)
+        return html_fetcher.normalize_html(html)
 
     def _load_config(self, path: Path) -> MarkdownConverterSession:
         data = yaml.safe_load(path.read_text())
@@ -121,7 +123,8 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 content_selector="main",
             )
         )
-        converter = self._build_converter(config)
+        fetcher = self._build_fetcher(config)
+        converter = fetcher.build_markdown_converter()
         html = (
             "<html><body>"
             "<nav><h1>Navigation</h1><p>Ignore me</p></nav>"
@@ -147,17 +150,19 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(config.content_selector, "main")
 
-    def _build_converter(self, config: MarkdownConverterSessionConfig) -> MarkdownConverterCrawl4AI:
+    def _build_fetcher(self, config: MarkdownConverterSessionConfig) -> MarkdownFetcherCrawl4AI | MarkdownFetcherKreuzbergDev:
         if config.crawl.parser == "crawl4ai":
-            return MarkdownConverterCrawl4AI(
+            return MarkdownFetcherCrawl4AI(
                 config=config.preprocessing.markdown,
+                normalization=config.normalization,
                 parse_type=config.crawl.parse_type,
                 content_selector=config.crawl.content_selector,
             )
 
         if config.crawl.parser == "kreuzberg-dev":
-            return MarkdownConverterKreuzbergDev(
+            return MarkdownFetcherKreuzbergDev(
                 config=config.preprocessing.markdown,
+                normalization=config.normalization,
                 parse_type=config.crawl.parse_type,
                 content_selector=config.crawl.content_selector,
             )

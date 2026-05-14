@@ -8,6 +8,11 @@ projects:
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
             # Optional CSS selector applied before markdown conversion
             # content_selector: ".mw-parser-output"
+        normalization:
+            enabled: true
+            entities: true
+            hidden_spans: true
+            urls: true
         preprocessing:
             markdown:
                 enabled: false
@@ -39,6 +44,11 @@ projects:
             parser: kreuzberg-dev # crawl4ai | kreuzberg-dev
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
             content_selector: ".mw-parser-output"
+        normalization:
+            enabled: true
+            entities: true
+            hidden_spans: true
+            urls: true
 
         preprocessing:
             markdown:
@@ -58,6 +68,11 @@ projects:
             parser: kreuzberg-dev # crawl4ai | kreuzberg-dev
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
             content_selector: ".mw-parser-output"
+        normalization:
+            enabled: true
+            entities: true
+            hidden_spans: true
+            urls: true
 
         preprocessing:
             markdown:

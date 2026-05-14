@@ -13,7 +13,7 @@ import httpx
 
 from typing import List
 
-from .normalize.base.normalizer_base import NormalizerBase
+from .normalization.rules.base.rule_base import RuleBase
 
 
 class HtmlFetcher:
@@ -25,7 +25,7 @@ class HtmlFetcher:
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/120.0.0.0 Safari/537.36"
         ),
-        normalizers: List[NormalizerBase] | None = None,
+        normalizers: List[RuleBase] | None = None,
     ) -> None:
         self.timeout = timeout
         self.headers =  {

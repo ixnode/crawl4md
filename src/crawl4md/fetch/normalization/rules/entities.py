@@ -11,21 +11,21 @@
 
 import re
 
-from crawl4md.fetch.normalize.base.normalizer_base import NormalizerBase
+from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 
 
-class MediawikiHiddenSpanNormalizer(NormalizerBase):
+class RuleEntities(RuleBase):
     """
-    Remove hidden MediaWiki spans like:
-    <span style="display:none;">...</span>
+    Fix MediaWiki entity spans like:
+    <span typeof="mw:Entity" id="mwdg">&nbsp;</span>
 
-    → completely removed (including content)
+    → replaced with a single whitespace " "
     """
 
     _pattern = re.compile(
-        r'<span\b[^>]*style=["\'][^"\']*display\s*:\s*none[^"\']*["\'][^>]*>.*?</span>',
-        re.IGNORECASE | re.DOTALL,
+        r'<span\b[^>]*\btypeof=["\']mw:Entity["\'][^>]*>\s*(?:&nbsp;|\u00a0)\s*</span>',
+        re.IGNORECASE,
     )
 
     def normalize(self, html: str) -> str:
-        return self._pattern.sub("", html)
+        return self._pattern.sub(" ", html)

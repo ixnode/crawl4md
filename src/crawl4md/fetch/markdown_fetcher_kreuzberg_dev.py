@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-07)
 # @since 1.0.0 (2026-05-07) First version
 
-from ..config import MarkdownPreprocessingConfig
+from ..config import MarkdownPreprocessingConfig, NormalizationConfig
 from ..convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
 from .base import BaseMarkdownFetcher
 
@@ -18,11 +18,13 @@ class MarkdownFetcherKreuzbergDev(BaseMarkdownFetcher):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
+        normalization: NormalizationConfig,
         parse_type: str = "markdown",
         content_selector: str | None = None,
     ) -> None:
         super().__init__(
             config=config,
+            normalization=normalization,
             parse_type=parse_type,
             content_selector=content_selector,
         )

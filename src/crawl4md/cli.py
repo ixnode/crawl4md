@@ -46,6 +46,7 @@ def build_fetcher(proj):
     if proj.crawl.parser == "crawl4ai":
         return MarkdownFetcherCrawl4AI(
             config=proj.preprocessing.markdown,
+            normalization=proj.normalization,
             parse_type=proj.crawl.parse_type,
             content_selector=proj.crawl.content_selector,
         )
@@ -53,6 +54,7 @@ def build_fetcher(proj):
     if proj.crawl.parser == "kreuzberg-dev":
         return MarkdownFetcherKreuzbergDev(
             config=proj.preprocessing.markdown,
+            normalization=proj.normalization,
             parse_type=proj.crawl.parse_type,
             content_selector=proj.crawl.content_selector,
         )

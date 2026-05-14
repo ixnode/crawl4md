@@ -12,32 +12,28 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.config import MarkdownPreprocessingConfig, NormalizationConfig
 from crawl4md.fetch.html import HtmlFetcher
-from crawl4md.fetch.normalize.mediawiki_entity import MediawikiEntityNormalizer
-from crawl4md.fetch.normalize.mediawiki_hidden_span import MediawikiHiddenSpanNormalizer
-from crawl4md.fetch.normalize.url import UrlNormalizer
+from crawl4md.fetch.normalization.html import HtmlNormalization
 
 
 class BaseMarkdownFetcher(ABC):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
+        normalization: NormalizationConfig,
         parse_type: str = "markdown",
         content_selector: str | None = None,
     ) -> None:
         self.config = config
+        self.normalization = normalization
         self.parse_type = parse_type
         self.content_selector = content_selector
 
-    @staticmethod
-    def build_html_fetcher(url: str) -> HtmlFetcher:
+    def build_html_fetcher(self, url: str) -> HtmlFetcher:
+        html_normalization = HtmlNormalization(self.normalization, url=url)
         return HtmlFetcher(
-            normalizers=[
-                MediawikiEntityNormalizer(),
-                MediawikiHiddenSpanNormalizer(),
-                UrlNormalizer(url=url),
-            ]
+            normalizers=html_normalization.rules
         )
 
     @abstractmethod

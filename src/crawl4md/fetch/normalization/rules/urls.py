@@ -13,10 +13,10 @@ import re
 
 from urllib.parse import urlparse
 
-from crawl4md.fetch.normalize.base.normalizer_base import NormalizerBase
+from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 
 
-class UrlNormalizer(NormalizerBase):
+class RuleUrls(RuleBase):
     """
     Normalize protocol-relative URLs like:
     href="//de.wikipedia.org/wiki/Air_India"

@@ -10,7 +10,7 @@
 # @since 1.0.0 (2026-05-02) First version
 
 from ..convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
-from ..config import MarkdownPreprocessingConfig, ParseType
+from ..config import MarkdownPreprocessingConfig, NormalizationConfig, ParseType
 from .base import BaseMarkdownFetcher
 
 
@@ -18,11 +18,13 @@ class MarkdownFetcherCrawl4AI(BaseMarkdownFetcher):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
+        normalization: NormalizationConfig,
         parse_type: ParseType = "markdown",
         content_selector: str | None = None,
     ) -> None:
         super().__init__(
             config=config,
+            normalization=normalization,
             parse_type=parse_type,
             content_selector=content_selector,
         )

@@ -24,10 +24,15 @@ class ProfileTests(unittest.TestCase):
 
         markdown = config.projects["planes"].preprocessing.markdown
         crawl = config.projects["planes"].crawl
+        normalization = config.projects["planes"].normalization
 
         self.assertEqual(crawl.parser, "kreuzberg-dev")
         self.assertEqual(crawl.parse_type, "markdown")
         self.assertEqual(crawl.content_selector, ".mw-parser-output")
+        self.assertTrue(normalization.enabled)
+        self.assertTrue(normalization.entities)
+        self.assertTrue(normalization.hidden_spans)
+        self.assertTrue(normalization.urls)
 
         self.assertTrue(markdown.enabled)
         self.assertTrue(markdown.ensure_h1)
