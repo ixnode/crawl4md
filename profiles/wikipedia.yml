@@ -9,7 +9,7 @@ crawl:
 normalization:
     enabled: true
     entities: true
-    hidden_spans: true
+    hidden_elements: true
     urls: true
     references: true
 
@@ -35,6 +35,7 @@ preprocessing:
             - References
             - External links
             - Bibliography
+            - Vergleichbare Typen
         remove_links:
             - "anchor:cite_note"
             - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"

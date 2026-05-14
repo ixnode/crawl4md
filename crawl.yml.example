@@ -11,7 +11,7 @@ projects:
         normalization:
             enabled: true
             entities: true
-            hidden_spans: true
+            hidden_elements: true
             urls: true
             references: true
         preprocessing:
@@ -48,7 +48,7 @@ projects:
         normalization:
             enabled: true
             entities: true
-            hidden_spans: true
+            hidden_elements: true
             urls: true
             references: true
         preprocessing:
@@ -71,7 +71,7 @@ projects:
         normalization:
             enabled: true
             entities: true
-            hidden_spans: true
+            hidden_elements: true
             urls: true
             references: true
         preprocessing:

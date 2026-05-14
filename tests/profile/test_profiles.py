@@ -31,7 +31,7 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(crawl.content_selector, ".mw-parser-output")
         self.assertTrue(normalization.enabled)
         self.assertTrue(normalization.entities)
-        self.assertTrue(normalization.hidden_spans)
+        self.assertTrue(normalization.hidden_elements)
         self.assertTrue(normalization.urls)
         self.assertTrue(normalization.references)
 

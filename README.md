@@ -111,7 +111,7 @@ Available project settings:
 - `profile`: optional defaults such as `wikipedia` for `crawl`, `normalization`, and `preprocessing` (loaded from `profiles/*.yml`)
 - `crawl.parser`: `kreuzberg-dev` or `crawl4ai`
 - `crawl.parse_type`: `markdown`; `markdown-fit` is available with `crawl4ai`
-- `normalization.*`: HTML normalization options (`enabled`, `entities`, `hidden_spans`, `urls`, `references`), all default to `true`
+- `normalization.*`: HTML normalization options (`enabled`, `entities`, `hidden_elements`, `urls`, `references`), all default to `true`
 - `preprocessing.markdown.enabled`: enables Markdown cleanup
 - `preprocessing.markdown.*`: optional cleanup rules such as `ensure_h1`, `remove_html_comments`, `remove_sections`, and `normalize_whitespace`
 

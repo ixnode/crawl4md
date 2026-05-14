@@ -42,7 +42,7 @@ class CrawlConfig(BaseModel):
 class NormalizationConfig(BaseModel):
     enabled: bool = True
     entities: bool = True
-    hidden_spans: bool = True
+    hidden_elements: bool = True
     urls: bool = True
     references: bool = True
 
