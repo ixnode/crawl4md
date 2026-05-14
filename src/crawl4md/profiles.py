@@ -41,7 +41,7 @@ PREPROCESSING_PROFILES = {
                     "anchor:#[Vv]orlage_[Ee]xzellent",
                     "anchor:veaction=edit[^)]*section=",
                     "anchor:action=edit[^)]*section=",
-                    "unwrap:Air India",
+                    "unwrap:*",
                 ],
                 "remove_images": True,
                 "remove_html_comments": True,
