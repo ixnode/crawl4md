@@ -14,7 +14,9 @@ PREPROCESSING_PROFILES = {
         "preprocessing": {
             "markdown": {
                 "enabled": True,
+
                 "ensure_h1": True,
+
                 "remove_lines": [
                     "[Aa]us Wikipedia, der freien Enzyklopädie",
                     "[Ff]rom Wikipedia, the free encyclopedia",
@@ -42,6 +44,7 @@ PREPROCESSING_PROFILES = {
                 ],
                 "remove_images": True,
                 "remove_html_comments": True,
+
                 "normalize_tables": True,
                 "normalize_linebreak": True,
                 "normalize_whitespace": True,
