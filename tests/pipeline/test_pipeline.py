@@ -48,3 +48,20 @@ class MarkdownPreprocessingPipelineTests(unittest.TestCase):
         )
 
         self.assertEqual(cleaned, "# Boeing 707\n\nText\n")
+
+    def test_runs_remove_images_before_remove_links(self) -> None:
+        """Image syntax is resolved before remaining Markdown links are processed."""
+        config = MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_images=True,
+            remove_links="unwrap:Air India",
+        )
+        preprocessing = MarkdownPreprocessing(config)
+        markdown = (
+            "[![Air India](https://upload.wikimedia.org/image.jpg)]"
+            "(https://de.wikipedia.org/wiki/Air_India)\n"
+        )
+
+        cleaned = preprocessing.process(markdown)
+
+        self.assertEqual(cleaned, "Air India\n")

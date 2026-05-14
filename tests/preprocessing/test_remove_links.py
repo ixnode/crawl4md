@@ -182,6 +182,94 @@ CASES = [
             'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
         ),
     ),
+    RuleCase(
+        name="unwraps_simple_markdown_link",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:Boeing",
+        ),
+        markdown='Die Boeing 707 wurde von [Boeing](https://de.wikipedia.org/wiki/Boeing "Boeing") gebaut.\n',
+        expected="Die Boeing 707 wurde von Boeing gebaut.\n",
+    ),
+    RuleCase(
+        name="unwraps_markdown_link_with_double_quote_title",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:Air India",
+        ),
+        markdown='[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")\n',
+        expected="Air India\n",
+    ),
+    RuleCase(
+        name="unwraps_markdown_link_with_single_quote_title",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:Air India",
+        ),
+        markdown="[Air India](https://de.wikipedia.org/wiki/Air_India 'Air India')\n",
+        expected="Air India\n",
+    ),
+    RuleCase(
+        name="unwraps_markdown_link_with_parenthesized_title",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:Air India",
+        ),
+        markdown="[Air India](https://de.wikipedia.org/wiki/Air_India (Air India))\n",
+        expected="Air India\n",
+    ),
+    RuleCase(
+        name="unwraps_multiple_links_in_one_line",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links=["unwrap:Boeing", "unwrap:Air India"],
+        ),
+        markdown=(
+            "[Boeing](https://de.wikipedia.org/wiki/Boeing) und "
+            "[Air India](https://de.wikipedia.org/wiki/Air_India)\n"
+        ),
+        expected="Boeing und Air India\n",
+    ),
+    RuleCase(
+        name="unwraps_links_by_regex_matching_visible_text",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links=r"unwrap:^Air India$",
+        ),
+        markdown=(
+            "[Boeing](https://de.wikipedia.org/wiki/Boeing) und "
+            '[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")\n'
+        ),
+        expected="[Boeing](https://de.wikipedia.org/wiki/Boeing) und Air India\n",
+    ),
+    RuleCase(
+        name="applies_mixed_anchor_text_and_unwrap_rules",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links=[
+                "anchor:cite_note",
+                "text:Zum Inhalt springen",
+                "unwrap:Boeing|Air India",
+            ],
+        ),
+        markdown=(
+            "[Zum Inhalt springen](#bodyContent) "
+            "[Boeing](https://de.wikipedia.org/wiki/Boeing) "
+            "[Air India](https://de.wikipedia.org/wiki/Air_India) "
+            "[[17]](#cite_note-17) "
+            "[keep](https://example.test)\n"
+        ),
+        expected="Boeing Air India [keep](https://example.test)\n",
+    ),
+    RuleCase(
+        name="unwrap_removes_url_and_title",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:Air India",
+        ),
+        markdown='Text [Air India](https://de.wikipedia.org/wiki/Air_India "Air India") after\n',
+        expected="Text Air India after\n",
+    ),
 ]
 
 

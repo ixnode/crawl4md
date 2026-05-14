@@ -40,11 +40,11 @@ class MarkdownPreprocessing:
         if config.remove_lines:
             self.rules.append(RuleRemoveLines(config))
 
-        if config.remove_links:
-            self.rules.append(RuleRemoveLinks(config))
-
         if config.remove_images:
             self.rules.append(RuleRemoveImages(config))
+
+        if config.remove_links:
+            self.rules.append(RuleRemoveLinks(config))
 
         if config.ensure_h1:
             self.rules.append(RuleEnsureH1(config))

@@ -204,9 +204,18 @@ Pattern prefixes:
 remove_links: "#content"
 remove_links: "anchor:#content"
 remove_links: "text:Zum Inhalt springen"
+remove_links: "unwrap:Air India"
 ```
 
 `"#content"` and `"anchor:#content"` both check the link target. `"text:Zum Inhalt springen"` checks the visible link text.
+`"unwrap:Air India"` checks the visible link text and removes only the Markdown link syntax.
+
+Processing behavior:
+
+1. Image syntax and image-only wrappers are handled by `remove_images: true`.
+2. `remove_links` rules are applied to Markdown links.
+3. `anchor:` and `text:` remove the whole matching link, including visible text.
+4. `unwrap:` keeps the visible link text and removes the URL and optional title.
 
 Remove skip-to-content links by target:
 
@@ -240,6 +249,61 @@ Becomes:
 
 ```markdown
 [keep](#bodyContent)
+```
+
+Unwrap links by visible text:
+
+```yaml
+remove_links: "unwrap:Air India"
+```
+
+```markdown
+[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")
+```
+
+Becomes:
+
+```markdown
+Air India
+```
+
+`unwrap:` accepts regular expressions:
+
+```yaml
+remove_links: "unwrap:^Air India$"
+```
+
+Supported Markdown link forms:
+
+```markdown
+[Text](url)
+[Text](url "Title")
+[Text](url 'Title')
+[Text](url (Title))
+```
+
+All become:
+
+```markdown
+Text
+```
+
+Unwrap multiple links in one line:
+
+```yaml
+remove_links:
+    - "unwrap:Boeing"
+    - "unwrap:Air India"
+```
+
+```markdown
+[Boeing](https://de.wikipedia.org/wiki/Boeing) und [Air India](https://de.wikipedia.org/wiki/Air_India)
+```
+
+Becomes:
+
+```markdown
+Boeing und Air India
 ```
 
 Remove links to a specific anchor prefix:
