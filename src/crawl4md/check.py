@@ -51,6 +51,20 @@ def markdown_converter() -> int:
     ).returncode
 
 
+def preprocessing() -> int:
+    commands = [
+        [sys.executable, "-m", "unittest", "tests.test_preprocessing", "-v"],
+        [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
+    ]
+
+    for command in commands:
+        result = subprocess.run(command)
+        if result.returncode != 0:
+            return result.returncode
+
+    return 0
+
+
 def main() -> int:
     commands = [
         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
