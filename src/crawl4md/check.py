@@ -57,22 +57,28 @@ def markdown_converter() -> int:
     ).returncode
 
 
+def profile() -> int:
+    print_heading("Profile")
+
+    return subprocess.run(
+        [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-v"],
+    ).returncode
+
+
+def pipeline() -> int:
+    print_heading("Pipeline")
+
+    return subprocess.run(
+        [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-v"],
+    ).returncode
+
+
 def preprocessing() -> int:
     print_heading("Preprocessing")
 
-    commands = [
-        ("Profile", [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-v"]),
-        ("Pipeline", [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-v"]),
-        ("Preprocessing Rules", [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"]),
-    ]
-
-    for title, command in commands:
-        print_heading(title)
-        result = subprocess.run(command)
-        if result.returncode != 0:
-            return result.returncode
-
-    return 0
+    return subprocess.run(
+        [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
+    ).returncode
 
 
 def check_ruff() -> int:
@@ -82,7 +88,7 @@ def check_ruff() -> int:
 
 
 def main() -> int:
-    for check in (markdown_converter, preprocessing, check_ruff):
+    for check in (markdown_converter, profile, pipeline, preprocessing, check_ruff):
         result = check()
         if result != 0:
             return result
