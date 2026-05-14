@@ -270,6 +270,40 @@ CASES = [
         markdown='Text [Air India](https://de.wikipedia.org/wiki/Air_India "Air India") after\n',
         expected="Text Air India after\n",
     ),
+    RuleCase(
+        name="unwrap_star_unwraps_all_remaining_links",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:*",
+        ),
+        markdown=(
+            "[Boeing](https://de.wikipedia.org/wiki/Boeing) und "
+            '[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")\n'
+        ),
+        expected="Boeing und Air India\n",
+    ),
+    RuleCase(
+        name="applies_anchor_removals_before_unwrap_star",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links=[
+                "anchor:cite_note",
+                "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)",
+                "anchor:#[Vv]orlage_[Ll]esenswert",
+                "anchor:#[Vv]orlage_[Ee]xzellent",
+                "anchor:veaction=edit[^)]*section=",
+                "anchor:action=edit[^)]*section=",
+                "unwrap:*",
+            ],
+        ),
+        markdown=(
+            "[Zum Inhalt springen](#bodyContent)\n"
+            "[[17]](#cite_note-17)\n"
+            "[Boeing](https://de.wikipedia.org/wiki/Boeing) und "
+            '[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")\n'
+        ),
+        expected="Boeing und Air India\n",
+    ),
 ]
 
 

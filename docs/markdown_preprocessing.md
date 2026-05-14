@@ -205,10 +205,12 @@ remove_links: "#content"
 remove_links: "anchor:#content"
 remove_links: "text:Zum Inhalt springen"
 remove_links: "unwrap:Air India"
+remove_links: "unwrap:*"
 ```
 
 `"#content"` and `"anchor:#content"` both check the link target. `"text:Zum Inhalt springen"` checks the visible link text.
 `"unwrap:Air India"` checks the visible link text and removes only the Markdown link syntax.
+`"unwrap:*"` unwraps all remaining Markdown links.
 
 Processing behavior:
 
@@ -216,6 +218,19 @@ Processing behavior:
 2. `remove_links` rules are applied to Markdown links.
 3. `anchor:` and `text:` remove the whole matching link, including visible text.
 4. `unwrap:` keeps the visible link text and removes the URL and optional title.
+
+Rules are applied in this order: complete link removals (`anchor:` and `text:`) run first, then `unwrap:` runs on the remaining links. This means a catch-all `unwrap:*` can be placed after specific removal rules:
+
+```yaml
+remove_links:
+    - "anchor:cite_note"
+    - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
+    - "anchor:#[Vv]orlage_[Ll]esenswert"
+    - "anchor:#[Vv]orlage_[Ee]xzellent"
+    - "anchor:veaction=edit[^)]*section="
+    - "anchor:action=edit[^)]*section="
+    - "unwrap:*"
+```
 
 Remove skip-to-content links by target:
 

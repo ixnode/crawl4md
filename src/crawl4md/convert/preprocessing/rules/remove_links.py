@@ -62,7 +62,7 @@ class RuleRemoveLinks(RuleBase):
     @cached_property
     def unwrap_patterns(self) -> list[re.Pattern[str]]:
         return [
-            re.compile(match_pattern, re.DOTALL)
+            re.compile(".*", re.DOTALL) if match_pattern == "*" else re.compile(match_pattern, re.DOTALL)
             for pattern in self._link_patterns()
             for match_type, match_pattern in [self._split_match_pattern(pattern)]
             if match_type == "unwrap"
