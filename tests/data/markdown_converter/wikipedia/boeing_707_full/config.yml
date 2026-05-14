@@ -4,10 +4,6 @@ description: "Converts the German Wikipedia Boeing 707 page with markdown and al
 config:
     profile: wikipedia
     url: https://de.wikipedia.org/wiki/Boeing_707
-    crawl:
-        parser: kreuzberg-dev
-        parse_type: markdown
-        content_selector:
     preprocessing:
         markdown:
             remove_links: "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"

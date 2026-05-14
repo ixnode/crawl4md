@@ -1,211 +1,4 @@
-Hauptmenü
-
-Hauptmenü
-
-In die Seitenleiste verschieben
-
-Verbergen
-
-Navigation
-
-- [Hauptseite](/wiki/Wikipedia:Hauptseite "Hauptseite besuchen [z]")
-- [Themenportale](/wiki/Portal:Wikipedia_nach_Themen)
-- [Zufälliger Artikel](/wiki/Spezial:Zuf%C3%A4llige_Seite "Zufällige Seite aufrufen [x]")
-- [Spezialseiten](/wiki/Spezial:Spezialseiten "Liste aller Spezialseiten [q]")
-
-Mitmachen
-
-- [Artikel verbessern](/wiki/Wikipedia:Beteiligen)
-- [Neuen Artikel anlegen](/wiki/Hilfe:Neuen_Artikel_anlegen)
-- [Autorenportal](/wiki/Wikipedia:Autorenportal "Info-Zentrum über Beteiligungsmöglichkeiten")
-- [Hilfe](/wiki/Hilfe:%C3%9Cbersicht "Übersicht über Hilfeseiten")
-- [Letzte Änderungen](/wiki/Spezial:Letzte_%C3%84nderungen "Liste der letzten Änderungen in Wikipedia [r]")
-- [Kontakt](/wiki/Wikipedia:Kontakt "Kontaktmöglichkeiten")
-
-Wikipedia Die freie Enzyklopädie
-
-[Suche](/wiki/Spezial:Suche "Durchsuche die Wikipedia [f]")
-
-Suchen
-
-Erscheinungsbild
-
-- [Jetzt spenden](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=de.wikipedia.org&uselang=de)
-- [Benutzerkonto erstellen](/w/index.php?title=Spezial:Benutzerkonto_anlegen&returnto=Boeing+707 "Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.")
-- [Anmelden](/w/index.php?title=Spezial:Anmelden&returnto=Boeing+707 "Anmelden ist zwar keine Pflicht, wird aber gerne gesehen. [o]")
-
-Meine Werkzeuge
-
-- [Jetzt spenden](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=de.wikipedia.org&uselang=de)
-- [Benutzerkonto erstellen](/w/index.php?title=Spezial:Benutzerkonto_anlegen&returnto=Boeing+707 "Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.")
-- [Anmelden](/w/index.php?title=Spezial:Anmelden&returnto=Boeing+707 "Anmelden ist zwar keine Pflicht, wird aber gerne gesehen. [o]")
-
-## Inhaltsverzeichnis
-
-In die Seitenleiste verschieben
-
-Verbergen
-
-- [(Anfang)](#)
-- [1 Geschichte](#Geschichte) Unterabschnitt Geschichte umschalten
- * [1.1 Vorgeschichte](#Vorgeschichte)
- * [1.2 Entwicklung der Boeing 367-80](#Entwicklung_der_Boeing_367-80)
- * [1.3 Entwicklung der Boeing 707](#Entwicklung_der_Boeing_707)
- * [1.4 Auslieferungen und Einsatz](#Auslieferungen_und_Einsatz)
-- [2 Konstruktion](#Konstruktion) Unterabschnitt Konstruktion umschalten
- * [2.1 Rumpf](#Rumpf)
- * [2.2 Cockpit und Avionik](#Cockpit_und_Avionik)
- * [2.3 Tragflächen](#Tragflächen)
- * [2.4 Leitwerke](#Leitwerke)
- * [2.5 Triebwerke](#Triebwerke)
- * [2.6 Fahrwerk](#Fahrwerk)
-- [3 Varianten](#Varianten) Unterabschnitt Varianten umschalten
- * [3.1 Zivile Versionen](#Zivile_Versionen)
- + [3.1.1 707-020 (720)](#707-020_(720))
- + [3.1.2 707-100](#707-100)
- + [3.1.3 707-200](#707-200)
- + [3.1.4 707-300](#707-300)
- + [3.1.5 707-400](#707-400)
- + [3.1.6 707-700 (Projekt)](#707-700_(Projekt))
- + [3.1.7 707RE](#707RE)
- * [3.2 Militärische Versionen](#Militärische_Versionen)
-- [4 Nutzung](#Nutzung)
-- [5 Verkaufszahlen](#Verkaufszahlen)
-- [6 Zwischenfälle](#Zwischenfälle)
-- [7 Technische Daten](#Technische_Daten)
-- [8 Trivia](#Trivia)
-- [9 Siehe auch](#Siehe_auch)
-- [10 Literatur](#Literatur)
-- [11 Weblinks](#Weblinks)
-- [12 Einzelnachweise](#Einzelnachweise)
-
-Inhaltsverzeichnis umschalten
-
 # Boeing 707
-
-68 Sprachen
-
-- [Afrikaans](https://af.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Afrikaans")
-- [Aragonés](https://an.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Aragonesisch")
-- [العربية](https://ar.wikipedia.org/wiki/%D8%A8%D9%88%D9%8A%D9%86%D8%BA_707 "بوينغ 707 – Arabisch")
-- [Asturianu](https://ast.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Asturisch")
-- [Български](https://bg.wikipedia.org/wiki/%D0%91%D0%BE%D0%B8%D0%BD%D0%B3_707 "Боинг 707 – Bulgarisch")
-- [বাংলা](https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A7%8B%E0%A6%AF%E0%A6%BC%E0%A6%BF%E0%A6%82_%E0%A7%AD%E0%A7%A6%E0%A7%AD "বোয়িং ৭০৭ – Bengalisch")
-- [Bosanski](https://bs.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Bosnisch")
-- [Català](https://ca.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Katalanisch")
-- [Čeština](https://cs.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Tschechisch")
-- [Dansk](https://da.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Dänisch")
-- [Ελληνικά](https://el.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Griechisch")
-- [English](https://en.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Englisch")
-- [Esperanto](https://eo.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Esperanto")
-- [Español](https://es.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Spanisch")
-- [Eesti](https://et.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Estnisch")
-- [Euskara](https://eu.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Baskisch")
-- [فارسی](https://fa.wikipedia.org/wiki/%D8%A8%D9%88%D8%A6%DB%8C%D9%86%DA%AF_%DB%B7%DB%B0%DB%B7 "بوئینگ ۷۰۷ – Persisch")
-- [Suomi](https://fi.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Finnisch")
-- [Français](https://fr.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Französisch")
-- [Gaeilge](https://ga.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Irisch")
-- [Galego](https://gl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Galicisch")
-- [עברית](https://he.wikipedia.org/wiki/%D7%91%D7%95%D7%90%D7%99%D7%A0%D7%92_707 "בואינג 707 – Hebräisch")
-- [Hrvatski](https://hr.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Kroatisch")
-- [Magyar](https://hu.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Ungarisch")
-- [Հայերեն](https://hy.wikipedia.org/wiki/%D4%B2%D5%B8%D5%AB%D5%B6%D5%A3_707 "Բոինգ 707 – Armenisch")
-- [Bahasa Indonesia](https://id.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Indonesisch")
-- [Ido](https://io.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Ido")
-- [Íslenska](https://is.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Isländisch")
-- [Italiano](https://it.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Italienisch")
-- [日本語](https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B0707 "ボーイング707 – Japanisch")
-- [Jawa](https://jv.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Javanisch")
-- [Қазақша](https://kk.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Kasachisch")
-- [한국어](https://ko.wikipedia.org/wiki/%EB%B3%B4%EC%9E%89_707 "보잉 707 – Koreanisch")
-- [Limburgs](https://li.wikipedia.org/wiki/Boeing_B707 "Boeing B707 – Limburgisch")
-- [Lietuvių](https://lt.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Litauisch")
-- [Latviešu](https://lv.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Lettisch")
-- [मराठी](https://mr.wikipedia.org/wiki/%E0%A4%AC%E0%A5%8B%E0%A4%88%E0%A4%82%E0%A4%97_%E0%A5%AD%E0%A5%A6%E0%A5%AD "बोईंग ७०७ – Marathi")
-- [Bahasa Melayu](https://ms.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Malaiisch")
-- [Nederlands](https://nl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Niederländisch")
-- [Norsk nynorsk](https://nn.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Norwegisch (Nynorsk)")
-- [Norsk bokmål](https://no.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Norwegisch (Bokmål)")
-- [Sesotho sa Leboa](https://nso.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Nord-Sotho")
-- [Occitan](https://oc.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Okzitanisch")
-- [Polski](https://pl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Polnisch")
-- [Piemontèis](https://pms.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Piemontesisch")
-- [پنجابی](https://pnb.wikipedia.org/wiki/%D8%A8%D9%88%D8%A6%D9%86%DA%AF_707 "بوئنگ 707 – Westliches Panjabi")
-- [Português](https://pt.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Portugiesisch")
-- [Română](https://ro.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Rumänisch")
-- [Русский](https://ru.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Russisch")
-- [Scots](https://sco.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Schottisch")
-- [Srpskohrvatski / српскохрватски](https://sh.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Serbokroatisch")
-- [Simple English](https://simple.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Einfaches Englisch")
-- [Slovenčina](https://sk.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Slowakisch")
-- [Slovenščina](https://sl.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Slowenisch")
-- [Српски / srpski](https://sr.wikipedia.org/wiki/%D0%91%D0%BE%D0%B8%D0%BD%D0%B3_707 "Боинг 707 – Serbisch")
-- [Sesotho](https://st.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Süd-Sotho")
-- [Svenska](https://sv.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Schwedisch")
-- [Kiswahili](https://sw.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Suaheli")
-- [தமிழ்](https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AF%8B%E0%AE%AF%E0%AE%BF%E0%AE%99%E0%AF%8D_707 "போயிங் 707 – Tamil")
-- [ไทย](https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%9A%E0%B8%AD%E0%B8%B4%E0%B8%87_707 "โบอิง 707 – Thailändisch")
-- [Türkçe](https://tr.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Türkisch")
-- [Татарча / tatarça](https://tt.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Tatarisch")
-- [Українська](https://uk.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Ukrainisch")
-- [Oʻzbekcha / ўзбекча](https://uz.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Usbekisch")
-- [Tiếng Việt](https://vi.wikipedia.org/wiki/Boeing_707 "Boeing 707 – Vietnamesisch")
-- [吴语](https://wuu.wikipedia.org/wiki/%E6%B3%A2%E9%9F%B3707 "波音707 – Wu")
-- [粵語](https://zh-yue.wikipedia.org/wiki/%E6%B3%A2%E9%9F%B3707 "波音707 – Kantonesisch")
-- [中文](https://zh.wikipedia.org/wiki/%E6%B3%A2%E9%9F%B3707 "波音707 – Chinesisch")
-
-[Links bearbeiten](https://www.wikidata.org/wiki/Special:EntityPage/Q6394#sitelinks-wikipedia "Links auf Artikel in anderen Sprachen bearbeiten")
-
-- [Artikel](/wiki/Boeing_707 "Seiteninhalt anzeigen [c]")
-- [Diskussion](/wiki/Diskussion:Boeing_707 "Diskussion zum Seiteninhalt [t]")
-
-Deutsch
-
-- [Lesen](/wiki/Boeing_707)
-- [Bearbeiten](/w/index.php?title=Boeing_707&veaction=edit "Diese Seite mit dem VisualEditor bearbeiten [v]")
-- [Quelltext bearbeiten](/w/index.php?title=Boeing_707&action=edit "Den Quelltext dieser Seite bearbeiten [e]")
-- [Versionsgeschichte](/w/index.php?title=Boeing_707&action=history "Frühere Versionen dieser Seite listen [h]")
-
-Werkzeuge
-
-Werkzeuge
-
-In die Seitenleiste verschieben
-
-Verbergen
-
-Aktionen
-
-- [Lesen](/wiki/Boeing_707)
-- [Bearbeiten](/w/index.php?title=Boeing_707&veaction=edit "Diese Seite mit dem VisualEditor bearbeiten [v]")
-- [Quelltext bearbeiten](/w/index.php?title=Boeing_707&action=edit "Den Quelltext dieser Seite bearbeiten [e]")
-- [Versionsgeschichte](/w/index.php?title=Boeing_707&action=history)
-
-Allgemein
-
-- [Links auf diese Seite](/wiki/Spezial:Linkliste/Boeing_707 "Liste aller Seiten, die hierher verlinken [j]")
-- [Änderungen an verlinkten Seiten](/wiki/Spezial:%C3%84nderungen_an_verlinkten_Seiten/Boeing_707 "Letzte Änderungen an Seiten, die von hier verlinkt sind [k]")
-- [Permanenter Link](/w/index.php?title=Boeing_707&oldid=265753406 "Dauerhafter Link zu dieser Seitenversion")
-- [Seiten­­informationen](/w/index.php?title=Boeing_707&action=info "Weitere Informationen über diese Seite")
-- [Artikel zitieren](/w/index.php?title=Spezial:Zitierhilfe&page=Boeing_707&id=265753406&wpFormIdentifier=titleform "Hinweise, wie diese Seite zitiert werden kann")
-- [Kurzlink](/w/index.php?title=Spezial:URL-K%C3%BCrzung&url=https%3A%2F%2Fde.wikipedia.org%2Fwiki%2FBoeing_707)
-- [Zum Legacy-Parser wechseln](/w/index.php?title=Boeing_707&useparsoid=0)
-
-Drucken/​exportieren
-
-- [Als PDF herunterladen](/w/index.php?title=Spezial:DownloadAsPdf&page=Boeing_707&action=show-download-screen)
-- [Druckversion](/w/index.php?title=Boeing_707&printable=yes "Druckansicht dieser Seite [p]")
-
-In anderen Projekten
-
-- [Commons](https://commons.wikimedia.org/wiki/Boeing_707)
-- [Wikidata-Datenobjekt](https://www.wikidata.org/wiki/Special:EntityPage/Q6394 "Link zum verbundenen Objekt im Datenrepositorium [g]")
-
-Erscheinungsbild
-
-In die Seitenleiste verschieben
-
-Verbergen
 
 Dies ist ein als lesenswert ausgezeichneter Artikel.
 
@@ -294,7 +87,7 @@ Der Rumpf der Boeing 707 besteht aus Ganzmetall, der in [Halbschalenbauweise](//
 
 *Eyebrow-Fenster über den eigentlichen Cockpitfenstern*
 
-Die Passagierkabine ist 33,99 m lang und bietet maximal 215 Passagieren Platz. Pro Reihe mit einem Mittelgang können bis zu sechs Passagiere sitzen. Normalerweise befinden sich vier [Bordküchen](//de.wikipedia.org/wiki/Bordküche "Bordküche") und fünf Toiletten im Flugzeug. Auf der linken Seite können die Passagiere durch zwei je 183 cm × 86 cm große Türen an Bord gelangen. Auf der rechten Seite befinden sich zwei kleinere Türen, darüber hinaus gibt es im Bereich der Tragfläche pro Seite mindestens zwei Notausgänge. Mit den Triebwerken 2, 3 und 4 (in Flugrichtung von links gezählt) verbundene Turbokompressoren treiben die Druckkabine und die Klimaanlage an, welche von [Garrett AiResearch](//de.wikipedia.org/wiki/Garrett_AiResearch "Garrett AiResearch") stammen.
+Die Passagierkabine ist 33,99 m lang und bietet maximal 215 Passagieren Platz. Pro Reihe mit einem Mittelgang können bis zu sechs Passagiere sitzen. Normalerweise befinden sich vier [Bordküchen](//de.wikipedia.org/wiki/Bordk%C3%BCche "Bordküche") und fünf Toiletten im Flugzeug. Auf der linken Seite können die Passagiere durch zwei je 183 cm × 86 cm große Türen an Bord gelangen. Auf der rechten Seite befinden sich zwei kleinere Türen, darüber hinaus gibt es im Bereich der Tragfläche pro Seite mindestens zwei Notausgänge. Mit den Triebwerken 2, 3 und 4 (in Flugrichtung von links gezählt) verbundene Turbokompressoren treiben die Druckkabine und die Klimaanlage an, welche von [Garrett AiResearch](//de.wikipedia.org/wiki/Garrett_AiResearch "Garrett AiResearch") stammen.
 
 Unterhalb der Passagierkabine befinden sich vor und hinter dem Flügelkasten zwei Stauräume für Fracht. Der vordere ist 23,65 Kubikmeter groß und kann durch eine Klappe mit den Abmessungen 127 cm × 122 cm erreicht werden, der hintere ist 24,50 m³ groß und durch zwei 124 cm × 122 cm und 89 cm × 76 cm große Frachttüren, die hintereinander angeordnet sind, erreichbar. Sowohl der Bereich für die Passagiere als auch der für die Fracht sind als [Druckkabine](//de.wikipedia.org/wiki/Druckkabine "Druckkabine") ausgeführt. Die insgesamt 90 Kabinenfenster sind rechteckig. Darüber hinaus gibt es kleine runde Fenster in den Türen und sechs Planscheiben sowie vier „ [Eyebrow](//de.wikipedia.org/wiki/Augenbraue "Augenbraue")-Fenster“ im Cockpit.
 
@@ -304,13 +97,13 @@ Unterhalb der Passagierkabine befinden sich vor und hinter dem Flügelkasten zwe
 
 *Cockpit einer Boeing 707-123B im [Deutschen Museum](//de.wikipedia.org/wiki/Deutsches_Museum "Deutsches Museum"), München*
 
-Bei der Boeing 707 bestand die Cockpit-Besatzung zunächst aus vier Mitgliedern: [Flugkapitän](//de.wikipedia.org/wiki/Flugkapitän "Flugkapitän"), [Erster Offizier](//de.wikipedia.org/wiki/Erster_Offizier_(Luftfahrt) "Erster Offizier (Luftfahrt)"), [Flugingenieur](//de.wikipedia.org/wiki/Flugingenieur "Flugingenieur") und [Navigator](//de.wikipedia.org/wiki/Navigator "Navigator"). Dieser verwendete [Funknavigationssysteme](//de.wikipedia.org/wiki/Funknavigation "Funknavigation") wie unter anderem [VOR](//de.wikipedia.org/wiki/Drehfunkfeuer "Drehfunkfeuer")/ [DME](//de.wikipedia.org/wiki/Distance_Measuring_Equipment "Distance Measuring Equipment") und [LORAN-C](//de.wikipedia.org/wiki/LORAN-C "LORAN-C"). Zur [Kommunikation](//de.wikipedia.org/wiki/Flugfunk "Flugfunk") stehen [Kurzwellen](//de.wikipedia.org/wiki/Kurzwelle "Kurzwelle")- und [Ultrakurzwellenfunkgeräte](//de.wikipedia.org/wiki/Ultrakurzwelle "Ultrakurzwelle") zur Verfügung. Ab der zweiten Hälfte der 1960er Jahre wurde der Navigator bei fortschrittlichen Fluggesellschaften zunehmend durch das [INS](//de.wikipedia.org/wiki/Inertiales_Navigationssystem "Inertiales Navigationssystem")-Navigationssystem ersetzt. Weitere Grundbestandteile der [Avionik](//de.wikipedia.org/wiki/Avionik "Avionik") sind der [Autopilot](//de.wikipedia.org/wiki/Autopilot "Autopilot") mit Kopplung zum [Instrumentenlandesystem](//de.wikipedia.org/wiki/Instrumentenlandesystem "Instrumentenlandesystem"), das [Wetterradar](//de.wikipedia.org/wiki/Wetterradar "Wetterradar") und ein [Radarhöhenmesser](//de.wikipedia.org/wiki/Radar-Altimeter "Radar-Altimeter"). Diese Basisausrüstung konnte je nach Kundenwunsch erweitert werden.
+Bei der Boeing 707 bestand die Cockpit-Besatzung zunächst aus vier Mitgliedern: [Flugkapitän](//de.wikipedia.org/wiki/Flugkapit%C3%A4n "Flugkapitän"), [Erster Offizier](//de.wikipedia.org/wiki/Erster_Offizier_(Luftfahrt) "Erster Offizier (Luftfahrt)"), [Flugingenieur](//de.wikipedia.org/wiki/Flugingenieur "Flugingenieur") und [Navigator](//de.wikipedia.org/wiki/Navigator "Navigator"). Dieser verwendete [Funknavigationssysteme](//de.wikipedia.org/wiki/Funknavigation "Funknavigation") wie unter anderem [VOR](//de.wikipedia.org/wiki/Drehfunkfeuer "Drehfunkfeuer")/ [DME](//de.wikipedia.org/wiki/Distance_Measuring_Equipment "Distance Measuring Equipment") und [LORAN-C](//de.wikipedia.org/wiki/LORAN-C "LORAN-C"). Zur [Kommunikation](//de.wikipedia.org/wiki/Flugfunk "Flugfunk") stehen [Kurzwellen](//de.wikipedia.org/wiki/Kurzwelle "Kurzwelle")- und [Ultrakurzwellenfunkgeräte](//de.wikipedia.org/wiki/Ultrakurzwelle "Ultrakurzwelle") zur Verfügung. Ab der zweiten Hälfte der 1960er Jahre wurde der Navigator bei fortschrittlichen Fluggesellschaften zunehmend durch das [INS](//de.wikipedia.org/wiki/Inertiales_Navigationssystem "Inertiales Navigationssystem")-Navigationssystem ersetzt. Weitere Grundbestandteile der [Avionik](//de.wikipedia.org/wiki/Avionik "Avionik") sind der [Autopilot](//de.wikipedia.org/wiki/Autopilot "Autopilot") mit Kopplung zum [Instrumentenlandesystem](//de.wikipedia.org/wiki/Instrumentenlandesystem "Instrumentenlandesystem"), das [Wetterradar](//de.wikipedia.org/wiki/Wetterradar "Wetterradar") und ein [Radarhöhenmesser](//de.wikipedia.org/wiki/Radar-Altimeter "Radar-Altimeter"). Diese Basisausrüstung konnte je nach Kundenwunsch erweitert werden.
 
 ### Tragflächen
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=9 "Abschnitt bearbeiten: Tragflächen") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=9 "Quellcode des Abschnitts bearbeiten: Tragflächen")]
 
-Die [Tragflächen](//de.wikipedia.org/wiki/Tragfläche "Tragfläche") der Boeing 707 sind jeweils um 35° [gepfeilt](//de.wikipedia.org/wiki/Pfeilung "Pfeilung") und aus Ganzmetall nach dem [Fail-Safe](//de.wikipedia.org/wiki/Fail-Safe "Fail-Safe")-Prinzip konstruiert. Die [V-Stellung](//de.wikipedia.org/wiki/V-Stellung "V-Stellung") beträgt 7°, der [Einstellwinkel](//de.wikipedia.org/wiki/Einstellwinkel "Einstellwinkel") 2°. In ihnen befinden sich je drei Tanks. Ein siebter Tank ist der Zentraltank im Flügelkasten. Je nach Version der Boeing 707-300 variiert das Volumen der Tanks zwischen 88.947 und 94.083 Litern. Alle Tanks sind durch Treibstoffleitungen miteinander verbunden. Im Notfall ist es möglich, maximal 2.000 Liter Kerosin pro Minute abzulassen. An der Vorderseite der Tragflächen befinden sich [Krügerklappen](//de.wikipedia.org/wiki/Krügerklappe "Krügerklappe"), welche bei einer Landeklappenstellung von über 9,5° automatisch ausfahren und die sich über zwei Drittel der Tragflächenvorderkante erstrecken. Außerdem findet man auf der Vorderseite pro Tragfläche je zwei Triebwerkspylonen, in denen sich über den Triebwerken 2, 3 und 4 auch Kompressoren für die Klimaanlage und die Druckkabine befinden. Auf der Rückseite befinden sich mehrere Klappen mit verschiedenen Aufgaben: Direkt am Rumpf sind die sogenannten *fillet flaps* (Ausrundungs-Klappen) angebracht, welche die aerodynamische Lücke zwischen den [Fowlerklappen](//de.wikipedia.org/wiki/Fowlerklappe "Fowlerklappe") und dem Rumpf füllen. Ebenfalls an der Hinterseite montiert sind [Doppelspalt-Landeklappen](//de.wikipedia.org/wiki/Landeklappe "Landeklappe"), je zwei Querruder, wobei das äußere nur beim Landeanflug verwendet werden kann, sowie vier [Rollspoiler](//de.wikipedia.org/wiki/Störklappe "Störklappe"), welche paarweise vor den Fowlerklappen angeordnet sind. Die Ansteuerung der Klappen funktioniert hydraulisch, lediglich die Querruder werden mechanisch angelenkt. Auf den Tragflächen befinden sich zudem zwei Reihen von [Wirbelgeneratoren](//de.wikipedia.org/wiki/Turbulator "Turbulator").
+Die [Tragflächen](//de.wikipedia.org/wiki/Tragfl%C3%A4che "Tragfläche") der Boeing 707 sind jeweils um 35° [gepfeilt](//de.wikipedia.org/wiki/Pfeilung "Pfeilung") und aus Ganzmetall nach dem [Fail-Safe](//de.wikipedia.org/wiki/Fail-Safe "Fail-Safe")-Prinzip konstruiert. Die [V-Stellung](//de.wikipedia.org/wiki/V-Stellung "V-Stellung") beträgt 7°, der [Einstellwinkel](//de.wikipedia.org/wiki/Einstellwinkel "Einstellwinkel") 2°. In ihnen befinden sich je drei Tanks. Ein siebter Tank ist der Zentraltank im Flügelkasten. Je nach Version der Boeing 707-300 variiert das Volumen der Tanks zwischen 88.947 und 94.083 Litern. Alle Tanks sind durch Treibstoffleitungen miteinander verbunden. Im Notfall ist es möglich, maximal 2.000 Liter Kerosin pro Minute abzulassen. An der Vorderseite der Tragflächen befinden sich [Krügerklappen](//de.wikipedia.org/wiki/Kr%C3%BCgerklappe "Krügerklappe"), welche bei einer Landeklappenstellung von über 9,5° automatisch ausfahren und die sich über zwei Drittel der Tragflächenvorderkante erstrecken. Außerdem findet man auf der Vorderseite pro Tragfläche je zwei Triebwerkspylonen, in denen sich über den Triebwerken 2, 3 und 4 auch Kompressoren für die Klimaanlage und die Druckkabine befinden. Auf der Rückseite befinden sich mehrere Klappen mit verschiedenen Aufgaben: Direkt am Rumpf sind die sogenannten *fillet flaps* (Ausrundungs-Klappen) angebracht, welche die aerodynamische Lücke zwischen den [Fowlerklappen](//de.wikipedia.org/wiki/Fowlerklappe "Fowlerklappe") und dem Rumpf füllen. Ebenfalls an der Hinterseite montiert sind [Doppelspalt-Landeklappen](//de.wikipedia.org/wiki/Landeklappe "Landeklappe"), je zwei Querruder, wobei das äußere nur beim Landeanflug verwendet werden kann, sowie vier [Rollspoiler](//de.wikipedia.org/wiki/St%C3%B6rklappe "Störklappe"), welche paarweise vor den Fowlerklappen angeordnet sind. Die Ansteuerung der Klappen funktioniert hydraulisch, lediglich die Querruder werden mechanisch angelenkt. Auf den Tragflächen befinden sich zudem zwei Reihen von [Wirbelgeneratoren](//de.wikipedia.org/wiki/Turbulator "Turbulator").
 
 ### Leitwerke
 
@@ -318,7 +111,7 @@ Die [Tragflächen](//de.wikipedia.org/wiki/Tragfläche "Tragfläche") der Boeing
 
 *Boeing 707-131B der TWA. Man beachte das Seitenleitwerk ohne Antenne.*
 
-Auch das [Leitwerk](//de.wikipedia.org/wiki/Leitwerk "Leitwerk") besteht aus Ganzmetall und ist freitragend konstruiert. Die gesamte [Höhenflosse](//de.wikipedia.org/wiki/Höhenleitwerk "Höhenleitwerk") ist zur [Trimmung](//de.wikipedia.org/wiki/Trimmung "Trimmung") mit Hilfe von Elektromotoren beweglich, an der Unterseite befinden sich Wirbel-Erzeuger, um die Piloten über die Reaktion des Höhenruders vor einem bevorstehenden [Strömungsabriss](//de.wikipedia.org/wiki/Strömungsabriss "Strömungsabriss") zu warnen.
+Auch das [Leitwerk](//de.wikipedia.org/wiki/Leitwerk "Leitwerk") besteht aus Ganzmetall und ist freitragend konstruiert. Die gesamte [Höhenflosse](//de.wikipedia.org/wiki/H%C3%B6henleitwerk "Höhenleitwerk") ist zur [Trimmung](//de.wikipedia.org/wiki/Trimmung "Trimmung") mit Hilfe von Elektromotoren beweglich, an der Unterseite befinden sich Wirbel-Erzeuger, um die Piloten über die Reaktion des Höhenruders vor einem bevorstehenden [Strömungsabriss](//de.wikipedia.org/wiki/Str%C3%B6mungsabriss "Strömungsabriss") zu warnen.
 
 Das fast zehn Quadratmeter große [Seitenleitwerk](//de.wikipedia.org/wiki/Seitenleitwerk "Seitenleitwerk") ist durch die nach vorne ragende, stachelförmige Hochfrequenz-Antenne besonders auffällig. An seiner Hinterkante ist eine kleine Trimmklappe vorhanden. An den Seitenleitwerken der für [Trans World Airlines](//de.wikipedia.org/wiki/Trans_World_Airlines "Trans World Airlines") ausgelieferten 707-131B (-31 war TWAs Customer Code bei Boeing) [[4]](#cite_note-4) wurde auf die HF-Antenne verzichtet. [[5]](#cite_note-5)
 
@@ -330,7 +123,7 @@ Bemerkenswert ist, dass Höhen- und Querruder nur mit aerodynamischer und ohne h
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=11 "Abschnitt bearbeiten: Triebwerke") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=11 "Quellcode des Abschnitts bearbeiten: Triebwerke")]
 
-Für die Boeing 707-300 wurde das vom militärischen [Pratt-&-Whitney-J57](//de.wikipedia.org/wiki/Pratt_&_Whitney_J57 "Pratt &amp; Whitney J57")- [Einstrom-Strahltriebwerk](//de.wikipedia.org/wiki/Turbinen-Strahltriebwerk#Einstrom-Strahltriebwerk_(Turbojet) "Turbinen-Strahltriebwerk") abgeleitete [Pratt-&-Whitney-JT3D](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT3D "Pratt &amp; Whitney JT3D")- [Zweistrom-Strahltriebwerk](//de.wikipedia.org/wiki/Mantelstromtriebwerk "Mantelstromtriebwerk") in verschiedenen Versionen verwendet. Dessen Varianten unterschieden sich dadurch, dass durch den Austausch der ersten drei Verdichterstufen das [Nebenstromverhältnis](//de.wikipedia.org/wiki/Nebenstromverhältnis "Nebenstromverhältnis") gesteigert werden konnte, was reduzierte Lautstärke und höhere Effizienz zur Folge hatte. Später wurden einige Boeing 707 auf [CFM-International-CFM56](//de.wikipedia.org/wiki/CFM_International_CFM56 "CFM International CFM56")-Triebwerke umgerüstet. Der Nennschub der Triebwerke bewegte sich um 80 kN.
+Für die Boeing 707-300 wurde das vom militärischen [Pratt-&-Whitney-J57](//de.wikipedia.org/wiki/Pratt_&_Whitney_J57 "Pratt &amp; Whitney J57")- [Einstrom-Strahltriebwerk](//de.wikipedia.org/wiki/Turbinen-Strahltriebwerk#Einstrom-Strahltriebwerk_(Turbojet) "Turbinen-Strahltriebwerk") abgeleitete [Pratt-&-Whitney-JT3D](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT3D "Pratt &amp; Whitney JT3D")- [Zweistrom-Strahltriebwerk](//de.wikipedia.org/wiki/Mantelstromtriebwerk "Mantelstromtriebwerk") in verschiedenen Versionen verwendet. Dessen Varianten unterschieden sich dadurch, dass durch den Austausch der ersten drei Verdichterstufen das [Nebenstromverhältnis](//de.wikipedia.org/wiki/Nebenstromverh%C3%A4ltnis "Nebenstromverhältnis") gesteigert werden konnte, was reduzierte Lautstärke und höhere Effizienz zur Folge hatte. Später wurden einige Boeing 707 auf [CFM-International-CFM56](//de.wikipedia.org/wiki/CFM_International_CFM56 "CFM International CFM56")-Triebwerke umgerüstet. Der Nennschub der Triebwerke bewegte sich um 80 kN.
 
 ### Fahrwerk
 
@@ -444,7 +237,7 @@ Auch Douglas verfolgte ein Programm zur Nachrüstung der [Douglas DC-8](//de.wik
 
 *Mit neuen Triebwerken ausgestattete Boeing 707RE auf der ILA 2002*
 
-Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined – mit neuen Triebwerken versehen) bezeichnete umgebaute 707-300C ab. Der von *Seven Q Seven Inc.* umgerüstete Prototyp ist mit [Pratt-&-Whitney-JT8D](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT8D "Pratt &amp; Whitney JT8D")-219 Triebwerken ausgestattet, die pro Stück einen Schub von 93 kN liefern und eine Leistungssteigerung von circa 15 % bringen sollten. Ziel war, sowohl kommerzielle 707 als auch militärische [KC-135](//de.wikipedia.org/wiki/KC-135 "KC-135") und [E-3](//de.wikipedia.org/wiki/Boeing_E-3 "Boeing E-3")/ [E-8](//de.wikipedia.org/wiki/Boeing_E-8 "Boeing E-8") mit den neuen Triebwerken auszustatten. Das JT8D würde problemlos an jede Boeing 707 ohne größere Modifikationen eingebaut werden können. Obwohl ein um 23 % reduzierter Treibstoffverbrauch und ein um 40 [dB](//de.wikipedia.org/wiki/Bel_(Einheit) "Bel (Einheit)") niedrigerer Lärmpegel beim Start nachgewiesen werden konnten, setzte sich die Idee wegen der nach dem [11. September 2001](//de.wikipedia.org/wiki/Terroranschläge_am_11._September_2001 "Terroranschläge am 11. September 2001") schrumpfenden Luftfahrt nicht durch. Nachdem sich die Branche erholt hatte, wurde im August 2008 mit den Zulassungsflügen für das Triebwerk begonnen. [[10]](#cite_note-10)
+Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined – mit neuen Triebwerken versehen) bezeichnete umgebaute 707-300C ab. Der von *Seven Q Seven Inc.* umgerüstete Prototyp ist mit [Pratt-&-Whitney-JT8D](//de.wikipedia.org/wiki/Pratt_&_Whitney_JT8D "Pratt &amp; Whitney JT8D")-219 Triebwerken ausgestattet, die pro Stück einen Schub von 93 kN liefern und eine Leistungssteigerung von circa 15 % bringen sollten. Ziel war, sowohl kommerzielle 707 als auch militärische [KC-135](//de.wikipedia.org/wiki/KC-135 "KC-135") und [E-3](//de.wikipedia.org/wiki/Boeing_E-3 "Boeing E-3")/ [E-8](//de.wikipedia.org/wiki/Boeing_E-8 "Boeing E-8") mit den neuen Triebwerken auszustatten. Das JT8D würde problemlos an jede Boeing 707 ohne größere Modifikationen eingebaut werden können. Obwohl ein um 23 % reduzierter Treibstoffverbrauch und ein um 40 [dB](//de.wikipedia.org/wiki/Bel_(Einheit) "Bel (Einheit)") niedrigerer Lärmpegel beim Start nachgewiesen werden konnten, setzte sich die Idee wegen der nach dem [11. September 2001](//de.wikipedia.org/wiki/Terroranschl%C3%A4ge_am_11._September_2001 "Terroranschläge am 11. September 2001") schrumpfenden Luftfahrt nicht durch. Nachdem sich die Branche erholt hatte, wurde im August 2008 mit den Zulassungsflügen für das Triebwerk begonnen. [[10]](#cite_note-10)
 
 ### Militärische Versionen
 
@@ -458,11 +251,11 @@ Am 22. August 2001 hob zum ersten Mal eine als *Boeing 707RE* (*R*e-*E*ngined �
 
 *Ein 707-368C-Tanker der [Omega Aerial Refueling Services](//de.wikipedia.org/wiki/Omega_Aerial_Refueling_Services "Omega Aerial Refueling Services") betankt das unbemannte Experimentalflugzeug [X-47](//de.wikipedia.org/wiki/X-47 "X-47"), 2015*
 
-**C-137** Als *Boeing C-137* werden Boeing-707-Flugzeuge bezeichnet, die bei der United States Air Force für militärische Zwecke eingesetzt werden. Für den Transport wichtiger Personen ausgestattete Versionen der Boeing 707 der United States Air Force sind die VC-137A, VC-137B und VC-137C. Sie wurden unter anderem als [Air Force One](//de.wikipedia.org/wiki/Air_Force_One "Air Force One") genutzt. Die [Kanadischen Streitkräfte](//de.wikipedia.org/wiki/Kanadische_Streitkräfte "Kanadische Streitkräfte") verwenden so genannte *Boeing CC-137* als Tank- und Frachtflugzeuge. Boeing bezeichnet diese als *Boeing KC-137*.
+**C-137** Als *Boeing C-137* werden Boeing-707-Flugzeuge bezeichnet, die bei der United States Air Force für militärische Zwecke eingesetzt werden. Für den Transport wichtiger Personen ausgestattete Versionen der Boeing 707 der United States Air Force sind die VC-137A, VC-137B und VC-137C. Sie wurden unter anderem als [Air Force One](//de.wikipedia.org/wiki/Air_Force_One "Air Force One") genutzt. Die [Kanadischen Streitkräfte](//de.wikipedia.org/wiki/Kanadische_Streitkr%C3%A4fte "Kanadische Streitkräfte") verwenden so genannte *Boeing CC-137* als Tank- und Frachtflugzeuge. Boeing bezeichnet diese als *Boeing KC-137*.
 
 **C-18A** Die *Boeing C-18A* ist eine Version der Boeing 707, bei der ehemals zivil genutzte Flugzeuge zu Schulungsflugzeugen umgerüstet wurden. Vier der Flugzeuge wurden zu [Relaisstationen](//de.wikipedia.org/wiki/Funkrelaisstation "Funkrelaisstation") für Raumfahrt- [Telemetrie](//de.wikipedia.org/wiki/Telemetrie "Telemetrie") mit dem Namen *Boeing EC-18B* umgebaut, eins wurde zur *Boeing E-8* umgebaut.
 
-**EC-18B/C/D** Die *Boeing EC-18B* wird als sogenanntes Advanced Range Instrumentation Aircraft (ARIA) durch das US-Verteidigungsministerium und die [NASA](//de.wikipedia.org/wiki/National_Aeronautics_and_Space_Administration "National Aeronautics and Space Administration") zur luftgestützten Radarbeobachtung von Raumschiffen und Raketen genutzt. Bei der *Boeing EC-18C* handelt es sich um eine frühe Bezeichnung der [Boeing E-8](//de.wikipedia.org/wiki/Boeing_E-8 "Boeing E-8"), die *Boeing EC-18D* ist ein Spezialflugzeug für Versuche mit [Marschflugkörpern](//de.wikipedia.org/wiki/Marschflugkörper "Marschflugkörper").
+**EC-18B/C/D** Die *Boeing EC-18B* wird als sogenanntes Advanced Range Instrumentation Aircraft (ARIA) durch das US-Verteidigungsministerium und die [NASA](//de.wikipedia.org/wiki/National_Aeronautics_and_Space_Administration "National Aeronautics and Space Administration") zur luftgestützten Radarbeobachtung von Raumschiffen und Raketen genutzt. Bei der *Boeing EC-18C* handelt es sich um eine frühe Bezeichnung der [Boeing E-8](//de.wikipedia.org/wiki/Boeing_E-8 "Boeing E-8"), die *Boeing EC-18D* ist ein Spezialflugzeug für Versuche mit [Marschflugkörpern](//de.wikipedia.org/wiki/Marschflugk%C3%B6rper "Marschflugkörper").
 
 *Boeing E3 Sentry*
 
@@ -507,7 +300,7 @@ Detaillierte Auflistung der Aufträge und Auslieferungen: [[1]](#cite_note-Liefe
 
 [[Bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=25 "Abschnitt bearbeiten: Zwischenfälle") | [Quelltext bearbeiten](//de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=25 "Quellcode des Abschnitts bearbeiten: Zwischenfälle")]
 
-→ *Hauptartikel: [Liste von Zwischenfällen mit der Boeing 707 und Boeing 720](//de.wikipedia.org/wiki/Liste_von_Zwischenfällen_mit_der_Boeing_707_und_Boeing_720 "Liste von Zwischenfällen mit der Boeing 707 und Boeing 720")*
+→ *Hauptartikel: [Liste von Zwischenfällen mit der Boeing 707 und Boeing 720](//de.wikipedia.org/wiki/Liste_von_Zwischenf%C3%A4llen_mit_der_Boeing_707_und_Boeing_720 "Liste von Zwischenfällen mit der Boeing 707 und Boeing 720")*
 
 Vom Erstflug 1957 bis zum 31. Januar 2022 kam es mit Boeing 707 zu 173 Totalschäden von Flugzeugen. Das entspricht rund einem Fünftel (20,21 Prozent) aller 856 produzierten Flugzeuge dieses Typs. Bei 81 der Unfälle kamen 3032 Menschen ums Leben. In der Zahl der Totalschäden sind 19 Verluste von geparkten Maschinen inbegriffen. [[15]](#cite_note-15) Insgesamt ergeben sich für die Boeing 707 8,60 Verluste pro einer Million Flüge, was – wie beim Konkurrenzmuster [Douglas DC-8](//de.wikipedia.org/wiki/Douglas_DC-8 "Douglas DC-8") mit 8,84 – über dem Durchschnittswert der 1960er und 1970er Jahre von etwa 5 liegt. Heutige Flugzeuge können im Vergleich mit Werten meist unter 0,5 sehr viel sicherer betrieben werden. [[16]](#cite_note-16) Dreizehn Totalverluste mit insgesamt 280 Toten hatten eine kriegerische oder kriminelle Ursache, elf weitere gingen auf sonstige Ereignisse zurück und forderten keine Menschenleben.
 
