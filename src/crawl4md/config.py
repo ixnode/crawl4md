@@ -15,7 +15,7 @@ from typing import Literal
 from pydantic import BaseModel, Field, model_validator
 import yaml
 
-from .profiles import PREPROCESSING_PROFILES
+from .profiles import get_profile
 
 
 ParseType = Literal["markdown", "markdown-fit"]
@@ -92,10 +92,7 @@ def apply_profile_defaults(project_data: dict) -> dict:
     if profile is None:
         return project_data
 
-    if profile not in PREPROCESSING_PROFILES:
-        raise ValueError(f"Unknown project profile: {profile}")
-
-    return merge_dict(PREPROCESSING_PROFILES[profile], project_data)
+    return merge_dict(get_profile(profile), project_data)
 
 
 def apply_profiles(data: dict) -> dict:

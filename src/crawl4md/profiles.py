@@ -6,52 +6,60 @@
 # file that was distributed with this source code.
 #
 # @author: Björn Hempel <bjoern@hempel.li>
-# @version: 1.0.0 (2026-05-13)
+# @version: 1.0.0 (2026-05-14)
 # @since 1.0.0 (2026-05-13) First version
 
-PREPROCESSING_PROFILES = {
-    "wikipedia": {
-        "preprocessing": {
-            "markdown": {
-                "enabled": True,
+from functools import lru_cache
+from pathlib import Path
+from typing import Any
 
-                "ensure_h1": True,
+import yaml
 
-                "remove_lines": [
-                    "[Aa]us Wikipedia, der freien Enzyklopädie",
-                    "[Ff]rom Wikipedia, the free encyclopedia",
-                ],
-                "remove_blocks": [
-                    "Wikipedia:Wiki_Loves_Earth_",
-                    "Wikidata:Events/Coordinate_Me_",
-                ],
-                "remove_sections": [
-                    "Einzelnachweise",
-                    "Weblinks",
-                    "Literatur",
-                    "Quellen",
-                    "References",
-                    "External links",
-                    "Bibliography",
-                ],
-                "remove_links": [
-                    "anchor:cite_note",
-                    "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)",
-                    "anchor:#[Vv]orlage_[Ll]esenswert",
-                    "anchor:#[Vv]orlage_[Ee]xzellent",
-                    "anchor:veaction=edit[^)]*section=",
-                    "anchor:action=edit[^)]*section=",
-                    "unwrap:*",
-                ],
-                "remove_images": True,
-                "remove_html_comments": True,
 
-                "normalize_tables": True,
-                "normalize_linebreak": True,
-                "normalize_whitespace": True,
-            }
-        }
-    }
-}
+PROFILES_DIR = Path(__file__).resolve().parents[2] / "profiles"
 
-PROFILE_NAMES = tuple(PREPROCESSING_PROFILES)
+
+def _validate_profile(profile_name: str, data: dict[str, Any]) -> None:
+    profile = data.get("profile")
+
+    if profile != profile_name:
+        raise ValueError(
+            f"Invalid profile file '{profile_name}.yml': expected profile '{profile_name}', got '{profile}'."
+        )
+
+    if "preprocessing" not in data or not isinstance(data["preprocessing"], dict):
+        raise ValueError(f"Invalid profile file '{profile_name}.yml': missing preprocessing section.")
+
+
+@lru_cache(maxsize=1)
+def load_profiles() -> dict[str, dict[str, Any]]:
+    profiles: dict[str, dict[str, Any]] = {}
+
+    if not PROFILES_DIR.exists():
+        return profiles
+
+    for path in sorted(PROFILES_DIR.glob("*.yml")):
+        profile_name = path.stem
+        data = yaml.safe_load(path.read_text()) or {}
+
+        if not isinstance(data, dict):
+            raise ValueError(f"Invalid profile file '{path.name}': expected mapping/object at top level.")
+
+        _validate_profile(profile_name, data)
+        profiles[profile_name] = {"preprocessing": data["preprocessing"]}
+
+    return profiles
+
+
+def get_profile_names() -> tuple[str, ...]:
+    return tuple(load_profiles())
+
+
+def get_profile(profile_name: str) -> dict[str, Any]:
+    profiles = load_profiles()
+
+    if profile_name not in profiles:
+        available = ", ".join(get_profile_names()) or "none"
+        raise ValueError(f"Unknown project profile: {profile_name}. Available profiles: {available}")
+
+    return profiles[profile_name]

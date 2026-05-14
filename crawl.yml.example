@@ -27,7 +27,7 @@ projects:
 
     # Recommended: project with the built-in Wikipedia profile.
     planes:
-        profile: wikipedia # see: src/crawl4md/profiles.py:PREPROCESSING_PROFILES
+        profile: wikipedia # see: profiles/wikipedia.yml
         type: pages
         sources:
             - https://de.wikipedia.org/wiki/Boeing_707
