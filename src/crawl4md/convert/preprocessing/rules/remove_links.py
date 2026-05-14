@@ -103,6 +103,11 @@ class RuleRemoveLinks(RuleBase):
             ):
                 cleaned_line = cleaned_line.lstrip()
 
+            if line_changed:
+                cleaned_line = cleaned_line.replace("*]", "[**]")
+                cleaned_line = re.sub(r"(?<![\w*])\*\*(?![\w*])", "[**]", cleaned_line)
+                cleaned_line = cleaned_line.replace("[[**]]", "[**]")
+
             if line_changed and self._is_empty_link_line(cleaned_line):
                 skip_next_blank = True
                 continue
@@ -119,12 +124,19 @@ class RuleRemoveLinks(RuleBase):
         return marker_index >= 0 and not line[:marker_index].strip()
 
     def _replace_link(self, match: re.Match[str]) -> str:
-        leading = re.match(r"[^\S\n]*", match.group(0)).group(0)
+        matched = match.group(0)
+        leading = re.match(r"[^\S\n]*", matched).group(0)
+        body = matched[len(leading):]
         before = match.string[: match.start()]
         previous = before.rstrip()[-1:] if before.strip() else ""
 
         if previous == "|":
             return leading
+
+        # Keep a valid bracketed emphasis marker when removing links like:
+        # [*[citation needed](...)*] -> [**]
+        if body.startswith("[*[") and body.endswith("*]"):
+            return f"{leading}[**]"
 
         return self.REMOVED_LINK_MARKER
 

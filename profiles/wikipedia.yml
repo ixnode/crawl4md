@@ -38,6 +38,7 @@ preprocessing:
             - Vergleichbare Typen
         remove_links:
             - "anchor:cite_note"
+            - "anchor:Citation_needed"
             - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
             - "anchor:#[Vv]orlage_[Ll]esenswert"
             - "anchor:#[Vv]orlage_[Ee]xzellent"

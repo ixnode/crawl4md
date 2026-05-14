@@ -110,6 +110,30 @@ CASES = [
         expected="Text [keep](#other-link)\n",
     ),
     RuleCase(
+        name="keeps_bracketed_emphasis_shape_when_removing_citation_needed_link",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="anchor:Citation_needed",
+        ),
+        markdown=(
+            "[*[citation needed](/wiki/Wikipedia:Citation_needed "
+            '"Wikipedia:Citation needed")*]\n'
+        ),
+        expected="[**]\n",
+    ),
+    RuleCase(
+        name="keeps_bracketed_emphasis_shape_when_citation_needed_is_inline_after_text",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="anchor:Citation_needed",
+        ),
+        markdown=(
+            "Qantas needed.*[citation needed](/wiki/Wikipedia:Citation_needed "
+            '"Wikipedia:Citation needed")* Braniff International\n'
+        ),
+        expected="Qantas needed.[**] Braniff International\n",
+    ),
+    RuleCase(
         name="removes_wikipedia_veaction_edit_link_with_parentheses_in_title",
         config=MarkdownPreprocessingConfig(
             enabled=True,
