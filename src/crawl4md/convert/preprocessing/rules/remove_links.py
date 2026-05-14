@@ -16,6 +16,10 @@ from .base.rule_base import RuleBase
 
 
 class RuleRemoveLinks(RuleBase):
+    REMOVED_LINK_MARKER = "\0C4MD_REMOVED_LINK\0"
+    MARKDOWN_LINK_TARGET = r"(?:\\.|[^()\\\n]|\([^()\n]*\))*"
+    MARKDOWN_LINK_TEXT = rf"(?:!\[[^\]\n]*\]\({MARKDOWN_LINK_TARGET}\)|(?:(?!\]\().))*"
+
     @cached_property
     def link_pattern(self) -> re.Pattern[str] | None:
         if not self.config.remove_links:
@@ -32,17 +36,25 @@ class RuleRemoveLinks(RuleBase):
         link_match_patterns: list[str] = []
         for pattern in link_patterns:
             match_type, match_pattern = self._split_match_pattern(pattern)
+            target_boundary = (
+                r"(?<![A-Za-z0-9_])"
+                if re.match(r"[A-Za-z0-9_]", match_pattern)
+                else ""
+            )
             if match_type == "text":
                 link_match_patterns.append(
-                    rf"\s*!?\[[^\n]*(?:{match_pattern})[^\n]*?\]\([^)\n]*\)"
+                    rf"[^\S\n]*(?:\[)?!?\[(?:(?!\]\().)*(?:{match_pattern})(?:(?!\]\().)*\]"
+                    rf"\({self.MARKDOWN_LINK_TARGET}\)(?:\])?"
                 )
                 continue
 
             link_match_patterns.append(
-                rf"\s*!?\[[^\n]*?\]\([^)\n]*(?:{match_pattern})[^)\n]*\)"
+                rf"[^\S\n]*(?:\[)?!?\[{self.MARKDOWN_LINK_TEXT}\]\("
+                rf"(?={self.MARKDOWN_LINK_TARGET}{target_boundary}(?:{match_pattern}))"
+                rf"{self.MARKDOWN_LINK_TARGET}\)\]?"
             )
 
-        return re.compile("|".join(f"(?:{pattern})" for pattern in link_match_patterns))
+        return re.compile("|".join(f"(?:{pattern})" for pattern in link_match_patterns), re.DOTALL)
 
     def apply(
         self,
@@ -57,14 +69,16 @@ class RuleRemoveLinks(RuleBase):
         cleaned_lines: list[str] = []
         skip_next_blank = False
 
-        for line in markdown.splitlines():
+        cleaned_markdown = self.link_pattern.sub(self._replace_link, markdown)
+
+        for line in cleaned_markdown.splitlines():
             if skip_next_blank and not line.strip():
                 skip_next_blank = False
                 continue
 
             skip_next_blank = False
-            cleaned_line = self.link_pattern.sub("", line).rstrip()
-            line_changed = cleaned_line != line
+            line_changed = self.REMOVED_LINK_MARKER in line
+            cleaned_line = line.replace(self.REMOVED_LINK_MARKER, "")
 
             if line_changed and self._is_empty_link_line(cleaned_line):
                 skip_next_blank = True
@@ -75,7 +89,17 @@ class RuleRemoveLinks(RuleBase):
         return self.join_lines(cleaned_lines, markdown)
 
     def _is_empty_link_line(self, line: str) -> bool:
-        return not line.strip() or all(character in "[]| " for character in line)
+        return not line.strip() or ("|" not in line and all(character in "[] " for character in line))
+
+    def _replace_link(self, match: re.Match[str]) -> str:
+        leading = re.match(r"[^\S\n]*", match.group(0)).group(0)
+        before = match.string[: match.start()]
+        previous = before.rstrip()[-1:] if before.strip() else ""
+
+        if previous == "|":
+            return leading
+
+        return self.REMOVED_LINK_MARKER
 
     def _split_match_pattern(self, pattern: str) -> tuple[str, str]:
         if pattern.startswith("text:"):

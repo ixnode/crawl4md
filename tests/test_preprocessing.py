@@ -301,7 +301,7 @@ class RuleRemoveLinksWikipediaEditLinksTests(unittest.TestCase):
 
         cleaned = rule.apply(markdown)
 
-        self.assertEqual(cleaned, "## Geschichte\n\nText\n")
+        self.assertEqual(cleaned, "## Geschichte\n\n | \n\nText\n")
 
 
 class RuleRemoveBlocksWikiLovesEarthBannerTests(unittest.TestCase):
@@ -431,6 +431,75 @@ class RuleRemoveLinksTests(unittest.TestCase):
         cleaned = rule.apply(markdown)
 
         self.assertEqual(cleaned, "Text [keep](#other-link)\n")
+
+    def test_removes_wikipedia_veaction_edit_link_with_parentheses_in_title(self) -> None:
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_links="veaction=edit[^)]*section=",
+            )
+        )
+        markdown = (
+            '[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&'
+            'veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | '
+            '[Quelltext\n'
+            '  bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&'
+            'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            " | "
+            "[Quelltext\n"
+            "  bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n',
+        )
+
+    def test_removes_wikipedia_action_edit_link_with_multiline_text_and_parentheses_in_title(self) -> None:
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_links="action=edit[^)]*section=",
+            )
+        )
+        markdown = (
+            '[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&'
+            'veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | '
+            '[Quelltext\n'
+            '  bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&'
+            'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(
+            cleaned,
+            "[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&"
+            'veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | \n',
+        )
+
+    def test_removes_both_wikipedia_edit_links_and_keeps_separator(self) -> None:
+        rule = RuleRemoveLinks(
+            MarkdownPreprocessingConfig(
+                enabled=True,
+                remove_links=[
+                    "veaction=edit[^)]*section=",
+                    "action=edit[^)]*section=",
+                ],
+            )
+        )
+        markdown = (
+            '[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&'
+            'veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | '
+            '[Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&'
+            'action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]\n'
+        )
+
+        cleaned = rule.apply(markdown)
+
+        self.assertEqual(cleaned, " | \n")
 
 
 class RuleRemoveImagesTests(unittest.TestCase):
