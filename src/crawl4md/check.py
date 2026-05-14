@@ -7,7 +7,13 @@ import sys
 MARKDOWN_CONVERTER_SESSION_ROOT = Path("tests/data/markdown_converter")
 
 
+def print_heading(title: str) -> None:
+    print(f"\n=== {title} ===\n", flush=True)
+
+
 def markdown_converter() -> int:
+    print_heading("Markdown Converter")
+
     env = os.environ.copy()
     args = sys.argv[1:]
 
@@ -52,6 +58,8 @@ def markdown_converter() -> int:
 
 
 def preprocessing() -> int:
+    print_heading("Preprocessing")
+
     commands = [
         [sys.executable, "-m", "unittest", "tests.test_preprocessing", "-v"],
         [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
@@ -66,6 +74,8 @@ def preprocessing() -> int:
 
 
 def check_ruff() -> int:
+    print_heading("Ruff")
+
     return subprocess.run(["ruff", "check"]).returncode
 
 
