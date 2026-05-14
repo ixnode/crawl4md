@@ -134,6 +134,42 @@ CASES = [
         expected="Qantas needed.[**] Braniff International\n",
     ),
     RuleCase(
+        name="removes_better_source_needed_bracketed_emphasis_link_to_marker",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="anchor:Verifiability",
+        ),
+        markdown=(
+            "[*[better source needed](/wiki/Wikipedia:Verifiability#Questionable_sources "
+            '"Wikipedia:Verifiability")*]\n'
+        ),
+        expected="[**]\n",
+    ),
+    RuleCase(
+        name="removes_better_source_needed_inline_marker_artifact_to_marker",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="anchor:Verifiability",
+        ),
+        markdown=(
+            "| Wing area*[better source needed](/wiki/Wikipedia:Verifiability#Questionable_sources "
+            '"Wikipedia:Verifiability")* | value |\n'
+        ),
+        expected="| Wing area[**] | value |\n",
+    ),
+    RuleCase(
+        name="removes_better_source_needed_inline_marker_artifact_with_leading_star_to_marker",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="anchor:Verifiability",
+        ),
+        markdown=(
+            "| Cruise speed*[better source needed](/wiki/Wikipedia:Verifiability#Questionable_sources "
+            '"Wikipedia:Verifiability")* | value |\n'
+        ),
+        expected="| Cruise speed[**] | value |\n",
+    ),
+    RuleCase(
         name="removes_wikipedia_veaction_edit_link_with_parentheses_in_title",
         config=MarkdownPreprocessingConfig(
             enabled=True,
@@ -305,6 +341,18 @@ CASES = [
             '[Air India](https://de.wikipedia.org/wiki/Air_India "Air India")\n'
         ),
         expected="Boeing und Air India\n",
+    ),
+    RuleCase(
+        name="unwrap_star_keeps_bracketed_emphasis_text_for_verifiability_link",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links="unwrap:*",
+        ),
+        markdown=(
+            "[*[better source needed](/wiki/Wikipedia:Verifiability#Questionable_sources "
+            '"Wikipedia:Verifiability")*]\n'
+        ),
+        expected="[*better source needed*]\n",
     ),
     RuleCase(
         name="applies_anchor_removals_before_unwrap_star",

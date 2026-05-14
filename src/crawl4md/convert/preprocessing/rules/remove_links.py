@@ -23,6 +23,14 @@ class RuleRemoveLinks(RuleBase):
         rf"(?P<leading>[^\S\n]*)\[(?P<text>{MARKDOWN_LINK_TEXT})\]\({MARKDOWN_LINK_TARGET}\)",
         re.DOTALL,
     )
+    BRACKETED_EMPHASIS_LINK_PATTERN = re.compile(
+        rf"^\[\*\[(?P<text>{MARKDOWN_LINK_TEXT})\]\({MARKDOWN_LINK_TARGET}\)\*\]$",
+        re.DOTALL,
+    )
+    EMPHASIS_LINK_PATTERN = re.compile(
+        rf"^\*\[(?P<text>{MARKDOWN_LINK_TEXT})\]\({MARKDOWN_LINK_TARGET}\)\*$",
+        re.DOTALL,
+    )
 
     @cached_property
     def link_pattern(self) -> re.Pattern[str] | None:
@@ -43,15 +51,15 @@ class RuleRemoveLinks(RuleBase):
             )
             if match_type == "text":
                 link_match_patterns.append(
-                    rf"[^\S\n]*(?:\[)?!?\[(?:(?!\]\().)*(?:{match_pattern})(?:(?!\]\().)*\]"
-                    rf"\({self.MARKDOWN_LINK_TARGET}\)(?:\])?"
+                    rf"[^\S\n]*(?:\[\*|\[)?!?\[(?:(?!\]\().)*(?:{match_pattern})(?:(?!\]\().)*\]"
+                    rf"\({self.MARKDOWN_LINK_TARGET}\)(?:\*\]|\])?"
                 )
                 continue
 
             link_match_patterns.append(
-                rf"[^\S\n]*(?:\[)?!?\[{self.MARKDOWN_LINK_TEXT}\]\("
+                rf"[^\S\n]*(?:\[\*|\[)?!?\[{self.MARKDOWN_LINK_TEXT}\]\("
                 rf"(?={self.MARKDOWN_LINK_TARGET}{target_boundary}(?:{match_pattern}))"
-                rf"{self.MARKDOWN_LINK_TARGET}\)\]?"
+                rf"{self.MARKDOWN_LINK_TARGET}\)(?:\*\]|\])?"
             )
 
         if not link_match_patterns:
@@ -87,6 +95,11 @@ class RuleRemoveLinks(RuleBase):
 
         if self.unwrap_patterns:
             cleaned_markdown = self.UNWRAP_LINK_PATTERN.sub(self._replace_unwrapped_link, cleaned_markdown)
+            cleaned_markdown = re.sub(
+                r"\*\[(?P<text>[^\]\n]+)\*\]",
+                r"[*\g<text>*]",
+                cleaned_markdown,
+            )
 
         for line in cleaned_markdown.splitlines():
             if skip_next_blank and not line.strip():
@@ -106,7 +119,10 @@ class RuleRemoveLinks(RuleBase):
             if line_changed:
                 cleaned_line = cleaned_line.replace("*]", "[**]")
                 cleaned_line = re.sub(r"(?<![\w*])\*\*(?![\w*])", "[**]", cleaned_line)
+                cleaned_line = re.sub(r"(?<=\w)\*\*(?=\s*\|)", "[**]", cleaned_line)
                 cleaned_line = cleaned_line.replace("[[**]]", "[**]")
+                cleaned_line = cleaned_line.replace("*[**]", "[**]")
+                cleaned_line = cleaned_line.replace("[**]*", "[**]")
 
             if line_changed and self._is_empty_link_line(cleaned_line):
                 skip_next_blank = True
@@ -133,9 +149,12 @@ class RuleRemoveLinks(RuleBase):
         if previous == "|":
             return leading
 
-        # Keep a valid bracketed emphasis marker when removing links like:
-        # [*[citation needed](...)*] -> [**]
-        if body.startswith("[*[") and body.endswith("*]"):
+        emphasized = self.BRACKETED_EMPHASIS_LINK_PATTERN.match(body)
+        if emphasized:
+            return f"{leading}[**]"
+
+        emphasized = self.EMPHASIS_LINK_PATTERN.match(body)
+        if emphasized:
             return f"{leading}[**]"
 
         return self.REMOVED_LINK_MARKER
