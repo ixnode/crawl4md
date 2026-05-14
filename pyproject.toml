@@ -22,6 +22,7 @@ crawl = "crawl4md.cli:app"
 check = "crawl4md.check:main"
 check-markdown-converter = "crawl4md.check:markdown_converter"
 check-preprocessing = "crawl4md.check:preprocessing"
+check-ruff = "crawl4md.check:check_ruff"
 
 [build-system]
 requires = ["hatchling"]

@@ -65,16 +65,15 @@ def preprocessing() -> int:
     return 0
 
 
-def main() -> int:
-    commands = [
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
-        ["ruff", "check"],
-    ]
+def check_ruff() -> int:
+    return subprocess.run(["ruff", "check"]).returncode
 
-    for command in commands:
-        result = subprocess.run(command)
-        if result.returncode != 0:
-            return result.returncode
+
+def main() -> int:
+    for check in (markdown_converter, preprocessing, check_ruff):
+        result = check()
+        if result != 0:
+            return result
 
     return 0
 
