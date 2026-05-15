@@ -73,7 +73,7 @@ CASES = [
 
     # Tests with all replacements.
     RuleCase(
-        name="all__combined_anchor_text_unwrap_and_artifacts",
+        name="all__combined_anchor_text_unwrap_edit_and_badge",
         config=MarkdownPreprocessingConfig(
             enabled=True,
             remove_links=[
