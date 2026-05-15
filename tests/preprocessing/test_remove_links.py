@@ -70,6 +70,21 @@ CASES = [
             ],
         ),
     ),
+    RuleCase(
+        name="all__combined_anchor_text_unwrap_and_artifacts",
+        config=MarkdownPreprocessingConfig(
+            enabled=True,
+            remove_links=[
+                "anchor:cite_note",
+                "anchor:Citation_needed",
+                "anchor:Verifiability",
+                "anchor:#bodyContent",
+                "anchor:#custom-link",
+                "text:Remove me",
+                "unwrap:*",
+            ],
+        ),
+    ),
 
     # Tests from Codex.
     RuleCase(
