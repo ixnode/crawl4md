@@ -22,3 +22,14 @@ def url_to_path(base: Path, project: str, url: str) -> Path:
 
     file_path = Path(base) / project / f"{path}.md"
     return file_path
+
+def get_root_path() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+def load_markdown_file(path: str) -> str | None:
+    markdown_path = get_root_path() / path
+
+    if not markdown_path.exists():
+        return None
+
+    return markdown_path.read_text(encoding="utf-8")
