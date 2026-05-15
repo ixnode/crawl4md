@@ -48,3 +48,20 @@ This case covers marker/artifact normalization in table rows.
 Link text is kept through `unwrap:*`, citation marker is removed/normalized.
 
 Riyadh.[**]
+
+## 8. Wikipedia edit-link pair in one bracket
+
+Both edit links should be removed by `anchor:veaction=edit` and `anchor:action=edit`.
+After removal, the orphan separator should not remain.
+
+## 9. Left edit-link fragment with trailing separator
+
+This fragment ends with a trailing `|` and has only the `veaction` edit link.
+The link should be removed, and no orphan separator should survive.
+
+## 10. Right edit-link fragment with leading separator
+
+This fragment starts with a leading `|` and has only the `action` edit link.
+The link should be removed. The current output keeps a standalone `|` line.
+
+|

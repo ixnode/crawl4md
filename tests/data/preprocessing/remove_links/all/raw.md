@@ -52,3 +52,24 @@ This case covers marker/artifact normalization in table rows.
 Link text is kept through `unwrap:*`, citation marker is removed/normalized.
 
 [Riyadh](/wiki/Riyadh "Riyadh").[*[citation needed](/wiki/Wikipedia:Citation_needed "Wikipedia:Citation needed")*]
+
+## 8. Wikipedia edit-link pair in one bracket
+
+Both edit links should be removed by `anchor:veaction=edit` and `anchor:action=edit`.
+After removal, the orphan separator should not remain.
+
+[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | [Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]
+
+## 9. Left edit-link fragment with trailing separator
+
+This fragment ends with a trailing `|` and has only the `veaction` edit link.
+The link should be removed, and no orphan separator should survive.
+
+[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") |
+
+## 10. Right edit-link fragment with leading separator
+
+This fragment starts with a leading `|` and has only the `action` edit link.
+The link should be removed. The current output keeps a standalone `|` line.
+
+| [Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]
