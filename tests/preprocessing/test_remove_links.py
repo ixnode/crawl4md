@@ -52,7 +52,7 @@ CASES = [
         ),
     ),
 
-    # Tests with anchor removement.
+    # Tests with anchor replacements.
     RuleCase(
         name="anchor",
         config=MarkdownPreprocessingConfig(
@@ -70,6 +70,8 @@ CASES = [
             ],
         ),
     ),
+
+    # Tests with all replacements.
     RuleCase(
         name="all__combined_anchor_text_unwrap_and_artifacts",
         config=MarkdownPreprocessingConfig(

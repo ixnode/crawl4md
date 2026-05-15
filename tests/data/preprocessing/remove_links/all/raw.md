@@ -43,6 +43,8 @@ This case should produce the marker `[**]`.
 
 This case covers marker/artifact normalization in table rows.
 
+| Name | Value |
+|------|-------|
 | Cruise speed*[better source needed](/wiki/Wikipedia:Verifiability#Questionable_sources "Wikipedia:Verifiability")* | value |
 
 ## 7. Riyadh combined case
