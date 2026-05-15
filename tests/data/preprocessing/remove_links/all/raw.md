@@ -94,3 +94,10 @@ This section documents the regex-style unwrap scenario for visible text matching
 Within this combined fixture, `unwrap:*` is active, so both links are unwrapped.
 
 [Boeing](https://de.wikipedia.org/wiki/Boeing) und [Air India](https://de.wikipedia.org/wiki/Air_India "Air India")
+
+## 14. Featured badge image link
+
+This case adds the Wikipedia featured-article badge as a linked image.
+With `anchor:#[Vv]orlage_[Ll]esenswert`, the whole construct should be removed.
+
+[![Dies ist ein als lesenswert ausgezeichneter Artikel.](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Qsicon_lesenswert.svg/20px-Qsicon_lesenswert.svg.png)](#Vorlage_Lesenswert "Dies ist ein als lesenswert ausgezeichneter Artikel.")

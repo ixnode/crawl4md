@@ -82,6 +82,8 @@ CASES = [
                 "anchor:Verifiability",
                 "anchor:#bodyContent",
                 "anchor:#custom-link",
+                "anchor:#[Vv]orlage_[Ll]esenswert",
+                "anchor:#[Vv]orlage_[Ee]xzellent",
                 "anchor:veaction=edit[^)]*section=",
                 "anchor:action=edit[^)]*section=",
                 "text:Remove me",

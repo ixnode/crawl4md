@@ -83,3 +83,8 @@ This section documents the regex-style unwrap scenario for visible text matching
 Within this combined fixture, `unwrap:*` is active, so both links are unwrapped.
 
 Boeing und Air India
+
+## 14. Featured badge image link
+
+This case adds the Wikipedia featured-article badge as a linked image.
+With `anchor:#[Vv]orlage_[Ll]esenswert`, the whole construct should be removed.
