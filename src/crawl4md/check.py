@@ -111,7 +111,7 @@ def preprocessing() -> int:
         return 2
 
     return subprocess.run(
-        [sys.executable, "-m", "unittest", f"tests.preprocessing.test_{test_name}", "-v"],
+        [sys.executable, "-m", "unittest", f"tests.preprocessing.test_{test_name}"],
     ).returncode
 
 

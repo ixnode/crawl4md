@@ -1,8 +1,9 @@
 import unittest
+import time
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.remove_links import RuleRemoveLinks
-from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case, data_provider
+from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
 
 
 CASES = [
@@ -380,6 +381,17 @@ CASES = [
 
 
 class RuleRemoveLinksTests(unittest.TestCase):
-    @data_provider(CASES)
-    def test_remove_links(self, case: RuleCase) -> None:
-        assert_rule_case(self, RuleRemoveLinks, case)
+    def test_remove_links(self) -> None:
+        total = len(CASES)
+
+        for index, case in enumerate(CASES, start=1):
+            started_at = time.perf_counter()
+            try:
+                assert_rule_case(self, RuleRemoveLinks, case)
+            except Exception:
+                duration_ms = (time.perf_counter() - started_at) * 1000
+                print(f"\n[{index}/{total}] [{case.name}] ❌ ({duration_ms:.0f} ms)")
+                raise
+
+            duration_ms = (time.perf_counter() - started_at) * 1000
+            print(f"\n[{index}/{total}] [{case.name}] ✅ ({duration_ms:.0f} ms)")
