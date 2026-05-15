@@ -88,8 +88,30 @@ def pipeline() -> int:
 def preprocessing() -> int:
     print_heading("Preprocessing")
 
+    args = sys.argv[1:]
+
+    if len(args) > 1:
+        print("Usage: check-preprocessing [test_name]", file=sys.stderr)
+        return 2
+
+    if not args:
+        return subprocess.run(
+            [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
+        ).returncode
+
+    test_name = args[0]
+    if "/" in test_name or "\\" in test_name or test_name.startswith("test_"):
+        print(f"Invalid preprocessing test name: {test_name}", file=sys.stderr)
+        return 2
+
+    test_file = Path("tests/preprocessing") / f"test_{test_name}.py"
+    if not test_file.is_file():
+        print(f"Preprocessing test not found: {test_name}", file=sys.stderr)
+        print(f"Expected file: {test_file.as_posix()}", file=sys.stderr)
+        return 2
+
     return subprocess.run(
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
+        [sys.executable, "-m", "unittest", f"tests.preprocessing.test_{test_name}", "-v"],
     ).returncode
 
 

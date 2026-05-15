@@ -2,7 +2,7 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormalizeLinebreak
-from tests.preprocessing.data_provider import RuleCase, assert_rule_case, data_provider
+from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case, data_provider
 
 
 CASES = [
