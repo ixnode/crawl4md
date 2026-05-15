@@ -81,3 +81,16 @@ Both edit links should still be removed by the configured anchor rules.
 
 [[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | [Quelltext
   bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]
+
+## 12. Unwrap with single-quoted title
+
+This case shows that an inline link with a single-quoted title is unwrapped to plain text.
+
+[Air India](https://de.wikipedia.org/wiki/Air_India 'Air India')
+
+## 13. Regex-style unwrap example
+
+This section documents the regex-style unwrap scenario for visible text matching.
+Within this combined fixture, `unwrap:*` is active, so both links are unwrapped.
+
+[Boeing](https://de.wikipedia.org/wiki/Boeing) und [Air India](https://de.wikipedia.org/wiki/Air_India "Air India")

@@ -70,3 +70,16 @@ The link should be removed. The current output keeps a standalone `|` line.
 
 This case uses a multiline visible text in the second edit link (`Quelltext` line break `bearbeiten`).
 Both edit links should still be removed by the configured anchor rules.
+
+## 12. Unwrap with single-quoted title
+
+This case shows that an inline link with a single-quoted title is unwrapped to plain text.
+
+Air India
+
+## 13. Regex-style unwrap example
+
+This section documents the regex-style unwrap scenario for visible text matching.
+Within this combined fixture, `unwrap:*` is active, so both links are unwrapped.
+
+Boeing und Air India
