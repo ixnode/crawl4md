@@ -64,4 +64,9 @@ The link should be removed, and no orphan separator should survive.
 This fragment starts with a leading `|` and has only the `action` edit link.
 The link should be removed. The current output keeps a standalone `|` line.
 
-|
+| 
+
+## 11. Multiline edit-link pair in one bracket
+
+This case uses a multiline visible text in the second edit link (`Quelltext` line break `bearbeiten`).
+Both edit links should still be removed by the configured anchor rules.

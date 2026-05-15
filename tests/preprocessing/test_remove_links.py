@@ -92,13 +92,6 @@ CASES = [
 
     # Additional edge-case tests not covered by no_links/no_effect/anchor/all.
     RuleCase(
-        name="edge_multiline_edit_link",
-        config=MarkdownPreprocessingConfig(
-            enabled=True,
-            remove_links="action=edit[^)]*section=",
-        ),
-    ),
-    RuleCase(
         name="edge_unwrap_single_quote_title",
         config=MarkdownPreprocessingConfig(
             enabled=True,

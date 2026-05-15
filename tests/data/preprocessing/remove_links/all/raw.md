@@ -73,3 +73,11 @@ This fragment starts with a leading `|` and has only the `action` edit link.
 The link should be removed. The current output keeps a standalone `|` line.
 
 | [Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]
+
+## 11. Multiline edit-link pair in one bracket
+
+This case uses a multiline visible text in the second edit link (`Quelltext` line break `bearbeiten`).
+Both edit links should still be removed by the configured anchor rules.
+
+[[Bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&veaction=edit&section=15 "Abschnitt bearbeiten: 707-020 (720)") | [Quelltext
+  bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]
