@@ -30,12 +30,12 @@ class RuleRemoveLinks(RuleBase):
     #   https://example.org/wiki/Air_India_(film)
     MARKDOWN_LINK_TARGET = r"(?:\\.|[^()\\\n]|\([^()\n]*\))*"
     MARKDOWN_LINK_TEXT = rf"(?:!\[[^\]\n]*\]\({MARKDOWN_LINK_TARGET}\)|(?:(?!\]\().))*"
+    UNWRAP_LINK_TEXT = r"(?:\\.|[^\]\\\n])*"
 
     # Used for unwrap-rules:
     #   [Text](url) -> Text
     UNWRAP_LINK_PATTERN = re.compile(
-        rf"(?P<leading>[^\S\n]*)\[(?P<text>{MARKDOWN_LINK_TEXT})\]\({MARKDOWN_LINK_TARGET}\)",
-        re.DOTALL,
+        rf"(?P<leading>[^\S\n]*)\[(?P<text>{UNWRAP_LINK_TEXT})\]\({MARKDOWN_LINK_TARGET}\)",
     )
 
     # Special forms that should collapse to [**] when removed by anchor/text rules.
@@ -50,6 +50,7 @@ class RuleRemoveLinks(RuleBase):
         rf"^\*\[(?P<text>{MARKDOWN_LINK_TEXT})\]\({MARKDOWN_LINK_TARGET}\)\*$",
         re.DOTALL,
     )
+    INLINE_CODE_PATTERN = re.compile(r"`[^`\n]*`")
 
     @cached_property
     def link_pattern(self) -> re.Pattern[str] | None:
@@ -83,7 +84,7 @@ class RuleRemoveLinks(RuleBase):
         # Phase 1: remove links that match anchor/text patterns.
         # Example:
         #   "abc [x](#cite_note-1)" -> "abc \0C4MD_REMOVED_LINK\0"
-        cleaned_markdown = markdown
+        cleaned_markdown, code_replacements = self._mask_inline_code(markdown)
         if self.link_pattern is not None:
             cleaned_markdown = self.link_pattern.sub(self._replace_link, cleaned_markdown)
 
@@ -97,6 +98,8 @@ class RuleRemoveLinks(RuleBase):
             # Example:
             #   "*[better source needed*]" -> "[*better source needed*]"
             cleaned_markdown = normalize_unwrapped_emphasis_shape(cleaned_markdown)
+
+        cleaned_markdown = self._restore_inline_code(cleaned_markdown, code_replacements)
 
         # Phase 3: line-wise cleanup after marker-based removals.
         for line in cleaned_markdown.splitlines():
@@ -195,3 +198,18 @@ class RuleRemoveLinks(RuleBase):
             return [self.config.remove_links]
 
         return self.config.remove_links
+
+    def _mask_inline_code(self, markdown: str) -> tuple[str, list[str]]:
+        replacements: list[str] = []
+
+        def _replace(match: re.Match[str]) -> str:
+            replacements.append(match.group(0))
+            return f"\0C4MD_INLINE_CODE_{len(replacements) - 1}\0"
+
+        return self.INLINE_CODE_PATTERN.sub(_replace, markdown), replacements
+
+    def _restore_inline_code(self, markdown: str, replacements: list[str]) -> str:
+        restored = markdown
+        for index, value in enumerate(replacements):
+            restored = restored.replace(f"\0C4MD_INLINE_CODE_{index}\0", value)
+        return restored

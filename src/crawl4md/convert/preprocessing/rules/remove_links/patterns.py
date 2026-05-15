@@ -57,7 +57,8 @@ def build_link_pattern(
             # Example:
             #   text:Zum Inhalt springen
             link_match_patterns.append(
-                rf"[^\S\n]*(?:\[\*|\[)?!?\[(?:(?!\]\().)*(?:{parsed.match_pattern})(?:(?!\]\().)*\]"
+                rf"[^\S\n]*(?:\[\*)?!?\[(?:(?!\]\()(?:(?!\n).))*(?:{parsed.match_pattern})"
+                rf"(?:(?!\]\()(?:(?!\n).))*\]"
                 rf"\({markdown_link_target}\)(?:\*\]|\])?"
             )
             continue
@@ -66,7 +67,7 @@ def build_link_pattern(
         # Example:
         #   anchor:Citation_needed
         link_match_patterns.append(
-            rf"[^\S\n]*(?:\[\*|\[)?!?\[{markdown_link_text}\]\("
+            rf"[^\S\n]*(?:\[\*)?!?\[{markdown_link_text}\]\("
             rf"(?={markdown_link_target}{target_boundary}(?:{parsed.match_pattern}))"
             rf"{markdown_link_target}\)(?:\*\]|\])?"
         )

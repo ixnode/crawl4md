@@ -31,7 +31,9 @@ Cite-note link should be removed.
 
 ## 5. Anchor: Citation_needed (bracketed emphasis)
 
-This case should produce the marker `
+This case should produce the marker `[**]`.
+
+[**]
 
 ## 6. Anchor: Verifiability inside a table cell
 
