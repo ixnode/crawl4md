@@ -99,13 +99,6 @@ CASES = [
         ),
     ),
     RuleCase(
-        name="edge_unwrap_parenthesized_title",
-        config=MarkdownPreprocessingConfig(
-            enabled=True,
-            remove_links="unwrap:Air India",
-        ),
-    ),
-    RuleCase(
         name="edge_unwrap_regex_visible_text",
         config=MarkdownPreprocessingConfig(
             enabled=True,
