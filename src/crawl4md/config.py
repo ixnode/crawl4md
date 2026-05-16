@@ -19,6 +19,7 @@ from .profiles import get_profile
 
 
 ParseTypeCrawl4AI = Literal["markdown", "markdown-fit"]
+ParseTypeKreuzbergDev = Literal["markdown"]
 
 class CrawlConfig(BaseModel):
     parser: str = "kreuzberg-dev"

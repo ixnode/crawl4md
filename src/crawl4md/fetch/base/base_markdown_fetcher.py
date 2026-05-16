@@ -14,7 +14,7 @@ from typing import Any
 
 import httpx
 
-from crawl4md.config import MarkdownPreprocessingConfig, NormalizationConfig
+from crawl4md.config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev, ParseTypeCrawl4AI
 from crawl4md.fetch.normalization.html import HtmlNormalization
 from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 
@@ -24,7 +24,7 @@ class BaseMarkdownFetcher(ABC):
         self,
         config: MarkdownPreprocessingConfig,
         normalization: NormalizationConfig | None = None,
-        parse_type: str = "markdown",
+        parse_type: ParseTypeKreuzbergDev | ParseTypeCrawl4AI = "markdown",
         content_selector: str | None = None,
     ) -> None:
         self.config = config

@@ -13,7 +13,7 @@ import asyncio
 
 import html_to_markdown._html_to_markdown as html_to_markdown
 
-from ..config import MarkdownPreprocessingConfig
+from ..config import MarkdownPreprocessingConfig, ParseTypeKreuzbergDev
 from .base import BaseMarkdownConverter
 
 
@@ -21,7 +21,7 @@ class MarkdownConverterKreuzbergDev(BaseMarkdownConverter):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
-        parse_type: str = "markdown",
+        parse_type: ParseTypeKreuzbergDev = "markdown",
         content_selector: str | None = None,
     ) -> None:
         super().__init__(
