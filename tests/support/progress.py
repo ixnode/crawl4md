@@ -10,32 +10,10 @@
 # @since 1.0.0 (2026-05-16) First version
 
 import asyncio
-import sys
 import time
 
 from collections.abc import Awaitable, Callable, Sequence
-
-
-def _print_progress(
-    index: int,
-    total: int,
-    name: str,
-    success: bool,
-    started_at: float,
-    *,
-    index_width: int,
-    name_width: int,
-) -> None:
-    duration_ms = (time.perf_counter() - started_at) * 1000
-    status = "✅" if success else "❌"
-    index_text = f"[{index:>{index_width}}/{total}]"
-    name_text = f"[{name}]"
-    duration_text = f"({duration_ms:>5.0f} ms)"
-    print(
-        f"{index_text} {name_text:<{name_width + 2}}  {status} {duration_text}",
-        file=sys.stderr,
-        flush=True,
-    )
+from crawl4md.utils.progress_helpers import print_progress
 
 
 def run_progress_cases(
@@ -61,7 +39,7 @@ async def run_progress_cases_async(
         try:
             await run_case(index - 1)
         except Exception:
-            _print_progress(
+            print_progress(
                 index,
                 total,
                 name,
@@ -72,7 +50,7 @@ async def run_progress_cases_async(
             )
             raise
 
-        _print_progress(
+        print_progress(
             index,
             total,
             name,
