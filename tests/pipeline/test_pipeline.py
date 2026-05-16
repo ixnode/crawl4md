@@ -28,8 +28,14 @@ class MarkdownPreprocessingPipelineTests(unittest.TestCase):
                 "test_returns_markdown_unchanged_when_disabled",
                 self._test_returns_markdown_unchanged_when_disabled,
             ),
-            ("test_runs_multiple_enabled_rules", self._test_runs_multiple_enabled_rules),
-            ("test_runs_remove_images_before_remove_links", self._test_runs_remove_images_before_remove_links),
+            (
+                "test_runs_multiple_enabled_rules",
+                self._test_runs_multiple_enabled_rules
+            ),
+            (
+                "test_runs_remove_images_before_remove_links",
+                self._test_runs_remove_images_before_remove_links
+            ),
         ]
         names = [name for name, _ in checks]
 
