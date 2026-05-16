@@ -88,6 +88,3 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(markdown, expected_markdown)
 
         await run_progress_cases_async(session_ids, _run)
-
-if __name__ == "__main__":
-    unittest.main()

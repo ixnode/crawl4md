@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 ### Test
 
 * Migrate crawl4ai content-selector unit checks to session fixtures
+* Remove direct unittest main guard from markdown converter test module
 
 ## [0.1.5] - 2026-05-03
 
