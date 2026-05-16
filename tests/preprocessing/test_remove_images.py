@@ -14,14 +14,14 @@ import time
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.remove_images import RuleRemoveImages
-from crawl4md.paths import load_markdown_file
-from tests.preprocessing.support.data_provider import RuleCase
+from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
 
 
 CASES = [
     RuleCase(
         name="all__combined_image_cases",
         config=MarkdownPreprocessingConfig(enabled=True, remove_images=True),
+        fixture_group="remove_images",
     ),
 ]
 
@@ -33,17 +33,7 @@ class RuleRemoveImagesTests(unittest.TestCase):
         for index, case in enumerate(CASES, start=1):
             started_at = time.perf_counter()
             try:
-                raw = load_markdown_file(f"tests/data/preprocessing/remove_images/{case.name.split('__', 1)[0]}/raw.md")
-                expected = load_markdown_file(
-                    f"tests/data/preprocessing/remove_images/{case.name.split('__', 1)[0]}/expected.md"
-                )
-
-                if raw is None or expected is None:
-                    raise ValueError(f"Missing fixture for case '{case.name}'.")
-
-                cleaned = RuleRemoveImages(case.config).apply(raw, url=case.url, html=case.html)
-                self.maxDiff = None
-                self.assertEqual(cleaned.strip(), expected.strip())
+                assert_rule_case(self, RuleRemoveImages, case)
             except Exception:
                 duration_ms = (time.perf_counter() - started_at) * 1000
                 print(f"\n[{index}/{total}] [{case.name}] ❌ ({duration_ms:.0f} ms)")
