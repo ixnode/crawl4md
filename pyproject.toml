@@ -24,6 +24,7 @@ check-markdown-converter = "crawl4md.check:markdown_converter"
 check-profile = "crawl4md.check:profile"
 check-pipeline = "crawl4md.check:pipeline"
 check-preprocessing = "crawl4md.check:preprocessing"
+check-language = "crawl4md.check:check_language"
 check-ruff = "crawl4md.check:check_ruff"
 
 [build-system]

@@ -115,6 +115,14 @@ def preprocessing() -> int:
     ).returncode
 
 
+
+def check_language() -> int:
+    print_heading("Language")
+
+    return subprocess.run(
+        [sys.executable, "-m", "unittest", "tests.test_language", "-v"],
+    ).returncode
+
 def check_ruff() -> int:
     print_heading("Ruff")
 
@@ -122,7 +130,7 @@ def check_ruff() -> int:
 
 
 def main() -> int:
-    for check in (markdown_converter, profile, pipeline, preprocessing, check_ruff):
+    for check in (markdown_converter, profile, pipeline, preprocessing, check_language, check_ruff):
         result = check()
         if result != 0:
             return result
