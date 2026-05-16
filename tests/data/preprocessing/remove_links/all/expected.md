@@ -41,7 +41,7 @@ This case covers marker/artifact normalization in table rows.
 
 | Name | Value |
 |------|-------|
-| Cruise speed[**] | value |
+| Cruise speed** | value |
 
 ## 7. Riyadh combined case
 

@@ -13,7 +13,6 @@ import re
 from functools import cached_property
 
 from ..base.rule_base import RuleBase
-from .artifacts import normalize_line_after_link_removal, normalize_unwrapped_emphasis_shape
 from .patterns import build_link_pattern, build_unwrap_patterns
 
 
@@ -94,11 +93,6 @@ class RuleRemoveLinks(RuleBase):
         if self.unwrap_patterns:
             cleaned_markdown = self.UNWRAP_LINK_PATTERN.sub(self._replace_unwrapped_link, cleaned_markdown)
 
-            # Keep emphasized-bracket shape stable after unwrap.
-            # Example:
-            #   "*[better source needed*]" -> "[*better source needed*]"
-            cleaned_markdown = normalize_unwrapped_emphasis_shape(cleaned_markdown)
-
         cleaned_markdown = self._restore_inline_code(cleaned_markdown, code_replacements)
 
         # Phase 3: line-wise cleanup after marker-based removals.
@@ -120,15 +114,6 @@ class RuleRemoveLinks(RuleBase):
                 and not cleaned_line.lstrip().startswith("|")
             ):
                 cleaned_line = cleaned_line.lstrip()
-
-            # Normalize known marker/format artifacts.
-            # Examples:
-            #   "*]"        -> "[**]"
-            #   "word** |"  -> "word[**] |"
-            cleaned_line = normalize_line_after_link_removal(
-                cleaned_line,
-                line_changed=line_changed,
-            )
 
             # Drop lines that became semantically empty after link removal.
             # Example:
