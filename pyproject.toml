@@ -1,6 +1,6 @@
 [project]
 name = "crawl4md"
-version = "0.1.4"
+version = "0.1.5"
 requires-python = ">=3.11"
 description = "Convert web pages and HTML to clean Markdown"
 readme = "README.md"
