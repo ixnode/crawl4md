@@ -16,7 +16,7 @@ from crawl4md.convert.preprocessing import MarkdownPreprocessing
 from tests.support.progress import run_progress_cases
 
 
-class MarkdownPreprocessingPipelineChecks:
+class PipelineChecks:
     CHECK_METHODS = (
         "returns_markdown_unchanged_when_disabled",
         "runs_multiple_enabled_rules",
@@ -86,7 +86,7 @@ class MarkdownPreprocessingPipelineChecks:
         test_case.assertEqual(cleaned, 'Figure: "Air India"\n')
 
 
-class MarkdownPreprocessingPipelineTests(unittest.TestCase):
+class PipelineTests(unittest.TestCase):
     """Tests the orchestration behavior of the Markdown preprocessing pipeline."""
 
     def setUp(self) -> None:
@@ -97,11 +97,11 @@ class MarkdownPreprocessingPipelineTests(unittest.TestCase):
             (
                 f"test_{method_name}",
                 lambda method_name=method_name: getattr(
-                    MarkdownPreprocessingPipelineChecks,
+                    PipelineChecks,
                     method_name,
                 )(self),
             )
-            for method_name in MarkdownPreprocessingPipelineChecks.CHECK_METHODS
+            for method_name in PipelineChecks.CHECK_METHODS
         ]
         names = [name for name, _ in checks]
 

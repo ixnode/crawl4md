@@ -142,7 +142,10 @@ class ProfileTests(unittest.TestCase):
         checks = [
             (
                 f"test_{method_name}",
-                lambda method_name=method_name: getattr(ProfileChecks, method_name)(self),
+                lambda method_name=method_name: getattr(
+                    ProfileChecks,
+                    method_name
+                )(self),
             )
             for method_name in ProfileChecks.CHECK_METHODS
         ]
