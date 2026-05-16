@@ -2,12 +2,30 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
+from tests.support.progress import run_progress_cases
 
 
 class MarkdownPreprocessingPipelineTests(unittest.TestCase):
     """Tests the orchestration behavior of the Markdown preprocessing pipeline."""
 
-    def test_returns_markdown_unchanged_when_disabled(self) -> None:
+    def test_pipeline(self) -> None:
+        checks = [
+            (
+                "test_returns_markdown_unchanged_when_disabled",
+                self._test_returns_markdown_unchanged_when_disabled,
+            ),
+            ("test_runs_multiple_enabled_rules", self._test_runs_multiple_enabled_rules),
+            ("test_runs_remove_images_before_remove_links", self._test_runs_remove_images_before_remove_links),
+        ]
+        names = [name for name, _ in checks]
+
+        def _run(index: int) -> None:
+            _, check = checks[index]
+            check()
+
+        run_progress_cases(names, _run)
+
+    def _test_returns_markdown_unchanged_when_disabled(self) -> None:
         """A disabled pipeline returns the original Markdown even when individual rules are configured."""
         config = MarkdownPreprocessingConfig(
             enabled=False,
@@ -20,7 +38,7 @@ class MarkdownPreprocessingPipelineTests(unittest.TestCase):
 
         self.assertEqual(cleaned, markdown)
 
-    def test_runs_multiple_enabled_rules(self) -> None:
+    def _test_runs_multiple_enabled_rules(self) -> None:
         """An enabled pipeline runs configured rules together in the expected order."""
         config = MarkdownPreprocessingConfig(
             enabled=True,
@@ -49,7 +67,7 @@ class MarkdownPreprocessingPipelineTests(unittest.TestCase):
 
         self.assertEqual(cleaned, "# Boeing 707\n\nText\n")
 
-    def test_runs_remove_images_before_remove_links(self) -> None:
+    def _test_runs_remove_images_before_remove_links(self) -> None:
         """Image syntax is resolved before remaining Markdown links are processed."""
         config = MarkdownPreprocessingConfig(
             enabled=True,

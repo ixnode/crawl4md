@@ -85,7 +85,7 @@ def pipeline() -> int:
     print_heading("Pipeline")
 
     return subprocess.run(
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-v"],
+        [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-q"],
     ).returncode
 
 
