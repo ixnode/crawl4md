@@ -33,6 +33,7 @@ class RuleRemoveImagesTests(unittest.TestCase):
         for index, case in enumerate(CASES, start=1):
             started_at = time.perf_counter()
             try:
+                case.fixture_group = "remove_images"
                 assert_rule_case(self, RuleRemoveImages, case)
             except Exception:
                 duration_ms = (time.perf_counter() - started_at) * 1000

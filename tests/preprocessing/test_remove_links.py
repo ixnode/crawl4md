@@ -102,7 +102,6 @@ CASES = [
             ],
         ),
     ),
-
 ]
 
 
@@ -113,6 +112,7 @@ class RuleRemoveLinksTests(unittest.TestCase):
         for index, case in enumerate(CASES, start=1):
             started_at = time.perf_counter()
             try:
+                case.fixture_group = "remove_links"
                 assert_rule_case(self, RuleRemoveLinks, case)
             except Exception:
                 duration_ms = (time.perf_counter() - started_at) * 1000

@@ -24,7 +24,7 @@ from crawl4md.paths import load_markdown_file
 class RuleCase:
     name: str
     config: MarkdownPreprocessingConfig
-    fixture_group: str = "remove_links"
+    fixture_group: str | None = None
     markdown: str|None = None
     expected: str|None = None
     url: str | None = None
@@ -56,6 +56,8 @@ def assert_rule_case(
 
     # Load raw markdown file from tests/data/preprocessing folder
     if case.markdown is None:
+        if case.fixture_group is None:
+            raise ValueError(f"fixture_group is not set for case '{case.name}'.")
         path_raw = f"tests/data/preprocessing/{case.fixture_group}/{name_short}/raw.md"
         case.markdown = load_markdown_file(path_raw)
 
@@ -64,6 +66,8 @@ def assert_rule_case(
 
     # Load expected markdown file from tests/data/preprocessing folder
     if case.expected is None:
+        if case.fixture_group is None:
+            raise ValueError(f"fixture_group is not set for case '{case.name}'.")
         path_expected = f"tests/data/preprocessing/{case.fixture_group}/{name_short}/expected.md"
         case.expected = load_markdown_file(path_expected)
 
