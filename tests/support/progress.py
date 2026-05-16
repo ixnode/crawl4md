@@ -10,6 +10,7 @@
 # @since 1.0.0 (2026-05-16) First version
 
 import asyncio
+import sys
 import time
 
 from collections.abc import Awaitable, Callable, Sequence
@@ -31,6 +32,11 @@ async def run_progress_cases_async(
     run_case: Callable[[int], Awaitable[None]],
 ) -> None:
     total = len(names)
+    if total > 0:
+        print(file=sys.stderr, flush=True)
+        print(f"Executing {total} Tests:", file=sys.stderr, flush=True)
+        print("----------------------------------------------------------------------", file=sys.stderr, flush=True)
+
     index_width = len(str(total))
     name_width = max((len(name) for name in names), default=0)
 
