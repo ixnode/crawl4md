@@ -10,9 +10,10 @@
 # @since 1.0.0 (2026-05-16) First version
 
 import asyncio
-from collections.abc import Awaitable, Callable, Sequence
 import sys
 import time
+
+from collections.abc import Awaitable, Callable, Sequence
 
 
 def _print_progress(
