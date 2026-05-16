@@ -15,6 +15,7 @@ from .base.rule_base import RuleBase
 
 
 class RuleRemoveImages(RuleBase):
+    REMOVED_IMAGE_MARKER = "\0C4MD_REMOVED_IMAGE\0"
     MARKDOWN_TARGET = r"(?:\\.|[^()\\\n]|\([^()\n]*\))*"
     IMAGE_INNER_PATTERN = rf"!\[[^\]\n]*\]\({MARKDOWN_TARGET}\)"
     IMAGE_PATTERN = re.compile(rf"!\[(?P<alt>[^\]\n]*)\]\((?P<target>{MARKDOWN_TARGET})\)")
@@ -33,15 +34,21 @@ class RuleRemoveImages(RuleBase):
         if not self.config.remove_images:
             return markdown
 
+        original = markdown
         markdown = self.LINKED_IMAGE_PATTERN.sub(self._replace_linked_image, markdown)
-        return self.IMAGE_PATTERN.sub(self._replace_image, markdown)
+        markdown = self.IMAGE_PATTERN.sub(self._replace_image, markdown)
+        return self._cleanup_removed_image_lines(markdown, source=original)
 
     def _replace_linked_image(self, match: re.Match[str]) -> str:
         replacements = [
             self._image_text(image_match)
             for image_match in self.IMAGE_PATTERN.finditer(match.group("content"))
         ]
-        link_text = " ".join(replacement for replacement in replacements if replacement).strip()
+        link_text = " ".join(
+            replacement
+            for replacement in replacements
+            if replacement and replacement != self.REMOVED_IMAGE_MARKER
+        ).strip()
         return f"[{link_text}]({match.group('target')})"
 
     def _replace_image(self, match: re.Match[str]) -> str:
@@ -56,7 +63,7 @@ class RuleRemoveImages(RuleBase):
         if title:
             return title
 
-        return ""
+        return self.REMOVED_IMAGE_MARKER
 
     def _extract_title(self, target: str) -> str:
         match = self.TITLE_PATTERN.search(target.strip())
@@ -64,3 +71,24 @@ class RuleRemoveImages(RuleBase):
             return ""
 
         return next((group.strip() for group in match.groups() if group is not None), "")
+
+    def _cleanup_removed_image_lines(self, markdown: str, *, source: str) -> str:
+        cleaned_lines: list[str] = []
+        skip_next_blank = False
+
+        for line in markdown.splitlines():
+            if skip_next_blank and not line.strip():
+                skip_next_blank = False
+                continue
+
+            skip_next_blank = False
+            had_marker = self.REMOVED_IMAGE_MARKER in line
+            cleaned_line = line.replace(self.REMOVED_IMAGE_MARKER, "")
+
+            if had_marker and not cleaned_line.strip():
+                skip_next_blank = True
+                continue
+
+            cleaned_lines.append(cleaned_line)
+
+        return self.join_lines(cleaned_lines, source)

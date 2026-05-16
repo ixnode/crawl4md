@@ -6,8 +6,6 @@ This fixture combines all known `remove_images` transformations in one file.
 
 Image syntax is removed completely when no alt or title exists.
 
-
-
 ## 2. Plain image with alt text
 
 Alt text is kept.
