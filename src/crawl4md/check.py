@@ -109,7 +109,7 @@ def preprocessing() -> int:
             method_name = f"test_{test_name[5:]}"
             test_path = f"{module}.{class_name}.{method_name}"
 
-            print(f"--- {test_name} ---", file=sys.stderr, flush=True)
+            print(f"\n--- {test_name} ---", file=sys.stderr, flush=True)
             print(f"Test: {test_path}\n", file=sys.stderr, flush=True)
 
             result = subprocess.run([sys.executable, "-m", "unittest", "-q", module]).returncode
