@@ -77,7 +77,7 @@ def profile() -> int:
     print_heading("Profile")
 
     return subprocess.run(
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-v"],
+        [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-q"],
     ).returncode
 
 

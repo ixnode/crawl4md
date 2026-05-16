@@ -1,12 +1,38 @@
 import unittest
 
 from crawl4md.config import AppConfig, apply_profiles
+from tests.support.progress import run_progress_cases
 
 
 class ProfileTests(unittest.TestCase):
     """Tests profile lookup and merging before runtime preprocessing is built."""
 
-    def test_applies_wikipedia_profile_defaults(self) -> None:
+    def test_profile(self) -> None:
+        checks = [
+            (
+                "test_applies_wikipedia_profile_defaults",
+                self._test_applies_wikipedia_profile_defaults),
+            (
+                "test_project_preprocessing_overrides_profile_defaults",
+                self._test_project_preprocessing_overrides_profile_defaults,
+            ),
+            (
+                "test_project_crawl_overrides_profile_defaults",
+                self._test_project_crawl_overrides_profile_defaults),
+            (
+                "test_unknown_profile_raises_error",
+                self._test_unknown_profile_raises_error
+            ),
+        ]
+        names = [name for name, _ in checks]
+
+        def _run(index: int) -> None:
+            _, check = checks[index]
+            check()
+
+        run_progress_cases(names, _run)
+
+    def _test_applies_wikipedia_profile_defaults(self) -> None:
         """Profile defaults from the built-in wikipedia profile are applied to a project."""
         config = AppConfig(
             **apply_profiles(
@@ -42,7 +68,7 @@ class ProfileTests(unittest.TestCase):
         self.assertTrue(markdown.remove_images)
         self.assertTrue(markdown.normalize_whitespace)
 
-    def test_project_preprocessing_overrides_profile_defaults(self) -> None:
+    def _test_project_preprocessing_overrides_profile_defaults(self) -> None:
         """Project-level preprocessing values override profile defaults without removing unrelated defaults."""
         config = AppConfig(
             **apply_profiles(
@@ -70,7 +96,7 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(markdown.remove_sections, ["Einzelnachweise"])
         self.assertIn("anchor:cite_note", markdown.remove_links)
 
-    def test_project_crawl_overrides_profile_defaults(self) -> None:
+    def _test_project_crawl_overrides_profile_defaults(self) -> None:
         """Project-level crawl values override profile defaults without removing unrelated defaults."""
         config = AppConfig(
             **apply_profiles(
@@ -95,7 +121,7 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(crawl.parse_type, "markdown")
         self.assertEqual(crawl.content_selector, "#content")
 
-    def test_unknown_profile_raises_error(self) -> None:
+    def _test_unknown_profile_raises_error(self) -> None:
         """Unknown profile names fail during profile application instead of being ignored silently."""
         with self.assertRaisesRegex(ValueError, "Unknown project profile: doesnotexist"):
             apply_profiles(
