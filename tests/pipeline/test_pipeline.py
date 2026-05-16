@@ -13,7 +13,7 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
-from tests.support.progress import run_progress_cases
+from tests.base.progress_checks_test_case import ProgressChecksTestCase
 
 
 class PipelineChecks:
@@ -86,27 +86,8 @@ class PipelineChecks:
         test_case.assertEqual(cleaned, 'Figure: "Air India"\n')
 
 
-class PipelineTests(unittest.TestCase):
+class PipelineTests(ProgressChecksTestCase):
     """Tests the orchestration behavior of the Markdown preprocessing pipeline."""
 
-    def setUp(self) -> None:
-        self.maxDiff = None
-
     def test_pipeline(self) -> None:
-        checks = [
-            (
-                f"test_{method_name}",
-                lambda method_name=method_name: getattr(
-                    PipelineChecks,
-                    method_name,
-                )(self),
-            )
-            for method_name in PipelineChecks.CHECK_METHODS
-        ]
-        names = [name for name, _ in checks]
-
-        def _run(index: int) -> None:
-            _, check = checks[index]
-            check()
-
-        run_progress_cases(names, _run)
+        self.run_progress_check_methods(PipelineChecks)

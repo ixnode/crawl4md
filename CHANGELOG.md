@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
 * Extract markdown converter fetcher/session discovery helpers from tests
 * Extract pipeline check cases into helper class without behavior change
 * Auto-derive progress checks from helper method list
+* Introduce shared ProgressChecksTestCase base for pipeline/profile progress-driven checks
 
 ### Test
 

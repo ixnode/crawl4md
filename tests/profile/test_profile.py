@@ -12,7 +12,7 @@
 import unittest
 
 from crawl4md.config import AppConfig, apply_profiles
-from tests.support.progress import run_progress_cases
+from tests.base.progress_checks_test_case import ProgressChecksTestCase
 
 
 class ProfileChecks:
@@ -132,27 +132,8 @@ class ProfileChecks:
             )
 
 
-class ProfileTests(unittest.TestCase):
+class ProfileTests(ProgressChecksTestCase):
     """Tests profile lookup and merging before runtime preprocessing is built."""
 
-    def setUp(self) -> None:
-        self.maxDiff = None
-
     def test_profile(self) -> None:
-        checks = [
-            (
-                f"test_{method_name}",
-                lambda method_name=method_name: getattr(
-                    ProfileChecks,
-                    method_name
-                )(self),
-            )
-            for method_name in ProfileChecks.CHECK_METHODS
-        ]
-        names = [name for name, _ in checks]
-
-        def _run(index: int) -> None:
-            _, check = checks[index]
-            check()
-
-        run_progress_cases(names, _run)
+        self.run_progress_check_methods(ProfileChecks)
