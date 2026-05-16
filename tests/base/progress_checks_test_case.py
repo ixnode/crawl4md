@@ -14,7 +14,7 @@ import unittest
 from collections.abc import Callable
 from typing import Protocol
 
-from tests.support.progress import run_progress_cases
+from crawl4md.utils.progress_runner import run_progress_cases
 
 
 class ProgressChecksProtocol(Protocol):

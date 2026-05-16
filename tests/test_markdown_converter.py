@@ -24,7 +24,7 @@ from crawl4md.utils.markdown_converter_sessions import (
     load_and_normalize_html,
     load_markdown_converter_session,
 )
-from tests.support.progress import run_progress_cases_async
+from crawl4md.utils.progress_runner import run_progress_cases_async
 
 
 class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):

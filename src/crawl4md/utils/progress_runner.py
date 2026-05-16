@@ -6,14 +6,15 @@
 # file that was distributed with this source code.
 #
 # @author: Björn Hempel <bjoern@hempel.li>
-# @version: 1.0.0 (2026-05-16)
-# @since 1.0.0 (2026-05-16) First version
+# @version: 1.0.0 (2026-05-17)
+# @since 1.0.0 (2026-05-17) Extracted from tests/support/progress.py
 
 import asyncio
 import sys
 import time
 
 from collections.abc import Awaitable, Callable, Sequence
+
 from crawl4md.utils.progress_helpers import print_progress
 
 

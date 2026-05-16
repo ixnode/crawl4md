@@ -14,7 +14,7 @@ import unittest
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.normalize_tables import RuleNormalizeTables
 from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
-from tests.support.progress import run_progress_cases
+from crawl4md.utils.progress_runner import run_progress_cases
 
 
 CASES = [

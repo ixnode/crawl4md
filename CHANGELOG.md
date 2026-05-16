@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
 * Introduce shared ProgressChecksTestCase base for pipeline/profile progress-driven checks
 * Inline HTML fetching/normalization into BaseMarkdownFetcher and remove fetch/html.py
 * Rename Markdown fetcher modules/classes to HTML fetcher naming and update imports
+* Move test progress runner from tests/support into crawl4md.utils and update imports
 
 ### Test
 
