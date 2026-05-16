@@ -13,6 +13,7 @@ dependencies = [
     "pyyaml",
     "requests",
     "lxml",
+    "rich",
     "crawl4ai",
     "html-to-markdown>=3.3.2",
 ]

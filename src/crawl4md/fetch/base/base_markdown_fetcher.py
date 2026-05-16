@@ -21,12 +21,12 @@ class BaseMarkdownFetcher(ABC):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
-        normalization: NormalizationConfig,
+        normalization: NormalizationConfig | None = None,
         parse_type: str = "markdown",
         content_selector: str | None = None,
     ) -> None:
         self.config = config
-        self.normalization = normalization
+        self.normalization = normalization or NormalizationConfig()
         self.parse_type = parse_type
         self.content_selector = content_selector
 

@@ -1,4 +1,4 @@
-from .config import MarkdownPreprocessingConfig, ParseType
+from .config import MarkdownPreprocessingConfig, NormalizationConfig, ParseType
 from .convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
 from .convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
 from .fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
@@ -17,5 +17,6 @@ __all__ = [
     "MarkdownConverter",
     "MarkdownFetcher",
     "MarkdownPreprocessingConfig",
+    "NormalizationConfig",
     "ParseType",
 ]

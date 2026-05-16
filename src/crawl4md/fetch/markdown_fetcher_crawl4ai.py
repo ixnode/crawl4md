@@ -18,7 +18,7 @@ class MarkdownFetcherCrawl4AI(BaseMarkdownFetcher):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
-        normalization: NormalizationConfig,
+        normalization: NormalizationConfig | None = None,
         parse_type: ParseType = "markdown",
         content_selector: str | None = None,
     ) -> None:
