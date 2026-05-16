@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Refactored
 
 * Move markdown-converter session group resolution into test suite
+* Move internal helper functions to crawl4md.utils.check_helpers
 
 ## [0.1.5] - 2026-05-03
 
