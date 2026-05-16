@@ -6,9 +6,6 @@ import sys
 from crawl4md.frames import print_main_header, print_sub_header, print_test_path
 
 
-MARKDOWN_CONVERTER_SESSION_ROOT = Path("tests/data/markdown_converter")
-
-
 def _snake_to_pascal(value: str) -> str:
     return "".join(part.capitalize() for part in value.split("_"))
 
@@ -43,32 +40,6 @@ def markdown_converter(index: int = 1) -> int:
         return 2
 
     if group:
-        group_path = Path(group)
-
-        if group_path.is_absolute() or ".." in group_path.parts:
-            print(f"Invalid markdown converter test group: {group}", file=sys.stderr)
-            return 2
-
-        group_root = MARKDOWN_CONVERTER_SESSION_ROOT / group_path
-        if not group_root.is_dir():
-            print(f"Markdown converter test group not found: {group}", file=sys.stderr)
-            print(
-                f"Expected directory: {group_root.as_posix()}",
-                file=sys.stderr,
-            )
-            return 2
-
-        if not any(group_root.rglob("config.yml")):
-            print(
-                f"Markdown converter test group contains no sessions: {group}",
-                file=sys.stderr,
-            )
-            print(
-                f"Expected at least one config.yml below: {group_root.as_posix()}",
-                file=sys.stderr,
-            )
-            return 2
-
         env["CRAWL4MD_MARKDOWN_CONVERTER_GROUP"] = group
 
     if update:

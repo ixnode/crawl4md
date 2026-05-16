@@ -176,15 +176,32 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
         raise ValueError(f"Unknown markdown converter parser: {config.crawl.parser}")
 
     def _find_sessions(self, group: str | None = None) -> list[Path]:
-        if not group:
-            root = SESSION_ROOT
-        else:
-            group_path = Path(group)
-            if group_path.is_absolute() or ".." in group_path.parts:
-                return []
-            root = SESSION_ROOT / group_path
+        root = self._resolve_session_root(group)
 
         return sorted(path.parent for path in root.rglob("config.yml"))
+
+    def _resolve_session_root(self, group: str | None) -> Path:
+        if not group:
+            return SESSION_ROOT
+
+        group_path = Path(group)
+        if group_path.is_absolute() or ".." in group_path.parts:
+            raise ValueError(f"Invalid markdown converter test group: {group}")
+
+        root = SESSION_ROOT / group_path
+        if not root.is_dir():
+            raise ValueError(
+                f"Markdown converter test group not found: {group}\n"
+                f"Expected directory: {root.as_posix()}"
+            )
+
+        if not any(root.rglob("config.yml")):
+            raise ValueError(
+                f"Markdown converter test group contains no sessions: {group}\n"
+                f"Expected at least one config.yml below: {root.as_posix()}"
+            )
+
+        return root
 
 
 if __name__ == "__main__":

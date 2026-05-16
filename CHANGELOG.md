@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 * Prefix extracted image text with Figure: "..." in remove_images fixtures
 * Localize remove_images figure labels from HTML language with en fallback
 
+### Refactored
+
+* Move markdown-converter session group resolution into test suite
+
 ## [0.1.5] - 2026-05-03
 
 ### Added
