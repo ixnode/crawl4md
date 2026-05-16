@@ -2,7 +2,8 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.remove_html_comments import RuleRemoveHtmlComments
-from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case, data_provider
+from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
+from tests.support.progress import run_progress_cases
 
 
 CASES = [
@@ -22,6 +23,11 @@ CASES = [
 
 
 class RuleRemoveHtmlCommentsTests(unittest.TestCase):
-    @data_provider(CASES)
-    def test_remove_html_comments(self, case: RuleCase) -> None:
-        assert_rule_case(self, RuleRemoveHtmlComments, case)
+    def test_remove_html_comments(self) -> None:
+        names = [case.name for case in CASES]
+
+        def _run(index: int) -> None:
+            case = CASES[index]
+            assert_rule_case(self, RuleRemoveHtmlComments, case)
+
+        run_progress_cases(names, _run)
