@@ -145,7 +145,9 @@ def check_language() -> int:
 def check_ruff() -> int:
     print_heading("Ruff")
 
-    return subprocess.run(["ruff", "check"]).returncode
+    result = subprocess.run(["ruff", "check"]).returncode
+    print(flush=True)
+    return result
 
 
 def main() -> int:
