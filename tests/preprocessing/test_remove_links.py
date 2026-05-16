@@ -13,7 +13,7 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.remove_links import RuleRemoveLinks
-from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
+from crawl4md.utils.preprocessing_test_cases import RuleCase, assert_rule_case
 from crawl4md.utils.progress_runner import run_progress_cases
 
 

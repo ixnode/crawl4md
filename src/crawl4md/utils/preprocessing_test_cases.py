@@ -6,8 +6,8 @@
 # file that was distributed with this source code.
 #
 # @author: Björn Hempel <bjoern@hempel.li>
-# @version: 1.0.0 (2026-05-15)
-# @since 1.0.0 (2026-05-15) First version
+# @version: 1.0.0 (2026-05-17)
+# @since 1.0.0 (2026-05-17) Extracted from tests/preprocessing/support/data_provider.py
 
 import unittest
 
@@ -25,8 +25,8 @@ class RuleCase:
     name: str
     config: MarkdownPreprocessingConfig
     fixture_group: str | None = None
-    markdown: str|None = None
-    expected: str|None = None
+    markdown: str | None = None
+    expected: str | None = None
     url: str | None = None
     html: str | None = None
 
@@ -54,7 +54,6 @@ def assert_rule_case(
     rule = rule_class(case.config)
     name_short = case.name.split("__", 1)[0]
 
-    # Load raw markdown file from tests/data/preprocessing folder
     if case.markdown is None:
         if case.fixture_group is None:
             raise ValueError(f"fixture_group is not set for case '{case.name}'.")
@@ -64,7 +63,6 @@ def assert_rule_case(
         if case.markdown is None:
             raise ValueError(f"Raw markdown file not found: {path_raw}")
 
-    # Load expected markdown file from tests/data/preprocessing folder
     if case.expected is None:
         if case.fixture_group is None:
             raise ValueError(f"fixture_group is not set for case '{case.name}'.")
