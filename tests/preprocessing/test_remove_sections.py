@@ -2,7 +2,8 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.remove_sections import RuleRemoveSections
-from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case, data_provider
+from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
+from tests.support.progress import run_progress_cases
 
 
 CASES = [
@@ -51,6 +52,11 @@ CASES = [
 
 
 class RuleRemoveSectionsTests(unittest.TestCase):
-    @data_provider(CASES)
-    def test_remove_sections(self, case: RuleCase) -> None:
-        assert_rule_case(self, RuleRemoveSections, case)
+    def test_remove_sections(self) -> None:
+        names = [case.name for case in CASES]
+
+        def _run(index: int) -> None:
+            case = CASES[index]
+            assert_rule_case(self, RuleRemoveSections, case)
+
+        run_progress_cases(names, _run)
