@@ -13,6 +13,11 @@ def _snake_to_pascal(value: str) -> str:
     return "".join(part.capitalize() for part in value.split("_"))
 
 
+def _print_preprocessing_group_header(test_name: str, test_path: str) -> None:
+    print_sub_header(test_name)
+    print_test_path(test_path)
+
+
 def print_heading(title: str) -> None:
     print_main_header(title)
 
@@ -69,26 +74,32 @@ def markdown_converter() -> int:
     if update:
         env["CRAWL4MD_MARKDOWN_CONVERTER_UPDATE"] = "1"
 
-    return subprocess.run(
+    result = subprocess.run(
         [sys.executable, "-m", "unittest", "-q", "tests.test_markdown_converter"],
         env=env,
     ).returncode
+    print(flush=True)
+    return result
 
 
 def profile() -> int:
     print_heading("Profile")
 
-    return subprocess.run(
+    result = subprocess.run(
         [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-q"],
     ).returncode
+    print(flush=True)
+    return result
 
 
 def pipeline() -> int:
     print_heading("Pipeline")
 
-    return subprocess.run(
+    result = subprocess.run(
         [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-q"],
     ).returncode
+    print(flush=True)
+    return result
 
 
 def preprocessing() -> int:
@@ -113,13 +124,13 @@ def preprocessing() -> int:
 
             if index > 0:
                 print(file=sys.stderr, flush=True)
-            print_sub_header(test_name)
-            print_test_path(test_path)
+            _print_preprocessing_group_header(test_name, test_path)
 
             result = subprocess.run([sys.executable, "-m", "unittest", "-q", module]).returncode
             if result != 0:
                 return result
 
+        print(flush=True)
         return 0
 
     test_name = args[0]
@@ -133,20 +144,29 @@ def preprocessing() -> int:
         print(f"Expected file: {test_file.as_posix()}", file=sys.stderr)
         return 2
 
-    print_sub_header(f"test_{test_name}")
+    module = f"tests.preprocessing.test_{test_name}"
+    rule_name = _snake_to_pascal(test_name)
+    class_name = f"Rule{rule_name}Tests"
+    method_name = f"test_{test_name}"
+    test_path = f"{module}.{class_name}.{method_name}"
+    _print_preprocessing_group_header(f"test_{test_name}", test_path)
 
-    return subprocess.run(
+    result = subprocess.run(
         [sys.executable, "-m", "unittest", "-q", f"tests.preprocessing.test_{test_name}"],
     ).returncode
+    print(flush=True)
+    return result
 
 
 
 def check_language() -> int:
     print_heading("Language")
 
-    return subprocess.run(
+    result = subprocess.run(
         [sys.executable, "-m", "unittest", "-q", "tests.test_language"],
     ).returncode
+    print(flush=True)
+    return result
 
 def check_ruff() -> int:
     print_heading("Ruff")

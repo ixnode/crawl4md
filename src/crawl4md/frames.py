@@ -24,6 +24,9 @@ def print_sub_header(title: str) -> None:
 
 
 def print_test_path(test_path: str) -> None:
-    text = Text(f"Test: {test_path}", style="italic grey58", no_wrap=True, overflow="ellipsis")
-    _STDERR_CONSOLE.print(text)
+    _STDERR_CONSOLE.print(
+        f"[italic grey58]Test: {test_path}[/]",
+        no_wrap=True,
+        overflow="ellipsis",
+    )
     _STDERR_CONSOLE.print()
