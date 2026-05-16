@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 
 * Migrate crawl4ai content-selector unit checks to session fixtures
 * Remove direct unittest main guard from markdown converter test module
+* Replace private _asyncioRunner access with get_running_loop in asyncSetUp
 
 ### Style
 

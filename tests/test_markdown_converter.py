@@ -9,6 +9,7 @@
 # @version: 1.0.0 (2026-05-05)
 # @since 1.0.0 (2026-05-05) First version
 
+import asyncio
 import io
 import os
 import unittest
@@ -31,7 +32,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
         self.maxDiff = None
 
     async def asyncSetUp(self) -> None:
-        loop = self._asyncioRunner.get_loop()
+        loop = asyncio.get_running_loop()
         loop.set_debug(False)
 
     async def test_converts_all_configured_sessions(self) -> None:
