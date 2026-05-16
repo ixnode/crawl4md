@@ -7,6 +7,10 @@ import sys
 MARKDOWN_CONVERTER_SESSION_ROOT = Path("tests/data/markdown_converter")
 
 
+def _snake_to_pascal(value: str) -> str:
+    return "".join(part.capitalize() for part in value.split("_"))
+
+
 def print_heading(title: str) -> None:
     print(f"\n=== {title} ===\n", flush=True)
 
@@ -95,9 +99,24 @@ def preprocessing() -> int:
         return 2
 
     if not args:
-        return subprocess.run(
-            [sys.executable, "-m", "unittest", "discover", "-s", "tests/preprocessing", "-v"],
-        ).returncode
+        test_files = sorted(Path("tests/preprocessing").glob("test_*.py"))
+
+        for test_file in test_files:
+            test_name = test_file.stem
+            module = f"tests.preprocessing.{test_name}"
+            rule_name = _snake_to_pascal(test_name[5:])
+            class_name = f"Rule{rule_name}Tests"
+            method_name = f"test_{test_name[5:]}"
+            test_path = f"{module}.{class_name}.{method_name}"
+
+            print(f"--- {test_name} ---", file=sys.stderr, flush=True)
+            print(f"Test: {test_path}\n", file=sys.stderr, flush=True)
+
+            result = subprocess.run([sys.executable, "-m", "unittest", "-q", module]).returncode
+            if result != 0:
+                return result
+
+        return 0
 
     test_name = args[0]
     if "/" in test_name or "\\" in test_name or test_name.startswith("test_"):
