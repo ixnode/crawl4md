@@ -12,9 +12,11 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
+import httpx
+
 from crawl4md.config import MarkdownPreprocessingConfig, NormalizationConfig
-from crawl4md.fetch.html import HtmlFetcher
 from crawl4md.fetch.normalization.html import HtmlNormalization
+from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 
 
 class BaseMarkdownFetcher(ABC):
@@ -29,12 +31,50 @@ class BaseMarkdownFetcher(ABC):
         self.normalization = normalization or NormalizationConfig()
         self.parse_type = parse_type
         self.content_selector = content_selector
+        self.timeout = 30.0
+        self.headers = {
+            "User-Agent": (
+                "Mozilla/5.0 (X11; Linux x86_64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
+            "Connection": "keep-alive",
+        }
 
-    def build_html_fetcher(self, url: str) -> HtmlFetcher:
+    def _build_html_normalizers(self, url: str) -> list[RuleBase]:
         html_normalization = HtmlNormalization(self.normalization, url=url)
-        return HtmlFetcher(
-            normalizers=html_normalization.rules
-        )
+        return html_normalization.rules
+
+    def normalize_html(self, html: str, *, url: str) -> str:
+        for normalizer in self._build_html_normalizers(url):
+            html = normalizer.normalize(html)
+        return html
+
+    async def fetch_html(self, url: str) -> str:
+        async with httpx.AsyncClient(
+            follow_redirects=True,
+            timeout=self.timeout,
+            headers=self.headers,
+        ) as client:
+            response = await client.get(url)
+            response.raise_for_status()
+            html = response.text
+
+        return self.normalize_html(html, url=url)
+
+    def fetch_html_sync(self, url: str) -> str:
+        with httpx.Client(
+            follow_redirects=True,
+            timeout=self.timeout,
+            headers=self.headers,
+        ) as client:
+            response = client.get(url)
+            response.raise_for_status()
+            html = response.text
+
+        return self.normalize_html(html, url=url)
 
     @abstractmethod
     def build_markdown_converter(self) -> Any:
@@ -42,18 +82,12 @@ class BaseMarkdownFetcher(ABC):
 
     @abstractmethod
     async def fetch(self, url: str) -> str:
-        fetcher = self.build_html_fetcher(url)
-        html = await fetcher.fetch(url=url)
-
+        html = await self.fetch_html(url)
         converter = self.build_markdown_converter()
-
         return await converter.convert(html=html, url=url)
 
     @abstractmethod
     def fetch_sync(self, url: str) -> str:
-        fetcher = self.build_html_fetcher(url)
-        html = fetcher.fetch_sync(url=url)
-
+        html = self.fetch_html_sync(url)
         converter = self.build_markdown_converter()
-
         return converter.convert_sync(html=html, url=url)

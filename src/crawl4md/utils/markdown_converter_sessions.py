@@ -20,8 +20,7 @@ def load_and_normalize_html(html_path: Path, url: str | None, fetcher: Any) -> s
     if not url:
         return html
 
-    html_fetcher = fetcher.build_html_fetcher(url=url)
-    return html_fetcher.normalize_html(html)
+    return fetcher.normalize_html(html, url=url)
 
 
 def load_markdown_converter_session(path: Path) -> MarkdownConverterSession:
