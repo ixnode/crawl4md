@@ -18,12 +18,12 @@ def _print_preprocessing_group_header(test_name: str, test_path: str) -> None:
     print_test_path(test_path)
 
 
-def print_heading(title: str) -> None:
-    print_main_header(title)
+def print_heading(title: str, index: int = 1) -> None:
+    print_main_header(f"{index}. {title}")
 
 
-def markdown_converter() -> int:
-    print_heading("Markdown Converter")
+def markdown_converter(index: int = 1) -> int:
+    print_heading("Markdown Converter", index)
 
     env = os.environ.copy()
     args = sys.argv[1:]
@@ -82,8 +82,8 @@ def markdown_converter() -> int:
     return result
 
 
-def profile() -> int:
-    print_heading("Profile")
+def profile(index: int = 1) -> int:
+    print_heading("Profile", index)
 
     result = subprocess.run(
         [sys.executable, "-m", "unittest", "discover", "-s", "tests/profile", "-q"],
@@ -92,8 +92,8 @@ def profile() -> int:
     return result
 
 
-def pipeline() -> int:
-    print_heading("Pipeline")
+def pipeline(index: int = 1) -> int:
+    print_heading("Pipeline", index)
 
     result = subprocess.run(
         [sys.executable, "-m", "unittest", "discover", "-s", "tests/pipeline", "-q"],
@@ -102,8 +102,8 @@ def pipeline() -> int:
     return result
 
 
-def preprocessing() -> int:
-    print_heading("Preprocessing")
+def preprocessing(index: int = 1) -> int:
+    print_heading("Preprocessing", index)
 
     args = sys.argv[1:]
 
@@ -114,7 +114,7 @@ def preprocessing() -> int:
     if not args:
         test_files = sorted(Path("tests/preprocessing").glob("test_*.py"))
 
-        for index, test_file in enumerate(test_files):
+        for group_index, test_file in enumerate(test_files, start=1):
             test_name = test_file.stem
             module = f"tests.preprocessing.{test_name}"
             rule_name = _snake_to_pascal(test_name[5:])
@@ -122,9 +122,9 @@ def preprocessing() -> int:
             method_name = f"test_{test_name[5:]}"
             test_path = f"{module}.{class_name}.{method_name}"
 
-            if index > 0:
+            if group_index > 1:
                 print(file=sys.stderr, flush=True)
-            _print_preprocessing_group_header(test_name, test_path)
+            _print_preprocessing_group_header(f"{index}.{group_index} {test_name}", test_path)
 
             result = subprocess.run([sys.executable, "-m", "unittest", "-q", module]).returncode
             if result != 0:
@@ -149,7 +149,7 @@ def preprocessing() -> int:
     class_name = f"Rule{rule_name}Tests"
     method_name = f"test_{test_name}"
     test_path = f"{module}.{class_name}.{method_name}"
-    _print_preprocessing_group_header(f"test_{test_name}", test_path)
+    _print_preprocessing_group_header(f"{index}.1 test_{test_name}", test_path)
 
     result = subprocess.run(
         [sys.executable, "-m", "unittest", "-q", f"tests.preprocessing.test_{test_name}"],
@@ -159,8 +159,8 @@ def preprocessing() -> int:
 
 
 
-def check_language() -> int:
-    print_heading("Language")
+def check_language(index: int = 1) -> int:
+    print_heading("Language", index)
 
     result = subprocess.run(
         [sys.executable, "-m", "unittest", "-q", "tests.test_language"],
@@ -168,8 +168,8 @@ def check_language() -> int:
     print(flush=True)
     return result
 
-def check_ruff() -> int:
-    print_heading("Ruff")
+def check_ruff(index: int = 1) -> int:
+    print_heading("Ruff", index)
 
     result = subprocess.run(["ruff", "check"]).returncode
     print(flush=True)
@@ -177,8 +177,9 @@ def check_ruff() -> int:
 
 
 def main() -> int:
-    for check in (markdown_converter, profile, pipeline, preprocessing, check_language, check_ruff):
-        result = check()
+    checks = (markdown_converter, profile, pipeline, preprocessing, check_language, check_ruff)
+    for index, check in enumerate(checks, start=1):
+        result = check(index)
         if result != 0:
             return result
 
