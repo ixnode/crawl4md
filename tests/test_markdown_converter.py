@@ -15,17 +15,17 @@ import unittest
 import warnings
 
 from contextlib import redirect_stderr, redirect_stdout
-from pathlib import Path
 
 from crawl4md.config import CrawlConfig
-from crawl4md.fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
-from crawl4md.fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
 from crawl4md.models.markdown_converter_session import MarkdownConverterSessionConfig
-from crawl4md.utils.markdown_converter_sessions import load_and_normalize_html, load_markdown_converter_session
+from crawl4md.utils.markdown_converter_sessions import (
+    MARKDOWN_CONVERTER_SESSION_ROOT,
+    build_markdown_fetcher,
+    find_markdown_converter_sessions,
+    load_and_normalize_html,
+    load_markdown_converter_session,
+)
 from tests.support.progress import run_progress_cases_async
-
-
-SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
 
 
 class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
@@ -39,7 +39,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
     async def test_converts_all_configured_sessions(self) -> None:
         group = os.environ.get("CRAWL4MD_MARKDOWN_CONVERTER_GROUP")
         update = os.environ.get("CRAWL4MD_MARKDOWN_CONVERTER_UPDATE") == "1"
-        sessions = self._find_sessions(group=group)
+        sessions = find_markdown_converter_sessions(group=group)
 
         if group:
             self.assertGreater(
@@ -57,12 +57,12 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
         async def _run(index: int) -> None:
             session = sessions[index]
-            session_name = session.relative_to(SESSION_ROOT).as_posix()
+            session_name = session.relative_to(MARKDOWN_CONVERTER_SESSION_ROOT).as_posix()
 
             with self.subTest(session=session_name):
                 test_session = load_markdown_converter_session(session / "config.yml")
                 config = test_session.config
-                fetcher = self._build_fetcher(config)
+                fetcher = build_markdown_fetcher(config)
                 html = load_and_normalize_html(
                     html_path=session / "data.html",
                     url=config.url,
@@ -99,7 +99,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 content_selector="main",
             )
         )
-        fetcher = self._build_fetcher(config)
+        fetcher = build_markdown_fetcher(config)
         converter = fetcher.build_markdown_converter()
         html = (
             "<html><body>"
@@ -125,54 +125,6 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
         )
 
         self.assertEqual(config.content_selector, "main")
-
-    def _build_fetcher(self, config: MarkdownConverterSessionConfig) -> MarkdownFetcherCrawl4AI | MarkdownFetcherKreuzbergDev:
-        if config.crawl.parser == "crawl4ai":
-            return MarkdownFetcherCrawl4AI(
-                config=config.preprocessing.markdown,
-                normalization=config.normalization,
-                parse_type=config.crawl.parse_type,
-                content_selector=config.crawl.content_selector,
-            )
-
-        if config.crawl.parser == "kreuzberg-dev":
-            return MarkdownFetcherKreuzbergDev(
-                config=config.preprocessing.markdown,
-                normalization=config.normalization,
-                parse_type=config.crawl.parse_type,
-                content_selector=config.crawl.content_selector,
-            )
-
-        raise ValueError(f"Unknown markdown converter parser: {config.crawl.parser}")
-
-    def _find_sessions(self, group: str | None = None) -> list[Path]:
-        root = self._resolve_session_root(group)
-
-        return sorted(path.parent for path in root.rglob("config.yml"))
-
-    def _resolve_session_root(self, group: str | None) -> Path:
-        if not group:
-            return SESSION_ROOT
-
-        group_path = Path(group)
-        if group_path.is_absolute() or ".." in group_path.parts:
-            raise ValueError(f"Invalid markdown converter test group: {group}")
-
-        root = SESSION_ROOT / group_path
-        if not root.is_dir():
-            raise ValueError(
-                f"Markdown converter test group not found: {group}\n"
-                f"Expected directory: {root.as_posix()}"
-            )
-
-        if not any(root.rglob("config.yml")):
-            raise ValueError(
-                f"Markdown converter test group contains no sessions: {group}\n"
-                f"Expected at least one config.yml below: {root.as_posix()}"
-            )
-
-        return root
-
 
 if __name__ == "__main__":
     unittest.main()
