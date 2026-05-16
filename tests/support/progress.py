@@ -15,10 +15,26 @@ import sys
 import time
 
 
-def _print_progress(index: int, total: int, name: str, success: bool, started_at: float) -> None:
+def _print_progress(
+    index: int,
+    total: int,
+    name: str,
+    success: bool,
+    started_at: float,
+    *,
+    index_width: int,
+    name_width: int,
+) -> None:
     duration_ms = (time.perf_counter() - started_at) * 1000
     status = "✅" if success else "❌"
-    print(f"[{index}/{total}] [{name}] {status} ({duration_ms:.0f} ms)", file=sys.stderr, flush=True)
+    index_text = f"[{index:>{index_width}}/{total}]"
+    name_text = f"[{name}]"
+    duration_text = f"({duration_ms:>5.0f} ms)"
+    print(
+        f"{index_text} {name_text:<{name_width + 2}}  {status} {duration_text}",
+        file=sys.stderr,
+        flush=True,
+    )
 
 
 def run_progress_cases(
@@ -36,13 +52,31 @@ async def run_progress_cases_async(
     run_case: Callable[[int], Awaitable[None]],
 ) -> None:
     total = len(names)
+    index_width = len(str(total))
+    name_width = max((len(name) for name in names), default=0)
 
     for index, name in enumerate(names, start=1):
         started_at = time.perf_counter()
         try:
             await run_case(index - 1)
         except Exception:
-            _print_progress(index, total, name, False, started_at)
+            _print_progress(
+                index,
+                total,
+                name,
+                False,
+                started_at,
+                index_width=index_width,
+                name_width=name_width,
+            )
             raise
 
-        _print_progress(index, total, name, True, started_at)
+        _print_progress(
+            index,
+            total,
+            name,
+            True,
+            started_at,
+            index_width=index_width,
+            name_width=name_width,
+        )
