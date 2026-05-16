@@ -120,7 +120,7 @@ def check_language() -> int:
     print_heading("Language")
 
     return subprocess.run(
-        [sys.executable, "-m", "unittest", "tests.test_language", "-v"],
+        [sys.executable, "-m", "unittest", "-q", "tests.test_language"],
     ).returncode
 
 def check_ruff() -> int:
