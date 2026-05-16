@@ -122,6 +122,13 @@ class RuleRemoveLinks(RuleBase):
                 skip_next_blank = True
                 continue
 
+            # Drop orphan table separators that can remain after link removal.
+            # Example:
+            #   "| " -> removed line
+            if self._is_orphan_separator_line(cleaned_line):
+                skip_next_blank = True
+                continue
+
             cleaned_lines.append(cleaned_line)
 
         return self.join_lines(cleaned_lines, markdown)
@@ -132,6 +139,9 @@ class RuleRemoveLinks(RuleBase):
     def _starts_with_removed_link(self, line: str) -> bool:
         marker_index = line.find(self.REMOVED_LINK_MARKER)
         return marker_index >= 0 and not line[:marker_index].strip()
+
+    def _is_orphan_separator_line(self, line: str) -> bool:
+        return line.strip() == "|"
 
     def _replace_link(self, match: re.Match[str]) -> str:
         # Called for anchor/text matched links.

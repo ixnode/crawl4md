@@ -62,9 +62,7 @@ The link should be removed, and no orphan separator should survive.
 ## 10. Right edit-link fragment with leading separator
 
 This fragment starts with a leading `|` and has only the `action` edit link.
-The link should be removed. The current output keeps a standalone `|` line.
-
-| 
+The link should be removed. Standalone orphan `|` lines should be removed as well.
 
 ## 11. Multiline edit-link pair in one bracket
 

@@ -70,7 +70,7 @@ The link should be removed, and no orphan separator should survive.
 ## 10. Right edit-link fragment with leading separator
 
 This fragment starts with a leading `|` and has only the `action` edit link.
-The link should be removed. The current output keeps a standalone `|` line.
+The link should be removed. Standalone orphan `|` lines should be removed as well.
 
 | [Quelltext bearbeiten](https://de.wikipedia.org/w/index.php?title=Boeing_707&action=edit&section=15 "Quellcode des Abschnitts bearbeiten: 707-020 (720)")]
 
