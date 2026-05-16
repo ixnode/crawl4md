@@ -13,7 +13,6 @@ from contextlib import redirect_stderr, redirect_stdout
 import io
 import os
 from pathlib import Path
-import time
 import unittest
 import warnings
 
@@ -23,6 +22,7 @@ from pydantic import BaseModel, Field
 from crawl4md.config import CrawlConfig, NormalizationConfig, PreprocessingConfig, apply_profile_defaults
 from crawl4md.fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
 from crawl4md.fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
+from tests.support.progress import run_progress_cases_async
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
@@ -62,7 +62,13 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
         else:
             self.assertGreater(len(sessions), 0, "No markdown converter test sessions found.")
 
-        for index, session in enumerate(sessions, start=1):
+        session_ids = [
+            self._load_config(session / "config.yml").id
+            for session in sessions
+        ]
+
+        async def _run(index: int) -> None:
+            session = sessions[index]
             session_name = session.relative_to(SESSION_ROOT).as_posix()
 
             with self.subTest(session=session_name):
@@ -87,21 +93,15 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
 
                 output = io.StringIO()
                 with redirect_stdout(output), redirect_stderr(output):
-                    started_at = time.perf_counter()
                     markdown = await converter.convert(html=html, url=config.url)
-                    duration_ms = (time.perf_counter() - started_at) * 1000
-
-                print(
-                    f"\n[{index}/{len(sessions)}] [{test_session.id}] {test_session.title} "
-                    f"({duration_ms:.0f} ms)\n"
-                    f"{test_session.description}"
-                )
 
                 if update:
                     (session / "data.md").write_text(markdown)
                     expected_markdown = markdown
 
                 self.assertEqual(markdown, expected_markdown)
+
+        await run_progress_cases_async(session_ids, _run)
 
     @staticmethod
     def _load_and_normalize_html(html_path: Path, url: str | None, fetcher: MarkdownFetcherCrawl4AI | MarkdownFetcherKreuzbergDev) -> str:

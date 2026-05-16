@@ -68,7 +68,7 @@ def markdown_converter() -> int:
         env["CRAWL4MD_MARKDOWN_CONVERTER_UPDATE"] = "1"
 
     return subprocess.run(
-        [sys.executable, "-m", "unittest", "tests.test_markdown_converter"],
+        [sys.executable, "-m", "unittest", "-q", "tests.test_markdown_converter"],
         env=env,
     ).returncode
 
