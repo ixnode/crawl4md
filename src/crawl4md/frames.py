@@ -20,7 +20,6 @@ def print_main_header(title: str) -> None:
 def print_sub_header(title: str) -> None:
     text = Text(f" {title} ", style="bold #1f4e79")
     panel = Panel(text, border_style="#1f4e79", expand=False)
-    _STDERR_CONSOLE.print()
     _STDERR_CONSOLE.print(panel)
 
 

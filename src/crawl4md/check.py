@@ -103,7 +103,7 @@ def preprocessing() -> int:
     if not args:
         test_files = sorted(Path("tests/preprocessing").glob("test_*.py"))
 
-        for test_file in test_files:
+        for index, test_file in enumerate(test_files):
             test_name = test_file.stem
             module = f"tests.preprocessing.{test_name}"
             rule_name = _snake_to_pascal(test_name[5:])
@@ -111,6 +111,8 @@ def preprocessing() -> int:
             method_name = f"test_{test_name[5:]}"
             test_path = f"{module}.{class_name}.{method_name}"
 
+            if index > 0:
+                print(file=sys.stderr, flush=True)
             print_sub_header(test_name)
             print_test_path(test_path)
 
@@ -130,6 +132,8 @@ def preprocessing() -> int:
         print(f"Preprocessing test not found: {test_name}", file=sys.stderr)
         print(f"Expected file: {test_file.as_posix()}", file=sys.stderr)
         return 2
+
+    print_sub_header(f"test_{test_name}")
 
     return subprocess.run(
         [sys.executable, "-m", "unittest", "-q", f"tests.preprocessing.test_{test_name}"],
