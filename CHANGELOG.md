@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Release]
+## [0.1.6] - 2026-05-17
 
 ### Added
 
@@ -40,7 +40,7 @@ All notable changes to this project will be documented in this file.
 
 * Reduce panel title padding in test headers
 
-## [0.1.5] - 2026-05-03
+## [0.1.5] - 2026-05-16
 
 ### Added
 
