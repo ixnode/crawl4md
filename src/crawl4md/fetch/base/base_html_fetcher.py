@@ -20,7 +20,7 @@ from crawl4md.fetch.normalization.html import HtmlNormalization
 from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 
 
-class BaseMarkdownFetcher(ABC):
+class BaseHtmlFetcher(ABC):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,

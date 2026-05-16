@@ -1,4 +1,4 @@
-from .base_markdown_fetcher import BaseMarkdownFetcher
+from .base_html_fetcher import BaseHtmlFetcher
 
 
-__all__ = ["BaseMarkdownFetcher"]
+__all__ = ["BaseHtmlFetcher"]

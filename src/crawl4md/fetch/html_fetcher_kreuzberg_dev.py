@@ -6,20 +6,20 @@
 # file that was distributed with this source code.
 #
 # @author: Björn Hempel <bjoern@hempel.li>
-# @version: 1.0.0 (2026-05-02)
-# @since 1.0.0 (2026-05-02) First version
+# @version: 1.0.0 (2026-05-07)
+# @since 1.0.0 (2026-05-07) First version
 
-from ..config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeCrawl4AI
-from ..convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
-from .base import BaseMarkdownFetcher
+from ..config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev
+from ..convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
+from .base import BaseHtmlFetcher
 
 
-class MarkdownFetcherCrawl4AI(BaseMarkdownFetcher):
+class HtmlFetcherKreuzbergDev(BaseHtmlFetcher):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
         normalization: NormalizationConfig | None = None,
-        parse_type: ParseTypeCrawl4AI = "markdown",
+        parse_type: ParseTypeKreuzbergDev = "markdown",
         content_selector: str | None = None,
     ) -> None:
         super().__init__(
@@ -29,8 +29,8 @@ class MarkdownFetcherCrawl4AI(BaseMarkdownFetcher):
             content_selector=content_selector,
         )
 
-    def build_markdown_converter(self) -> MarkdownConverterCrawl4AI:
-        return MarkdownConverterCrawl4AI(
+    def build_markdown_converter(self) -> MarkdownConverterKreuzbergDev:
+        return MarkdownConverterKreuzbergDev(
             config=self.config,
             parse_type=self.parse_type,
             content_selector=self.content_selector,

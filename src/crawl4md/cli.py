@@ -18,8 +18,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .config import load_config
-from .fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
-from .fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
+from .fetch.html_fetcher_crawl4ai import HtmlFetcherCrawl4AI
+from .fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
 from .paths import url_to_path
 from .sitemap import parse_sitemap
 from .writer import write_markdown
@@ -44,7 +44,7 @@ def pretty_name(url: str) -> str:
 
 def build_fetcher(proj):
     if proj.crawl.parser == "crawl4ai":
-        return MarkdownFetcherCrawl4AI(
+        return HtmlFetcherCrawl4AI(
             config=proj.preprocessing.markdown,
             normalization=proj.normalization,
             parse_type=proj.crawl.parse_type,
@@ -52,7 +52,7 @@ def build_fetcher(proj):
         )
 
     if proj.crawl.parser == "kreuzberg-dev":
-        return MarkdownFetcherKreuzbergDev(
+        return HtmlFetcherKreuzbergDev(
             config=proj.preprocessing.markdown,
             normalization=proj.normalization,
             parse_type=proj.crawl.parse_type,

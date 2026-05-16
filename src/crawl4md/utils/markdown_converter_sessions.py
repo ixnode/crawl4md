@@ -4,9 +4,9 @@ from typing import Any
 import yaml
 
 from crawl4md.config import apply_profile_defaults
-from crawl4md.fetch.base.base_markdown_fetcher import BaseMarkdownFetcher
-from crawl4md.fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
-from crawl4md.fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
+from crawl4md.fetch.base.base_html_fetcher import BaseHtmlFetcher
+from crawl4md.fetch.html_fetcher_crawl4ai import HtmlFetcherCrawl4AI
+from crawl4md.fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
 from crawl4md.models.markdown_converter_session import MarkdownConverterSession
 from crawl4md.models.markdown_converter_session import MarkdownConverterSessionConfig
 
@@ -29,9 +29,9 @@ def load_markdown_converter_session(path: Path) -> MarkdownConverterSession:
     return MarkdownConverterSession(**data)
 
 
-def build_markdown_fetcher(config: MarkdownConverterSessionConfig) -> BaseMarkdownFetcher:
+def build_markdown_fetcher(config: MarkdownConverterSessionConfig) -> BaseHtmlFetcher:
     if config.crawl.parser == "crawl4ai":
-        return MarkdownFetcherCrawl4AI(
+        return HtmlFetcherCrawl4AI(
             config=config.preprocessing.markdown,
             normalization=config.normalization,
             parse_type=config.crawl.parse_type,
@@ -39,7 +39,7 @@ def build_markdown_fetcher(config: MarkdownConverterSessionConfig) -> BaseMarkdo
         )
 
     if config.crawl.parser == "kreuzberg-dev":
-        return MarkdownFetcherKreuzbergDev(
+        return HtmlFetcherKreuzbergDev(
             config=config.preprocessing.markdown,
             normalization=config.normalization,
             parse_type=config.crawl.parse_type,

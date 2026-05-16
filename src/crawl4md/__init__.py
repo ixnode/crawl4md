@@ -1,21 +1,21 @@
 from .config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeCrawl4AI
 from .convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
 from .convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
-from .fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
-from .fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
+from .fetch.html_fetcher_crawl4ai import HtmlFetcherCrawl4AI
+from .fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
 
 
 MarkdownConverter = MarkdownConverterKreuzbergDev
-MarkdownFetcher = MarkdownFetcherKreuzbergDev
+HtmlFetcher = HtmlFetcherKreuzbergDev
 
 
 __all__ = [
     "MarkdownConverterCrawl4AI",
-    "MarkdownFetcherCrawl4AI",
+    "HtmlFetcherCrawl4AI",
     "MarkdownConverterKreuzbergDev",
-    "MarkdownFetcherKreuzbergDev",
+    "HtmlFetcherKreuzbergDev",
     "MarkdownConverter",
-    "MarkdownFetcher",
+    "HtmlFetcher",
     "MarkdownPreprocessingConfig",
     "NormalizationConfig",
     "ParseTypeCrawl4AI",

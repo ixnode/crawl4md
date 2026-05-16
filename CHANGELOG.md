@@ -14,19 +14,20 @@ All notable changes to this project will be documented in this file.
 
 * Move markdown-converter session group resolution into test suite
 * Move internal helper functions to crawl4md.utils.check_helpers
-* Move markdown converter session pydantic models out of tests
+* Move Markdown converter session pydantic models out of tests
 * Extract progress printing helper from tests support module
-* Extract markdown converter session loading and HTML normalization helpers
-* Extract markdown converter fetcher/session discovery helpers from tests
+* Extract Markdown converter session loading and HTML normalization helpers
+* Extract Markdown converter fetcher/session discovery helpers from tests
 * Extract pipeline check cases into helper class without behavior change
 * Auto-derive progress checks from helper method list
 * Introduce shared ProgressChecksTestCase base for pipeline/profile progress-driven checks
 * Inline HTML fetching/normalization into BaseMarkdownFetcher and remove fetch/html.py
+* Rename Markdown fetcher modules/classes to HTML fetcher naming and update imports
 
 ### Test
 
 * Migrate crawl4ai content-selector unit checks to session fixtures
-* Remove direct unittest main guard from markdown converter test module
+* Remove direct unittest main guard from Markdown converter test module
 * Replace private _asyncioRunner access with get_running_loop in asyncSetUp
 
 ### Style
