@@ -24,7 +24,7 @@ def url_to_path(base: Path, project: str, url: str) -> Path:
     return file_path
 
 def get_root_path() -> Path:
-    return Path(__file__).resolve().parents[2]
+    return Path(__file__).resolve().parents[3]
 
 def load_markdown_file(path: str) -> str | None:
     markdown_path = get_root_path() / path

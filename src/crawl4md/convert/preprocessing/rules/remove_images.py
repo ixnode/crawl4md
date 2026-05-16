@@ -12,7 +12,7 @@
 import re
 
 from .base.rule_base import RuleBase
-from crawl4md.language import extract_language_from_html
+from crawl4md.core.language import extract_language_from_html
 from crawl4md.i18n.labels import get_figure_label
 
 

@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-02)
 # @since 1.0.0 (2026-05-02) First version
 
-from ..config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeCrawl4AI
+from ..core.config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeCrawl4AI
 from ..convert.markdown_converter_crawl4ai import MarkdownConverterCrawl4AI
 from .base import BaseHtmlFetcher
 

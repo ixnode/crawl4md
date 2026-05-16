@@ -20,7 +20,7 @@ from .rules.remove_links import RuleRemoveLinks
 from .rules.remove_lines import RuleRemoveLines
 from .rules.remove_html_comments import RuleRemoveHtmlComments
 from .rules.remove_sections import RuleRemoveSections
-from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.core.config import MarkdownPreprocessingConfig
 
 
 class MarkdownPreprocessing:

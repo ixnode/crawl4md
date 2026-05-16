@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 
 from lxml import html as lxml_html
 
-from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.core.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
 
 

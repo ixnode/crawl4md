@@ -19,14 +19,14 @@ dependencies = [
 ]
 
 [project.scripts]
-crawl = "crawl4md.cli:app"
-check = "crawl4md.check:main"
-check-markdown-converter = "crawl4md.check:markdown_converter"
-check-profile = "crawl4md.check:profile"
-check-pipeline = "crawl4md.check:pipeline"
-check-preprocessing = "crawl4md.check:preprocessing"
-check-language = "crawl4md.check:check_language"
-check-ruff = "crawl4md.check:check_ruff"
+crawl = "crawl4md.core.cli:app"
+check = "crawl4md.commands.check:main"
+check-markdown-converter = "crawl4md.commands.check:markdown_converter"
+check-profile = "crawl4md.commands.check:profile"
+check-pipeline = "crawl4md.commands.check:pipeline"
+check-preprocessing = "crawl4md.commands.check:preprocessing"
+check-language = "crawl4md.commands.check:check_language"
+check-ruff = "crawl4md.commands.check:check_ruff"
 
 [build-system]
 requires = ["hatchling"]

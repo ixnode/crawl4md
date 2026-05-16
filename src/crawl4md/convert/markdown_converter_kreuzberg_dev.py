@@ -13,7 +13,7 @@ import asyncio
 
 import html_to_markdown._html_to_markdown as html_to_markdown
 
-from ..config import MarkdownPreprocessingConfig, ParseTypeKreuzbergDev
+from ..core.config import MarkdownPreprocessingConfig, ParseTypeKreuzbergDev
 from .base import BaseMarkdownConverter
 
 

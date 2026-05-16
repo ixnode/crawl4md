@@ -11,7 +11,7 @@
 
 import unittest
 
-from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.core.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing import MarkdownPreprocessing
 from tests.base.progress_checks_test_case import ProgressChecksTestCase
 

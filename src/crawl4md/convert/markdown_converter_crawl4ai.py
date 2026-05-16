@@ -18,7 +18,7 @@ from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
-from ..config import MarkdownPreprocessingConfig, ParseTypeCrawl4AI
+from ..core.config import MarkdownPreprocessingConfig, ParseTypeCrawl4AI
 from .base import BaseMarkdownConverter
 
 

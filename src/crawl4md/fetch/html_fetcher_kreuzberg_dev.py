@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-07)
 # @since 1.0.0 (2026-05-07) First version
 
-from ..config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev
+from ..core.config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev
 from ..convert.markdown_converter_kreuzberg_dev import MarkdownConverterKreuzbergDev
 from .base import BaseHtmlFetcher
 

@@ -16,7 +16,7 @@ from typing import Any
 import yaml
 
 
-PROFILES_DIR = Path(__file__).resolve().parents[2] / "profiles"
+PROFILES_DIR = Path(__file__).resolve().parents[3] / "profiles"
 
 
 def _validate_profile(profile_name: str, data: dict[str, Any]) -> None:

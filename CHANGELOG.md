@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file.
 * Move language label mapping into crawl4md/i18n/labels module
 * Move frames module into crawl4md.utils and update check helper imports
 * Move check CLI module into crawl4md.commands and update script entry points
+* Move top-level runtime modules into crawl4md.core and update imports/entrypoint
 
 ### Test
 

@@ -11,7 +11,7 @@
 
 import unittest
 
-from crawl4md.config import AppConfig, apply_profiles
+from crawl4md.core.config import AppConfig, apply_profiles
 from tests.base.progress_checks_test_case import ProgressChecksTestCase
 
 

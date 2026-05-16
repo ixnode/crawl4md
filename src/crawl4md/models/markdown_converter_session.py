@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from crawl4md.config import CrawlConfig, NormalizationConfig, PreprocessingConfig
+from crawl4md.core.config import CrawlConfig, NormalizationConfig, PreprocessingConfig
 
 
 class MarkdownConverterSessionConfig(BaseModel):

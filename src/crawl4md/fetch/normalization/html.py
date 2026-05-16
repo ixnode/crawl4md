@@ -9,7 +9,7 @@
 # @version: 1.0.0 (2026-05-14)
 # @since 1.0.0 (2026-05-14) First version
 
-from crawl4md.config import NormalizationConfig
+from crawl4md.core.config import NormalizationConfig
 from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 from crawl4md.fetch.normalization.rules.entities import RuleEntities
 from crawl4md.fetch.normalization.rules.hidden_elements import RuleHiddenElements

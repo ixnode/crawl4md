@@ -15,9 +15,9 @@ from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from typing import TypeVar
 
-from crawl4md.config import MarkdownPreprocessingConfig
+from crawl4md.core.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.base.rule_base import RuleBase
-from crawl4md.paths import load_markdown_file
+from crawl4md.core.paths import load_markdown_file
 
 
 @dataclass(frozen=False)

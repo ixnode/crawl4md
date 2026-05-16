@@ -18,8 +18,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .config import load_config
-from .fetch.html_fetcher_crawl4ai import HtmlFetcherCrawl4AI
-from .fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
+from ..fetch.html_fetcher_crawl4ai import HtmlFetcherCrawl4AI
+from ..fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
 from .paths import url_to_path
 from .sitemap import parse_sitemap
 from .writer import write_markdown

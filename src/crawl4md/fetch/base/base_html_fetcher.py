@@ -14,8 +14,8 @@ from typing import Any
 
 import httpx
 
-from crawl4md.config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev, ParseTypeCrawl4AI
-from crawl4md.language import extract_language_from_html
+from crawl4md.core.config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev, ParseTypeCrawl4AI
+from crawl4md.core.language import extract_language_from_html
 from crawl4md.fetch.normalization.html import HtmlNormalization
 from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 

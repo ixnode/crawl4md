@@ -12,7 +12,7 @@
 from pathlib import Path
 import unittest
 
-from crawl4md.language import extract_language_from_html
+from crawl4md.core.language import extract_language_from_html
 from crawl4md.utils.progress_runner import run_progress_cases
 
 

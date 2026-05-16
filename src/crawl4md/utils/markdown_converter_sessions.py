@@ -3,7 +3,7 @@ from typing import Any
 
 import yaml
 
-from crawl4md.config import apply_profile_defaults
+from crawl4md.core.config import apply_profile_defaults
 from crawl4md.fetch.base.base_html_fetcher import BaseHtmlFetcher
 from crawl4md.fetch.html_fetcher_crawl4ai import HtmlFetcherCrawl4AI
 from crawl4md.fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
