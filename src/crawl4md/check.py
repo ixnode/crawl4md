@@ -5,6 +5,10 @@ import sys
 
 
 MARKDOWN_CONVERTER_SESSION_ROOT = Path("tests/data/markdown_converter")
+ANSI_RESET = "\033[0m"
+ANSI_BLUE = "\033[34m"
+ANSI_LIGHT_BLUE = "\033[94m"
+ANSI_GRAY_ITALIC = "\033[3;90m"
 
 
 def _snake_to_pascal(value: str) -> str:
@@ -12,7 +16,7 @@ def _snake_to_pascal(value: str) -> str:
 
 
 def print_heading(title: str) -> None:
-    print(f"\n=== {title} ===\n", flush=True)
+    print(f"\n{ANSI_BLUE}=== {title} ==={ANSI_RESET}\n", flush=True)
 
 
 def markdown_converter() -> int:
@@ -109,8 +113,8 @@ def preprocessing() -> int:
             method_name = f"test_{test_name[5:]}"
             test_path = f"{module}.{class_name}.{method_name}"
 
-            print(f"\n--- {test_name} ---", file=sys.stderr, flush=True)
-            print(f"Test: {test_path}\n", file=sys.stderr, flush=True)
+            print(f"\n{ANSI_LIGHT_BLUE}--- {test_name} ---{ANSI_RESET}", file=sys.stderr, flush=True)
+            print(f"{ANSI_GRAY_ITALIC}Test: {test_path}{ANSI_RESET}\n", file=sys.stderr, flush=True)
 
             result = subprocess.run([sys.executable, "-m", "unittest", "-q", module]).returncode
             if result != 0:
