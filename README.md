@@ -171,6 +171,7 @@ The concrete parser classes are exported too:
 - `MarkdownConverterCrawl4AI`
 - `ParseType`
 - `MarkdownPreprocessingConfig`
+- `NormalizationConfig`
 
 Use the default aliases unless you explicitly need a specific parser backend.
 
@@ -187,6 +188,7 @@ All converters provide:
 Common constructor arguments:
 
 - `config`: a `MarkdownPreprocessingConfig`
+- `normalization`: optional `NormalizationConfig` for HTML normalization (`MarkdownFetcher*` only)
 - `parse_type`: usually `"markdown"`
 - `content_selector`: optional CSS selector for selecting only part of the HTML before conversion
 
@@ -217,6 +219,40 @@ config = MarkdownPreprocessingConfig(
     enabled=True,
     remove_html_comments=True,
     normalize_whitespace=True,
+)
+```
+
+### Configure Normalization
+
+Use `NormalizationConfig` to control HTML normalization before Markdown conversion (for fetchers).
+If omitted, `MarkdownFetcher*` uses `NormalizationConfig()` defaults.
+
+Explicit example:
+
+```python
+from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig, NormalizationConfig
+
+fetcher = MarkdownFetcher(
+    config=MarkdownPreprocessingConfig(enabled=True),
+    normalization=NormalizationConfig(
+        enabled=True,
+        entities=True,
+        hidden_elements=True,
+        urls=True,
+        references=True,
+    ),
+    parse_type="markdown",
+)
+```
+
+Default example (implicit normalization defaults):
+
+```python
+from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+
+fetcher = MarkdownFetcher(
+    config=MarkdownPreprocessingConfig(enabled=True),
+    parse_type="markdown",
 )
 ```
 
