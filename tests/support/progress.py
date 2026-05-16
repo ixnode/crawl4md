@@ -3,6 +3,12 @@ import sys
 import time
 
 
+def _print_progress(index: int, total: int, name: str, success: bool, started_at: float) -> None:
+    duration_ms = (time.perf_counter() - started_at) * 1000
+    status = "✅" if success else "❌"
+    print(f"[{index}/{total}] [{name}] {status} ({duration_ms:.0f} ms)", file=sys.stderr, flush=True)
+
+
 def run_progress_cases(
     names: Sequence[str],
     run_case: Callable[[int], None],
@@ -14,12 +20,10 @@ def run_progress_cases(
         try:
             run_case(index - 1)
         except Exception:
-            duration_ms = (time.perf_counter() - started_at) * 1000
-            print(f"[{index}/{total}] [{name}] ❌ ({duration_ms:.0f} ms)", file=sys.stderr, flush=True)
+            _print_progress(index, total, name, False, started_at)
             raise
 
-        duration_ms = (time.perf_counter() - started_at) * 1000
-        print(f"[{index}/{total}] [{name}] ✅ ({duration_ms:.0f} ms)", file=sys.stderr, flush=True)
+        _print_progress(index, total, name, True, started_at)
 
 
 async def run_progress_cases_async(
@@ -33,9 +37,7 @@ async def run_progress_cases_async(
         try:
             await run_case(index - 1)
         except Exception:
-            duration_ms = (time.perf_counter() - started_at) * 1000
-            print(f"[{index}/{total}] [{name}] ❌ ({duration_ms:.0f} ms)", file=sys.stderr, flush=True)
+            _print_progress(index, total, name, False, started_at)
             raise
 
-        duration_ms = (time.perf_counter() - started_at) * 1000
-        print(f"[{index}/{total}] [{name}] ✅ ({duration_ms:.0f} ms)", file=sys.stderr, flush=True)
+        _print_progress(index, total, name, True, started_at)
