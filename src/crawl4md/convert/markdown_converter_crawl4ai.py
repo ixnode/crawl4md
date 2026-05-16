@@ -18,7 +18,7 @@ from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
-from ..config import MarkdownPreprocessingConfig, ParseType
+from ..config import MarkdownPreprocessingConfig, ParseTypeCrawl4AI
 from .base import BaseMarkdownConverter
 
 
@@ -34,7 +34,7 @@ class MarkdownConverterCrawl4AI(BaseMarkdownConverter):
     def __init__(
         self,
         config: MarkdownPreprocessingConfig,
-        parse_type: ParseType = "markdown",
+        parse_type: ParseTypeCrawl4AI = "markdown",
         content_selector: str | None = None,
     ) -> None:
         super().__init__(
