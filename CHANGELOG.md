@@ -25,6 +25,7 @@ All notable changes to this project will be documented in this file.
 * Rename Markdown fetcher modules/classes to HTML fetcher naming and update imports
 * Move test progress runner from tests/support into crawl4md.utils and update imports
 * Move preprocessing RuleCase/data-provider helpers into crawl4md.utils and update test imports
+* Move language label mapping into crawl4md/i18n/labels module
 
 ### Test
 
