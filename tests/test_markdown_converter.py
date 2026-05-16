@@ -9,38 +9,23 @@
 # @version: 1.0.0 (2026-05-05)
 # @since 1.0.0 (2026-05-05) First version
 
-from contextlib import redirect_stderr, redirect_stdout
 import io
 import os
-from pathlib import Path
 import unittest
 import warnings
-
 import yaml
-from pydantic import BaseModel, Field
 
-from crawl4md.config import CrawlConfig, NormalizationConfig, PreprocessingConfig, apply_profile_defaults
+from contextlib import redirect_stderr, redirect_stdout
+from pathlib import Path
+
+from crawl4md.config import CrawlConfig, apply_profile_defaults
 from crawl4md.fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
 from crawl4md.fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
+from crawl4md.models.markdown_converter_session import MarkdownConverterSession, MarkdownConverterSessionConfig
 from tests.support.progress import run_progress_cases_async
 
 
 SESSION_ROOT = Path(__file__).parent / "data" / "markdown_converter"
-
-
-class MarkdownConverterSessionConfig(BaseModel):
-    profile: str | None = None
-    crawl: CrawlConfig = Field(default_factory=CrawlConfig)
-    normalization: NormalizationConfig = Field(default_factory=NormalizationConfig)
-    url: str | None = None
-    preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
-
-
-class MarkdownConverterSession(BaseModel):
-    id: str
-    title: str
-    description: str
-    config: MarkdownConverterSessionConfig
 
 
 class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
