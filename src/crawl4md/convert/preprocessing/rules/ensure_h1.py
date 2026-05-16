@@ -19,6 +19,7 @@ class RuleEnsureH1(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         if self.has_h1(markdown):
             return markdown

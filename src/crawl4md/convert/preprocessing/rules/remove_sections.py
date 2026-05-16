@@ -32,6 +32,7 @@ class RuleRemoveSections(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         if not self.section_headings:
             return markdown

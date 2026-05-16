@@ -24,6 +24,7 @@ class RuleNormalizeTables(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         lines = markdown.splitlines()
         cleaned_lines: list[str] = []

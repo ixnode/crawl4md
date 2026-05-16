@@ -24,5 +24,6 @@ class RuleRemoveHtmlComments(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         return HTML_COMMENT_PATTERN.sub("", markdown)

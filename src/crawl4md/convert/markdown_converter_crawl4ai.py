@@ -47,6 +47,7 @@ class MarkdownConverterCrawl4AI(BaseMarkdownConverter):
         self,
         html: str,
         url: str | None = None,
+        language: str | None = None,
     ) -> str:
         html = self.select_content(html)
         raw_html_url = f"raw:{html}"
@@ -70,11 +71,12 @@ class MarkdownConverterCrawl4AI(BaseMarkdownConverter):
         else:
             markdown = result.markdown.raw_markdown or ""
 
-        return self.preprocess(markdown, url=url, html=html)
+        return self.preprocess(markdown, url=url, html=html, language=language)
 
     def convert_sync(
         self,
         html: str,
         url: str | None = None,
+        language: str | None = None,
     ) -> str:
-        return asyncio.run(self.convert(html=html, url=url))
+        return asyncio.run(self.convert(html=html, url=url, language=language))

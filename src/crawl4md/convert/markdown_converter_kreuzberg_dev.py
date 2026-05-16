@@ -34,6 +34,7 @@ class MarkdownConverterKreuzbergDev(BaseMarkdownConverter):
         self,
         html: str,
         url: str | None = None,
+        language: str | None = None,
     ) -> str:
         if self.parse_type != "markdown":
             raise ValueError(
@@ -47,11 +48,12 @@ class MarkdownConverterKreuzbergDev(BaseMarkdownConverter):
         )
         result = html_to_markdown.convert(html, options, None)
         markdown = result.content or ""
-        return self.preprocess(markdown, url=url, html=html)
+        return self.preprocess(markdown, url=url, html=html, language=language)
 
     def convert_sync(
         self,
         html: str,
         url: str | None = None,
+        language: str | None = None,
     ) -> str:
-        return asyncio.run(self.convert(html=html, url=url))
+        return asyncio.run(self.convert(html=html, url=url, language=language))

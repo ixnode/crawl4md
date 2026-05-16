@@ -38,6 +38,7 @@ class RuleRemoveLines(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         if self.line_pattern is None:
             return markdown

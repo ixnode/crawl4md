@@ -33,6 +33,7 @@ class BaseMarkdownConverter(ABC):
         self,
         html: str,
         url: str | None = None,
+        language: str | None = None,
     ) -> str:
         raise NotImplementedError
 
@@ -41,6 +42,7 @@ class BaseMarkdownConverter(ABC):
         self,
         html: str,
         url: str | None = None,
+        language: str | None = None,
     ) -> str:
         raise NotImplementedError
 
@@ -67,6 +69,7 @@ class BaseMarkdownConverter(ABC):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         preprocessing = MarkdownPreprocessing(self.config)
-        return preprocessing.process(markdown, url=url, html=html)
+        return preprocessing.process(markdown, url=url, html=html, language=language)

@@ -25,6 +25,7 @@ class RuleNormalizeLinebreak(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         lines = markdown.splitlines()
         blocks: list[str] = []

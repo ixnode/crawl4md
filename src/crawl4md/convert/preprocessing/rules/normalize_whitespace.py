@@ -24,6 +24,7 @@ class RuleNormalizeWhitespace(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         lines = markdown.splitlines()
         normalized_lines: list[str] = []

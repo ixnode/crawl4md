@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 * Prefix extracted image text with Figure: "..." in remove_images fixtures
 * Localize remove_images figure labels from HTML language with en fallback
+* Propagate detected page language through fetch/convert pipeline into all rule apply calls
 
 ### Refactored
 

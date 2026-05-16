@@ -33,12 +33,13 @@ class RuleRemoveImages(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         if not self.config.remove_images:
             return markdown
 
-        language = extract_language_from_html(html) if html else "en"
-        figure_label = get_figure_label(language)
+        resolved_language = language or (extract_language_from_html(html) if html else "en")
+        figure_label = get_figure_label(resolved_language)
         original = markdown
         markdown = self.LINKED_IMAGE_PATTERN.sub(
             lambda match: self._replace_linked_image(match, figure_label),

@@ -38,6 +38,7 @@ class RuleRemoveBlocks(RuleBase):
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         if self.block_pattern is None:
             return markdown

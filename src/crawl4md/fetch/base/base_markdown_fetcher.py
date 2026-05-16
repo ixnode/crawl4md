@@ -15,6 +15,7 @@ from typing import Any
 import httpx
 
 from crawl4md.config import MarkdownPreprocessingConfig, NormalizationConfig, ParseTypeKreuzbergDev, ParseTypeCrawl4AI
+from crawl4md.language import extract_language_from_html
 from crawl4md.fetch.normalization.html import HtmlNormalization
 from crawl4md.fetch.normalization.rules.base.rule_base import RuleBase
 
@@ -83,11 +84,13 @@ class BaseMarkdownFetcher(ABC):
     @abstractmethod
     async def fetch(self, url: str) -> str:
         html = await self.fetch_html(url)
+        language = extract_language_from_html(html)
         converter = self.build_markdown_converter()
-        return await converter.convert(html=html, url=url)
+        return await converter.convert(html=html, url=url, language=language)
 
     @abstractmethod
     def fetch_sync(self, url: str) -> str:
         html = self.fetch_html_sync(url)
+        language = extract_language_from_html(html)
         converter = self.build_markdown_converter()
-        return converter.convert_sync(html=html, url=url)
+        return converter.convert_sync(html=html, url=url, language=language)

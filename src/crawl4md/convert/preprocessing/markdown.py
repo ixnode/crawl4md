@@ -64,11 +64,12 @@ class MarkdownPreprocessing:
         *,
         url: str | None = None,
         html: str | None = None,
+        language: str | None = None,
     ) -> str:
         if not self.config.enabled:
             return markdown
 
         for rule in self.rules:
-            markdown = rule.apply(markdown, url=url, html=html)
+            markdown = rule.apply(markdown, url=url, html=html, language=language)
 
         return markdown
