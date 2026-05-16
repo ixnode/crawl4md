@@ -13,15 +13,15 @@ import io
 import os
 import unittest
 import warnings
-import yaml
 
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
-from crawl4md.config import CrawlConfig, apply_profile_defaults
+from crawl4md.config import CrawlConfig
 from crawl4md.fetch.markdown_fetcher_crawl4ai import MarkdownFetcherCrawl4AI
 from crawl4md.fetch.markdown_fetcher_kreuzberg_dev import MarkdownFetcherKreuzbergDev
-from crawl4md.models.markdown_converter_session import MarkdownConverterSession, MarkdownConverterSessionConfig
+from crawl4md.models.markdown_converter_session import MarkdownConverterSessionConfig
+from crawl4md.utils.markdown_converter_sessions import load_and_normalize_html, load_markdown_converter_session
 from tests.support.progress import run_progress_cases_async
 
 
@@ -51,7 +51,7 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
             self.assertGreater(len(sessions), 0, "No markdown converter test sessions found.")
 
         session_ids = [
-            self._load_config(session / "config.yml").id
+            load_markdown_converter_session(session / "config.yml").id
             for session in sessions
         ]
 
@@ -60,10 +60,10 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
             session_name = session.relative_to(SESSION_ROOT).as_posix()
 
             with self.subTest(session=session_name):
-                test_session = self._load_config(session / "config.yml")
+                test_session = load_markdown_converter_session(session / "config.yml")
                 config = test_session.config
                 fetcher = self._build_fetcher(config)
-                html = self._load_and_normalize_html(
+                html = load_and_normalize_html(
                     html_path=session / "data.html",
                     url=config.url,
                     fetcher=fetcher,
@@ -90,21 +90,6 @@ class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(markdown, expected_markdown)
 
         await run_progress_cases_async(session_ids, _run)
-
-    @staticmethod
-    def _load_and_normalize_html(html_path: Path, url: str | None, fetcher: MarkdownFetcherCrawl4AI | MarkdownFetcherKreuzbergDev) -> str:
-        html = html_path.read_text()
-
-        if not url:
-            return html
-
-        html_fetcher = fetcher.build_html_fetcher(url=url)
-        return html_fetcher.normalize_html(html)
-
-    def _load_config(self, path: Path) -> MarkdownConverterSession:
-        data = yaml.safe_load(path.read_text())
-        data["config"] = apply_profile_defaults(data["config"])
-        return MarkdownConverterSession(**data)
 
     async def test_crawl4ai_converter_supports_content_selector(self) -> None:
         config = MarkdownConverterSessionConfig(
