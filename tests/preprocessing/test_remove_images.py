@@ -34,7 +34,7 @@ CASES = [
         name="removes_linked_markdown_image",
         config=MarkdownPreprocessingConfig(enabled=True, remove_images=True),
         markdown="[![](image.jpg)](file.jpg)\n",
-        expected="\n",
+        expected="[](file.jpg)\n",
     ),
     RuleCase(
         name="keeps_linked_markdown_image_alt_text",
@@ -44,7 +44,10 @@ CASES = [
             "(https://de.wikipedia.org/wiki/Datei:image.jpg "
             '"Eine Boeing 707 der Air India")\n'
         ),
-        expected="Eine Boeing 707 der Air India\n",
+        expected=(
+            "[Eine Boeing 707 der Air India]"
+            '(https://de.wikipedia.org/wiki/Datei:image.jpg "Eine Boeing 707 der Air India")\n'
+        ),
     ),
     RuleCase(
         name="keeps_regular_markdown_links",
@@ -62,7 +65,7 @@ CASES = [
         name="removes_linked_markdown_images_with_multiple_images",
         config=MarkdownPreprocessingConfig(enabled=True, remove_images=True),
         markdown="[![](one.jpg) ![Two](two.jpg)](file.jpg)\n",
-        expected="Two\n",
+        expected="[Two](file.jpg)\n",
     ),
 ]
 

@@ -101,3 +101,4 @@ This case adds the Wikipedia featured-article badge as a linked image.
 With `anchor:#[Vv]orlage_[Ll]esenswert`, the whole construct should be removed.
 
 [![Dies ist ein als lesenswert ausgezeichneter Artikel.](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Qsicon_lesenswert.svg/20px-Qsicon_lesenswert.svg.png)](#Vorlage_Lesenswert "Dies ist ein als lesenswert ausgezeichneter Artikel.")
+[Dies ist ein als lesenswert ausgezeichneter Artikel.](#Vorlage_Lesenswert "Dies ist ein als lesenswert ausgezeichneter Artikel.")

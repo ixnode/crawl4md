@@ -199,15 +199,7 @@ Drucken/​exportieren
 In anderen Projekten
 
 - Commons
-- Wikidata-Datenobjekt
-
-Erscheinungsbild
-
-In die Seitenleiste verschieben
-
-Verbergen
-
-Dies ist ein als lesenswert ausgezeichneter Artikel.
+- [Wikidata-Datenobjekt](https://www.wikidata.org/wiki/Special:EntityPage/Q6394 "Link zum verbundenen Objekt im Datenrepositorium
 
 | Boeing 707 | |
 | --- | --- |

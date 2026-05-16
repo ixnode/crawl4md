@@ -1,7 +1,5 @@
 # Boeing 707
 
-Dies ist ein als lesenswert ausgezeichneter Artikel.
-
 | Boeing 707 | |
 | --- | --- |
 | Eine Boeing 707 der Air India *Eine Boeing 707 der Air India* | |

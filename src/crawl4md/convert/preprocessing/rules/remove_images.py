@@ -16,9 +16,10 @@ from .base.rule_base import RuleBase
 
 class RuleRemoveImages(RuleBase):
     MARKDOWN_TARGET = r"(?:\\.|[^()\\\n]|\([^()\n]*\))*"
+    IMAGE_INNER_PATTERN = rf"!\[[^\]\n]*\]\({MARKDOWN_TARGET}\)"
     IMAGE_PATTERN = re.compile(rf"!\[(?P<alt>[^\]\n]*)\]\((?P<target>{MARKDOWN_TARGET})\)")
     LINKED_IMAGE_PATTERN = re.compile(
-        rf"\[(?:\s*{IMAGE_PATTERN.pattern})+\s*\]\({MARKDOWN_TARGET}\)"
+        rf"\[(?P<content>(?:\s*{IMAGE_INNER_PATTERN})+\s*)\]\((?P<target>{MARKDOWN_TARGET})\)"
     )
     TITLE_PATTERN = re.compile(r"""\s+(?:"([^"]*)"|'([^']*)'|\(([^)]*)\))\s*$""")
 
@@ -38,10 +39,10 @@ class RuleRemoveImages(RuleBase):
     def _replace_linked_image(self, match: re.Match[str]) -> str:
         replacements = [
             self._image_text(image_match)
-            for image_match in self.IMAGE_PATTERN.finditer(match.group(0))
+            for image_match in self.IMAGE_PATTERN.finditer(match.group("content"))
         ]
-
-        return " ".join(replacement for replacement in replacements if replacement)
+        link_text = " ".join(replacement for replacement in replacements if replacement).strip()
+        return f"[{link_text}]({match.group('target')})"
 
     def _replace_image(self, match: re.Match[str]) -> str:
         return self._image_text(match)
