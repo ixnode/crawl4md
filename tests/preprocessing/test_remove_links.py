@@ -109,6 +109,7 @@ class RuleRemoveLinksTests(unittest.TestCase):
 
     def setUp(self) -> None:
         self.maxDiff = None
+
     def test_remove_links(self) -> None:
         names = [case.name for case in CASES]
 
