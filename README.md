@@ -158,16 +158,16 @@ For focused checks, grouped test commands, parameters, and examples, see:
 
 The public API exports two recommended default classes:
 
-- `MarkdownFetcher`: fetches a URL and returns Markdown
+- `HtmlFetcher`: fetches a URL and returns Markdown
 - `MarkdownConverter`: converts an existing HTML string into Markdown
 
 Both currently use the recommended `kreuzberg-dev` backend.
 
 The concrete parser classes are exported too:
 
-- `MarkdownFetcherKreuzbergDev`
+- `HtmlFetcherKreuzbergDev`
 - `MarkdownConverterKreuzbergDev`
-- `MarkdownFetcherCrawl4AI`
+- `HtmlFetcherCrawl4AI`
 - `MarkdownConverterCrawl4AI`
 - `ParseType`
 - `MarkdownPreprocessingConfig`
@@ -188,7 +188,7 @@ All converters provide:
 Common constructor arguments:
 
 - `config`: a `MarkdownPreprocessingConfig`
-- `normalization`: optional `NormalizationConfig` for HTML normalization (`MarkdownFetcher*` only)
+- `normalization`: optional `NormalizationConfig` for HTML normalization (`HtmlFetcher*` only)
 - `parse_type`: usually `"markdown"`
 - `content_selector`: optional CSS selector for selecting only part of the HTML before conversion
 
@@ -225,14 +225,14 @@ config = MarkdownPreprocessingConfig(
 ### Configure Normalization
 
 Use `NormalizationConfig` to control HTML normalization before Markdown conversion (for fetchers).
-If omitted, `MarkdownFetcher*` uses `NormalizationConfig()` defaults.
+If omitted, `HtmlFetcher*` uses `NormalizationConfig()` defaults.
 
 Explicit example:
 
 ```python
-from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig, NormalizationConfig
+from crawl4md import HtmlFetcher, MarkdownPreprocessingConfig, NormalizationConfig
 
-fetcher = MarkdownFetcher(
+fetcher = HtmlFetcher(
     config=MarkdownPreprocessingConfig(enabled=True),
     normalization=NormalizationConfig(
         enabled=True,
@@ -248,9 +248,9 @@ fetcher = MarkdownFetcher(
 Default example (implicit normalization defaults):
 
 ```python
-from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+from crawl4md import HtmlFetcher, MarkdownPreprocessingConfig
 
-fetcher = MarkdownFetcher(
+fetcher = HtmlFetcher(
     config=MarkdownPreprocessingConfig(enabled=True),
     parse_type="markdown",
 )
@@ -258,13 +258,13 @@ fetcher = MarkdownFetcher(
 
 ### Fetch Markdown From a URL
 
-Use `MarkdownFetcher` if you want to fetch a page and directly receive Markdown.
+Use `HtmlFetcher` if you want to fetch a page and directly receive Markdown.
 
 ```python
-from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+from crawl4md import HtmlFetcher, MarkdownPreprocessingConfig
 
 config = MarkdownPreprocessingConfig(enabled=True)
-fetcher = MarkdownFetcher(config=config, parse_type="markdown")
+fetcher = HtmlFetcher(config=config, parse_type="markdown")
 
 markdown = fetcher.fetch_sync("https://example.com")
 print(markdown)
@@ -275,10 +275,10 @@ Async version:
 ```python
 import asyncio
 
-from crawl4md import MarkdownFetcher, MarkdownPreprocessingConfig
+from crawl4md import HtmlFetcher, MarkdownPreprocessingConfig
 
 config = MarkdownPreprocessingConfig(enabled=True)
-fetcher = MarkdownFetcher(config=config, parse_type="markdown")
+fetcher = HtmlFetcher(config=config, parse_type="markdown")
 
 markdown = asyncio.run(fetcher.fetch("https://example.com"))
 print(markdown)
@@ -344,18 +344,18 @@ markdown = converter.convert_sync(html=html, url="https://example.com")
 print(markdown)
 ```
 
-The same option is available on `MarkdownFetcher`.
+The same option is available on `HtmlFetcher`.
 
 ### Use a Specific Parser Backend
 
-Use `MarkdownFetcherKreuzbergDev` or `MarkdownConverterKreuzbergDev` when you want the recommended backend explicitly.
+Use `HtmlFetcherKreuzbergDev` or `MarkdownConverterKreuzbergDev` when you want the recommended backend explicitly.
 
-Use `MarkdownFetcherCrawl4AI` or `MarkdownConverterCrawl4AI` when you need `crawl4ai`, for example `parse_type="markdown-fit"`:
+Use `HtmlFetcherCrawl4AI` or `MarkdownConverterCrawl4AI` when you need `crawl4ai`, for example `parse_type="markdown-fit"`:
 
 ```python
-from crawl4md import MarkdownFetcherCrawl4AI, MarkdownPreprocessingConfig
+from crawl4md import HtmlFetcherCrawl4AI, MarkdownPreprocessingConfig
 
-fetcher = MarkdownFetcherCrawl4AI(
+fetcher = HtmlFetcherCrawl4AI(
     config=MarkdownPreprocessingConfig(enabled=True),
     parse_type="markdown-fit",
 )

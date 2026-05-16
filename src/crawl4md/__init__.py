@@ -7,15 +7,21 @@ from .fetch.html_fetcher_kreuzberg_dev import HtmlFetcherKreuzbergDev
 
 MarkdownConverter = MarkdownConverterKreuzbergDev
 HtmlFetcher = HtmlFetcherKreuzbergDev
+MarkdownFetcher = HtmlFetcherKreuzbergDev
+MarkdownFetcherCrawl4AI = HtmlFetcherCrawl4AI
+MarkdownFetcherKreuzbergDev = HtmlFetcherKreuzbergDev
 
 
 __all__ = [
     "MarkdownConverterCrawl4AI",
     "HtmlFetcherCrawl4AI",
+    "MarkdownFetcherCrawl4AI",
     "MarkdownConverterKreuzbergDev",
     "HtmlFetcherKreuzbergDev",
+    "MarkdownFetcherKreuzbergDev",
     "MarkdownConverter",
     "HtmlFetcher",
+    "MarkdownFetcher",
     "MarkdownPreprocessingConfig",
     "NormalizationConfig",
     "ParseTypeCrawl4AI",
