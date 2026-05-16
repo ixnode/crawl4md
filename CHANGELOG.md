@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 * Prefix extracted image text with Figure: "..." in remove_images fixtures
+* Localize remove_images figure labels from HTML language with en fallback
 
 ## [0.1.5] - 2026-05-03
 

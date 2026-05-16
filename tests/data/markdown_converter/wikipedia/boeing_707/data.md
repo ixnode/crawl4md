@@ -2,7 +2,7 @@
 
 | Boeing 707 | |
 | --- | --- |
-| Eine Boeing 707 der Air India *Eine Boeing 707 der Air India* | |
+| Figure: "Eine Boeing 707 der Air India" *Eine Boeing 707 der Air India* | |
 | Typ | Vierstrahliges Schmalrumpfflugzeug |
 | Entwurfsland | Vereinigte Staaten |
 | Hersteller | Boeing Airplane Company |

@@ -85,4 +85,4 @@ class MarkdownPreprocessingPipelineTests(unittest.TestCase):
 
         cleaned = preprocessing.process(markdown)
 
-        self.assertEqual(cleaned, "Air India\n")
+        self.assertEqual(cleaned, 'Figure: "Air India"\n')

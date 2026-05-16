@@ -177,7 +177,7 @@ def check_ruff(index: int = 1) -> int:
 
 
 def main() -> int:
-    checks = (markdown_converter, profile, pipeline, preprocessing, check_language, check_ruff)
+    checks = (profile, pipeline, preprocessing, check_language, markdown_converter, check_ruff)
     for index, check in enumerate(checks, start=1):
         result = check(index)
         if result != 0:

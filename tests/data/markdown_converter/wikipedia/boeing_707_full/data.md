@@ -22,7 +22,7 @@ Mitmachen
 - Letzte Änderungen
 - Kontakt
 
-Wikipedia Die freie Enzyklopädie
+Abbildung: "Wikipedia" Abbildung: "Die freie Enzyklopädie"
 
 Suche
 
@@ -203,7 +203,7 @@ In anderen Projekten
 
 | Boeing 707 | |
 | --- | --- |
-| Eine Boeing 707 der Air India *Eine Boeing 707 der Air India* | |
+| Abbildung: "Eine Boeing 707 der Air India" *Eine Boeing 707 der Air India* | |
 | Typ | Vierstrahliges Schmalrumpfflugzeug |
 | Entwurfsland | Vereinigte Staaten |
 | Hersteller | Boeing Airplane Company |
