@@ -18,6 +18,10 @@ All notable changes to this project will be documented in this file.
 * Extract markdown converter session loading and HTML normalization helpers
 * Extract markdown converter fetcher/session discovery helpers from tests
 
+### Test
+
+* Migrate crawl4ai content-selector unit checks to session fixtures
+
 ## [0.1.5] - 2026-05-03
 
 ### Added

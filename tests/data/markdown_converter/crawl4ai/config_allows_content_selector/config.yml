@@ -1,0 +1,9 @@
+id: "crawl4ai_config_allows_content_selector"
+title: "Crawl4AI Config Allows Content Selector"
+description: "Ensures markdown converter session config accepts crawl4ai content_selector and conversion succeeds."
+config:
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
+        content_selector: main
+    url: https://example.test/crawl4ai/config-allows-content-selector

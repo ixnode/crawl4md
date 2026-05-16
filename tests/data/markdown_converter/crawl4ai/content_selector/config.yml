@@ -1,0 +1,9 @@
+id: "crawl4ai_content_selector"
+title: "Crawl4AI Content Selector"
+description: "Converts HTML with crawl4ai using content_selector=main and keeps only main content."
+config:
+    crawl:
+        parser: crawl4ai
+        parse_type: markdown
+        content_selector: main
+    url: https://example.test/crawl4ai/content-selector

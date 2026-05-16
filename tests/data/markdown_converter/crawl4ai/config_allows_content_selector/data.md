@@ -1,0 +1,2 @@
+# Allowed
+Selector works
