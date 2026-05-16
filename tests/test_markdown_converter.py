@@ -44,6 +44,9 @@ class MarkdownConverterSession(BaseModel):
 
 
 class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
+        loop = self._asyncioRunner.get_loop()
+        loop.set_debug(False)
 
     async def test_converts_all_configured_sessions(self) -> None:
         group = os.environ.get("CRAWL4MD_MARKDOWN_CONVERTER_GROUP")
