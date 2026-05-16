@@ -48,6 +48,9 @@ CASES = [
 
 
 class RuleRemoveBlocksTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_remove_blocks(self) -> None:
         names = [case.name for case in CASES]
 

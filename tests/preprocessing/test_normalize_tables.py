@@ -38,6 +38,9 @@ CASES = [
 
 
 class RuleNormalizeTablesTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_normalize_tables(self) -> None:
         names = [case.name for case in CASES]
 

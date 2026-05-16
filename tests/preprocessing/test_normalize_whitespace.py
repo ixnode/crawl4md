@@ -79,6 +79,9 @@ CASES = [
 
 
 class RuleNormalizeWhitespaceTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_normalize_whitespace(self) -> None:
         names = [case.name for case in CASES]
 

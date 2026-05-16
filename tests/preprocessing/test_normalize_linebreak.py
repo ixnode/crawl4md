@@ -102,6 +102,9 @@ CASES = [
 
 
 class RuleNormalizeLinebreakTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_normalize_linebreak(self) -> None:
         names = [case.name for case in CASES]
 

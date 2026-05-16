@@ -29,6 +29,9 @@ CASES = [
 
 
 class RuleEnsureH1Tests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_ensure_h1(self) -> None:
         names = [case.name for case in CASES]
 

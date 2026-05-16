@@ -8,6 +8,9 @@ from tests.support.progress import run_progress_cases
 class MarkdownPreprocessingPipelineTests(unittest.TestCase):
     """Tests the orchestration behavior of the Markdown preprocessing pipeline."""
 
+    def setUp(self) -> None:
+        self.maxDiff = None
+
     def test_pipeline(self) -> None:
         checks = [
             (

@@ -27,6 +27,9 @@ CASES = [
 
 
 class RuleRemoveImagesTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_remove_images(self) -> None:
         names = [case.name for case in CASES]
 

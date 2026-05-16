@@ -44,6 +44,9 @@ class MarkdownConverterSession(BaseModel):
 
 
 class MarkdownConverterSessionTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self) -> None:
+        self.maxDiff = None
+
     async def asyncSetUp(self) -> None:
         loop = self._asyncioRunner.get_loop()
         loop.set_debug(False)

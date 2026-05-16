@@ -6,6 +6,9 @@ from tests.support.progress import run_progress_cases
 
 
 class LanguageTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.maxDiff = None
+
     def test_extract_language_from_html_fixtures(self) -> None:
         html_root = Path("tests/data/html")
         files = sorted(html_root.rglob("*.html"))

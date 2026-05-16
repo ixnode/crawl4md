@@ -23,6 +23,9 @@ CASES = [
 
 
 class RuleRemoveHtmlCommentsTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_remove_html_comments(self) -> None:
         names = [case.name for case in CASES]
 

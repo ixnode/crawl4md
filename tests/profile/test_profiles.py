@@ -7,6 +7,9 @@ from tests.support.progress import run_progress_cases
 class ProfileTests(unittest.TestCase):
     """Tests profile lookup and merging before runtime preprocessing is built."""
 
+    def setUp(self) -> None:
+        self.maxDiff = None
+
     def test_profile(self) -> None:
         checks = [
             (

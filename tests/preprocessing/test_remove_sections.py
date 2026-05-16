@@ -52,6 +52,9 @@ CASES = [
 
 
 class RuleRemoveSectionsTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_remove_sections(self) -> None:
         names = [case.name for case in CASES]
 

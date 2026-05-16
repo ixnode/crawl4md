@@ -35,6 +35,9 @@ CASES = [
 
 
 class RuleRemoveLinesTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.maxDiff = None
     def test_remove_lines(self) -> None:
         names = [case.name for case in CASES]
 
