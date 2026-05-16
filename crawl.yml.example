@@ -68,12 +68,14 @@ projects:
             parser: kreuzberg-dev # crawl4ai | kreuzberg-dev
             parse_type: markdown # crawl4ai: markdown | markdown-fit, kreuzberg-dev: markdown
             content_selector: ".mw-parser-output"
+
         normalization:
             enabled: true
             entities: true
             hidden_elements: true
             urls: true
             references: true
+
         preprocessing:
             markdown:
                 enabled: true
@@ -99,8 +101,9 @@ projects:
                     - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
                     - "anchor:#[Vv]orlage_[Ll]esenswert"
                     - "anchor:#[Vv]orlage_[Ee]xzellent"
-                    - "anchor:veaction=edit[^)]*section="
-                    - "anchor:action=edit[^)]*section="
+                    - "anchor:&veaction=edit[^)]*section="
+                    - "anchor:&action=edit[^)]*section="
+                    - "unwrap:*"
                 remove_images: true
                 remove_html_comments: true
 

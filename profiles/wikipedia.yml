@@ -44,8 +44,8 @@ preprocessing:
             - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
             - "anchor:#[Vv]orlage_[Ll]esenswert"
             - "anchor:#[Vv]orlage_[Ee]xzellent"
-            - "anchor:veaction=edit[^)]*section="
-            - "anchor:action=edit[^)]*section="
+            - "anchor:&veaction=edit[^)]*section="
+            - "anchor:&action=edit[^)]*section="
             - "unwrap:*"
 
         remove_images: true

@@ -227,8 +227,8 @@ remove_links:
     - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
     - "anchor:#[Vv]orlage_[Ll]esenswert"
     - "anchor:#[Vv]orlage_[Ee]xzellent"
-    - "anchor:veaction=edit[^)]*section="
-    - "anchor:action=edit[^)]*section="
+    - "anchor:&veaction=edit[^)]*section="
+    - "anchor:&action=edit[^)]*section="
     - "unwrap:*"
 ```
 
@@ -377,8 +377,8 @@ Remove Wikipedia section edit links:
 
 ```yaml
 remove_links:
-    - "anchor:veaction=edit[^)]*section="
-    - "anchor:action=edit[^)]*section="
+    - "anchor:&veaction=edit[^)]*section="
+    - "anchor:&action=edit[^)]*section="
 ```
 
 ```markdown
@@ -420,8 +420,8 @@ remove_links:
     - "anchor:cite_note"
     - "anchor:custom-link"
     - "anchor:upload\\.wikimedia\\.org"
-    - "anchor:veaction=edit[^)]*section="
-    - "anchor:action=edit[^)]*section="
+    - "anchor:&veaction=edit[^)]*section="
+    - "anchor:&action=edit[^)]*section="
 ```
 
 ```markdown
@@ -590,8 +590,8 @@ preprocessing:
             - "anchor:#(?:[Bb]ody[Cc]ontent|content|content-start|main|main-content|maincontent)"
             - "anchor:#[Vv]orlage_[Ll]esenswert"
             - "anchor:#[Vv]orlage_[Ee]xzellent"
-            - "anchor:veaction=edit[^)]*section="
-            - "anchor:action=edit[^)]*section="
+            - "anchor:&veaction=edit[^)]*section="
+            - "anchor:&action=edit[^)]*section="
         remove_images: true
         remove_html_comments: true
         normalize_tables: true
