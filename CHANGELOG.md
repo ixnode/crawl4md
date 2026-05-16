@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 * Move preprocessing RuleCase/data-provider helpers into crawl4md.utils and update test imports
 * Move language label mapping into crawl4md/i18n/labels module
 * Move frames module into crawl4md.utils and update check helper imports
+* Move check CLI module into crawl4md.commands and update script entry points
 
 ### Test
 
