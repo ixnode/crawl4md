@@ -138,6 +138,20 @@ uv run crawl pydantic
 
 ---
 
+## Testing
+
+Run the full validation suite with:
+
+```bash
+uv run check
+```
+
+For focused checks, grouped test commands, parameters, and examples, see:
+
+- [`docs/testing.md`](docs/testing.md)
+
+---
+
 ## Python API
 
 `crawl4md` can also be used as a Python package after installing it with `pip install crawl4md` or `uv add crawl4md`.
