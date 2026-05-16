@@ -2,7 +2,8 @@ import unittest
 
 from crawl4md.config import MarkdownPreprocessingConfig
 from crawl4md.convert.preprocessing.rules.normalize_linebreak import RuleNormalizeLinebreak
-from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case, data_provider
+from tests.preprocessing.support.data_provider import RuleCase, assert_rule_case
+from tests.support.progress import run_progress_cases
 
 
 CASES = [
@@ -101,6 +102,11 @@ CASES = [
 
 
 class RuleNormalizeLinebreakTests(unittest.TestCase):
-    @data_provider(CASES)
-    def test_normalize_linebreak(self, case: RuleCase) -> None:
-        assert_rule_case(self, RuleNormalizeLinebreak, case)
+    def test_normalize_linebreak(self) -> None:
+        names = [case.name for case in CASES]
+
+        def _run(index: int) -> None:
+            case = CASES[index]
+            assert_rule_case(self, RuleNormalizeLinebreak, case)
+
+        run_progress_cases(names, _run)
