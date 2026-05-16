@@ -214,10 +214,12 @@ remove_links: "unwrap:*"
 
 Processing behavior:
 
-1. Image syntax and image-only wrappers are handled by `remove_images: true`.
+1. Image syntax is handled by `remove_images: true`.
 2. `remove_links` rules are applied to Markdown links.
 3. `anchor:` and `text:` remove the whole matching link, including visible text.
 4. `unwrap:` keeps the visible link text and removes the URL and optional title.
+
+`remove_images` removes only Markdown image syntax. If an image is wrapped by a Markdown link, the outer link remains and can be processed later by `remove_links`.
 
 Rules are applied in this order: complete link removals (`anchor:` and `text:`) run first, then `unwrap:` runs on the remaining links. This means a catch-all `unwrap:*` can be placed after specific removal rules:
 
@@ -436,7 +438,7 @@ Text [keep](#plain)
 
 ### `remove_images`
 
-Removes Markdown image syntax and image-only link wrappers while preserving semantic image text.
+Removes Markdown image syntax while preserving semantic image text.
 
 The option accepts `false` or `true`:
 
@@ -456,7 +458,8 @@ For each Markdown image, the replacement text is selected with this priority:
 alt > title > remove
 ```
 
-Only the image syntax and optional link wrapper are removed. Image URLs and wrapper link targets are not kept. No prefix such as `Image:` is added.
+Only the image syntax is removed. No prefix such as `Image:` is added.
+If an image is wrapped by a Markdown link, the wrapper link target is kept.
 
 Image with alt text:
 
@@ -499,7 +502,7 @@ Linked image with alt text:
 Becomes:
 
 ```markdown
-Eine Boeing 707 der Air India
+[Eine Boeing 707 der Air India](https://de.wikipedia.org/wiki/Datei:image.jpg "Eine Boeing 707 der Air India")
 ```
 
 ### `remove_html_comments`
