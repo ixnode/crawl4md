@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 * Extract progress printing helper from tests support module
 * Extract markdown converter session loading and HTML normalization helpers
 * Extract markdown converter fetcher/session discovery helpers from tests
+* Extract pipeline check cases into helper class without behavior change
 
 ### Test
 
