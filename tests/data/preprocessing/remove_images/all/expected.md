@@ -10,19 +10,19 @@ Image syntax is removed completely when no alt or title exists.
 
 Alt text is kept.
 
-Boeing 707 Cockpit
+Figure: "Boeing 707 Cockpit"
 
 ## 3. Plain image with title but empty alt
 
 If alt text is empty, title text is used.
 
-Cockpit einer Boeing 707
+Figure: "Cockpit einer Boeing 707"
 
 ## 4. Plain image with alt and title
 
 Alt text wins over title text.
 
-Alt text
+Figure: "Alt text"
 
 ## 5. Linked image without alt or title
 
@@ -34,7 +34,7 @@ Image syntax is removed, but the outer link remains.
 
 Image syntax is removed, alt text is preserved as link text, and the outer link target remains.
 
-[Eine Boeing 707 der Air India](https://de.wikipedia.org/wiki/Datei:image.jpg "Eine Boeing 707 der Air India")
+[Figure: "Eine Boeing 707 der Air India"](https://de.wikipedia.org/wiki/Datei:image.jpg "Eine Boeing 707 der Air India")
 
 ## 7. Regular link plus plain image in one line
 
@@ -46,10 +46,10 @@ Text [keep](file.jpg)  after
 
 Image syntax is removed; remaining text stays inside the outer link.
 
-Text [icon keep](file.jpg)
+Text [Figure: "icon" keep](file.jpg)
 
 ## 9. Linked wrapper with multiple images
 
 All image syntaxes are removed; collected image text remains as link text.
 
-[Two](file.jpg)
+[Figure: "Two"](file.jpg)

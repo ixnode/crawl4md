@@ -16,6 +16,7 @@ from .base.rule_base import RuleBase
 
 class RuleRemoveImages(RuleBase):
     REMOVED_IMAGE_MARKER = "\0C4MD_REMOVED_IMAGE\0"
+    FIGURE_PREFIX = 'Figure: "{text}"'
     MARKDOWN_TARGET = r"(?:\\.|[^()\\\n]|\([^()\n]*\))*"
     IMAGE_INNER_PATTERN = rf"!\[[^\]\n]*\]\({MARKDOWN_TARGET}\)"
     IMAGE_PATTERN = re.compile(rf"!\[(?P<alt>[^\]\n]*)\]\((?P<target>{MARKDOWN_TARGET})\)")
@@ -57,11 +58,11 @@ class RuleRemoveImages(RuleBase):
     def _image_text(self, match: re.Match[str]) -> str:
         alt = match.group("alt").strip()
         if alt:
-            return alt
+            return self.FIGURE_PREFIX.format(text=alt)
 
         title = self._extract_title(match.group("target"))
         if title:
-            return title
+            return self.FIGURE_PREFIX.format(text=title)
 
         return self.REMOVED_IMAGE_MARKER
 

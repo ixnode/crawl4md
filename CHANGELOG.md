@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Release]
+
+### Added
+
+* Prefix extracted image text with Figure: "..." in remove_images fixtures
+
 ## [0.1.5] - 2026-05-03
 
 ### Added
