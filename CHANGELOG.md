@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.7] - 2026-05-17
+
+### Added
+
+* Align README import examples with current crawl4md init exports
+
 ## [0.1.6] - 2026-05-17
 
 ### Added
